@@ -21,8 +21,29 @@
         </style>
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="{{ mix('js/app.js') }}"></script>
+        <script src="{{ mix('js/custom.js') }}"></script>
+
     </head>
-    <body class="">
-        <p>Test</p>
+    <body>
+        <div id="app">
+            <div class="flex h-screen">
+                <div class="m-auto flex flex-col items-center">
+                    <p class="text-5xl">Hi, I'm <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
+                    <p class="text-3xl ml-10">I'm a <span class="typing"></span></p>
+                    <button class="btn view-my-work-btn mt-10 text-2xl">View my work</button>
+                </div>
+            </div>
+            <nav>
+                <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4 border-white">
+                    <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">Home</li>
+                    <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">About</li>
+                    <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">Portfolio</li>
+                    <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">Blog</li>
+                    <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">Contact</li>
+                </ul>
+            </nav>
+        </div>
     </body>
+
 </html>
