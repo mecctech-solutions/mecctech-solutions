@@ -8,8 +8,12 @@ module.exports = {
     extend: {
         colors : {
             "mecctech-red" : "#e30613"
-        }
-    },
+        },
+    width: {
+        '1/16' : '6.25%',
+        '1/20' : '5%',
+    }
+    }
   },
   plugins: [],
 }
