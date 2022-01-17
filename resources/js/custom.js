@@ -4,11 +4,10 @@ import $ from "jquery"
 $(document).ready(function() {
     // Typing animation script
     var typed = new Typed(".typing", {
-        strings: ['full-stack web developer.', 'software engineer.'],
+        strings: ['full-stack web developer.', 'software engineer.', 'Laravel developer.', 'PHP developer.', 'Vue.js developer.'],
         typeSpeed: 100,
         backSpeed: 60,
-        loop: true
-    })
+        loop: true,})
 
     const canvas = document.getElementById('matrix');
     const context = canvas.getContext('2d');
