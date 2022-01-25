@@ -21,22 +21,17 @@
         </style>
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ mix('js/app.js') }}"></script>
-        <script src="{{ mix('js/custom.js') }}"></script>
+        <script defer src="{{ mix('js/app.js') }}"></script>
 
     </head>
     <body>
         <div id="app">
             <section id="home">
                 <div class="flex h-screen">
-                    <div class="m-auto flex flex-col items-center">
-                        <p class="text-5xl">Hi, I'm <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
-                        <p class="text-3xl ml-10">I'm a <span class="typing"></span></p>
-                        <button class="btn view-my-work-btn mt-20 text-2xl">View my work</button>
-                    </div>
+                    <view-my-work></view-my-work>
                 </div>
-                <nav>
-                    <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613">
+                <nav id="header">
+                    <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
                         <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
                         <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
                         <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
@@ -47,54 +42,22 @@
             </section>
 
             <section id="about">
-                <div class="flex flex-col items-center p-10">
-                    <h1 class="text-4xl font-bold">ABOUT ME</h1>
-                    <div class="border-t border-4 border-black mt-5 w-1/20"></div>
+                <div class="flex flex-col items-center">
+                    <h1 class="text-4xl font-bold mt-10">ABOUT ME</h1>
+                    <div class="border-t border-4 border-black mt-5 w-1/16"></div>
 
-                    <div class="grid grid-cols-4">
+                    <div class="grid grid-cols-3 mt-5">
+                        <skill description="Obtaining requirements and design for both the front- and backend." title="Design" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                        <skill description="Responsive and dynamic UIs, build with Vue.js and TailwindCSS." title="Frontend" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                        <skill description="Extensible and maintainable software written in Laravel using best practices." title="Backend" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                    </div>
+
+                    <div class="p-10 grid grid-cols-2">
+                        <img class="rounded-full w-1/2" src="images/floris.jpeg" alt="">
+
                         <div class="flex flex-col items-center">
-                            <div class="p-10 mt-10 rounded-full flex flex-col items-center" style="background: #e30613">
-                                <svg style="width:50px; height:50px; color: #FFFFFF" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z" />
-                                </svg>
-                            </div>
-                            <div class="flex flex-col">
-                                <h1 class="m-auto text-3xl font-bold mt-3">Design</h1>
-                                <p class="mr-5 ml-5 text-center">Before building anything I gather requirements and make a design of both the UI and the back-end software.</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="p-10 mt-10 rounded-full flex flex-col items-center" style="background: #e30613">
-                                <svg style="width:50px; height:50px; color: #FFFFFF" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z" />
-                                </svg>
-                            </div>
-                            <div class="flex flex-col">
-                                <h1 class="m-auto text-3xl font-bold mt-3">Front-end</h1>
-                                <p class="mr-5 ml-5 text-center">Responsive and dynamic UI, build with Vue.js and TailwindCSS.</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="p-10 mt-10 rounded-full flex flex-col items-center" style="background: #e30613">
-                                <svg style="width:50px; height:50px; color: #FFFFFF" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z" />
-                                </svg>
-                            </div>
-                            <div class="flex flex-col">
-                                <h1 class="m-auto text-3xl font-bold mt-3">Back-end</h1>
-                                <p class="mr-5 ml-5 text-center">My software is extensible and maintainable, both in front- and backend.</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="p-10 mt-10 rounded-full flex flex-col items-center" style="background: #e30613">
-                                <svg style="width:50px; height:50px; color: #FFFFFF" viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z" />
-                                </svg>
-                            </div>
-                            <div class="flex flex-col">
-                                <h1 class="m-auto text-3xl font-bold mt-3">Quality</h1>
-                                <p class="mr-5 ml-5 text-center">My software is extensible and maintainable, both in front- and backend.</p>
-                            </div>
+                            <h1 class="text-3xl font-bold mt-10 mb-5">Who am I?</h1>
+                            <p>I'm a full-stack web developer and founder of MeccTech Solutions. I am passionate about writing software and achieving the highest possible quality. To reach this quality I am continually improving my skills.</p>
                         </div>
                     </div>
                 </div>

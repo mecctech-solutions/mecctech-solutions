@@ -1,16 +1,8 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="m-auto flex flex-col items-center">
+        <p class="text-5xl">Hi, I'm <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
+        <p class="text-3xl ml-10">I'm a <span class="typing"></span></p>
+        <button @click="" class="btn view-my-work-btn mt-20 text-2xl">View my work</button>
     </div>
 </template>
 
