@@ -52,12 +52,12 @@
                         <skill description="Extensible and maintainable software written in Laravel using best practices." title="Backend" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
                     </div>
 
-                    <div class="p-10 grid grid-cols-2">
-                        <img class="rounded-full w-1/2" src="images/floris.jpeg" alt="">
+                    <div class="m-10 flex justify-center items-center space-x-20">
+                        <img class="rounded-full p-10" src="images/floris.jpeg" alt="">
 
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center w-1/4">
                             <h1 class="text-3xl font-bold mt-10 mb-5">Who am I?</h1>
-                            <p>I'm a full-stack web developer and founder of MeccTech Solutions. I am passionate about writing software and achieving the highest possible quality. To reach this quality I am continually improving my skills.</p>
+                            <p class="text-2xl">I'm a full-stack web developer and founder of MeccTech Solutions. I am passionate about writing software and achieving the highest possible quality. To reach this quality I am continually improving my skills.</p>
                         </div>
                     </div>
                 </div>
