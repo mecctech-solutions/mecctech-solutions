@@ -7,7 +7,7 @@
         </div>
         <div class="flex flex-col">
             <h1 class="m-auto text-3xl font-bold mt-3">{{ this.title }}</h1>
-            <p class="mr-5 ml-5 text-center">{{ this.description }}</p>
+            <p class="mr-5 ml-5 text-center text-xl">{{ this.description }}</p>
         </div>
     </div>
 </template>
