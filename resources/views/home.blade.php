@@ -62,6 +62,9 @@
                     </div>
                 </div>
             </section>
+            <section id="projects">
+
+            </section>
         </div>
     </body>
 
