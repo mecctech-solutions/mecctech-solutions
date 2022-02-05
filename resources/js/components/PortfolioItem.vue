@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        props: ['description', 'title', 'svg_d'],
+        props: ['title', 'tags', 'main_image_url', 'image_urls', 'description', 'website_url'],
         mounted() {
 
         }
