@@ -14,7 +14,7 @@ use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\R
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
 
-class GetAllPortfolioItemsTest extends TestCase
+class GetPortfolioItemsWithTagTest extends TestCase
 {
     private PortfolioItemRepositoryInterface $portfolioItemRepository;
 
@@ -26,18 +26,27 @@ class GetAllPortfolioItemsTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_all_portfolio_items()
+    public function it_should_return_portfolio_items_with_certain_tag()
     {
-        $portfolioItems = PortfolioItemFactory::create(50);
-        $this->portfolioItemRepository->addMultiple($portfolioItems);
+        $images = collect();
+        $firstTag = "Tag 1";
+        $secondTag = "Tag 2";
+        $tags = collect(array($firstTag, $secondTag));
 
-        $useCase = new GetAllPortfolioItems($this->portfolioItemRepository);
-        $useCaseInput = new GetAllPortfolioItemsInput();
+        $portfolioItemWithTags = new PortfolioItem("Title", ImageFactory::placeholder(), "Description", "Website Url", $images, $tags);
+        $portfolioItemsWithoutTags = PortfolioItemFactory::create(50);
+
+        $this->portfolioItemRepository->add($portfolioItemWithTags);
+        $this->portfolioItemRepository->addMultiple($portfolioItemsWithoutTags);
+
+        $useCase = new GetPortfolioItemsWithTag($this->portfolioItemRepository);
+        $useCaseInput = new GetPortfolioItemsWithTagInput([
+            "tag" => $firstTag
+        ]);
+
         $useCaseResult = $useCase->execute($useCaseInput);
 
-        $resultingPortfolioItems = $useCaseResult->portfolioItems();
+        self::assertEquals($useCaseResult->portfolioItems()->first(), $portfolioItemWithTags);
 
-        self::assertEquals(sizeof($portfolioItems), sizeof($resultingPortfolioItems));
     }
-
 }
