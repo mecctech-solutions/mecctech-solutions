@@ -19,9 +19,10 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('view-my-work', require('./components/ViewMyWork.vue').default);
 Vue.component('skill', require('./components/Skill.vue').default);
+Vue.component('portfolio-items', require('./components/PortfolioItems.vue').default);
+Vue.component('portfolio-item', require('./components/PortfolioItem.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
