@@ -3,6 +3,9 @@
 
 namespace App\PortfolioManagement\Infrastructure\Providers;
 
+use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
 use HomeDesignShops\LaravelDdd\BaseModuleServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +18,7 @@ class PortfolioManagementServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app->bind(PortfolioItemRepositoryInterface::class, EloquentPortfolioItemRepository::class);
     }
 
     /**
