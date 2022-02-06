@@ -11,8 +11,11 @@ use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
+use Tests\Unit\PortfolioManagement\ReturnConstantPortfolioItemRepository;
 
 class GetAllPortfolioItemsTest extends TestCase
 {
@@ -40,4 +43,12 @@ class GetAllPortfolioItemsTest extends TestCase
         self::assertEquals(sizeof($portfolioItems), sizeof($resultingPortfolioItems));
     }
 
+    /** @test */
+    public function it_should_return_all_portfolio_items_when_route_it_called()
+    {
+        App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
+
+        $response = $this->get(route("all-portfolio-items"));
+        self::assertNotNull($response["payload"]['portfolio_items']);
+    }
 }
