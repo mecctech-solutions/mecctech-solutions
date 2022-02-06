@@ -34,7 +34,7 @@ class PortfolioManagementControllerTest extends TestCase
     /** @test */
     public function it_should_return_response_with_error_message_when_failed_to_get_all_portfolio_items()
     {
-        App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
+        App::bind(PortfolioItemRepositoryInterface::class, ThrowsExceptionsPortfolioItemRepository::class);
 
         $request = new Request();
         $response = $this->portfolioManagementController->getAllPortfolioItems($request);
