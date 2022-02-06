@@ -15,11 +15,14 @@
         mounted() {
             this.portfolio_items = this.getAllPortfolioItems();
         },
-        getAllPortfolioItems() {
-            return axios.get(process.env.MIX_BASE_URL + this.get_all_portfolio_items_route);
-        },
-        getPortfolioItemsWithTag(tag) {
-            return axios.get(process.env.MIX_BASE_URL + this.get_portfolio_items_with_tag_route);
+        methods: {
+            getAllPortfolioItems() {
+                return axios.get(process.env.MIX_BASE_URL + this.get_all_portfolio_items_route);
+            },
+            getPortfolioItemsWithTag(tag) {
+                return axios.get(process.env.MIX_BASE_URL + this.get_portfolio_items_with_tag_route);
+            }
         }
+
     }
 </script>
