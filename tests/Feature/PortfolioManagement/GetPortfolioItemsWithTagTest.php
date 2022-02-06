@@ -11,8 +11,10 @@ use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
+use Tests\Unit\PortfolioManagement\ReturnConstantPortfolioItemRepository;
 
 class GetPortfolioItemsWithTagTest extends TestCase
 {
@@ -48,5 +50,19 @@ class GetPortfolioItemsWithTagTest extends TestCase
 
         self::assertEquals($useCaseResult->portfolioItems()->first(), $portfolioItemWithTags);
 
+    }
+
+    /** @test */
+    public function it_should_return_portfolio_items_with_tag_when_route_it_called()
+    {
+        $portfolioItemRepository = new ReturnConstantPortfolioItemRepository();
+        $tag = $portfolioItemRepository->all()->first()->tags()->first();
+        App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
+
+        $response = $this->get(route("portfolio-items-with-tag", [
+            "tag" => $tag
+        ]));
+
+        self::assertNotNull($response["payload"]['portfolio_items']);
     }
 }
