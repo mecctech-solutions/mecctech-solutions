@@ -63,11 +63,8 @@
                 </div>
             </section>
             <section id="projects">
-                <div class="flex flex-col items-center">
-                    <h1 class="text-4xl font-bold mt-10">PROJECTS</h1>
-                    <div class="border-t border-4 border-black mt-5 w-1/16"></div>
-
-                </div>
+                <portfolio-items get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"
+                                 get_portfolio-items-with-tag="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
             </section>
         </div>
     </body>
