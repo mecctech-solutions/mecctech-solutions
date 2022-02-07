@@ -8,7 +8,7 @@ use Faker;
 class PortfolioItemFactory
 {
 
-    public static function create(int $amount, array $attributes): Collection
+    public static function create(int $amount, array $attributes = []): Collection
     {
         $faker = Faker\Factory::create();
         $result = collect();
