@@ -8,7 +8,7 @@ use Faker;
 class PortfolioItemFactory
 {
 
-    public static function create(int $amount): Collection
+    public static function create(int $amount, array $attributes): Collection
     {
         $faker = Faker\Factory::create();
         $result = collect();
@@ -20,7 +20,14 @@ class PortfolioItemFactory
             $mainImage = ImageFactory::placeholder();
             $websiteUrl = $faker->url;
             $images = ImageFactory::placeholders(5);
-            $tags = TagFactory::multiple(5);
+
+            if (array_key_exists("tags", $attributes))
+            {
+                $tags = collect($attributes["tags"]);
+            } else {
+                $tags = TagFactory::multiple(5);
+            }
+
             $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
             $result->push($portfolioItem);
         }
