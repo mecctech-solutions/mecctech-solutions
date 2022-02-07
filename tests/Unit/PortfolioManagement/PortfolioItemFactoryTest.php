@@ -25,4 +25,18 @@ class PortfolioItemFactoryTest extends TestCase
             self::assertInstanceOf(PortfolioItem::class, $portfolioItem);
         }
     }
+
+    /** @test */
+    public function it_should_create_portfolio_items_with_specified_tag()
+    {
+        $tag = "Test Tag";
+        $portfolioItems = PortfolioItemFactory::create(10, [
+            "tag" => $tag
+        ]);
+
+        foreach ($portfolioItems as $portfolioItem)
+        {
+            self::assertEquals($tag, $portfolioItem->tags()->first());
+        }
+    }
 }
