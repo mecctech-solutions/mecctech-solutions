@@ -1,7 +1,7 @@
 <template>
-    <div class="">
-        <h1>{{ title }}</h1>
-        <p>{{ description}}</p>
+    <div class="flex flex-col justify-left p-10">
+        <h1 class="font-bold text-3xl">{{ title }}</h1>
+        <img src="{{ main_image_url }}" alt="">
     </div>
 </template>
 
