@@ -29,14 +29,14 @@ class PortfolioItemFactoryTest extends TestCase
     /** @test */
     public function it_should_create_portfolio_items_with_specified_tag()
     {
-        $tag = "Test Tag";
+        $tags = array("Test Tag");
         $portfolioItems = PortfolioItemFactory::create(10, [
-            "tag" => $tag
+            "tags" => $tags
         ]);
 
         foreach ($portfolioItems as $portfolioItem)
         {
-            self::assertEquals($tag, $portfolioItem->tags()->first());
+            self::assertEquals($tags, $portfolioItem->tags()->toArray());
         }
     }
 }
