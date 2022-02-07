@@ -20,9 +20,16 @@ class PortfolioManagementController
             $useCase = new GetAllPortfolioItems(App::make(PortfolioItemRepositoryInterface::class));
             $useCaseInput = new GetAllPortfolioItemsInput();
             $useCaseResult = $useCase->execute($useCaseInput);
+            $portfolioItems = $useCaseResult->portfolioItems();
+
+            $portfolioItemsAsArray = [];
+            foreach ($portfolioItems as $portfolioItem)
+            {
+                $portfolioItemsAsArray[] = $portfolioItem->asArray();
+            }
 
             $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = $useCaseResult->portfolioItems();
+            $response["payload"]["portfolio_items"] = $portfolioItemsAsArray;
 
         } catch (\Exception $e)
         {
@@ -42,10 +49,19 @@ class PortfolioManagementController
             $useCaseInput = new GetPortfolioItemsWithTagInput([
                 "tag" => $tag
             ]);
+
             $useCaseResult = $useCase->execute($useCaseInput);
 
+            $portfolioItems = $useCaseResult->portfolioItems();
+
+            $portfolioItemsAsArray = [];
+            foreach ($portfolioItems as $portfolioItem)
+            {
+                $portfolioItemsAsArray[] = $portfolioItem->asArray();
+            }
+
             $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = $useCaseResult->portfolioItems();
+            $response["payload"]["portfolio_items"] = $portfolioItemsAsArray;
 
         } catch (\Exception $e)
         {

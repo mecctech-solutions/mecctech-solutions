@@ -73,4 +73,29 @@ class PortfolioItem extends ValueObject
 
         return false;
     }
+
+    public function asArray(): array
+    {
+        $imagesAsArray = [];
+        $tagsAsArray = [];
+
+        foreach ($this->images as $image)
+        {
+            $imagesAsArray[] = $image->asArray();
+        }
+
+        foreach ($this->tags as $tag)
+        {
+            $tagsAsArray[] = $tag;
+        }
+
+        return [
+            "title" => $this->title,
+            "main_image" => $this->mainImage->asArray(),
+            "description" => $this->description,
+            "website_url" => $this->websiteUrl,
+            "images" => $imagesAsArray,
+            "tags" => $tagsAsArray
+        ];
+    }
 }

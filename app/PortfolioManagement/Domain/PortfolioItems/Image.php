@@ -18,4 +18,10 @@ class Image extends ValueObject
         return $this->url;
     }
 
+    public function asArray(): array
+    {
+        return [
+            "url" => $this->url
+        ];
+    }
 }
