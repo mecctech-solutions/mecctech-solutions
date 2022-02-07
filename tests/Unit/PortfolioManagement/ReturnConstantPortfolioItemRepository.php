@@ -14,7 +14,13 @@ class ReturnConstantPortfolioItemRepository implements \App\PortfolioManagement\
 
     public function __construct()
     {
-        $this->portfolioItems = PortfolioItemFactory::create(50);
+        $attributes = [
+            "tags" => [
+                "Constant Tag 1"
+            ]
+        ];
+
+        $this->portfolioItems = PortfolioItemFactory::create(50, $attributes);
     }
 
     public function all(): Collection
