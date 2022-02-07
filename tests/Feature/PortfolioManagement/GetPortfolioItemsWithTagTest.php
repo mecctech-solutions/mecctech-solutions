@@ -63,6 +63,13 @@ class GetPortfolioItemsWithTagTest extends TestCase
             "tag" => $tag
         ]));
 
-        self::assertNotNull($response["payload"]['portfolio_items']);
+        $portfolioItems = $response["payload"]['portfolio_items'];
+
+        self::assertNotEmpty($portfolioItems);
+
+        foreach ($portfolioItems as $portfolioItem)
+        {
+            self::assertNotEmpty($portfolioItem);
+        }
     }
 }
