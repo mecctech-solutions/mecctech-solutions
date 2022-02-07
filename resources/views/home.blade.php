@@ -64,7 +64,7 @@
             </section>
             <section id="projects">
                 <portfolio-items get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"
-                                 get_portfolio-items-with-tag="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
+                                 get_portfolio_items_with_tag_route="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
             </section>
         </div>
     </body>
