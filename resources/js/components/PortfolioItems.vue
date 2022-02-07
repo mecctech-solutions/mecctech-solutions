@@ -17,10 +17,10 @@
         },
         methods: {
             getAllPortfolioItems() {
-                return axios.get(process.env.MIX_BASE_URL + this.get_all_portfolio_items_route);
+                return axios.get(this.get_all_portfolio_items_route);
             },
             getPortfolioItemsWithTag(tag) {
-                return axios.get(process.env.MIX_BASE_URL + this.get_portfolio_items_with_tag_route);
+                return axios.get(this.get_portfolio_items_with_tag_route);
             }
         }
 
