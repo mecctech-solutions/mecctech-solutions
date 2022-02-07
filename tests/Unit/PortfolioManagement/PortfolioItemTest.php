@@ -61,4 +61,32 @@ class PortfolioItemTest extends TestCase
     {
         self::assertEquals($this->tags, $this->portfolioItem->tags());
     }
+
+    /** @test */
+    public function it_should_return_the_object_as_array()
+    {
+        $imagesAsArray = [];
+        $tagsAsArray = [];
+
+        foreach ($this->images as $image)
+        {
+            $imagesAsArray[] = $image->asArray();
+        }
+
+        foreach ($this->tags as $tag)
+        {
+            $tagsAsArray[] = $tag;
+        }
+
+        $expectedArray = [
+            "title" => $this->title,
+            "main_image" => $this->mainImage->asArray(),
+            "description" => $this->description,
+            "website_url" => $this->websiteUrl,
+            "images" => $imagesAsArray,
+            "tags" => $tagsAsArray
+        ];
+
+        self::assertEquals($expectedArray, $this->portfolioItem->asArray());
+    }
 }
