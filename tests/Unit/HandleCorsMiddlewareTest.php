@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Http\Middleware\HandleCorsMiddleware;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use PHPUnit\Framework\TestCase;
 
 class HandleCorsMiddlewareTest extends TestCase
@@ -17,10 +18,11 @@ class HandleCorsMiddlewareTest extends TestCase
     public function it_should_set_correct_headers()
     {
         $request = new Request();
-
         $middleware = new HandleCorsMiddleware();
-        $middleware->handle($request, function (Request $request) {
-            $this->assertTrue($request->hasHeader('Access-Control-Allow-Origin'));
+        $response = $middleware->handle($request, function (Request $request) {
+            return new Response();
         });
+
+        $this->assertNotNull($response->headers->get('Access-Control-Allow-Origin'));
     }
 }
