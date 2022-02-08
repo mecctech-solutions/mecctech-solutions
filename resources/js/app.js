@@ -23,6 +23,7 @@ Vue.component('view-my-work', require('./components/ViewMyWork.vue').default);
 Vue.component('skill', require('./components/Skill.vue').default);
 Vue.component('portfolio-items', require('./components/PortfolioItems.vue').default);
 Vue.component('portfolio-item', require('./components/PortfolioItem.vue').default);
+Vue.component('portfolio-item-modal', require('./components/PortfolioItemModal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
