@@ -25,7 +25,7 @@ class PortfolioItemFactory
             {
                 $tags = collect($attributes["tags"]);
             } else {
-                $tags = TagFactory::multiple(5);
+                $tags = TagFactory::multiple(2);
             }
 
             $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
