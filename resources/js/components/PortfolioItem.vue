@@ -12,7 +12,7 @@
         </div>
 
         <transition name="fade">
-            <portfolio-item-modal v-on:turn-off-modal="this.view_modal = false" v-show="view_modal"></portfolio-item-modal>
+            <portfolio-item-modal v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
         </transition>
     </div>
 </template>
@@ -27,6 +27,10 @@
             toggleModal()
             {
                 this.view_modal = this.view_modal !== true;
+            },
+            turnOffModal() {
+                console.log("Turning off portfolio item modal");
+                this.view_modal = false;
             }
         }
 

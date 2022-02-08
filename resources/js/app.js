@@ -25,11 +25,19 @@ Vue.component('portfolio-items', require('./components/PortfolioItems.vue').defa
 Vue.component('portfolio-item', require('./components/PortfolioItem.vue').default);
 Vue.component('portfolio-item-modal', require('./components/PortfolioItemModal.vue').default);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.directive('click-outside', {
+    bind: function (el, binding, vnode) {
+        this.event = function (event) {
+            if (!(el === event.target || el.contains(event.target))) {
+                vnode.context[binding.expression](event);
+            }
+        };
+        document.body.addEventListener('click', this.event)
+    },
+    unbind: function (el) {
+        document.body.removeEventListener('click', this.event)
+    },
+});
 
 const app = new Vue({
     props: ['view_my_work_button_clicked'],
