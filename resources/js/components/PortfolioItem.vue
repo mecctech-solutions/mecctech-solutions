@@ -11,15 +11,20 @@
             </div>
         </div>
 
-        <portfolio-item-modal v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
+        <portfolio-item-modal :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['title', 'tags', 'main_image_url', 'image_urls', 'description', 'website_url', 'view_modal'],
+        props: ['title', 'tags', 'main_image_url', 'images', 'description', 'website_url'],
+        data() {
+            return {
+                view_modal: false
+            }
+        },
         mounted() {
-            this.view_modal = false;
+
         },
         methods : {
             toggleModal()

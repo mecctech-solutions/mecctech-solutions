@@ -1,14 +1,20 @@
 <template>
     <div class="bg-white z-10 p-96 border-black border-2 centered" v-click-outside="emitTurnOffModalEvent">
-        TESTTEST
+        <img class="" :src="current_image_url" alt="">
     </div>
 </template>
 
 <script>
     export default {
-        props: ['title', 'tags', 'main_image_url', 'image_urls', 'description', 'website_url', 'view_modal'],
+        props: ['title', 'tags', 'images', 'description', 'website_url'],
+        data()  {
+            return {
+                current_image_url: '',
+                count: 0
+            }
+        },
         mounted() {
-            this.count = 0;
+            this.current_image_url = this.images[0].url;
         },
         methods : {
             emitTurnOffModalEvent()
