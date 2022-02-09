@@ -11,9 +11,7 @@
             </div>
         </div>
 
-        <transition name="fade">
-            <portfolio-item-modal v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
-        </transition>
+        <portfolio-item-modal v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
     </div>
 </template>
 
@@ -47,6 +45,7 @@
     .fade-leave-to {
         opacity: 0;
     }
+
     .container {
         position: relative;
     }
