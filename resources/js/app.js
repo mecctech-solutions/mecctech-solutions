@@ -24,6 +24,7 @@ Vue.component('skill', require('./components/Skill.vue').default);
 Vue.component('portfolio-items', require('./components/PortfolioItems.vue').default);
 Vue.component('portfolio-item', require('./components/PortfolioItem.vue').default);
 Vue.component('portfolio-item-modal', require('./components/PortfolioItemModal.vue').default);
+Vue.component('contact-form', require('./components/ContactForm.vue').default);
 
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {

@@ -66,6 +66,9 @@
                 <portfolio-items get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"
                                  get_portfolio_items_with_tag_route="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
             </section>
+            <section id="contact">
+                <contact-form></contact-form>
+            </section>
         </div>
     </body>
 
