@@ -1,5 +1,7 @@
 window._ = require('lodash');
 
+window.Vue = require('vue');
+
 try {
     require('bootstrap');
 } catch (e) {}

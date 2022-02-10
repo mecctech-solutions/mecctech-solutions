@@ -34,14 +34,7 @@
         methods : {
             emitTurnOffModalEvent()
             {
-                // Hack to prevent the click event from firing already as the component is rendered, closing it immediately
-                if (this.count === 1)
-                {
-                    this.$emit('turn-off-modal');
-                    this.count--;
-                } else {
-                    this.count++;
-                }
+                this.$emit('turn-off-modal');
             },
             nextImage() {
                 let index = this.current_image_index + 1;
