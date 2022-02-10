@@ -1,6 +1,9 @@
 <template>
     <div class="bg-white z-10 p-96 border-black border-2 centered" v-click-outside="emitTurnOffModalEvent">
-        <img class="" :src="current_image_url" alt="">
+        <div>
+            <img class="" :src="current_image_url" alt="">
+            <i class="fa-solid fa-angle-right"></i>
+        </div>
     </div>
 </template>
 
