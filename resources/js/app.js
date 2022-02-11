@@ -15,6 +15,7 @@ app.component('portfolio-item-modal', require('./components/PortfolioItemModal.v
 app.component('contact-form', require('./components/ContactForm.vue').default);
 app.component('section-title', require('./components/SectionTitle.vue').default);
 app.component('mecc-tech-footer', require('./components/MeccTechFooter.vue').default);
+app.component('mecc-tech-header', require('./components/MeccTechHeader.vue').default);
 
 app.mount('#app');
 app.use(vClickOutside)

@@ -30,15 +30,7 @@
                 <div class="flex h-screen">
                     <view-my-work></view-my-work>
                 </div>
-                <nav id="header">
-                    <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
-                        <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
-                        <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
-                        <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
-                        <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">BLOG</li>
-                        <li class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
-                    </ul>
-                </nav>
+                <mecc-tech-header></mecc-tech-header>
             </section>
 
             <section id="about">
