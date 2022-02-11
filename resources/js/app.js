@@ -13,6 +13,7 @@ app.component('portfolio-items', require('./components/PortfolioItems.vue').defa
 app.component('portfolio-item', require('./components/PortfolioItem.vue').default);
 app.component('portfolio-item-modal', require('./components/PortfolioItemModal.vue').default);
 app.component('contact-form', require('./components/ContactForm.vue').default);
+app.component('section-title', require('./components/SectionTitle.vue').default);
 
 app.mount('#app');
 app.use(vClickOutside)
