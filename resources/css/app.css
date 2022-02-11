@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .text-input {
+        @apply border-2 border-b
+    }
+}
 
 html, body {
     width: 100%;
@@ -79,3 +84,4 @@ section#home {
     transform: rotate(45deg);
     background-color: rgba(255,255,255,0);
 }
+
