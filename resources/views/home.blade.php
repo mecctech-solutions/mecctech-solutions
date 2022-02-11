@@ -57,7 +57,7 @@
 
                         <div class="flex flex-col items-center w-1/4">
                             <h1 class="text-3xl font-bold mt-10 mb-5">Who am I?</h1>
-                            <p class="text-2xl">I'm a full-stack web developer and freelancer specialized in e-commerce software. Count on me to write full web applications for your e-commerce business, with cutting edge technologies like Laravel and Vue.js.</p>
+                            <p class="text-2xl">I'm a full-stack web developer and freelancer specialized in e-commerce software. Count on me to write full web applications for your e-commerce business, with cutting edge technologies'software engineer.''software engineer.' like Laravel and Vue.js.</p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,9 @@
             <section id="contact">
                 <contact-form :base_url="'{{ route('home') }}'" :csrf_token="'{{ csrf_token() }}'"></contact-form>
             </section>
+
+            <mecc-tech-footer></mecc-tech-footer>
+
         </div>
     </body>
-
 </html>
