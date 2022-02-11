@@ -67,7 +67,7 @@
                                  get_portfolio_items_with_tag_route="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
             </section>
             <section id="contact">
-                <contact-form></contact-form>
+                <contact-form :base_url="'{{ route('home') }}'" :csrf_token="'{{ csrf_token() }}'"></contact-form>
             </section>
         </div>
     </body>
