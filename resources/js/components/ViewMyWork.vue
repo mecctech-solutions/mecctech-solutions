@@ -1,7 +1,7 @@
 <template>
     <div class="m-auto flex flex-col items-center">
-        <img class="" src="images/Mecctech_Solutions.png" alt="">
-        <h1 class="text-4xl pb-32 mt-5 mr-4">E-commerce web applications.</h1>
+        <img class="w-96" src="images/Mecctech_Solutions.png" alt="">
+        <h1 class="text-4xl pb-28 mt-5 mr-4">E-commerce web applications.</h1>
 
         <p class="text-5xl">Hi, I'm <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
         <p class="text-3xl ml-10">I'm a <span class="typing"></span></p>
