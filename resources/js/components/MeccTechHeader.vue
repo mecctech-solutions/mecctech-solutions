@@ -1,5 +1,5 @@
 <template>
-    <nav id="header" class="sticky">
+    <nav id="header" class="sticky top-0 z-50">
         <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
             <li id="header-home" @click="scrollToHome(); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
             <li id="header-about-me" @click="scrollToAboutMe(); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>

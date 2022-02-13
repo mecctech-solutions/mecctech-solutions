@@ -25,15 +25,17 @@
 
     </head>
     <body>
-        <div id="app">
-            <section id="home">
-                <div class="flex h-screen">
-                    <view-my-work></view-my-work>
-                </div>
-                <mecc-tech-header></mecc-tech-header>
-            </section>
 
-            <section id="about">
+    <div id="app">
+
+        <section id="home">
+            <div class="flex h-screen">
+                <view-my-work></view-my-work>
+            </div>
+        </section>
+            <mecc-tech-header></mecc-tech-header>
+
+            <section id="about-me">
                 <div class="flex flex-col items-center">
                     <h1 class="text-4xl font-bold mt-10">ABOUT ME</h1>
                     <div class="border-t border-4 border-black mt-5 w-1/16"></div>
@@ -62,7 +64,9 @@
                 <contact-form :base_url="'{{ route('home') }}'" :csrf_token="'{{ csrf_token() }}'"></contact-form>
             </section>
 
-            <mecc-tech-footer></mecc-tech-footer>
+            <footer>
+                <mecc-tech-footer></mecc-tech-footer>
+            </footer>
 
         </div>
     </body>
