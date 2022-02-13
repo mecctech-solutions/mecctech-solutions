@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <form :action="this.upload_contact_form_route" method="POST" enctype="multipart/form-data">>
+        <form :action="this.upload_contact_form_route" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" v-bind:value="this.csrf_token">
 
             <div class="flex flex-wrap justify-center">
