@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-gray-200 text-black flex flex-col items-center justify-center h-80">
+    <div class="w-full text-black flex flex-col items-center justify-center h-80">
         <div class="flex p-10 items-center">
             <div class="grid grid-cols-3 gap-8 mb-5 mr-32">
                 <i class="fa-brands fa-linkedin text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
