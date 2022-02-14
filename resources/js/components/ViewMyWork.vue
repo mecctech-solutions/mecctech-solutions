@@ -5,7 +5,7 @@
 
         <p class="text-5xl">Hi, I'm <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
         <p class="text-3xl ml-10">I'm a <span class="typing"></span></p>
-        <button @click="changeAboutMeColorInHeader(); scrollToHeader()" class="btn view-my-work-btn mt-24 text-2xl">View my work</button>
+        <button @click="clickOnButton" class="btn view-my-work-btn mt-24 text-2xl">View my work</button>
     </div>
 </template>
 
@@ -24,14 +24,15 @@
             });
         },
         methods : {
-            scrollToHeader() {
-                var el = document.getElementById("header");
-                el.scrollIntoView();
-            },
-            changeAboutMeColorInHeader() {
-                var el = document.getElementById('header-about-me');
-                el.style.color = "#e30613";
+            clickOnButton()
+            {
+                let e = this.$emit('select-nav-element', 'about-me');
+                let e2 = this.$emit('scroll-to', 'about-me');
+
+                console.log(e);
+                console.log(e2);
             }
+
         }
     }
 </script>
