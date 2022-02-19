@@ -7,7 +7,7 @@
                 <i class="fa-brands fa-instagram text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
             </div>
 
-            <img class="w-32" src="images/Mecctech_Solutions.png" alt="">
+            <img @click="scrollToHome" class="w-32 hover:scale-110 transition duration-500 cursor-pointer" src="images/Mecctech_Solutions.png" alt="">
             <div class="flex flex-col items-left ml-10">
                 <h1 class="font-bold">Floris Meccanici</h1>
                 <h1 class="font-bold">MeccTech Solutions</h1>
@@ -26,7 +26,9 @@
 
         },
         methods : {
-
+            scrollToHome() {
+                document.getElementById('home').scrollIntoView();
+            }
         }
     }
 </script>

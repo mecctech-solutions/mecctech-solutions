@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white z-10 centered pb-20" v-click-outside="emitTurnOffModalEvent">
+    <div class="bg-white z-10 centered pb-20 mt-10" v-click-outside="emitTurnOffModalEvent">
         <div class="flex justify-around items-center">
             <i @click="previousImage" class="fa-solid fa-angle-left text-5xl pt-5 pb-5 pr-10 pl-10 text-mecctech-red hover:scale-125 transform transition ease-in-out duration-500 cursor-pointer"></i>
             <img class="bg-mecctech-red" :src="current_image_url" alt="">
