@@ -43,13 +43,13 @@ class PortfolioItemsConverter
                         "url" => 'images/'.$row[4]
                     ],
                     1 => [
-                        "url" => 'images/'.$row[4]
+                        "url" => 'images/'.$row[5]
                     ],
                     2 => [
-                        "url" => 'images/'.$row[4]
+                        "url" => 'images/'.$row[6]
                     ],
                     3 => [
-                        "url" => 'images/'.$row[4]
+                        "url" => 'images/'.$row[7]
                     ]
                 ],
                 "tags" => [
