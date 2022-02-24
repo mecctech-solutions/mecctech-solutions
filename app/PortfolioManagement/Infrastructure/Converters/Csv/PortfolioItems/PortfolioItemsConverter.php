@@ -34,22 +34,22 @@ class PortfolioItemsConverter
             $portfolioItem = [
                 "title" => $row[0],
                 "main_image" => [
-                    "url" => $row[1]
+                    "url" => 'images/'.$row[1]
                 ],
                 "description" => $row[2],
                 "website_url" => $row[3],
                 "images" => [
                     0 => [
-                        "url" => $row[4]
+                        "url" => 'images/'.$row[4]
                     ],
                     1 => [
-                        "url" => $row[5]
+                        "url" => 'images/'.$row[4]
                     ],
                     2 => [
-                        "url" => $row[6]
+                        "url" => 'images/'.$row[4]
                     ],
                     3 => [
-                        "url" => $row[7]
+                        "url" => 'images/'.$row[4]
                     ]
                 ],
                 "tags" => [
