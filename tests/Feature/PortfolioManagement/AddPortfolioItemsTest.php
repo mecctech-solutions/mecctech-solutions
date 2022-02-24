@@ -5,8 +5,11 @@ namespace Tests\Feature\PortfolioManagement;
 use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItems;
 use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItemsInput;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
+use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
+use Tests\Unit\PortfolioManagement\ReturnConstantPortfolioItemRepository;
 
 class AddPortfolioItemsTest extends TestCase
 {
@@ -40,5 +43,21 @@ class AddPortfolioItemsTest extends TestCase
 
         // Then
         self::assertEquals($portfolioItems, $this->portfolioItemRepository->all());
+    }
+
+    /** @test */
+    public function it_should_be_able_to_call_the_route()
+    {
+        // Given
+        $portfolioItems = PortfolioItemFactory::create(1);
+
+        App::bind(PortfolioItemRepositoryInterface::class, DummyPortfolioItemRepository::class);
+
+        // When
+        $response = $this->post(route("add-portfolio-items"), [
+            "portfolio_items" => $portfolioItems->toArray()
+        ]);
+
+        $response->assertStatus(200);
     }
 }
