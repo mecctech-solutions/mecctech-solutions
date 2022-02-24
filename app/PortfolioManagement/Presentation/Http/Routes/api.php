@@ -26,5 +26,5 @@ Route::post("portfolio-items/add-multiple", [PortfolioManagementController::clas
     ->name("add-portfolio-items")
     ->middleware('cors');
 
-Route::post("portfolio-items/import", [PortfolioManagementController::class, "uploadPortfolioItems"])
-    ->name("upload-portfolio-items");
+Route::post("portfolio-items/import", [PortfolioManagementController::class, "importPortfolioItems"])
+    ->name("import-portfolio-items");
