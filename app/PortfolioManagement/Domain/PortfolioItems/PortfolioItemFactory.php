@@ -51,4 +51,16 @@ class PortfolioItemFactory
 
         return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
     }
+
+    public static function multipleFromArray(array $portfolioItemsAsArray)
+    {
+        $portfolioItems = [];
+
+        foreach ($portfolioItemsAsArray as $portfolioItemAsArray)
+        {
+            $portfolioItems[] = self::fromArray($portfolioItemAsArray);
+        }
+
+        return $portfolioItems;
+    }
 }
