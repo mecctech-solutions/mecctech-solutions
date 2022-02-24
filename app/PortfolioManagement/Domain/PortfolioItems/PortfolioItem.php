@@ -3,10 +3,12 @@
 namespace App\PortfolioManagement\Domain\PortfolioItems;
 
 use App\SharedKernel\CleanArchitecture\ValueObject;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 
-class PortfolioItem extends ValueObject
+class PortfolioItem extends ValueObject implements Arrayable
 {
+
     private string $title;
     private string $description;
     private string $websiteUrl;
@@ -97,5 +99,10 @@ class PortfolioItem extends ValueObject
             "images" => $imagesAsArray,
             "tags" => $tagsAsArray
         ];
+    }
+
+    public function toArray()
+    {
+        return $this->asArray();
     }
 }
