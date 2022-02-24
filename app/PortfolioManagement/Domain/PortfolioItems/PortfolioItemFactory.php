@@ -34,4 +34,21 @@ class PortfolioItemFactory
 
         return $result;
     }
+
+    public static function fromArray(array $portfolioItemAsArray): PortfolioItem
+    {
+        $title = $portfolioItemAsArray["title"];
+        $description = $portfolioItemAsArray["description"];
+        $websiteUrl = $portfolioItemAsArray["website_url"];
+        $mainImageUrl = $portfolioItemAsArray["main_image_url"];
+        $mainImage = new Image($mainImageUrl);
+
+        $images = collect(array_map(function ($image) {
+                return new Image($image["url"]);
+            }, $portfolioItemAsArray["images"]));
+
+        $tags = collect($portfolioItemAsArray["tags"]);
+
+        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
+    }
 }
