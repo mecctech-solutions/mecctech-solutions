@@ -2,7 +2,7 @@
     <div class="bg-white z-10 centered pb-20 mt-10" v-click-outside="emitTurnOffModalEvent">
         <div class="flex justify-around items-center">
             <i @click="previousImage" class="fa-solid fa-angle-left text-5xl pt-5 pb-5 pr-10 pl-10 text-mecctech-red hover:scale-125 transform transition ease-in-out duration-500 cursor-pointer"></i>
-            <img class="bg-mecctech-red" :src="current_image_url" alt="">
+            <img class="bg-mecctech-red object-fit w-200 h-140 object-fit" :src="current_image_url" alt="">
             <i @click="nextImage" class="fa-solid fa-angle-right text-5xl p-5 pr-10 pl-10 text-mecctech-red hover:scale-125 transform transition ease-in-out duration-500 cursor-pointer"></i>
         </div>
         <div class="text-left p-10 mb-10">
@@ -39,12 +39,13 @@
             nextImage() {
                 let index = this.current_image_index + 1;
 
-                if (index > this.max_image_index)
+                if (index >= this.max_image_index)
                 {
                     index = this.max_image_index;
                 }
 
-                this.current_image_url = this.images[index].url;
+                this.current_image_index = index;
+                this.current_image_url = this.images[this.current_image_index].url;
             },
             previousImage() {
                 let index = this.current_image_index - 1;
@@ -53,7 +54,9 @@
                 {
                     index = this.current_image_index;
                 }
-                this.current_image_url = this.images[index].url;
+
+                this.current_image_index = index;
+                this.current_image_url = this.images[this.current_image_index].url;
             }
         }
 
