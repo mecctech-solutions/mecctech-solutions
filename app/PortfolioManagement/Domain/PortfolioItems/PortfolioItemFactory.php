@@ -40,7 +40,7 @@ class PortfolioItemFactory
         $title = $portfolioItemAsArray["title"];
         $description = $portfolioItemAsArray["description"];
         $websiteUrl = $portfolioItemAsArray["website_url"];
-        $mainImageUrl = $portfolioItemAsArray["main_image_url"];
+        $mainImageUrl = $portfolioItemAsArray["main_image"]["url"];
         $mainImage = new Image($mainImageUrl);
 
         $images = collect(array_map(function ($image) {

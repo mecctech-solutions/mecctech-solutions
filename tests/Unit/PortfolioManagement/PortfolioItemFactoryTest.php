@@ -57,7 +57,9 @@ class PortfolioItemFactoryTest extends TestCase
             "title" => $title,
             "description" => $description,
             "website_url" => $websiteUrl,
-            "main_image_url" => $mainImageUrl,
+            "main_image" => [
+                "url" => $mainImageUrl
+            ],
             "images" => [
                 0 => [
                     "url" => $image1Url
@@ -102,7 +104,9 @@ class PortfolioItemFactoryTest extends TestCase
                     "title" => $title,
                     "description" => $description,
                     "website_url" => $websiteUrl,
-                    "main_image_url" => $mainImageUrl,
+                    "main_image" => [
+                        "url" => $mainImageUrl
+                    ],
                     "images" => [
                         0 => [
                             "url" => $image1Url
@@ -119,7 +123,9 @@ class PortfolioItemFactoryTest extends TestCase
                 "title" => $title,
                 "description" => $description,
                 "website_url" => $websiteUrl,
-                "main_image_url" => $mainImageUrl,
+                "main_image" => [
+                        "url" => $mainImageUrl
+                    ],
                 "images" => [
                     0 => [
                         "url" => $image1Url
@@ -146,4 +152,5 @@ class PortfolioItemFactoryTest extends TestCase
         self::assertEquals($tag1, $portfolioItems[0]->tags()->first());
         self::assertEquals($tag2, $portfolioItems[0]->tags()[1]);
     }
+
 }
