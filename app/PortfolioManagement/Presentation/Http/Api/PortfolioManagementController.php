@@ -11,7 +11,7 @@ use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioIte
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
-use App\PortfolioManagement\Infrastructure\Converters\Excel\PortfolioItems\PortfolioItemsConverter;
+use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -109,10 +109,17 @@ class PortfolioManagementController
 
             $portfolioItems = PortfolioItemsConverter::toEntity($uploadedFile);
             $this->portfolioManagementService->addPortfolioItems(collect($portfolioItems));
+
+            $response["meta"]["created_at"] = time();
+
         } catch (\Exception $e)
         {
-
+            $response["meta"]["created_at"] = time();
+            $response["error"]["code"] = $e->getCode();
+            $response["error"]["message"] = $e->getMessage();
         }
 
+
+        return $response;
     }
 }
