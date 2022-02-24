@@ -18,7 +18,7 @@ class CreatePortfolioItemsTable extends Migration
             $table->timestamps();
             $table->string("title");
             $table->string("main_image_url");
-            $table->string("description");
+            $table->longText("description");
             $table->string("website_url");
         });
     }
