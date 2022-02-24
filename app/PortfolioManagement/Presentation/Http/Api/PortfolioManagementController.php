@@ -11,8 +11,10 @@ use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioIte
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
+use App\PortfolioManagement\Infrastructure\Converters\Excel\PortfolioItems\PortfolioItemsConverter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class PortfolioManagementController
 {
@@ -100,8 +102,17 @@ class PortfolioManagementController
         return $response;
     }
 
-    public function uploadPortfolioItems(Request $request)
+    public function importPortfolioItems(Request $request)
     {
+        try {
+            $uploadedFile = $request->file('portfolio_items');
+
+            $portfolioItems = PortfolioItemsConverter::toEntity($uploadedFile);
+            $this->portfolioManagementService->addPortfolioItems(collect($portfolioItems));
+        } catch (\Exception $e)
+        {
+
+        }
 
     }
 }
