@@ -6,6 +6,7 @@ use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItems;
 use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItemsInput;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
@@ -56,6 +57,20 @@ class AddPortfolioItemsTest extends TestCase
         // When
         $response = $this->post(route("add-portfolio-items"), [
             "portfolio_items" => $portfolioItems->toArray()
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_should_be_able_to_call_the_route_for_uploading_portfolio_items()
+    {
+        // Given
+        $url = route("upload-portfolio-items");
+
+        // When
+        $response = $this->post($url, [
+            "file" => UploadedFile::fake()->create(1)
         ]);
 
         $response->assertStatus(200);

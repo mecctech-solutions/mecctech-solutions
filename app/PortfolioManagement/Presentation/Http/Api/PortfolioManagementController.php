@@ -99,4 +99,9 @@ class PortfolioManagementController
 
         return $response;
     }
+
+    public function uploadPortfolioItems(Request $request)
+    {
+
+    }
 }
