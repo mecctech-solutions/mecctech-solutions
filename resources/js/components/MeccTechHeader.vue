@@ -11,12 +11,14 @@
         <ul @click=this.toggleMobileNavbarCollapse class="flex bg-black text-white border-b border-b-4" style="border-color: #e30613;">
             <i class="fas fa-bars text-3xl p-3"></i>
         </ul>
-        <ul class="bg-black text-white" v-show="collapseMobileNavbar === true">
-            <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
-            <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
-            <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
-            <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
-        </ul>
+        <transition name="fade">
+            <ul class="bg-black text-white" v-show="collapseMobileNavbar === true">
+                <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
+                <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
+                <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
+                <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
+            </ul>
+        </transition>
     </nav>
 </template>
 
@@ -67,3 +69,16 @@
         }
     }
 </script>
+
+<style>
+    .fade-enter-active
+    {
+        transition: all 1s;
+    }
+    .fade-leave-active {
+        transition: all 1s;
+    }
+    .fade-enter, .fade-leave-to  {
+        opacity: 0;
+    }
+</style>
