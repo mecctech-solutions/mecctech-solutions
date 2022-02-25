@@ -39,49 +39,49 @@ class PortfolioItemsConverter
 
             $images = [];
 
-            if ($row[4] !== null)
+            if ($row[4] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[4]
                 ];
             }
 
-            if ($row[5] !== null)
+            if ($row[5] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[5]
                 ];
             }
 
-            if ($row[6] !== null)
+            if ($row[6] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[6]
                 ];
             }
 
-            if ($row[7] !== null)
+            if ($row[7] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[7]
                 ];
             }
 
-            if ($row[8] !== null)
+            if ($row[8] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[8]
                 ];
             }
 
-            if ($row[9] !== null)
+            if ($row[9] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[9]
                 ];
             }
 
-            if ($row[10] !== null)
+            if ($row[10] !== "")
             {
                 $images[] = [
                     "url" => 'images/'.$row[10]
@@ -90,22 +90,22 @@ class PortfolioItemsConverter
 
             $tags = [];
 
-            if ($row[11] !== null)
+            if ($row[11] !== "")
             {
                 $tags[] = $row[11];
             }
 
-            if ($row[12] !== null)
+            if ($row[12] !== "")
             {
                 $tags[] = $row[12];
             }
 
-            if ($row[13] !== null)
+            if ($row[13] !== "")
             {
                 $tags[] = $row[13];
             }
 
-            if ($row[14] !== null)
+            if ($row[14] !== "")
             {
                 $tags[] = $row[14];
             }
