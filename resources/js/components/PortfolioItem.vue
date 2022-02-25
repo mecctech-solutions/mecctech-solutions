@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <img class="w-full h-80 object-contain block" :src="main_image_url" alt="">
+            <img class="w-full h-80 object-scale-down block" :src="main_image_url" alt="">
             <div class="overlay">
                 <div class="text">
                     <h1 class="text-3xl">{{ title }}</h1>
