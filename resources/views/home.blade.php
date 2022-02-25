@@ -46,12 +46,12 @@
                         <skill description="Extensible and maintainable software written in Laravel using best practices." title="Build" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
                     </div>
 
-                    <div class="m-10 flex justify-center items-center space-x-20">
+                    <div class="m-10 flex flex-col md:flex-row justify-center items-center md:space-x-20">
                         <img class="rounded-full p-10" src="images/floris.jpeg" alt="">
 
-                        <div class="flex flex-col items-center w-1/4">
+                        <div class="flex flex-col items-center md:w-1/4">
                             <h1 class="text-3xl font-bold mt-10 mb-5">Who am I?</h1>
-                            <p class="text-2xl">I'm a full-stack web developer and freelancer specialized in e-commerce software. Count on me to write full web applications for your e-commerce business, with cutting edge technologies like Laravel and Vue.js.</p>
+                            <p class="text-2xl text-center md:text-left">I'm a full-stack web developer and freelancer specialized in e-commerce software. Count on me to write full web applications for your e-commerce business, with cutting edge technologies like Laravel and Vue.js.</p>
                         </div>
                     </div>
                 </div>
