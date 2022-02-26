@@ -76,13 +76,15 @@
             </div>
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <button class="bg-mecctech-red shadow transition transform ease-in-out duration-500 hover:bg-black hover:text-mecctech-red focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
+                    <button @click="this.contact_form_sent = true" class="bg-mecctech-red shadow transition transform ease-in-out duration-500 hover:bg-black hover:text-mecctech-red focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
                         Send
                     </button>
                 </div>
             </div>
-
         </form>
+        <div v-if="contact_form_sent" class="w-full bg-green-600 p-10 absolute z-500 bottom-0 left-0">
+            <p>Thanks for contacting me! I will reply as soon as possible.</p>
+        </div>
     </div>
 
 
@@ -91,6 +93,11 @@
 <script>
     export default {
         props: ['csrf_token', 'upload_contact_form_route'],
+        data() {
+            return {
+                contact_form_sent : false
+            }
+        },
         mounted() {
 
         },

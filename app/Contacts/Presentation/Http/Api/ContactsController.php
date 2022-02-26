@@ -12,4 +12,11 @@ class ContactsController
     {
         // Handle the response
     }
+
+    public function submitOrderForm(Request $request)
+    {
+        return redirect()->back()->with([
+            'order-form-sent' => true
+        ]);
+    }
 }
