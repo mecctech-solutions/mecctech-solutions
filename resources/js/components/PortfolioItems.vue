@@ -3,7 +3,7 @@
         <h1 class="text-4xl font-bold mt-10">PROJECTS</h1>
         <div class="border-t border-4 border-black mt-5 w-1/16"></div>
 
-        <div class="grid grid-cols-3 pl-96 pr-96 mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 pl-16 pr-16 lg:pl-96 lg:pr-96 mt-20">
             <portfolio-item v-for="portfolio_item in this.portfolio_items" :title="portfolio_item.title" :description="portfolio_item.description" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item>
         </div>
     </div>

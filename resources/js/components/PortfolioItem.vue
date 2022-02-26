@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div class="md:mb-20 mb-32">
         <div class="container">
-            <img class="w-full h-80 object-scale-down block" :src="main_image_url" alt="">
+            <img class="w-full h-40 object-scale-down block" :src="main_image_url" alt="">
             <div class="overlay">
                 <div class="text">
-                    <h1 class="text-3xl">{{ title }}</h1>
-                    <p>{{ tags.join(" / ") }}</p>
-                    <button @click="toggleModal" class="text-2xl border-mecctech-red border-4 pl-5 pr-5 pt-1 pb-1 mt-5 hover:bg-mecctech-red hover:text-white transition transform ease-in-out duration-500">Learn More</button>
+                    <h1 class="text-lg md:text-3xl">{{ title }}</h1>
+                    <p class="text-md md:text-xl">{{ tags.join(" / ") }}</p>
+                    <button @click="toggleModal" class="text-lg md:text-2xl border-mecctech-red border-4 pl-5 pr-5 pt-1 pb-1 mt-5 hover:bg-mecctech-red hover:text-white transition transform ease-in-out duration-500">Learn More</button>
                 </div>
             </div>
         </div>
@@ -32,7 +32,6 @@
                 this.view_modal = this.view_modal !== true;
             },
             turnOffModal() {
-                console.log("Turning off portfolio item modal");
                 this.view_modal = false;
             }
         }
