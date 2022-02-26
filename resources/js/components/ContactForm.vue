@@ -1,6 +1,6 @@
 <template>
     <section-title class="mt-10" :title="'CONTACT'"></section-title>
-    <div class="grid grid-cols-2 mt-10 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 mt-10 mb-10">
         <div class="flex flex-col items-center mt-10">
             <div class="w-1/2 mx-auto">
                 <div class="flex flex-col justify-left">
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <form :action="this.upload_contact_form_route" method="POST" enctype="multipart/form-data">
+        <form :action="this.upload_contact_form_route" method="POST" enctype="multipart/form-data" class="md:p-0 p-10">
             <input type="hidden" name="_token" v-bind:value="this.csrf_token">
 
             <div class="flex flex-wrap justify-center">
