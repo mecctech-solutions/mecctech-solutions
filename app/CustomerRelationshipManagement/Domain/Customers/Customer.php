@@ -3,21 +3,22 @@
 namespace App\CustomerRelationshipManagement\Domain\Customers;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Str;
 
 class Customer implements Arrayable
 {
-    private string $customerNumber;
+    private ?string $customerNumber;
     private string $firstName;
     private string $lastName;
     private string $email;
 
     /**
-     * @param string $customerNumber
+     * @param string|null $customerNumber
      * @param string $firstName
      * @param string $lastName
      * @param string $email
      */
-    public function __construct(string $customerNumber, string $firstName, string $lastName, string $email)
+    public function __construct(?string $customerNumber, string $firstName, string $lastName, string $email)
     {
         $this->customerNumber = $customerNumber;
         $this->firstName = $firstName;
@@ -25,7 +26,7 @@ class Customer implements Arrayable
         $this->email = $email;
     }
 
-    public function customerNumber(): string
+    public function customerNumber(): ?string
     {
         return $this->customerNumber;
     }
@@ -58,5 +59,18 @@ class Customer implements Arrayable
             "last_name" => $this->lastName,
             "email" => $this->email
         ];
+    }
+
+    public function asArray(array $attributes)
+    {
+        $result = [];
+
+        foreach ($attributes as $attribute)
+        {
+            $variableName = Str::camel($attribute);
+            $result[$attribute] = $this->$variableName;
+        }
+
+        return $result;
     }
 }

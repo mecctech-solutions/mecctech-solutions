@@ -62,8 +62,7 @@ class SubmitContactRequestTest extends TestCase
     public function it_should_add_customer_if_it_does_not_exist(){
 
         // Given
-
-        $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com");
+        $customer = new Customer(null, "John", "Doe", "johndoe@example.com");
         $message = "johndoe@example.com";
         $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) use ($message) {
             $mock->shouldReceive('send')
@@ -82,7 +81,7 @@ class SubmitContactRequestTest extends TestCase
 
 
         // Then
-        self::assertNotNull($this->customerRepository->findByCustomerNumber($customer->customerNumber()));
+        self::assertNotNull($this->customerRepository->findByEmail($customer->email()));
     }
 
     /** @test */

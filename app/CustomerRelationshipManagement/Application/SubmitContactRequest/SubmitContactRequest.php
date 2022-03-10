@@ -32,7 +32,7 @@ class SubmitContactRequest implements SubmitContactRequestInterface
         $customer = CustomerFactory::fromArray($input->customer());
 
         try {
-            $this->customerRepository->findByCustomerNumber($customer->customerNumber());
+            $this->customerRepository->findByEmail($customer->email());
         } catch (CustomerNotFoundException)
         {
             $this->customerRepository->add($customer);

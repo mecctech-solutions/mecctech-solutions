@@ -32,4 +32,18 @@ class DummyCustomerRepository implements \App\CustomerRelationshipManagement\Dom
     {
         $this->customers->push($customer);
     }
+
+    public function findByEmail(string $email): Customer
+    {
+        $customer = $this->customers->first(function (Customer $customer) use ($email) {
+            return $customer->email() === $email;
+        });
+
+        if ($customer === null)
+        {
+            throw new CustomerNotFoundException("Customer with email ".$email." not found");
+        }
+
+        return $customer;
+    }
 }
