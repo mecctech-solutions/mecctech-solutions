@@ -4,6 +4,7 @@ namespace Tests\Unit\CustomerRelationshipManagement;
 
 use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
+use App\CustomerRelationshipManagement\Domain\Notifications\Recipient;
 use App\CustomerRelationshipManagement\Infrastructure\Services\EmailNotificationSenderService;
 use App\Mail\SubmitContactRequestMail;
 use Illuminate\Mail\Mailable;
@@ -23,17 +24,17 @@ class EmailNotificationSenderServiceTest extends TestCase
         // Given
         Mail::fake();
 
-        $recipientEmail = "florismeccanici@mecctech-solutions.nl";
+        $recipient = new Recipient("florismeccanici@mecctech-solutions.nl");
 
-        $emailNotificationSenderService = new EmailNotificationSenderService($recipientEmail);
+        $emailNotificationSenderService = new EmailNotificationSenderService();
         $notification = new Notification("Test Message");
 
         // When
-        $emailNotificationSenderService->send($notification);
+        $emailNotificationSenderService->send($notification, $recipient);
 
         // Then
-        Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification, $recipientEmail){
-            return $mail->hasTo($recipientEmail);
+        Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification, $recipient){
+            return $mail->hasTo($recipient->email());
         });
 
         Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification) {

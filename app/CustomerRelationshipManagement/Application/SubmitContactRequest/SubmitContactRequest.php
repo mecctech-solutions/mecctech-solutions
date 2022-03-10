@@ -6,6 +6,7 @@ namespace App\CustomerRelationshipManagement\Application\SubmitContactRequest;
 use App\CustomerRelationshipManagement\Domain\Customers\CustomerFactory;
 use App\CustomerRelationshipManagement\Domain\Exceptions\CustomerNotFoundException;
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
+use App\CustomerRelationshipManagement\Domain\Notifications\Recipient;
 use App\CustomerRelationshipManagement\Domain\Repositories\CustomerRepositoryInterface;
 use App\CustomerRelationshipManagement\Domain\Services\NotificationSenderServiceInterface;
 
@@ -39,7 +40,7 @@ class SubmitContactRequest implements SubmitContactRequestInterface
         }
 
         $message = $customer->name()." has sent the following message: ".$input->message();
-        $notificationSent = $this->notificationSenderService->send(new Notification($message));
+        $notificationSent = $this->notificationSenderService->send(new Notification($message), new Recipient("florismeccanici@mecctech-solutions.nl"));
 
         return new SubmitContactRequestResult($notificationSent);
     }

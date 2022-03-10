@@ -3,23 +3,17 @@
 namespace App\CustomerRelationshipManagement\Infrastructure\Services;
 
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
+use App\CustomerRelationshipManagement\Domain\Notifications\Recipient;
 use App\Mail\SubmitContactRequestMail;
 use Illuminate\Support\Facades\Mail;
 
 class EmailNotificationSenderService implements \App\CustomerRelationshipManagement\Domain\Services\NotificationSenderServiceInterface
 {
-    private string $recipientEmailAddress;
-
-    public function __construct(string $recipientEmailAddress)
+    public function send(Notification $notification, Recipient $recipient): Notification
     {
-        $this->recipientEmailAddress = $recipientEmailAddress;
-    }
+        $mailable = new SubmitContactRequestMail($notification->message(), $recipient->email());
 
-    public function send(Notification $notification): Notification
-    {
-        $mailable = new SubmitContactRequestMail($notification->message(), $this->recipientEmailAddress);
-
-        Mail::to($this->recipientEmailAddress)->send($mailable);
+        Mail::to($recipient->email())->send($mailable);
 
         return $notification;
     }
