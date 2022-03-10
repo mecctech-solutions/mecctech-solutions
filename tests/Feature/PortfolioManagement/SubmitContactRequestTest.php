@@ -27,4 +27,30 @@ class SubmitContactRequestTest extends TestCase
         // Then
         self::assertEquals(200, $response->status());
     }
+
+    /** @test */
+    public function it_should_add_contact_if_it_does_not_exist(){
+
+        // Given
+
+
+        // When
+
+
+        // Then
+        self::assertEquals(true, false);
+    }
+
+    /** @test */
+    public function it_should_send_notification_of_new_message(){
+
+        // Given
+
+
+        // When
+
+
+        // Then
+        self::assertEquals(true, false);
+    }
 }
