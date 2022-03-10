@@ -6,6 +6,6 @@
 
 </head>
 <body>
-    {{ $customer->firstName() }}
+    {{ $message }}
 </body>
 </html>

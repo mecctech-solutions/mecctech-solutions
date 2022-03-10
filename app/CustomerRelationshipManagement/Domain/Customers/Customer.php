@@ -45,6 +45,11 @@ class Customer implements Arrayable
         return $this->email;
     }
 
+    public function name(): string
+    {
+        return $this->firstName." ".$this->lastName;
+    }
+
     public function toArray()
     {
         return [

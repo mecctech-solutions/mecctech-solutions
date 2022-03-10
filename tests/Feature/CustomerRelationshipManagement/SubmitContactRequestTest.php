@@ -72,7 +72,7 @@ class SubmitContactRequestTest extends TestCase
 
         // Given
         $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com");
-        $message = "johndoe@example.com";
+        $message = "Test Message";
 
         $submitContactRequest = new SubmitContactRequest($this->customerRepository,
                                                             $this->notificationSenderService);
@@ -85,6 +85,8 @@ class SubmitContactRequestTest extends TestCase
         $submitContactRequestResult = $submitContactRequest->execute($submitContactRequestInput);
 
         // Then
-        self::assertEquals(new Notification($message), $submitContactRequestResult->notificationSent());
+        $expectedMessage = $customer->name()." has sent the following message: ".$message;
+
+        self::assertEquals(new Notification($expectedMessage), $submitContactRequestResult->notificationSent());
     }
 }
