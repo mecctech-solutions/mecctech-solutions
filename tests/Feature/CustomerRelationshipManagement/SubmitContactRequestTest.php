@@ -44,14 +44,14 @@ class SubmitContactRequestTest extends TestCase
     public function it_should_add_customer_if_it_does_not_exist(){
 
         // Given
-        $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) {
-            $mock->shouldReceive('send')
-                ->once()
-                ->andReturn(new Notification());
-        });
+
         $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com");
         $message = "johndoe@example.com";
-
+        $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) use ($message) {
+            $mock->shouldReceive('send')
+                ->once()
+                ->andReturn(new Notification($message));
+        });
         $submitContactRequest = new SubmitContactRequest($this->customerRepository,
                                                             $notificationSenderServiceMock);
         $submitContactRequestInput = new SubmitContactRequestInput([
@@ -71,7 +71,6 @@ class SubmitContactRequestTest extends TestCase
     public function it_should_send_notification_of_new_message(){
 
         // Given
-
         $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com");
         $message = "johndoe@example.com";
 
