@@ -36,14 +36,29 @@ class Customer implements Arrayable
         return $this->firstName;
     }
 
+    public function changeFirstName(string $firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
     public function lastName(): string
     {
         return $this->lastName;
     }
 
+    public function changeLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
     public function email(): string
     {
         return $this->email;
+    }
+
+    public function changeEmail(string $email)
+    {
+        $this->email = $email;
     }
 
     public function name(): string

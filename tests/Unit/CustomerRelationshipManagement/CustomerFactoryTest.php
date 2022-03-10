@@ -29,12 +29,23 @@ class CustomerFactoryTest extends TestCase
     public function it_should_return_customers_with_selected_attributes(){
 
         // Given
+        $firstName = "John";
+        $lastName = "Doe";
+        $email = 'johndoe@example.com';
 
+        $attributes = [
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $email
+        ];
 
         // When
-
+        $customer = CustomerFactory::create(1, $attributes)->first();
 
         // Then
-        self::assertEquals(true, false);
+        self::assertEquals($customer->firstName(), $firstName);
+        self::assertEquals($customer->lastName(), $lastName);
+        self::assertEquals($customer->email(), $email);
+
     }
 }

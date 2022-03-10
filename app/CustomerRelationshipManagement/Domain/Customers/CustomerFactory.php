@@ -4,6 +4,7 @@ namespace App\CustomerRelationshipManagement\Domain\Customers;
 
 use Faker\Factory;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class CustomerFactory
 {
@@ -21,6 +22,14 @@ class CustomerFactory
         for ($i = 0; $i < $amount; $i++)
         {
             $customer = new Customer(uniqid(), $faker->firstName, $faker->lastName, $faker->email);
+
+            foreach (array_keys($attributes) as $attributeName)
+            {
+                $attributeValue = $attributes[$attributeName];
+                $methodName = "change".Str::ucfirst(Str::camel($attributeName));
+                $customer->{$methodName}($attributeValue);
+            }
+
             $result->push($customer);
         }
 
