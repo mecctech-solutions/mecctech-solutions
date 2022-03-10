@@ -3,6 +3,10 @@
 
 namespace App\CustomerRelationshipManagement\Infrastructure\Providers;
 
+use App\CustomerRelationshipManagement\Domain\Repositories\CustomerRepositoryInterface;
+use App\CustomerRelationshipManagement\Domain\Services\NotificationSenderServiceInterface;
+use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentCustomerRepository;
+use App\CustomerRelationshipManagement\Infrastructure\Services\EmailNotificationSenderService;
 use HomeDesignShops\LaravelDdd\BaseModuleServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +19,8 @@ class CustomerRelationshipManagementServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->app->bind(CustomerRepositoryInterface::class, EloquentCustomerRepository::class);
+        $this->app->bind(NotificationSenderServiceInterface::class, EmailNotificationSenderService::class);
     }
 
     /**
