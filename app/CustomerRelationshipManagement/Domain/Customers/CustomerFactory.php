@@ -13,7 +13,7 @@ class CustomerFactory
         return new Customer($customer["customer_number"], $customer["first_name"], $customer["last_name"], $customer["email"]);
     }
 
-    public static function create(int $amount = 1, array $attributes = []): Collection
+    public static function create(int $amount = 1, array $attributes = []): Collection|Customer
     {
         $faker = Factory::create();
 
@@ -31,6 +31,10 @@ class CustomerFactory
             }
 
             $result->push($customer);
+        }
+
+        if ($result->count() === 1) {
+            return $result->first();
         }
 
         return $result;

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\CustomerRelationshipManagement;
 
+use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use App\CustomerRelationshipManagement\Domain\Customers\CustomerFactory;
 use Tests\TestCase;
 
@@ -13,16 +14,16 @@ class CustomerFactoryTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_a_customer(){
+    public function it_should_return_one_customer(){
 
         // Given
 
         // When
-        $customers = CustomerFactory::create();
+        $customer = CustomerFactory::create();
 
 
         // Then
-        self::assertEquals(1, sizeof($customers));
+        self::assertInstanceOf(Customer::class, $customer);
     }
 
     /** @test */
