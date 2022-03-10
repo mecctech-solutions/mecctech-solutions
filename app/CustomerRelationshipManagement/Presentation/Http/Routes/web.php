@@ -1,6 +1,6 @@
 <?php
 
-use App\Contacts\Presentation\Http\ContactsController;
+use App\CustomerRelationshipManagement\Presentation\Http\CustomerRelationshipManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/contacts', [ContactsController::class, 'index']);
+Route::get('/customerrelationshipmanagement', [CustomerRelationshipManagementController::class, 'index']);

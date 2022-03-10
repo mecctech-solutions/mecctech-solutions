@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Contacts\Presentation\Http;
+namespace App\CustomerRelationshipManagement\Presentation\Http;
 
 use Illuminate\Http\Request;
 
-class ContactsController
+class CustomerRelationshipManagementController
 {
     /**
      * @param Request $request

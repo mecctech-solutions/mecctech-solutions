@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Contacts\Application\Contacts;
+namespace App\CustomerRelationshipManagement\Application\CustomerRelationshipManagement;
 
-final class ContactsInput
+final class CustomerRelationshipManagementInput
 {
 
     /**
@@ -12,7 +12,7 @@ final class ContactsInput
     protected $id;
 
     /**
-     * ContactsInput constructor.
+     * CustomerRelationshipManagementInput constructor.
      * @param int $id
      * @throws \Exception
      */

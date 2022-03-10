@@ -1,6 +1,6 @@
 <?php
 
-use App\Contacts\Presentation\Http\Api\ContactsController;
+use App\CustomerRelationshipManagement\Presentation\Http\Api\CustomerRelationshipManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/contacts', [ContactsController::class, 'index']);
-Route::post('/submit-contact-form', [ContactsController::class, 'submitOrderForm'])->name('submit-contact-form');
+Route::get('/customerrelationshipmanagement', [CustomerRelationshipManagementController::class, 'index']);
+Route::post('/submit-contact-request', [CustomerRelationshipManagementController::class, 'submitContactRequest'])->name('submit-contact-request');

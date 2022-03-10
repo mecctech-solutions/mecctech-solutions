@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Contacts\Infrastructure\Providers;
+namespace App\CustomerRelationshipManagement\Infrastructure\Providers;
 
 use HomeDesignShops\LaravelDdd\BaseModuleServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-class ContactsServiceProvider extends ServiceProvider
+class CustomerRelationshipManagementServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -25,23 +25,23 @@ class ContactsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerContactsRoutes();
+        $this->registerCustomerRelationshipManagementRoutes();
         $this->registerDoctrineEntityManager();
     }
 
     /**
-     * Registers the contacts routes
+     * Registers the customerrelationshipmanagement routes
      */
-    protected function registerContactsRoutes(): void
+    protected function registerCustomerRelationshipManagementRoutes(): void
     {
-        Route::prefix('contacts')
+        Route::prefix('customerrelationshipmanagement')
             ->middleware('web')
-            ->namespace('App\\Contacts\\Presentation\\Http')
+            ->namespace('App\\CustomerRelationshipManagement\\Presentation\\Http')
             ->group(__DIR__ . '/../../Presentation/Http/Routes/web.php');
 
-        Route::prefix('api/contacts')
+        Route::prefix('api/customerrelationshipmanagement')
             ->middleware('api')
-            ->namespace('App\\Contacts\\Presentation\\Http')
+            ->namespace('App\\CustomerRelationshipManagement\\Presentation\\Http')
             ->group(__DIR__ . '/../../Presentation/Http/Routes/api.php');
     }
 
