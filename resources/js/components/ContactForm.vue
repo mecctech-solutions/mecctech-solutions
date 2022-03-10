@@ -82,9 +82,14 @@
                 </div>
             </div>
         </form>
-        <div v-if="contact_form_sent" class="w-full bg-green-600 p-10 absolute z-500 bottom-0 left-0">
-            <p>Thanks for contacting me! I will reply as soon as possible.</p>
-        </div>
+
+        <transition name="fade">
+            <div v-if="contact_form_sent" class="w-1/3 bg-green-600 p-10 m-5 font-bold text-xl fixed z-500 bottom-0 right-0 rounded-lg text-white">
+                <p>Thanks for contacting me! I will reply as soon as possible.</p>
+                <i @click="contact_form_sent = false" class="fa-solid fa-xmark absolute top-0 right-0 p-3 cursor-pointer"></i>
+            </div>
+        </transition>
+
     </div>
 
 
@@ -95,7 +100,7 @@
         props: ['csrf_token', 'upload_contact_form_route'],
         data() {
             return {
-                contact_form_sent : false
+                contact_form_sent : true
             }
         },
         mounted() {
@@ -106,3 +111,12 @@
         }
     }
 </script>
+
+<style>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+</style>
