@@ -3,8 +3,7 @@
 namespace Tests\Unit\PortfolioManagement;
 
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentPortfolioItemRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories;
+namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories;
 
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
@@ -8,6 +8,7 @@ use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers\PortfolioItemMapper;
 use Illuminate\Support\Collection;
+use function collect;
 
 class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterface
 {

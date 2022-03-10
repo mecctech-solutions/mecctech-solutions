@@ -4,15 +4,9 @@ namespace Tests\Feature\PortfolioManagement;
 
 use App\PortfolioManagement\Application\GetAllPortfolioItems\GetAllPortfolioItems;
 use App\PortfolioManagement\Application\GetAllPortfolioItems\GetAllPortfolioItemsInput;
-use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTag;
-use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTagInput;
-use App\PortfolioManagement\Domain\PortfolioItems\ImageFactory;
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
 use Tests\Unit\PortfolioManagement\ReturnConstantPortfolioItemRepository;

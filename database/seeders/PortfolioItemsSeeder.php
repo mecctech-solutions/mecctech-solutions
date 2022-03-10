@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentPortfolioItemRepository;
 use Illuminate\Database\Seeder;
 
 class PortfolioItemsSeeder extends Seeder

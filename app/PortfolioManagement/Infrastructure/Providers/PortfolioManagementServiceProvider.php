@@ -3,10 +3,9 @@
 
 namespace App\PortfolioManagement\Infrastructure\Providers;
 
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Repositories\EloquentPortfolioItemRepository;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentPortfolioItemRepository;
 use App\PortfolioManagement\Infrastructure\Services\PortfolioManagementService;
 use HomeDesignShops\LaravelDdd\BaseModuleServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;

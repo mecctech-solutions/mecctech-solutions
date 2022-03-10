@@ -41,7 +41,7 @@ class CustomerFactoryTest extends TestCase
         ];
 
         // When
-        $customer = CustomerFactory::create(1, $attributes)->first();
+        $customer = CustomerFactory::create(1, $attributes);
 
         // Then
         self::assertEquals($customer->firstName(), $firstName);
