@@ -41,6 +41,24 @@ class SubmitContactRequestTest extends TestCase
     }
 
     /** @test */
+    public function it_should_return_the_notification_sent(){
+
+        // Given
+        $url = route('submit-contact-request');
+
+        // When
+        $response = $this->post($url, [
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'johndoe@example.com',
+            'message' => 'Test Message'
+        ]);
+
+        // Then
+        self::assertNotEmpty(json_decode($response->content()));
+    }
+
+    /** @test */
     public function it_should_add_customer_if_it_does_not_exist(){
 
         // Given
