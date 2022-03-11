@@ -21,30 +21,6 @@ class EmailNotificationSenderServiceTest extends TestCase
     }
 
     /** @test */
-    public function it_should_send_a_message_to_the_correct_email_address(){
-
-        // Given
-        Mail::fake();
-
-        $recipient = new Recipient("florismeccanici@mecctech-solutions.nl");
-
-        $emailNotificationSenderService = new EmailNotificationSenderService();
-        $notification = new Notification("Test Message");
-
-        // When
-        $emailNotificationSenderService->send($notification, $recipient);
-
-        // Then
-        Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification, $recipient){
-            return $mail->hasTo($recipient->email());
-        });
-
-        Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification) {
-            return $mail->message() === $notification->message();
-        });
-    }
-
-    /** @test */
     public function it_should_add_the_send_email_job_to_the_queue(){
 
         // Given
@@ -62,4 +38,6 @@ class EmailNotificationSenderServiceTest extends TestCase
         // Then
         Queue::assertPushedOn('emails',SendMailJob::class);
     }
+
+
 }
