@@ -31,6 +31,11 @@ class Customer implements Arrayable
         return $this->customerNumber;
     }
 
+    public function changeCustomerNumber(?string $customerNumber)
+    {
+        $this->customerNumber = $customerNumber;
+    }
+
     public function firstName(): string
     {
         return $this->firstName;

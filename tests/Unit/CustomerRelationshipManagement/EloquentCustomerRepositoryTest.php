@@ -3,7 +3,9 @@
 namespace Tests\Unit\CustomerRelationshipManagement;
 
 use App\CustomerRelationshipManagement\Domain\Customers\CustomerFactory;
+use App\CustomerRelationshipManagement\Domain\Exceptions\CustomerNotFoundException;
 use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentCustomerRepository;
+use App\PortfolioManagement\Infrastructure\Exceptions\EloquentCustomerOperationException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -58,5 +60,21 @@ class EloquentCustomerRepositoryTest extends TestCase
 
         // Then
         self::assertEquals($customer, $foundCustomer);
+    }
+
+    /** @test */
+    public function it_should_throw_exception_when_adding_customer_with_no_customer_number(){
+
+        // Then
+        $this->expectException(EloquentCustomerOperationException::class);
+
+        // Given
+        $customer = CustomerFactory::create(1, [
+            'customer_number' => null
+        ]);
+
+        // When
+        $this->customerRepository->add($customer);
+
     }
 }

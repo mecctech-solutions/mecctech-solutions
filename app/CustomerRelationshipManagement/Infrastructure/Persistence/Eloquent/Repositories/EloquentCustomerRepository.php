@@ -6,6 +6,7 @@ use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use App\CustomerRelationshipManagement\Domain\Exceptions\CustomerNotFoundException;
 use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Customers\EloquentCustomer;
 use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Customers\Mappers\CustomerMapper;
+use App\PortfolioManagement\Infrastructure\Exceptions\EloquentCustomerOperationException;
 
 class EloquentCustomerRepository implements \App\CustomerRelationshipManagement\Domain\Repositories\CustomerRepositoryInterface
 {
@@ -42,6 +43,11 @@ class EloquentCustomerRepository implements \App\CustomerRelationshipManagement\
 
     public function add(Customer $customer): void
     {
+        if ($customer->customerNumber() === null)
+        {
+            throw new EloquentCustomerOperationException("Customer number cannot be null");
+        }
+
         $model = CustomerMapper::toEloquent($customer);
         $model->save();
     }
