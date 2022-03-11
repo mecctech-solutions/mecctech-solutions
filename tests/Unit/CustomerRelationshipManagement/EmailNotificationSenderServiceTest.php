@@ -6,9 +6,11 @@ use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
 use App\CustomerRelationshipManagement\Domain\Notifications\Recipient;
 use App\CustomerRelationshipManagement\Infrastructure\Services\EmailNotificationSenderService;
+use App\Jobs\SendMailJob;
 use App\Mail\SubmitContactRequestMail;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class EmailNotificationSenderServiceTest extends TestCase
@@ -40,5 +42,24 @@ class EmailNotificationSenderServiceTest extends TestCase
         Mail::assertSent(SubmitContactRequestMail::class, function (Mailable $mail) use ($notification) {
             return $mail->message() === $notification->message();
         });
+    }
+
+    /** @test */
+    public function it_should_add_the_send_email_job_to_the_queue(){
+
+        // Given
+        Mail::fake();
+        Queue::fake();
+
+        $recipient = new Recipient("florismeccanici@mecctech-solutions.nl");
+
+        $emailNotificationSenderService = new EmailNotificationSenderService();
+        $notification = new Notification("Test Message");
+
+        // When
+        $emailNotificationSenderService->send($notification, $recipient);
+
+        // Then
+        Queue::assertPushedOn('emails',SendMailJob::class);
     }
 }
