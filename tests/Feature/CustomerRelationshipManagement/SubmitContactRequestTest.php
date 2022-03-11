@@ -23,7 +23,7 @@ class SubmitContactRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_status_ok(){
+    public function it_should_return_status_redirect(){
 
         // Given
         $url = route('submit-contact-request');
@@ -37,11 +37,11 @@ class SubmitContactRequestTest extends TestCase
         ]);
 
         // Then
-        self::assertEquals(200, $response->status());
+        self::assertEquals(302, $response->status());
     }
 
     /** @test */
-    public function it_should_return_the_notification_sent(){
+    public function it_should_return_successfully_sent_parameter(){
 
         // Given
         $url = route('submit-contact-request');
