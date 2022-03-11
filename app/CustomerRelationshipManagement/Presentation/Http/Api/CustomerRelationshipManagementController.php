@@ -45,6 +45,6 @@ class CustomerRelationshipManagementController
             $response["error"]["message"] = $e->getMessage();
         }
 
-        return $response;
+        return redirect()->back();
     }
 }
