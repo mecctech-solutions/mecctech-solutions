@@ -41,7 +41,7 @@ class SubmitContactRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_successfully_sent_parameter(){
+    public function it_should_return_redirect_with_success_parameter(){
 
         // Given
         $url = route('submit-contact-request');
@@ -55,7 +55,7 @@ class SubmitContactRequestTest extends TestCase
         ]);
 
         // Then
-        self::assertNotEmpty(json_decode($response->content()));
+        $response->assertSessionHas('success');
     }
 
     /** @test */
