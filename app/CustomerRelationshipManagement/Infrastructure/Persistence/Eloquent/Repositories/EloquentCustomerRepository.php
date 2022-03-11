@@ -16,6 +16,12 @@ class EloquentCustomerRepository implements \App\CustomerRelationshipManagement\
     public function findByCustomerNumber(string $customerNumber): Customer
     {
         $model = EloquentCustomer::where('customer_number', $customerNumber)->first();
+
+        if ($model === null)
+        {
+            throw new CustomerNotFoundException("Customer with customer number ".$customerNumber." not found");
+        }
+
         return CustomerMapper::toEntity($model);
     }
 
@@ -25,7 +31,14 @@ class EloquentCustomerRepository implements \App\CustomerRelationshipManagement\
     public function findByEmail(string $email): Customer
     {
         $model = EloquentCustomer::where('email', $email)->first();
-        return CustomerMapper::toEntity($model);    }
+
+        if ($model === null)
+        {
+            throw new CustomerNotFoundException("Customer with email ".$email." not found");
+        }
+
+        return CustomerMapper::toEntity($model);
+    }
 
     public function add(Customer $customer): void
     {

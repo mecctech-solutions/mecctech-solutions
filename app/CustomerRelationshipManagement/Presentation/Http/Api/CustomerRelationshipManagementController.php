@@ -18,7 +18,6 @@ class CustomerRelationshipManagementController
         try {
             $submitContactRequest = new SubmitContactRequest(App::make(CustomerRepositoryInterface::class),
                                                             App::make(NotificationSenderServiceInterface::class));
-
             $firstName = $request->input('first_name');
             $lastName = $request->input('last_name');
             $email = $request->input('email');
@@ -26,6 +25,7 @@ class CustomerRelationshipManagementController
 
             $submitContactRequestInput = new SubmitContactRequestInput([
                 'customer' => [
+                    'customer_number' => null,
                     'first_name' => $firstName,
                     'last_name' => $lastName,
                     'email' => $email
