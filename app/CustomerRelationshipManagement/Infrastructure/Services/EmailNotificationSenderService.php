@@ -16,7 +16,9 @@ class EmailNotificationSenderService implements \App\CustomerRelationshipManagem
 
         SendMailJob::dispatch(
             $mailable, $recipient->email()
-        )->onQueue('emails');
+        )
+        ->onQueue('emails')
+        ->onConnection('database');
 
         return $notification;
     }
