@@ -106,4 +106,30 @@ class SubmitContactRequestTest extends TestCase
 
         self::assertEquals(new Notification($expectedMessage), $submitContactRequestResult->notificationSent());
     }
+
+    /** @test */
+    public function it_should_create_a_customer_number_when_customer_does_not_exist(){
+
+        $customer = new Customer(null, "John", "Doe", "johndoe@example.com");
+        $message = "johndoe@example.com";
+        $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) use ($message) {
+            $mock->shouldReceive('send')
+                ->once()
+                ->andReturn(new Notification($message));
+        });
+
+        $submitContactRequest = new SubmitContactRequest($this->customerRepository,
+            $notificationSenderServiceMock);
+        $submitContactRequestInput = new SubmitContactRequestInput([
+            "customer" => $customer->toArray(),
+            "message" => $message
+        ]);
+
+        // When
+        $submitContactRequestResult = $submitContactRequest->execute($submitContactRequestInput);
+
+
+        // Then
+        self::assertNotNull($this->customerRepository->findByEmail($customer->email())->customerNumber());
+    }
 }
