@@ -36,6 +36,8 @@ class SubmitContactRequest implements SubmitContactRequestInterface
             $this->customerRepository->findByEmail($customer->email());
         } catch (CustomerNotFoundException)
         {
+            $customerNumber = uniqid();
+            $customer->changeCustomerNumber($customerNumber);
             $this->customerRepository->add($customer);
         }
 
