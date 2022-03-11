@@ -61,7 +61,7 @@
                                  get_portfolio_items_with_tag_route="{{ route("portfolio-items-with-tag") }}"></portfolio-items>
             </section>
             <section id="contact">
-                <contact-form :upload_contact_form_route="'{{ route('submit-contact-request') }}'" :csrf_token="'{{ csrf_token() }}'"></contact-form>
+                <contact-form :submit_contact_request_route="'{{ route('submit-contact-request') }}'" :csrf_token="'{{ csrf_token() }}'" :contact_form_successfully_sent="{{ session()->get('success') }}"></contact-form>
             </section>
 
             <footer>

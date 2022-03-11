@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <form :action="this.upload_contact_form_route" method="POST" enctype="multipart/form-data" class="md:p-0 p-10">
+        <form :action="this.submit_contact_request_route" method="POST" enctype="multipart/form-data" class="md:p-0 p-10">
             <input type="hidden" name="_token" v-bind:value="this.csrf_token">
 
             <div class="flex flex-wrap justify-center">
@@ -76,7 +76,7 @@
             </div>
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <button @click="this.contact_form_sent = true" class="bg-mecctech-red shadow transition transform ease-in-out duration-500 hover:bg-black hover:text-mecctech-red focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
+                    <button class="bg-mecctech-red shadow transition transform ease-in-out duration-500 hover:bg-black hover:text-mecctech-red focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
                         Send
                     </button>
                 </div>
@@ -84,9 +84,9 @@
         </form>
 
         <transition name="fade">
-            <div v-if="contact_form_sent" class="w-1/3 bg-green-600 p-10 m-5 font-bold text-xl fixed z-500 bottom-0 right-0 rounded-lg text-white">
+            <div v-if="contact_form_successfully_sent" class="w-1/3 bg-green-600 p-10 m-5 font-bold text-xl fixed z-500 bottom-0 right-0 rounded-lg text-white">
                 <p>Thanks for contacting me! I will reply as soon as possible.</p>
-                <i @click="contact_form_sent = false" class="fa-solid fa-xmark absolute top-0 right-0 p-3 cursor-pointer"></i>
+                <i @click="contact_form_successfully_sent = false" class="fa-solid fa-xmark absolute top-0 right-0 p-3 cursor-pointer"></i>
             </div>
         </transition>
 
@@ -97,12 +97,8 @@
 
 <script>
     export default {
-        props: ['csrf_token', 'upload_contact_form_route'],
-        data() {
-            return {
-                contact_form_sent : false
-            }
-        },
+        props: ['csrf_token', 'submit_contact_request_route', 'contact_form_successfully_sent'],
+
         mounted() {
 
         },
