@@ -12,7 +12,7 @@
             <i class="fas fa-bars text-3xl p-3"></i>
         </ul>
         <transition name="fade">
-            <ul class="bg-black text-white" v-show="collapseMobileNavbar === true">
+            <ul class="bg-black text-white absolute w-full" v-show="collapseMobileNavbar === true">
                 <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
                 <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
                 <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
