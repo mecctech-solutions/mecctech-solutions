@@ -52,13 +52,13 @@
 
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-                    <label class="block text-xs font-bold mb-2" for="firstname">First Name</label>
-                    <input id="firstname" name="firstname" type="text" class="p-2 text-mecctech-red appearance-none block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
+                    <label class="block text-xs font-bold mb-2" for="first_name">First Name</label>
+                    <input id="first_name" name="first_name" type="text" class="p-2 text-mecctech-red appearance-none block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
                 </div>
 
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
-                    <label class="block text-xs font-bold mb-2" for="lastname">Last Name</label>
-                    <input id="lastname" name="lastname" type="text" class="p-2 text-mecctech-red block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
+                    <label class="block text-xs font-bold mb-2" for="last_name">Last Name</label>
+                    <input id="last_name" name="last_name" type="text" class="p-2 text-mecctech-red block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center">
@@ -100,7 +100,7 @@
         props: ['csrf_token', 'upload_contact_form_route'],
         data() {
             return {
-                contact_form_sent : true
+                contact_form_sent : false
             }
         },
         mounted() {
