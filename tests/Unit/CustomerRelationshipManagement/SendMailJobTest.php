@@ -16,7 +16,7 @@ class SendMailJobTest extends TestCase
     }
 
     /** @test */
-    public function it_should_send_an_email(){
+    public function it_should_send_an_email_to_correct_recipient(){
 
         // Given
         Mail::fake();
@@ -31,6 +31,5 @@ class SendMailJobTest extends TestCase
         Mail::assertSent(DummyMail::class, function (Mailable $mail) use ($recipientEmailAddress){
             return $mail->hasTo($recipientEmailAddress);
         });
-
     }
 }
