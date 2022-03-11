@@ -46,6 +46,9 @@ class SubmitContactRequestMail extends Mailable
     {
         return $this
             ->from($this->recipientEmailAddress)
-            ->view('views.mails.submit-contact-request');
+            ->view('emails.submit-contact-request')
+            ->with([
+                'messages' => $this->message
+            ]);
     }
 }

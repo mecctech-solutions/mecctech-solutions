@@ -6,6 +6,6 @@
 
 </head>
 <body>
-    {{ $message }}
+    {{ $messages }}
 </body>
 </html>
