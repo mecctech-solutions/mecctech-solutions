@@ -44,6 +44,6 @@ class CustomerRelationshipManagementController
             $response["error"]["message"] = $e->getMessage();
         }
 
-        return redirect()->back()->with('success', true);
+        return redirect()->back()->with('submit_contact_request_successful', true);
     }
 }

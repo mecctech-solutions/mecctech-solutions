@@ -55,7 +55,7 @@ class SubmitContactRequestTest extends TestCase
         ]);
 
         // Then
-        $response->assertSessionHas('success');
+        $response->assertSessionHas('submit_contact_request_successful');
     }
 
     /** @test */
