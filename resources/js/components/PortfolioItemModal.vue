@@ -11,20 +11,21 @@
         </div>
 
         <div class="w-1/6 inline bg-mecctech-red md:pt-6 pt-3 md:pb-5 pb-3 md:pr-10 pr-5 md:pl-10 pl-5 md:mt-32 mt-8 ml-10 mr-10 hover:bg-white hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer text-white">
-
             <a :href="website_url" class="text-sm md:text-xl"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
         </div>
     </div>
     <div v-else-if="is_mobile" class="fixed z-50 top-0 w-full h-full m-0 bg-white left-0">
         <img :src="current_image_url" alt="">
-        <div>
-            <h1>{{ title }}</h1>
+        <div class="p-5 mb-5">
+            <h1 class="text-2xl font-bold">{{ title }}</h1>
             <p>{{ description }}</p>
         </div>
-        <div class="flex justify-between">
-            <a :href="website_url" class="text-sm md:text-xl"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
-            <i class="fa-solid fa-xmark"></i>
+        <div class="flex justify-between bottom-0">
+            <div>
+                <a :href="website_url" class="text-sm md:text-xl bg-mecctech-red pt-3 pb-3 pr-5 pl-5 ml-4"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
+            </div>
         </div>
+        <i @click="emitTurnOffModalEvent" class="fa-solid fa-xmark cursor-pointer p-5 text-3xl fixed right-0 bottom-0"></i>
     </div>
 </template>
 
