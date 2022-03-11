@@ -15,7 +15,7 @@
             <a :href="website_url" class="text-sm md:text-xl"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
         </div>
     </div>
-    <div v-else-if="is_mobile" class="absolute top-0 lef-0 h-full w-full z-500">
+    <div v-else-if="is_mobile" class="fixed z-50 top-0 w-full h-full m-0 bg-white left-0">
         <img :src="current_image_url" alt="">
         <div>
             <h1>{{ title }}</h1>
