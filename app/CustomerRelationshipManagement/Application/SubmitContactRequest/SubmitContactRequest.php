@@ -41,8 +41,8 @@ class SubmitContactRequest implements SubmitContactRequestInterface
             $this->customerRepository->add($customer);
         }
 
-        $message = $customer->name()." has sent the following message: ".$input->message();
-        $notificationSent = $this->notificationSenderService->send(new Notification($message), new Recipient("florismeccanici@mecctech-solutions.nl"));
+        $message = $customer->name()." with email address ".$customer->email()." has sent the following message: ".$input->message();
+        $notificationSent = $this->notificationSenderService->send(new Notification($message), new Recipient("florismeccanici@tutanota.com"));
 
         return new SubmitContactRequestResult($notificationSent);
     }

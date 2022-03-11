@@ -102,7 +102,7 @@ class SubmitContactRequestTest extends TestCase
         $submitContactRequestResult = $submitContactRequest->execute($submitContactRequestInput);
 
         // Then
-        $expectedMessage = $customer->name()." has sent the following message: ".$message;
+        $expectedMessage = $customer->name()." with email address ".$customer->email()." has sent the following message: ".$message;
 
         self::assertEquals(new Notification($expectedMessage), $submitContactRequestResult->notificationSent());
     }
