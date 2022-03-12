@@ -16,7 +16,7 @@
     </div>
     <div v-else-if="is_mobile" class="fixed z-50 top-0 h-full m-0 bg-white left-0">
         <div class="flex flex-col items-center">
-            <img class="w-full object-scale-down" :src="current_image_url" alt="">
+            <img class="w-full h-60 object-scale-down" :src="current_image_url" alt="">
             <div class="flex space-x-2 mt-10">
                 <i @click="this.current_image_url = image.url" v-for="image in images" :class="{ 'text-mecctech-red' : image.url === this.current_image_url, 'text-black' : image.url !== this.current_image_url }" class="fas fa-circle cursor-pointer"></i>
             </div>
@@ -24,7 +24,7 @@
 
         <div class="p-5 mb-5">
             <h1 class="text-2xl font-bold">{{ title }}</h1>
-            <p>{{ description }}</p>
+            <p class="text-sm">{{ description }}</p>
         </div>
         <div class="flex justify-between bottom-0">
             <div>
