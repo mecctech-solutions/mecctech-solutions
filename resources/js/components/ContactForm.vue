@@ -84,7 +84,7 @@
         </form>
 
         <transition name="fade">
-            <div v-if="contact_form_successfully_sent" class="w-1/3 bg-green-600 p-10 m-5 font-bold text-xl fixed z-500 bottom-0 right-0 rounded-lg text-white">
+            <div v-if="contact_form_successfully_sent" class="w-1/2 md:w-1/3 bg-green-600 p-10 m-5 font-bold text-xl fixed z-500 bottom-0 right-0 rounded-lg text-white">
                 <p>Thanks for contacting me! I will reply as soon as possible.</p>
                 <i @click="contact_form_successfully_sent = false" class="fa-solid fa-xmark absolute top-0 right-0 p-3 cursor-pointer"></i>
             </div>
