@@ -14,9 +14,9 @@
             <a :href="website_url" class="text-sm md:text-xl"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
         </div>
     </div>
-    <div v-else-if="is_mobile" class="fixed z-50 top-0 w-full h-full m-0 bg-white left-0">
+    <div v-else-if="is_mobile" class="fixed z-50 top-0 h-full m-0 bg-white left-0">
         <div class="flex flex-col items-center">
-            <img :src="current_image_url" alt="">
+            <img class="w-full object-scale-down" :src="current_image_url" alt="">
             <div class="flex space-x-2 mt-10">
                 <i @click="this.current_image_url = image.url" v-for="image in images" :class="{ 'text-mecctech-red' : image.url === this.current_image_url, 'text-black' : image.url !== this.current_image_url }" class="fas fa-circle cursor-pointer"></i>
             </div>
