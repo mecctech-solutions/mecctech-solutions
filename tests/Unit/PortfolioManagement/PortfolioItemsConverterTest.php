@@ -45,4 +45,61 @@ class PortfolioItemsConverterTest extends TestCase
 
     }
 
+    /** @test */
+    public function it_should_have_no_images(){
+
+        // Given
+        $portfolioItems = array(
+            array("Title", "Main Image URL", "Description", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4"),
+            array("Test Title 1", "main-image-url-1", 'Description 1', 'website-url-1', "", "", "", "", "", "", "", "Tag 1", "Tag 2", "Tag 3", "Tag 4")
+        );
+
+        $filename = 'portfolio_items.csv';
+        $path = storage_path()."/imports/".$filename;
+
+        $file = fopen($path, 'w');
+        foreach ($portfolioItems as $portfolioItem)
+        {
+            fputcsv($file, $portfolioItem);
+        }
+
+        fclose($file);
+
+        $file =  new UploadedFile( $path, $filename, null,null,true);
+
+        // When
+        $portfolioItems = PortfolioItemsConverter::toEntity($file);
+
+        // Then
+        self::assertEmpty($portfolioItems->first()->images());
+    }
+
+    /** @test */
+    public function it_should_have_no_tags(){
+
+        // Given
+        $portfolioItems = array(
+            array("Title", "Main Image URL", "Description", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4"),
+            array("Test Title 1", "main-image-url-1", 'Description 1', 'website-url-1', "image-1-url", "image-2-url", "image-3-url", "image-4-url", "image-5-url", "image-6-url", "image-7-url", "", "", "", "")
+        );
+
+        $filename = 'portfolio_items.csv';
+        $path = storage_path()."/imports/".$filename;
+
+        $file = fopen($path, 'w');
+        foreach ($portfolioItems as $portfolioItem)
+        {
+            fputcsv($file, $portfolioItem);
+        }
+
+        fclose($file);
+
+        $file =  new UploadedFile( $path, $filename, null,null,true);
+
+        // When
+        $portfolioItems = PortfolioItemsConverter::toEntity($file);
+
+        // Then
+        self::assertEmpty($portfolioItems->first()->tags());
+    }
 }
