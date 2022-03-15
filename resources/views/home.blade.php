@@ -41,9 +41,9 @@
                     <div class="border-t border-4 border-black mt-5 w-1/16"></div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 mt-5">
-                        <skill description="Obtaining requirements and design for both the front- and backend." title="Requirements" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
-                        <skill description="Responsive and dynamic UIs, build with Vue.js and TailwindCSS." title="Design" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
-                        <skill description="Extensible and maintainable software written in Laravel using best practices." title="Build" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                        <skill description="I make sure it is clear what you want me to build." title="Requirements" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                        <skill description="Visually appealing, dynamic and responsive user interface" title="Design" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
+                        <skill description="Logic behind the scenes that is extensible and maintainable" title="Functionality" svg_d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z"></skill>
                     </div>
 
                     <div class="m-10 flex flex-col md:flex-row justify-center items-center md:space-x-20">
