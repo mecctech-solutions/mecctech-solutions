@@ -18,6 +18,7 @@ app.component('contact-form', require('./components/ContactForm.vue').default);
 app.component('section-title', require('./components/SectionTitle.vue').default);
 app.component('mecc-tech-footer', require('./components/MeccTechFooter.vue').default);
 app.component('mecc-tech-header', require('./components/MeccTechHeader.vue').default);
+app.component('skills', require('./components/Skills.vue').default);
 
 // Create a new store instance.
 const store = createStore({
