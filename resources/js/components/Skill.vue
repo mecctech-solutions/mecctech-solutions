@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center">
         <div class="p-10 mt-10 rounded-full flex flex-col items-center" style="background: #e30613">
-            <svg style="width:50px; height:50px; color: #FFFFFF" viewBox="0 0 24 24">
+            <svg style="width:50px; height:50px; color: #FFFFFF" :viewBox="this.view_box">
                 <path fill="currentColor" :d="this.svg_d" />
             </svg>
         </div>
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        props: ['description', 'title', 'svg_d'],
+        props: ['description', 'title', 'svg_d', 'view_box'],
         data() {
             return {
                 more_information : false
