@@ -10,7 +10,7 @@
             <p class="mr-5 ml-5 text-center text-xl">{{ this.description }}</p>
         </div>
         <button @click="toggleMoreInformation" :class="{ more_information : 'bg-mecctech-red text-white' }" class="text-lg md:text-2xl border-mecctech-red border-4 pl-5 pr-5 pt-1 pb-1 mt-5 hover:bg-mecctech-red hover:text-white transition transform ease-in-out duration-500">
-            More Information
+            {{ ! more_information ? 'More Information' : 'Less Information' }}
         </button>
     </div>
 </template>
