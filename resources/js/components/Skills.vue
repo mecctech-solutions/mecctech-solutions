@@ -32,7 +32,7 @@
 </template>
 
 <script>
-    import Skill from './Skill.vue'
+    import Skill from './Skill'
 
     export default {
         props: [],
@@ -43,7 +43,7 @@
             }
         },
         components: {
-            Skill: Skill
+            Skill
         },
         mounted() {
 
