@@ -9,21 +9,21 @@
             <img v-show="this.more_information_skill === 'Functionality'" src="images/use_case.svg" alt="Functionality example Laravel" class="p-5">
         </div>
 
-        <div v-if="this.more_information && this.more_information_skill === 'Requirements'" class="block pl-20 pr-32 pt-10 text-xl">
+        <div v-if="this.more_information && this.more_information_skill === 'Requirements'" class="block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
                 Through the use of so called domain stories I sketch out the application you want me to build, before writing any software. In the image below you see an example domain story that is part of a larger warehouse management system. After agreeing on the domain story, I make a design of the software and write acceptance tests with <code>phpunit</code> in Laravel.
             </p>
             <img src="images/Processing_an_order.dst.svg" alt="Domain story example" class="p-5">
         </div>
 
-        <div v-else-if="this.more_information && this.more_information_skill === 'Design'" class="block pl-20 pr-32 pt-10 text-xl">
+        <div v-else-if="this.more_information && this.more_information_skill === 'Design'" class="block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
                 Before writing any front end software I sketch a design in Figma according to your requirements. This way we can iterate on the design easily. After agreeing on the design, I start coding the user interface using HTML5, TailwindCSS and Vue.js. The user interface is always responsive (scales with different screen sizes) and I make them dynamic using Vue.js.
             </p>
             <img src="images/supra_solutions_figma.png" alt="Design using Figma example" class="p-5">
         </div>
 
-        <div v-else-if="this.more_information && this.more_information_skill === 'Functionality'" class="block pl-20 pr-32 pt-10 text-xl">
+        <div v-else-if="this.more_information && this.more_information_skill === 'Functionality'" class="block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
                 I am specialized in using Laravel to write the backbone of the application. My software is readable, scalable, extensible and maintainable. I achieve this by applying techniques like Domain Driven Design, Clean Architecture, Test Driven Development and Software Design Patterns.
             </p>
