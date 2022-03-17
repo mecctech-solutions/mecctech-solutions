@@ -53,30 +53,30 @@
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="first_name">First Name</label>
-                    <input id="first_name" name="first_name" type="text" class="p-2 text-mecctech-red appearance-none block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
+                    <input id="first_name" name="first_name" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
                 </div>
 
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="last_name">Last Name</label>
-                    <input id="last_name" name="last_name" type="text" class="p-2 text-mecctech-red block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
+                    <input id="last_name" name="last_name" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="email">Email</label>
-                    <input id="email" name="email" type="text" class="p-2 text-mecctech-red appearance-none block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required>
+                    <input id="email" name="email" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
                 </div>
             </div>
 
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="p-2 text-mecctech-red appearance-none block w-full border rounded py-3 px-4 mb-3 leading-tight focus:outline-none bg-black" required></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required></textarea>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <button class="bg-mecctech-red shadow transition transform ease-in-out duration-500 hover:bg-black hover:text-mecctech-red focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" >
+                    <button class="text-lg md:text-xl border-mecctech-red border-4 pl-5 pr-5 pt-1 pb-1 mt-5 hover:bg-mecctech-red hover:text-white transition transform ease-in-out duration-500" type="submit" >
                         Send
                     </button>
                 </div>
