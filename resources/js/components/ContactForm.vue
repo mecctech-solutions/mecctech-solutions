@@ -53,25 +53,25 @@
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="first_name">First Name</label>
-                    <input id="first_name" name="first_name" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
+                    <input id="first_name" name="first_name" type="text" class="text-white text-2xl font-bold block w-full py-3 px-4 mb-3 bg-mecctech-red" required>
                 </div>
 
                 <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="last_name">Last Name</label>
-                    <input id="last_name" name="last_name" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
+                    <input id="last_name" name="last_name" type="text" class="text-white text-2xl font-bold block w-full py-3 px-4 mb-3 bg-mecctech-red" required>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="email">Email</label>
-                    <input id="email" name="email" type="text" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required>
+                    <input id="email" name="email" type="text" class="text-white text-2xl font-bold block w-full py-3 px-4 mb-3 bg-mecctech-red" required>
                 </div>
             </div>
 
             <div class="flex flex-wrap justify-center">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block text-xs font-bold mb-2" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="text-black block w-full py-3 px-4 mb-3 bg-white border-mecctech-red border-4" required></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" class="text-white text-2xl font-bold block w-full py-3 px-4 mb-3 bg-mecctech-red" required></textarea>
                 </div>
             </div>
             <div class="flex flex-wrap justify-center">
