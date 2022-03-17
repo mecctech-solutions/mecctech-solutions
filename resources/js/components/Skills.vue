@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import Skill from './Skill.vue'
+
     export default {
         props: [],
         data() {
@@ -39,6 +41,9 @@
                 more_information : false,
                 more_information_skill : ''
             }
+        },
+        components: {
+            Skill: Skill
         },
         mounted() {
 
