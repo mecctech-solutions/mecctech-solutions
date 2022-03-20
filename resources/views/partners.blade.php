@@ -1,6 +1,4 @@
-@extends('layout.app')
-
-@section('content')
+<x-app>
     <div class="flex flex-col items-left">
         <div class="flex items-center w-1/2">
             <a href="https://planttipsenstyling.nl">
@@ -9,5 +7,5 @@
             <h1><a class="text-mecctech-red hover:text-black font-bold transition ease-in-out duration-500" href="https://planttipsenstyling.nl">planttipsenstyling.nl</a>: Voor al je plant verzorging en stek tips!</h1>
         </div>
     </div>
-@endsection
+</x-app>
 

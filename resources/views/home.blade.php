@@ -1,6 +1,4 @@
-@extends('layout.master')
-
-@section('content')
+<x-master>
     <section id="home">
         <div class="flex h-screen">
             <view-my-work></view-my-work>
@@ -36,5 +34,5 @@
     <footer>
         <mecc-tech-footer></mecc-tech-footer>
     </footer>
+</x-master>
 
-@endsection

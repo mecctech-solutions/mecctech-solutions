@@ -1,11 +1,11 @@
-@extends('layout.app')
+<x-master>
 
-@section('app')
     <mecc-tech-header></mecc-tech-header>
 
-    @yield('content')
+    {{ $slot }}
 
     <footer class="fixed inset-x-0 bottom-0">
         <mecc-tech-footer></mecc-tech-footer>
     </footer>
-@endsection
+
+</x-master>

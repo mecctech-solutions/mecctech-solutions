@@ -24,10 +24,9 @@
     <script defer src="{{ mix('js/app.js') }}"></script>
 
 </head>
-<body>
-
-<div id="app">
-    @yield('app')
-</div>
-</body>
+    <body>
+        <div id="app">
+            {{ $slot }}
+        </div>
+    </body>
 </html>
