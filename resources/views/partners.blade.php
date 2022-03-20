@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.app')
 
 @section('content')
     <div class="flex flex-col items-left">
@@ -9,6 +9,5 @@
             <h1><a class="text-mecctech-red hover:text-black font-bold transition ease-in-out duration-500" href="https://planttipsenstyling.nl">planttipsenstyling.nl</a>: Voor al je plant verzorging en stek tips!</h1>
         </div>
     </div>
-
 @endsection
 
