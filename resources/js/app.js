@@ -1,6 +1,8 @@
 import vClickOutside from "click-outside-vue3"
-import { createApp } from 'vue'
 import { createStore } from 'vuex'
+import Lang from 'lang.js'
+
+var translations = require('./vue-translations');
 
 require('./bootstrap');
 
@@ -9,6 +11,11 @@ const app = Vue.createApp({
     el: '#app'
 });
 
+var lang = new Lang({
+    'messages' : translations
+});
+
+app.config.globalProperties.$lang = lang;
 app.component('view-my-work', require('./components/ViewMyWork.vue').default);
 app.component('skills', require('./components/Skills.vue').default);
 app.component('skill', require('./components/Skill.vue').default);
@@ -19,6 +26,7 @@ app.component('contact-form', require('./components/ContactForm.vue').default);
 app.component('section-title', require('./components/SectionTitle.vue').default);
 app.component('mecc-tech-footer', require('./components/MeccTechFooter.vue').default);
 app.component('mecc-tech-header', require('./components/MeccTechHeader.vue').default);
+
 
 // Create a new store instance.
 const store = createStore({
@@ -33,6 +41,7 @@ const store = createStore({
         }
     }
 })
+
 
 app.mount('#app');
 app.use(vClickOutside)

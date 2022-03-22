@@ -1,10 +1,13 @@
 <template>
     <nav v-if="! isMobile" id="header" class="sticky top-0 z-50">
         <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
-            <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
+            <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
+                {{ $lang.get('header.home') }}
+            </li>
             <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
             <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
             <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
+            <li><span class="fi fi-gr"></span></li>
         </ul>
     </nav>
     <nav v-else-if="isMobile" class="sticky top-0 z-50">
@@ -23,8 +26,8 @@
 </template>
 
 <script>
-
     export default {
+        inject: ['lang'],
         data() {
             return {
                 collapseMobileNavbar: false,
@@ -34,7 +37,7 @@
         created() {
             addEventListener('resize', () => {
                 this.isMobile = innerWidth <= 760
-            })
+            });
         },
         methods : {
             scrollTo(navElement) {
