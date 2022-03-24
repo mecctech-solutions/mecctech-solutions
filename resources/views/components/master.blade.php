@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script defer src="{{ mix('js/app.js') }}"></script>
-
+    <script src="/lang-{{ app()->getLocale() }}.js"></script>
 </head>
     <body>
         <div id="app">
