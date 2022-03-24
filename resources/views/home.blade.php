@@ -8,7 +8,7 @@
 
     <section id="about-me">
         <div class="flex flex-col items-center">
-            <h1 class="text-4xl font-bold mt-10">ABOUT ME</h1>
+            <h1 class="text-4xl font-bold mt-10">HOW I WORK</h1>
             <div class="border-t border-4 border-black mt-5 w-1/16"></div>
 
             <skills></skills>
