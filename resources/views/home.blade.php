@@ -18,7 +18,7 @@
 
                 <div class="flex flex-col items-center md:w-1/4">
                     <h1 class="text-3xl font-bold mt-10 mb-5">Who am I?</h1>
-                    <p class="text-2xl text-center md:text-left">I'm a full-stack web developer and freelancer specialized in e-commerce software. Count on me to write full web applications for your e-commerce business, with cutting edge technologies like Laravel and Vue.js.</p>
+                    <p class="text-2xl text-center md:text-left">I'm a full-stack web developer and freelancer specialized in writing e-commerce software in Laravel / PHP and Vue.js. Count on me to write extensible and maintainable full web applications for your e-commerce business, thus increasing your revenue.</p>
                 </div>
             </div>
         </div>
