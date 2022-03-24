@@ -32,7 +32,7 @@
 
         <div v-else-if="this.more_information && this.more_information_skill === 'Design'" class="col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                Before writing any software I use the developed domain story from the requirements part to make a rough design of the domain model:
+                Before writing any software, I use the developed domain story from the requirements part to make a rough design of the domain model:
 <!--                Before writing any front end software I sketch a design in Figma according to your requirements. This way we can iterate on the design easily. After agreeing on the design, I start coding the user interface using HTML5, TailwindCSS and Vue.js. The user interface is always responsive (scales with different screen sizes) and I make them dynamic using Vue.js.-->
             </p>
             <img class="p-10" src="images/order_and_picklists_class_diagram.svg" alt="">
@@ -52,10 +52,10 @@
 
         <div v-else-if="this.more_information && this.more_information_skill === 'Functionality'" class="col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                My code has a well structured architecture, which separates the business logic from the infrastructure and presentation layer. This keeps the code clean and scalable. I will first start writing the domain layer of the application, containing the business logic discussed.
+                My code has a well structured architecture, that separates the business logic from the infrastructure and presentation layer. This keeps the code clean and scalable. I will first start writing the domain layer of the application, containing the business logic discussed. I will make the acceptance tests pass using dummy interface implementations. After that I will start writing the infrastructure, for example a MySqlOrderRepository or a MailChimpMailerService. I will set up the relational database structure needed to accomplish storing the relevant objects. Of course I use version control with <code>git</code>, know SQL language and will deploy the code on a server for you.
 <!--                I am specialized in using Laravel to write the backbone of the application. My software is readable, scalable, extensible and maintainable. I achieve this by applying techniques like Domain Driven Design, Clean Architecture, Test Driven Development and Software Design Patterns.-->
-
             </p>
+            <img v-show="this.more_information_skill === 'Functionality'" src="images/use_case.svg" alt="Functionality example Laravel" class="p-5">
         </div>
     </div>
 </template>
