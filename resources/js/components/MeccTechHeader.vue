@@ -13,7 +13,12 @@
             <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
                 {{ $lang.get('header.contact').toUpperCase() }}
             </li>
-            <li><span class="fi fi-gr"></span></li>
+            <li class="flex flex-col justify-center">
+                <div class="flex space-x-1 mb-1">
+                    <a @click="this.locale = 'nl'" class="cursor-pointer">&#127475&#127473</a>
+                    <a @click="$lang.setLocale('en')" class="cursor-pointer">&#127468&#127463</a>
+                </div>
+            </li>
         </ul>
     </nav>
     <nav v-else-if="isMobile" class="sticky top-0 z-50">
@@ -37,7 +42,8 @@
         data() {
             return {
                 collapseMobileNavbar: false,
-                isMobile: window.innerWidth <= 760
+                isMobile: window.innerWidth <= 760,
+                locale: 'en'
             }
         },
         created() {
@@ -45,11 +51,6 @@
                 this.isMobile = innerWidth <= 760
             });
             addEventListener('scroll', () => {
-
-                console.log('home'+this.isElementInViewPort('home'));
-                console.log('about'+this.isElementInViewPort('about-me'));
-                console.log('projects'+this.isElementInViewPort('projects'));
-                console.log('contact'+this.isElementInViewPort('contact'));
 
                 if (this.isElementInViewPort('home'))
                 {
