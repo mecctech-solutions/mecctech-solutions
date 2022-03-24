@@ -44,8 +44,44 @@
             addEventListener('resize', () => {
                 this.isMobile = innerWidth <= 760
             });
+            addEventListener('scroll', () => {
+
+                console.log('home'+this.isElementInViewPort('home'));
+                console.log('about'+this.isElementInViewPort('about-me'));
+                console.log('projects'+this.isElementInViewPort('projects'));
+                console.log('contact'+this.isElementInViewPort('contact'));
+
+                if (this.isElementInViewPort('home'))
+                {
+                    this.makeAllNavElementsTextWhite();
+                    this.makeNavElementTextRed('header-home');
+                } else if (this.isElementInViewPort('about-me'))
+                {
+                    this.makeAllNavElementsTextWhite();
+                    this.makeNavElementTextRed('header-about-me');
+                } else if (this.isElementInViewPort('projects'))
+                {
+                    this.makeAllNavElementsTextWhite();
+                    this.makeNavElementTextRed('header-portfolio');
+                } else if (this.isElementInViewPort('contact'))
+                {
+                    this.makeAllNavElementsTextWhite();
+                    this.makeNavElementTextRed('header-contact');
+                }
+
+            })
         },
         methods : {
+            isElementInViewPort(elementName) {
+                let element = document.getElementById(elementName);
+                let bounding = element.getBoundingClientRect();
+
+                if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= window.innerWidth && bounding.bottom <= window.innerHeight) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
             scrollTo(navElement) {
                 let el = document.getElementById(navElement);
                 el.scrollIntoView();
