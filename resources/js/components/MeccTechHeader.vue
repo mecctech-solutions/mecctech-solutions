@@ -15,15 +15,21 @@
             </li>
             <li class="flex flex-col justify-center">
                 <div class="flex space-x-1 mb-1">
-                    <a @click="this.locale = 'nl'" class="cursor-pointer">&#127475&#127473</a>
-                    <a @click="$lang.setLocale('en')" class="cursor-pointer">&#127468&#127463</a>
+                    <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
+                    <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
                 </div>
             </li>
         </ul>
     </nav>
     <nav v-else-if="isMobile" class="sticky top-0 z-50">
-        <ul @click=this.toggleMobileNavbarCollapse class="flex bg-black text-white border-b border-b-4" style="border-color: #e30613;">
-            <i class="fas fa-bars text-3xl p-3"></i>
+        <ul class="flex justify-between bg-black text-white border-b border-b-4" style="border-color: #e30613;">
+            <i @click=this.toggleMobileNavbarCollapse class="fas fa-bars text-3xl p-3 cursor-pointer"></i>
+            <li class="flex flex-col justify-center mr-5">
+                <div class="flex space-x-1 mb-1">
+                    <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
+                    <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
+                </div>
+            </li>
         </ul>
         <transition name="fade">
             <ul class="bg-black text-white absolute w-full" v-show="collapseMobileNavbar === true">
@@ -48,10 +54,9 @@
         },
         created() {
             addEventListener('resize', () => {
-                this.isMobile = innerWidth <= 760
+                this.isMobile = innerWidth <= 760;
             });
             addEventListener('scroll', () => {
-
                 if (this.isElementInViewPort('home'))
                 {
                     this.makeAllNavElementsTextWhite();
@@ -73,6 +78,10 @@
             })
         },
         methods : {
+            changeLocale(locale) {
+                this.$lang.setLocale(locale);
+                this.$forceUpdate();
+            },
             isElementInViewPort(elementName) {
                 let element = document.getElementById(elementName);
                 let bounding = element.getBoundingClientRect();
