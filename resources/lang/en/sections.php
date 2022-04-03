@@ -2,7 +2,7 @@
 
 return [
     "how_i_work" => "HOW I WORK",
-    "who_am_i" => "WHO AM I?",
+    "who_am_i" => "Who am I?",
     "projects" => "PROJECTS",
     "contact" => "CONTACT"
 ];
