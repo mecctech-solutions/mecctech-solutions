@@ -42,6 +42,7 @@ app.use(store)
 
 app.config.globalProperties.$lang = lang;
 app.component('view-my-work', require('./components/ViewMyWork.vue').default);
+app.component('about-me', require('./components/AboutMe.vue').default);
 app.component('skills', require('./components/Skills.vue').default);
 app.component('skill', require('./components/Skill.vue').default);
 app.component('portfolio-items', require('./components/PortfolioItems.vue').default);
