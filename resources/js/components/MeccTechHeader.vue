@@ -1,45 +1,47 @@
 <template>
-    <nav v-if="! isMobile" id="header" class="sticky top-0 z-50">
-        <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
-            <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
-                {{ $lang.get('header.home').toUpperCase() }}
-            </li>
-            <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
-                {{ $lang.get('header.about_me').toUpperCase() }}
-            </li>
-            <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
-                {{ $lang.get('header.portfolio').toUpperCase() }}
-            </li>
-            <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
-                {{ $lang.get('header.contact').toUpperCase() }}
-            </li>
-            <li class="flex flex-col justify-center">
-                <div class="flex space-x-1 mb-1">
-                    <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
-                    <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-    <nav v-else-if="isMobile" class="sticky top-0 z-50">
-        <ul class="flex justify-between bg-black text-white border-b border-b-4" style="border-color: #e30613;">
-            <i @click=this.toggleMobileNavbarCollapse class="fas fa-bars text-3xl p-3 cursor-pointer"></i>
-            <li class="flex flex-col justify-center mr-5">
-                <div class="flex space-x-1 mb-1">
-                    <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
-                    <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
-                </div>
-            </li>
-        </ul>
-        <transition name="fade">
-            <ul class="bg-black text-white absolute w-full" v-show="collapseMobileNavbar === true">
-                <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
-                <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
-                <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
-                <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
+    <div :key="locale">
+        <nav v-if="! isMobile" id="header" class="sticky top-0 z-50">
+            <ul class="flex space-x-5 bg-black text-xl text-white border-b border-b-4" style="border-color: #e30613;">
+                <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
+                    {{ $lang.get('header.home').toUpperCase() }}
+                </li>
+                <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
+                    {{ $lang.get('header.about_me').toUpperCase() }}
+                </li>
+                <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
+                    {{ $lang.get('header.portfolio').toUpperCase() }}
+                </li>
+                <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">
+                    {{ $lang.get('header.contact').toUpperCase() }}
+                </li>
+                <li class="flex flex-col justify-center">
+                    <div class="flex space-x-1 mb-1">
+                        <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
+                        <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
+                    </div>
+                </li>
             </ul>
-        </transition>
-    </nav>
+        </nav>
+        <nav v-else-if="isMobile" class="sticky top-0 z-50">
+            <ul class="flex justify-between bg-black text-white border-b border-b-4" style="border-color: #e30613;">
+                <i @click=this.toggleMobileNavbarCollapse class="fas fa-bars text-3xl p-3 cursor-pointer"></i>
+                <li class="flex flex-col justify-center mr-5">
+                    <div class="flex space-x-1 mb-1">
+                        <a @click="changeLocale('nl')" class="cursor-pointer">&#127475&#127473</a>
+                        <a @click="changeLocale('en')" class="cursor-pointer">&#127468&#127463</a>
+                    </div>
+                </li>
+            </ul>
+            <transition name="fade">
+                <ul class="bg-black text-white absolute w-full" v-show="collapseMobileNavbar === true">
+                    <li id="header-home" @click="scrollTo('home'); selectNavElement('home')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">HOME</li>
+                    <li id="header-about-me" @click="scrollTo('about-me'); selectNavElement('about-me')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">ABOUT ME</li>
+                    <li id="header-portfolio" @click="scrollTo('projects'); selectNavElement('portfolio')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">PORTFOLIO</li>
+                    <li id="header-contact" @click="scrollTo('contact'); selectNavElement('contact')" class="p-5 hover:text-mecctech-red ease-in-out duration-500 cursor-pointer">CONTACT</li>
+                </ul>
+            </transition>
+        </nav>
+    </div>
 </template>
 
 <script>
@@ -48,8 +50,12 @@
         data() {
             return {
                 collapseMobileNavbar: false,
-                isMobile: window.innerWidth <= 760,
-                locale: 'en'
+                isMobile: window.innerWidth <= 760
+            }
+        },
+        computed: {
+            locale() {
+                return this.$store.state.locale
             }
         },
         created() {
@@ -80,7 +86,7 @@
         methods : {
             changeLocale(locale) {
                 this.$lang.setLocale(locale);
-                this.$forceUpdate();
+                this.$store.commit('changeLocale', locale);
             },
             isElementInViewPort(elementName) {
                 let element = document.getElementById(elementName);

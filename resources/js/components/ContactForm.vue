@@ -1,10 +1,11 @@
 <template>
     <section-title class="mt-10" :title="'CONTACT'"></section-title>
-    <div class="grid grid-cols-1 md:grid-cols-2 mt-10 mb-10">
+
+    <div :key="locale" class="grid grid-cols-1 md:grid-cols-2 mt-10 mb-10">
         <div class="flex flex-col items-center mt-10">
             <div class="w-1/2 mx-auto">
                 <div class="flex flex-col justify-left">
-                    <h2 class="text-2xl font-bold">Get in Touch</h2>
+                    <h2 class="text-2xl font-bold">{{ $lang.get('contact.get_in_touch') }}</h2>
                     <p>If you want to hire me for your project, feel free to contact me with this contact form. You can also contact me directly via email, phone or social media.</p>
                 </div>
                 <div>
@@ -98,13 +99,18 @@
 <script>
     export default {
         props: ['csrf_token', 'submit_contact_request_route', 'contact_form_successfully_sent'],
-
+        computed: {
+            locale() {
+                return this.$store.state.locale;
+            }
+        },
         mounted() {
 
         },
         methods : {
 
-        }
+        },
+
     }
 </script>
 
