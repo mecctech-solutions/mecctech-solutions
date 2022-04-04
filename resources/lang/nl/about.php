@@ -3,7 +3,7 @@
 return [
     "more_information" => "Meer Informatie",
     "less_information" => "Minder Informatie",
-    "who_am_i_text" => "Ik ben een full stack web developer en freelancer, gespecialiseerd in e-commerce software in Laravel en Vue.js. Ik heb een passie voor het maken van schaalbare en onderhoudbare e-commerce applicaties, waarmee ik bedrijven help hun bedrijfsprocessen te automatiseren.",
+    "who_am_i_text" => "Ik ben een full stack web developer en freelancer, gespecialiseerd in e-commerce software met Laravel en Vue.js. Ik heb een passie voor het maken van schaalbare en onderhoudbare e-commerce applicaties, waarmee ik bedrijven help hun bedrijfsprocessen te automatiseren.",
     "requirements" => "Requirements",
     "requirements_summary" => "Ik zorg ervoor dat het duidelijk wordt wat er gemaakt moet worden",
     "design" => "Ontwerp",
