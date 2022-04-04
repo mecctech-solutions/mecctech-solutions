@@ -26,9 +26,9 @@ class PortfolioItemsConverter
 
         while (($row = fgetcsv($file)) !== FALSE)
         {
-            if (sizeof($row) !== 15)
+            if (sizeof($row) !== 17)
             {
-                throw new PortfolioItemsConverterOperationException("Excel file should have 15 columns");
+                throw new PortfolioItemsConverterOperationException("Excel file should have 17 columns");
             }
 
             if ($rowNumber === 0)
@@ -38,20 +38,6 @@ class PortfolioItemsConverter
             }
 
             $images = [];
-
-            if ($row[4] !== "")
-            {
-                $images[] = [
-                    "url" => 'images/'.$row[4]
-                ];
-            }
-
-            if ($row[5] !== "")
-            {
-                $images[] = [
-                    "url" => 'images/'.$row[5]
-                ];
-            }
 
             if ($row[6] !== "")
             {
@@ -88,17 +74,21 @@ class PortfolioItemsConverter
                 ];
             }
 
-            $tags = [];
-
             if ($row[11] !== "")
             {
-                $tags[] = $row[11];
+                $images[] = [
+                    "url" => 'images/'.$row[11]
+                ];
             }
 
             if ($row[12] !== "")
             {
-                $tags[] = $row[12];
+                $images[] = [
+                    "url" => 'images/'.$row[12]
+                ];
             }
+
+            $tags = [];
 
             if ($row[13] !== "")
             {
@@ -110,13 +100,29 @@ class PortfolioItemsConverter
                 $tags[] = $row[14];
             }
 
+            if ($row[15] !== "")
+            {
+                $tags[] = $row[15];
+            }
+
+            if ($row[16] !== "")
+            {
+                $tags[] = $row[16];
+            }
+
             $portfolioItem = [
-                "title" => $row[0],
-                "main_image" => [
-                    "url" => 'images/'.$row[1]
+                "title" => [
+                    "english" => $row[0],
+                    "dutch" => $row[1]
                 ],
-                "description" => $row[2],
-                "website_url" => $row[3],
+                "main_image" => [
+                    "url" => 'images/'.$row[2]
+                ],
+                "description" => [
+                    "english" => $row[3],
+                    "dutch" => $row[4]
+                ],
+                "website_url" => $row[5],
                 "images" => $images,
                 "tags" => $tags
             ];

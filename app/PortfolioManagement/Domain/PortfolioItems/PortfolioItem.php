@@ -9,8 +9,8 @@ use Illuminate\Support\Collection;
 class PortfolioItem extends ValueObject implements Arrayable
 {
 
-    private string $title;
-    private string $description;
+    private Title $title;
+    private Description $description;
     private string $websiteUrl;
     private Image $mainImage;
     /**
@@ -23,7 +23,7 @@ class PortfolioItem extends ValueObject implements Arrayable
      */
     private Collection $tags;
 
-    public function __construct(string $title, Image $mainImage, string $description, string $websiteUrl, Collection $images, Collection $tags)
+    public function __construct(Title $title, Image $mainImage, Description $description, string $websiteUrl, Collection $images, Collection $tags)
     {
         $this->title = $title;
         $this->mainImage = $mainImage;
@@ -33,7 +33,7 @@ class PortfolioItem extends ValueObject implements Arrayable
         $this->tags = $tags;
     }
 
-    public function title(): string
+    public function title(): Title
     {
         return $this->title;
     }
@@ -43,7 +43,7 @@ class PortfolioItem extends ValueObject implements Arrayable
         return $this->mainImage;
     }
 
-    public function description(): string
+    public function description(): Description
     {
         return $this->description;
     }
@@ -92,9 +92,15 @@ class PortfolioItem extends ValueObject implements Arrayable
         }
 
         return [
-            "title" => $this->title,
+            "title" => [
+                "dutch" => $this->title->dutch(),
+                "english" => $this->title->english()
+            ],
             "main_image" => $this->mainImage->asArray(),
-            "description" => $this->description,
+            "description" => [
+                "dutch" => $this->description->dutch(),
+                "english" => $this->description->english()
+            ],
             "website_url" => $this->websiteUrl,
             "images" => $imagesAsArray,
             "tags" => $tagsAsArray

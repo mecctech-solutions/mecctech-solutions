@@ -15,8 +15,8 @@ class PortfolioItemFactory
 
         for ($i = 0; $i < $amount; $i++)
         {
-            $title = $faker->title;
-            $description = $faker->text;
+            $title = new Title($faker->title, $faker->title);
+            $description = new Description($faker->text, $faker->text);
             $mainImage = ImageFactory::placeholder();
             $websiteUrl = $faker->url;
             $images = ImageFactory::placeholders(5);
@@ -37,8 +37,8 @@ class PortfolioItemFactory
 
     public static function fromArray(array $portfolioItemAsArray): PortfolioItem
     {
-        $title = $portfolioItemAsArray["title"];
-        $description = $portfolioItemAsArray["description"];
+        $title = new Title($portfolioItemAsArray["title"]["dutch"], $portfolioItemAsArray["title"]["english"]);
+        $description = new Description($portfolioItemAsArray["description"]["dutch"], $portfolioItemAsArray["description"]["english"]);
         $websiteUrl = $portfolioItemAsArray["website_url"];
         $mainImageUrl = $portfolioItemAsArray["main_image"]["url"];
         $mainImage = new Image($mainImageUrl);
@@ -55,7 +55,6 @@ class PortfolioItemFactory
     public static function multipleFromArray(array $portfolioItemsAsArray)
     {
         $portfolioItems = [];
-
         foreach ($portfolioItemsAsArray as $portfolioItemAsArray)
         {
             $portfolioItems[] = self::fromArray($portfolioItemAsArray);

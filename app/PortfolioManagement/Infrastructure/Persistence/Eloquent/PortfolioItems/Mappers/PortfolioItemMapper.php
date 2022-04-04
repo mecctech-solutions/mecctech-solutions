@@ -2,8 +2,10 @@
 
 namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers;
 
+use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentImage;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentTag;
@@ -13,9 +15,9 @@ class PortfolioItemMapper
 {
     public static function toEntity(EloquentPortfolioItem $model): PortfolioItem
     {
-        $title = $model->title;
+        $title = new Title($model->title_nl, $model->title_en);
         $mainImage = new Image($model->main_image_url);
-        $description = $model->description;
+        $description = new Description($model->description_nl, $model->description_en);
         $websiteUrl = $model->website_url;
         $tagModels = $model->tags;
 
@@ -41,9 +43,11 @@ class PortfolioItemMapper
     public static function toEloquent(PortfolioItem $portfolioItem): EloquentPortfolioItem
     {
         $model = new EloquentPortfolioItem();
-        $model->title = $portfolioItem->title();
+        $model->title_en = $portfolioItem->title()->english();
+        $model->title_nl = $portfolioItem->title()->dutch();
         $model->main_image_url = $portfolioItem->mainImage()->url();
-        $model->description = $portfolioItem->description();
+        $model->description_en = $portfolioItem->description()->english();
+        $model->description_nl = $portfolioItem->description()->dutch();
         $model->website_url = $portfolioItem->websiteUrl();
 
         foreach ($portfolioItem->tags() as $tag)

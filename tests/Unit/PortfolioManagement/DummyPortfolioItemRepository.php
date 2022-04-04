@@ -2,8 +2,10 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
+use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use Illuminate\Support\Collection;
 
 class DummyPortfolioItemRepository implements \App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface
@@ -36,7 +38,7 @@ class DummyPortfolioItemRepository implements \App\PortfolioManagement\Domain\Re
         }
     }
 
-    public function find(string $title, Image $mainImage, string $description, string $websiteUrl): ?PortfolioItem
+    public function find(Title $title, Image $mainImage, Description $description, string $websiteUrl): ?PortfolioItem
     {
         foreach ($this->portfolioItems as $portfolioItem)
         {

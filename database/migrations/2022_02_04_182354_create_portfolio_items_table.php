@@ -16,9 +16,11 @@ class CreatePortfolioItemsTable extends Migration
         Schema::create('portfolio_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("title");
+            $table->string("title_nl");
+            $table->string("title_en");
             $table->string("main_image_url");
-            $table->longText("description");
+            $table->longText("description_nl");
+            $table->longText("description_en");
             $table->string("website_url");
         });
     }

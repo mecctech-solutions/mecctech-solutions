@@ -14,8 +14,14 @@ final class AddPortfolioItemsInput
         $pattern = [
             "portfolio_items" => [
                 "*" => [
-                    "title" => ":string",
-                    "description" => ":string",
+                    "title" => [
+                        "dutch" => ":string",
+                        "english" => ":string"
+                    ],
+                    "description" => [
+                        "dutch" => ":string",
+                        "english" => ":string"
+                    ],
                     "main_image" => [
                         "url" => ":string"
                     ],

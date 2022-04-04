@@ -2,8 +2,10 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
+use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
+use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use Tests\TestCase;
 
 class PortfolioItemFactoryTest extends TestCase
@@ -44,8 +46,10 @@ class PortfolioItemFactoryTest extends TestCase
     public function it_should_create_portfolio_item_from_array()
     {
         // Given
-        $title = "Test Title";
-        $description = "Test Description";
+        $titleEnglish = "Test Title";
+        $titleDutch = "Test Titel";
+        $descriptionEnglish = "Test Description";
+        $descriptionDutch = "Test Beschrijving";
         $websiteUrl = "Test Website Url";
         $image1Url = "Test Image Url 1";
         $image2Url = "Test Image Url 2";
@@ -54,8 +58,14 @@ class PortfolioItemFactoryTest extends TestCase
         $mainImageUrl = "Main Image Url";
 
         $portfolioItemAsArray = [
-            "title" => $title,
-            "description" => $description,
+            "title" => [
+                "dutch" => $titleDutch,
+                "english" => $titleEnglish
+            ],
+            "description" => [
+                "dutch" => $descriptionDutch,
+                "english" => $descriptionEnglish
+            ],
             "website_url" => $websiteUrl,
             "main_image" => [
                 "url" => $mainImageUrl
@@ -77,8 +87,10 @@ class PortfolioItemFactoryTest extends TestCase
         $portfolioItem = PortfolioItemFactory::fromArray($portfolioItemAsArray);
 
         // Then
-        self::assertEquals($title, $portfolioItem->title());
-        self::assertEquals($description, $portfolioItem->description());
+        self::assertEquals($titleEnglish, $portfolioItem->title()->english());
+        self::assertEquals($titleDutch, $portfolioItem->title()->dutch());
+        self::assertEquals($descriptionEnglish, $portfolioItem->description()->english());
+        self::assertEquals($descriptionDutch, $portfolioItem->description()->dutch());
         self::assertEquals($websiteUrl, $portfolioItem->websiteUrl());
         self::assertEquals($image1Url, $portfolioItem->images()->first()->url());
         self::assertEquals($image2Url, $portfolioItem->images()[1]->url());
@@ -90,8 +102,8 @@ class PortfolioItemFactoryTest extends TestCase
     public function it_should_create_multiple_portfolio_item_from_array()
     {
         // Given
-        $title = "Test Title";
-        $description = "Test Description";
+        $title = new Title("Test Title", "Test Titel");
+        $description = new Description("Test Description", "Test Beschrijving");
         $websiteUrl = "Test Website Url";
         $image1Url = "Test Image Url 1";
         $image2Url = "Test Image Url 2";
@@ -101,8 +113,8 @@ class PortfolioItemFactoryTest extends TestCase
 
         $portfolioItemsAsArray = [
                 0 => [
-                    "title" => $title,
-                    "description" => $description,
+                    "title" => $title->toArray(),
+                    "description" => $description->toArray(),
                     "website_url" => $websiteUrl,
                     "main_image" => [
                         "url" => $mainImageUrl
@@ -120,8 +132,8 @@ class PortfolioItemFactoryTest extends TestCase
                     ]
                 ],
             1 => [
-                "title" => $title,
-                "description" => $description,
+                "title" => $title->toArray(),
+                "description" => $description->toArray(),
                 "website_url" => $websiteUrl,
                 "main_image" => [
                         "url" => $mainImageUrl

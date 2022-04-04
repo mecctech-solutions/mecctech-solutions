@@ -2,8 +2,10 @@
 
 namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories;
 
+use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers\PortfolioItemMapper;
@@ -41,17 +43,18 @@ class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterfac
         }
     }
 
-    public function find(string $title, Image $mainImage, string $description, string $websiteUrl): PortfolioItem
+
+    public function find(Title $title, Image $mainImage, Description $description, string $websiteUrl): ?PortfolioItem
     {
         $model = EloquentPortfolioItem::where([
-            "title" => $title,
+            "title_en" => $title->english(),
+            "title_nl" => $title->dutch(),
             "main_image_url" => $mainImage->url(),
-            "description" => $description,
+            "description_en" => $description->english(),
+            "description_nl" => $description->dutch(),
             "website_url" => $websiteUrl
         ])->first();
 
         return PortfolioItemMapper::toEntity($model);
     }
-
-
 }
