@@ -4,15 +4,15 @@
         <h1 class="text-2xl md:text-4xl pb-28 mt-5 mr-4">E-commerce web applications.</h1>
 
         <p class="text-3xl md:text-5xl">{{ $lang.get('home.hi') }} <span class="text-mecctech-red font-bold">Floris Meccanici</span>.</p>
-        <p class="text-xl md:text-3xl">{{ $lang.get('home.i_am') }}</p>
+        <p class="text-xl md:text-3xl mt-3">{{ $lang.get('home.i_am') }}</p>
         <button @click="scrollToPortfolio" class="btn view-my-work-btn mt-24 text-2xl">{{ $lang.get('home.view_my_work') }}</button>
     </div>
 </template>
 
 <script>
-    import Typed from "typed.js";
+import Typed from "typed.js";
 
-    export default {
+export default {
         mounted() {
             console.log('Component mounted.');
 
