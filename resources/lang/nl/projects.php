@@ -1,5 +1,5 @@
 <?php
 
 return [
-    "learn_more" => "Meer Te Weten Komen"
+    "learn_more" => "Meer Informatie"
 ];

@@ -15,7 +15,7 @@ class PortfolioItemFactory
 
         for ($i = 0; $i < $amount; $i++)
         {
-            $title = new Title($faker->title, $faker->title);
+            $title = new Title($faker->sentence, $faker->sentence);
             $description = new Description($faker->text, $faker->text);
             $mainImage = ImageFactory::placeholder();
             $websiteUrl = $faker->url;

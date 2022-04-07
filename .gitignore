@@ -3,6 +3,7 @@
 /public/js
 /public/hot
 /public/storage
+/public/.htaccess
 /storage/*.key
 /vendor
 .htaccess
