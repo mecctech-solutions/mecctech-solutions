@@ -10,18 +10,10 @@
 </template>
 
 <script>
-import Typed from "typed.js";
 
 export default {
         mounted() {
-            console.log('Component mounted.');
 
-            var typed = new Typed(".typing", {
-                strings: ['full-stack web developer.', 'Laravel developer.', 'Vue.js developer.', 'freelancer.', 'software engineer.'],
-                typeSpeed: 100,
-                backSpeed: 60,
-                loop: true
-            });
         },
         computed: {
             locale() {
