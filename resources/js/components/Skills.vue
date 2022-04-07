@@ -7,14 +7,14 @@
 
         <div v-if="this.more_information && this.more_information_skill === $lang.get('about.requirements')" class="md:col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                Through the use of domain stories I sketch out the business logic you want me to build, before writing any software. In the image below you see an example domain story that is part of a larger warehouse management system. We iterate over this domain story multiple times until we agree on the business logic being correct.
+                {{ $lang.get('skills.requirements.paragraph.one') }}
             </p>
             <div class="flex md:p-10 md:flex-row flex-col">
                 <img src="images/processing_an_order.png" alt="Domain story example" class="p-5">
                 <img class="object-scale-down" src="images/create_picklist_from_order.png" alt="Create picklist from order feature in Azure DevOps">
             </div>
             <p>
-                After that I start creating work items in Azure DevOps, where each sentence in the domain story becomes a feature. Acceptance criteria are specified according to your requirements, after which I start writing acceptance tests in <code>phpunit</code> that automatically test these criteria:
+                {{ $lang.get('skills.requirements.paragraph.two') }}
             </p>
             <br>
             <code class="break-words md:break-normal"><span style="color: #000000">
@@ -23,16 +23,18 @@
             </code>
             <br>
             <br>
-            <p>Now it's time to start designing the code that should pass the acceptance test!</p>
+            <p>
+                {{ $lang.get('skills.requirements.paragraph.three') }}
+            </p>
         </div>
 
         <div v-else-if="this.more_information && this.more_information_skill === $lang.get('about.design')" class="md:col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                Before writing any software, I use the developed domain story from the requirements part to make a rough design of the domain model:
+                {{ $lang.get('skills.design.paragraph.one') }}
             </p>
             <img class="p-10" src="images/order_and_picklists_class_diagram.svg" alt="">
             <p>
-                Then I start writing the highest level of code possible: the use case. In the previous example of creating a picklist from an order, the use case name would be CreatePicklistFromOrder. This use case is written such that any non-technical person is able to read it (with a little help about the syntax). This use case should have the order reference as input, looks up the order items that are on stock and create a picklist for these:
+                {{ $lang.get('skills.design.paragraph.two') }}
             </p>
             <br>
             <code class="break-words md:break-normal"><span style="color: #000000">
@@ -40,36 +42,36 @@
                 </span>
             </code>
             <p>
-                We discuss the content of the use case, and if it satisfies with your requirements. If we agree on the functionality, I will start building the rest of the application to make the use case fully work.
+                {{ $lang.get('skills.design.paragraph.three') }}
             </p>
         </div>
 
         <div v-else-if="this.more_information && this.more_information_skill === $lang.get('about.functionality')" class="col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                I am specialized in using Laravel as a backend framework, which I use to create all the necessary functionalities, My Laravel code has a well structured architecture, that separates the business logic from the infrastructure and presentation layer. This keeps the code clean, maintainable, readable and scalable. I will first start writing the domain layer of the application, containing the business logic discussed. I will make the acceptance tests pass using dummy interface implementations. After that I will start writing the infrastructure, for example an EloquentOrderRepository or a MailChimpMailerService.
+                {{ $lang.get('skills.functionality.paragraph.one') }}
             </p>
             <img v-show="this.more_information_skill === $lang.get('about.functionality')" src="images/use_case.png" alt="Functionality example Laravel" class="p-10 mx-auto">
             <p>
-                Of course I use version control with <code>git</code>, keep my commits clean and small, and am experienced in working with other developers on <code>git</code>. Furthermore I will set up the required relational database structure, and will deploy the code on a server if needed.
+                {{ $lang.get('skills.functionality.paragraph.two') }}
             </p>
         </div>
 
         <div v-else-if="this.more_information && this.more_information_skill === $lang.get('about.user_interface')" class="col-span-2 block pl-20 pr-20 md:pr-32 pt-10 text-xl">
             <p>
-                Before writing any front end software I sketch a design in Figma according to your requirements. This way we can iterate on the design easily. After agreeing on the design, I start coding the user interface using HTML5, TailwindCSS and Vue.js. The user interface is always responsive (scales with different screen sizes) and I make them dynamic using Vue.js.
+                {{ $lang.get('skills.user_interface.paragraph.one') }}
             </p>
             <img v-show="this.more_information_skill === $lang.get('about.user_interface')" src="images/supra_solutions_figma.png" alt="Design using Figma example" class="p-10 mx-auto">
             <p>
-                I am also experienced in working with other designers that create the design for me, after which I build the UI.
+                {{ $lang.get('skills.user_interface.paragraph.two') }}
             </p>
         </div>
     </div>
 </template>
 
 <script>
-    import Skill from './Skill'
+import Skill from './Skill'
 
-    export default {
+export default {
         props: [],
         data() {
             return {
