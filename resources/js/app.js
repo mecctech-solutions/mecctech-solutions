@@ -1,5 +1,5 @@
 import vClickOutside from "click-outside-vue3"
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
 import Lang from 'lang.js'
 
 var translations = require('./vue-translations');
@@ -17,7 +17,8 @@ const app = Vue.createApp({
 });
 
 var lang = new Lang({
-    'messages' : translations
+    'messages' : translations,
+    'locale' : 'nl'
 });
 
 // Create a new store instance.
@@ -25,7 +26,7 @@ const store = createStore({
     state () {
         return {
             currentNavElement: "home",
-            locale: "en"
+            locale: "nl"
         }
     },
     mutations: {
