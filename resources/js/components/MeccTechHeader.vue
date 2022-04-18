@@ -15,8 +15,8 @@
             </li>
             <li class="flex flex-col justify-center">
                 <div class="flex space-x-1 mb-1">
-                    <a @click="changeLocale('nl')" class="cursor-pointer"><img class="w-6" src="/icons/netherlands.png" alt=""></a>
-                    <a @click="changeLocale('en')" class="cursor-pointer"><img class="w-6" src="/icons/uk.png" alt=""></a>
+                    <a @click="changeLocale('nl')" class="cursor-pointer"><img style="width: 30px" src="/icons/netherlands.png" alt=""></a>
+                    <a @click="changeLocale('en')" class="cursor-pointer"><img style="width: 30px" src="/icons/uk.png" alt=""></a>
                 </div>
             </li>
         </ul>
@@ -26,8 +26,8 @@
             <i @click=this.toggleMobileNavbarCollapse class="fas fa-bars text-3xl p-3 cursor-pointer"></i>
             <li class="flex flex-col justify-center mr-5">
                 <div class="flex space-x-1 mb-1">
-                    <a @click="changeLocale('nl')" class="cursor-pointer"><img class="w-6" src="/icons/netherlands.png" alt=""></a>
-                    <a @click="changeLocale('en')" class="cursor-pointer"><img class="w-6" src="/icons/uk.png" alt=""></a>
+                    <a @click="changeLocale('nl')" class="cursor-pointer"><img style="width: 30px" src="/icons/netherlands.png" alt=""></a>
+                    <a @click="changeLocale('en')" class="cursor-pointer"><img style="width: 30px" src="/icons/uk.png" alt=""></a>
                 </div>
             </li>
         </ul>
