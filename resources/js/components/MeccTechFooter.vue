@@ -2,7 +2,9 @@
     <div class="w-full text-black flex flex-col items-center justify-center h-80">
         <div class="flex md:flex-row flex-col p-10 items-center">
             <div class="grid grid-cols-3 gap-8 mb-5 md:mr-32">
-                <i class="fa-brands fa-linkedin text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
+                <a href="https://www.linkedin.com/in/florismeccanici">
+                    <i class="fa-brands fa-linkedin text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
+                </a>
                 <i class="fa-brands fa-facebook text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
                 <i class="fa-brands fa-instagram text-5xl hover:text-mecctech-red transition ease-in-out duration-500 cursor-pointer"></i>
             </div>
