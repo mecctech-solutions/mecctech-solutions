@@ -6,6 +6,7 @@
 /public/.htaccess
 /storage/*.key
 /vendor
+.DS_Store
 .htaccess
 .env
 .env.backup
