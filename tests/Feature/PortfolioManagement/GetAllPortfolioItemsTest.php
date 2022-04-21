@@ -43,7 +43,7 @@ class GetAllPortfolioItemsTest extends TestCase
         App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
 
         $response = $this->get(route("all-portfolio-items"));
-        $portfolioItems = $response["payload"]['portfolio_items'];
+        $portfolioItems = $response["payload"]['portfolio_items']["data"];
         foreach ($portfolioItems as $portfolioItem)
         {
             self::assertNotEmpty($portfolioItem);

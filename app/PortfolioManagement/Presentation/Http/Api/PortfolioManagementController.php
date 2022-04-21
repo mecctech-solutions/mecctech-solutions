@@ -13,6 +13,7 @@ use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
 use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
@@ -40,7 +41,7 @@ class PortfolioManagementController
             }
 
             $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = $portfolioItemsAsArray;
+            $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItemsAsArray, $portfolioItems->count(), 9);
 
         } catch (\Exception $e)
         {

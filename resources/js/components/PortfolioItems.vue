@@ -19,7 +19,8 @@
         },
         data() {
             return {
-                portfolio_items: []
+                portfolio_items: [],
+                current_page : 1
             }
         },
         mounted() {
@@ -30,14 +31,14 @@
                 axios
                     .get(this.get_all_portfolio_items_route)
                     .then(( { data } ) => {
-                        this.portfolio_items = data.payload.portfolio_items;
+                        this.portfolio_items = data.payload.portfolio_items.data;
                     });
             },
             getPortfolioItemsWithTag(tag) {
                 axios
                     .get(this.get_portfolio_items_with_tag_route + "/" + tag)
                     .then(( { data } ) => {
-                        this.portfolio_items = data.payload.portfolio_items
+                        this.portfolio_items = data.payload.portfolio_items.data;
                     });
             }
         }
