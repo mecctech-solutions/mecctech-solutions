@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        props: ["get_all_portfolio_items_route", "get_portfolio_items_with_tag_route"],
+        props: ["get_all_portfolio_items_route"],
         computed: {
             locale() {
                 return this.$store.state.locale
@@ -49,7 +49,7 @@
             },
             getPortfolioItemsWithTag(tag) {
                 axios
-                    .get(this.get_portfolio_items_with_tag_route + "/" + tag)
+                    .get(this.get_all_portfolio_items_route + "?tag=" + tag)
                     .then(( { data } ) => {
                         this.portfolio_items = data.payload.portfolio_items.data;
                     });
