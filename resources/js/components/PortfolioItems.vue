@@ -61,7 +61,12 @@
             selectTag(tagName)
             {
                 this.selected_tag = tagName;
-                this.getPortfolioItemsWithTag(tagName);
+                if (tagName !== 'All')
+                {
+                    this.getPortfolioItemsWithTag(tagName);
+                } else {
+                    this.getAllPortfolioItems();
+                }
             }
         }
 
