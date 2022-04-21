@@ -8,6 +8,7 @@
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('All')}" @click="this.selectTag('All')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-all">{{ $lang.get('tags.all') }}</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Laravel')}" @click="this.selectTag('Laravel')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-laravel">Laravel</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Vue.js')}" @click="this.selectTag('Vue.js')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-vue">Vue.js</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('E-commerce')}" @click="this.selectTag('E-commerce')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-vue">E-commerce</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Python')}" @click="this.selectTag('Python')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-python">Python</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C++')}" @click="this.selectTag('C++')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-c++">C++</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C#')}" @click="this.selectTag('C#')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-c#">C#</li>
