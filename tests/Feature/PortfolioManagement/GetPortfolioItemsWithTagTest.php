@@ -52,17 +52,17 @@ class GetPortfolioItemsWithTagTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_portfolio_items_with_tag_when_route_it_called()
+    public function it_should_return_portfolio_items_with_tag_when_route_is_called()
     {
+        $this->withoutExceptionHandling();
+
         $portfolioItemRepository = new ReturnConstantPortfolioItemRepository();
         $tag = $portfolioItemRepository->all()->first()->tags()->first();
         App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
 
-        $response = $this->get(route("portfolio-items-with-tag", [
-            "tag" => $tag
-        ]));
+        $response = $this->get(route("all-portfolio-items")."?tag=".$tag);
 
-        $portfolioItems = $response["payload"]['portfolio_items'];
+        $portfolioItems = $response["payload"]['portfolio_items']["data"];
 
         self::assertNotEmpty($portfolioItems);
 

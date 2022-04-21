@@ -26,7 +26,7 @@ class PortfolioManagementControllerTest extends TestCase
         App::bind(PortfolioItemRepositoryInterface::class, DummyPortfolioItemRepository::class);
 
         $request = new Request();
-        $response = $this->portfolioManagementController->getAllPortfolioItems($request);
+        $response = $this->portfolioManagementController->getPortfolioItems($request);
         self::assertNotNull($response["meta"]["created_at"]);
         self::assertNotNull($response["payload"]["portfolio_items"]);
     }
@@ -37,7 +37,7 @@ class PortfolioManagementControllerTest extends TestCase
         App::bind(PortfolioItemRepositoryInterface::class, ThrowsExceptionsPortfolioItemRepository::class);
 
         $request = new Request();
-        $response = $this->portfolioManagementController->getAllPortfolioItems($request);
+        $response = $this->portfolioManagementController->getPortfolioItems($request);
         self::assertNotNull($response["meta"]["created_at"]);
         self::assertNotNull($response["error"]["message"]);
         self::assertNotNull($response["error"]["code"]);
@@ -51,20 +51,9 @@ class PortfolioManagementControllerTest extends TestCase
         $request = new Request([
             "tag" => "Test Tag"
         ]);
-        $response = $this->portfolioManagementController->getPortfolioItemsWithTag($request);
+        $response = $this->portfolioManagementController->getPortfolioItems($request);
         self::assertNotNull($response["payload"]["portfolio_items"]);
         self::assertNotNull($response["meta"]["created_at"]);
     }
 
-    /** @test */
-    public function it_should_return_response_with_error_message_when_failed_to_get_portfolio_items_with_tag()
-    {
-        App::bind(PortfolioItemRepositoryInterface::class, ReturnConstantPortfolioItemRepository::class);
-
-        $request = new Request();
-        $response = $this->portfolioManagementController->getPortfolioItemsWithTag($request);
-        self::assertNotNull($response["meta"]["created_at"]);
-        self::assertNotNull($response["error"]["code"]);
-        self::assertNotNull($response["error"]["message"]);
-    }
 }

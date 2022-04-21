@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("portfolio-items/all", [PortfolioManagementController::class, "getAllPortfolioItems"])
+Route::get("portfolio-items", [PortfolioManagementController::class, "getPortfolioItems"])
     ->name("all-portfolio-items")
-    ->middleware('cors');
-
-Route::get("portfolio-items/with-tag", [PortfolioManagementController::class, "getPortfolioItemsWithTag"])
-    ->name("portfolio-items-with-tag")
     ->middleware('cors');
 
 Route::post("portfolio-items/add-multiple", [PortfolioManagementController::class, "addMultiplePortfolioItems"])
