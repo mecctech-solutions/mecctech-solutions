@@ -13,8 +13,13 @@ use phpDocumentor\Reflection\DocBlock\TagFactory;
 
 class PortfolioItemMapper
 {
-    public static function toEntity(EloquentPortfolioItem $model): PortfolioItem
+    public static function toEntity(?EloquentPortfolioItem $model): ?PortfolioItem
     {
+        if (! $model)
+        {
+            return null;
+        }
+
         $title = new Title($model->title_nl, $model->title_en);
         $mainImage = new Image($model->main_image_url);
         $description = new Description($model->description_nl, $model->description_en);
