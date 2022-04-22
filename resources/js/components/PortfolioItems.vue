@@ -50,7 +50,7 @@
             },
             getPortfolioItemsWithTag(tag) {
                 axios
-                    .get(this.get_all_portfolio_items_route + "?tag=" + tag)
+                    .get(this.get_all_portfolio_items_route + "?tag=" + encodeURIComponent(tag))
                     .then(( { data } ) => {
                         this.portfolio_items = data.payload.portfolio_items.data;
                     });
