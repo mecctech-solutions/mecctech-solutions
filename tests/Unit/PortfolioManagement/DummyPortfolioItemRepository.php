@@ -42,7 +42,7 @@ class DummyPortfolioItemRepository implements \App\PortfolioManagement\Domain\Re
     {
         foreach ($this->portfolioItems as $portfolioItem)
         {
-            if ($portfolioItem->title() === $title && $portfolioItem->mainImage() === $mainImage && $portfolioItem->description() === $description && $portfolioItem->websiteUrl() === $websiteUrl)
+            if ($portfolioItem->title() == $title && $portfolioItem->mainImage() == $mainImage && $portfolioItem->description() == $description && $portfolioItem->websiteUrl() === $websiteUrl)
             {
                 return $portfolioItem;
             }

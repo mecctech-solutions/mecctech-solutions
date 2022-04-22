@@ -3,6 +3,7 @@
 
 namespace App\PortfolioManagement\Application\AddPortfolioItems;
 
+use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 
@@ -24,7 +25,16 @@ class AddPortfolioItems implements AddPortfolioItemsInterface
     public function execute(AddPortfolioItemsInput $input): AddPortfolioItemsResult
     {
         $portfolioItems = PortfolioItemFactory::multipleFromArray($input->portfolioItems());
-        $this->portfolioItemRepository->addMultiple(collect($portfolioItems));
+
+        $portfolioItems->each(function (PortfolioItem $portfolioItem) {
+
+            $existingPortfolioItem = $this->portfolioItemRepository->find($portfolioItem->title(), $portfolioItem->mainImage(), $portfolioItem->description(), $portfolioItem->websiteUrl());
+
+            if (! $existingPortfolioItem)
+            {
+                $this->portfolioItemRepository->add($portfolioItem);
+            }
+        });
 
         return new AddPortfolioItemsResult();
     }

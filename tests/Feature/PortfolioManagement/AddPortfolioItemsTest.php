@@ -75,4 +75,28 @@ class AddPortfolioItemsTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /** @test */
+    public function it_should_not_add_items_with_same_title()
+    {
+        // Given
+        $portfolioItems = PortfolioItemFactory::create(1, [
+            "title_en" => "Test Title",
+            "title_nl" => "Test Titel"
+        ]);
+
+        $portfolioItemRepository = new DummyPortfolioItemRepository();
+        $this->app->instance(PortfolioItemRepositoryInterface::class, $portfolioItemRepository);
+
+        // When
+        $response = $this->post(route("add-portfolio-items"), [
+            "portfolio_items" => $portfolioItems->toArray()
+        ]);
+
+        $response = $this->post(route("add-portfolio-items"), [
+            "portfolio_items" => $portfolioItems->toArray()
+        ]);
+
+        self::assertEquals(1, $portfolioItemRepository->all()->count());
+    }
 }

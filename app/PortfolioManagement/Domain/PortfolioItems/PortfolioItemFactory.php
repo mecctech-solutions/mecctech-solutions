@@ -15,7 +15,22 @@ class PortfolioItemFactory
 
         for ($i = 0; $i < $amount; $i++)
         {
-            $title = new Title($faker->sentence, $faker->sentence);
+
+            if (array_key_exists("title_en", $attributes))
+            {
+                $titleEn = $attributes["title_en"];
+            } else {
+                $titleEn = $faker->sentence;
+            }
+
+            if (array_key_exists("title_nl", $attributes))
+            {
+                $titleNl = $attributes["title_nl"];
+            } else {
+                $titleNl = $faker->sentence;
+            }
+
+            $title = new Title($titleEn, $titleNl);
             $description = new Description($faker->text, $faker->text);
             $mainImage = ImageFactory::placeholder();
             $websiteUrl = $faker->url;
@@ -52,12 +67,12 @@ class PortfolioItemFactory
         return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
     }
 
-    public static function multipleFromArray(array $portfolioItemsAsArray)
+    public static function multipleFromArray(array $portfolioItemsAsArray): Collection
     {
-        $portfolioItems = [];
+        $portfolioItems = collect();
         foreach ($portfolioItemsAsArray as $portfolioItemAsArray)
         {
-            $portfolioItems[] = self::fromArray($portfolioItemAsArray);
+            $portfolioItems->push(self::fromArray($portfolioItemAsArray));
         }
 
         return $portfolioItems;
