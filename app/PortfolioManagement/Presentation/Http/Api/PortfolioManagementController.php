@@ -53,7 +53,7 @@ class PortfolioManagementController
             }
 
             $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItemsAsArray, $portfolioItems->count(), 9);
+            $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItemsAsArray, $portfolioItems->count(), 3);
 
         } catch (\Exception $e)
         {
