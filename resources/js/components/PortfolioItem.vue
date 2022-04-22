@@ -1,5 +1,5 @@
 <template>
-    <div class="md:mb-20 mb-32">
+    <div class="md:mb-40 mb-32">
         <div class="container">
             <img class="w-full h-40 object-scale-down block" :src="main_image_url" alt="">
             <div class="overlay">
