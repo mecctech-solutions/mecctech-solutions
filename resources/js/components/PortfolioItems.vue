@@ -13,10 +13,12 @@
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C++')}" @click="this.selectTag('C++')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-c++">C++</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C#')}" @click="this.selectTag('C#')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-c#">C#</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C')}" @click="this.selectTag('C')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-arduino">C</li>
-<!--                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Matlab')}" @click="this.selectTag('Matlab')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">Matlab</li>-->
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Matlab')}" @click="this.selectTag('Matlab')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">Matlab</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Courses')}" @click="this.selectTag('Courses')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ $lang.get('tags.courses') }}</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Books')}" @click="this.selectTag('Books')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ $lang.get('tags.books') }}</li>
             </ul>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 pl-16 pr-16 lg:pl-96 lg:pr-96 mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-24 pl-16 pr-16 lg:pl-96 lg:pr-96 mt-20">
             <portfolio-item v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title.dutch : portfolio_item.title.english" :description="locale === 'nl' ? portfolio_item.description.dutch : portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item>
         </div>
     </div>

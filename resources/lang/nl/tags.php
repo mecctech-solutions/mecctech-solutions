@@ -1,5 +1,7 @@
 <?php
 
 return [
-    "all" => "Alles"
+    "all" => "Alles",
+    'books' => 'Boeken',
+    'courses' => 'Vakken'
 ];
