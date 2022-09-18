@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-    .text-input {
-        @apply border-2 border-b
-    }
-}
+/*@layer components {*/
+/*    .text-input {*/
+/*        @apply border-2 border-b*/
+/*    }*/
+/*}*/
 
 html, body {
     width: 100%;
@@ -14,80 +14,129 @@ html, body {
     scroll-behavior: smooth;
 }
 
-section#home {
-    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+/*section#home {*/
+/*    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);*/
+/*    background-size: 400% 400%;*/
+/*    animation: gradient 15s ease infinite;*/
+/*}*/
+
+/*footer {*/
+/*    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);*/
+/*    background-size: 400% 400%;*/
+/*    animation: gradient 15s ease infinite;*/
+/*}*/
+
+/*@keyframes gradient {*/
+/*    0% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+/*    100% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*}*/
+
+/*.btn {*/
+/*    line-height: 50px;*/
+/*    height: 50px;*/
+/*    text-align: center;*/
+/*    width: 250px;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.view-my-work-btn {*/
+/*    color: #FFF;*/
+/*    transition: all 0.5s;*/
+/*    position: relative;*/
+/*}*/
+/*.view-my-work-btn span {*/
+/*    z-index: 2;*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
+/*.view-my-work-btn::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    z-index: 1;*/
+/*    transition: all 0.5s;*/
+/*    border: 1px solid rgba(255,255,255,0.2);*/
+/*    background-color: rgba(255,255,255,0.1);*/
+/*}*/
+/*.view-my-work-btn::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    z-index: 1;*/
+/*    transition: all 0.5s;*/
+/*    border: 1px solid rgba(255,255,255,0.2);*/
+/*    background-color: rgba(255,255,255,0.1);*/
+/*}*/
+/*.view-my-work-btn:hover::before {*/
+/*    transform: rotate(-45deg);*/
+/*    background-color: rgba(255,255,255,0);*/
+/*}*/
+/*.view-my-work-btn:hover::after {*/
+/*    transform: rotate(45deg);*/
+/*    background-color: rgba(255,255,255,0);*/
+/*}*/
+
+body {
+    font-family: "Inter", sans-serif;
 }
 
-footer {
-    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+.sticky {
+    @apply ud-fixed ud-z-[9999] ud-transition ud-bg-white ud-bg-opacity-80;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+.sticky .header-logo {
+    @apply ud-py-4 lg:ud-py-2;
 }
 
-.btn {
-    line-height: 50px;
-    height: 50px;
-    text-align: center;
-    width: 250px;
-    cursor: pointer;
+.sticky .menu-scroll.active {
+    @apply ud-text-primary;
 }
 
-.view-my-work-btn {
-    color: #FFF;
-    transition: all 0.5s;
-    position: relative;
+.navbarTogglerActive > span:nth-child(1) {
+    @apply ud-transform ud-rotate-45 ud-top-[7px];
 }
-.view-my-work-btn span {
-    z-index: 2;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.navbarTogglerActive > span:nth-child(2) {
+    @apply ud-opacity-0;
 }
-.view-my-work-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all 0.5s;
-    border: 1px solid rgba(255,255,255,0.2);
-    background-color: rgba(255,255,255,0.1);
-}
-.view-my-work-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all 0.5s;
-    border: 1px solid rgba(255,255,255,0.2);
-    background-color: rgba(255,255,255,0.1);
-}
-.view-my-work-btn:hover::before {
-    transform: rotate(-45deg);
-    background-color: rgba(255,255,255,0);
-}
-.view-my-work-btn:hover::after {
-    transform: rotate(45deg);
-    background-color: rgba(255,255,255,0);
+.navbarTogglerActive > span:nth-child(3) {
+    @apply ud-top-[-8px] ud-rotate-[135deg];
 }
 
+.input-field {
+    @apply ud-w-full
+    ud-rounded-sm
+    ud-py-4
+    ud-px-8
+    ud-bg-[#f8f8f9]
+    ud-border-b-2
+    ud-border-transparent
+    ud-outline-none
+    focus-visible:ud-shadow-none
+    focus:ud-border-primary
+    ud-text-base
+    ud-font-medium
+    ud-text-body-color
+    ud-placeholder-body-color
+    ud-transition;
+}
+
+.portfolio-buttons button.active {
+    @apply ud-bg-primary ud-text-white;
+}
