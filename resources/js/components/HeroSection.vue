@@ -15,7 +15,7 @@
                 <div class="ud-w-full lg:ud-w-1/2 ud-self-center ud-px-4">
                     <div>
                         <h1 class="ud-text-base ud-font-semibold ud-text-primary ud-mb-3">
-                            Hey There 👋 I am
+                            Hi there! I am
 
                             <span
                                 class="
@@ -38,7 +38,7 @@
                   ud-mb-5
                 "
                         >
-                            Professional
+                            Freelance
 
                             <span class="ud-text-black">Laravel and Vue.js developer </span>
                         </h2>
