@@ -8,10 +8,11 @@
     <hero-section></hero-section>
     <about-me-v2></about-me-v2>
     <services></services>
-    <portfolio></portfolio>
+    <portfolio get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"></portfolio>
     <cta></cta>
     <education-and-experience></education-and-experience>
     <contact-form-v2></contact-form-v2>
+    <mecc-tech-footer-v2></mecc-tech-footer-v2>
 
 {{--    <section id="about-me">--}}
 {{--        <about-me></about-me>--}}
@@ -32,7 +33,9 @@
     import HeroSection from "../js/components/HeroSection";
     import AboutMeV2 from "../js/components/AboutMeV2";
     import EducationAndExperience from "../js/components/EducationAndExperience";
+    import MeccTechFooterV2 from "../js/components/MeccTechFooterV2";
+
     export default {
-        components: {EducationAndExperience, AboutMeV2, HeroSection}
+        components: {MeccTechFooterV2, EducationAndExperience, AboutMeV2, HeroSection}
     }
 </script>

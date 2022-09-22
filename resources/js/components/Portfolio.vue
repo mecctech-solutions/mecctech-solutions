@@ -46,8 +46,9 @@
                   ud-block ud-py-2 ud-px-5
                   md:ud-mx-2
                   ud-mb-2 ud-rounded-full ud-text-body-color
-                  active
                 "
+                            :class="{'active' : this.isSelected('All')}"
+                            @click="this.selectTag('All')"
                             data-filter="*"
                         >
                             All
@@ -62,9 +63,11 @@
                   ud-mb-2 ud-rounded-full ud-text-body-color
                   hover:ud-bg-primary hover:ud-text-white
                 "
+                            :class="{'active' : this.isSelected('Laravel')}"
+                            @click="this.selectTag('Laravel')"
                             data-filter=".web"
                         >
-                            Web Design
+                            Laravel
                         </button>
                         <button
                             class="
@@ -76,9 +79,11 @@
                   ud-mb-2 ud-rounded-full ud-text-body-color
                   hover:ud-bg-primary hover:ud-text-white
                 "
+                            :class="{'active' : this.isSelected('Vue.js')}"
+                            @click="this.selectTag('Vue.js')"
                             data-filter=".graphics"
                         >
-                            Graphics
+                            Vue.js
                         </button>
                         <button
                             class="
@@ -90,9 +95,43 @@
                   ud-mb-2 ud-rounded-full ud-text-body-color
                   hover:ud-bg-primary hover:ud-text-white
                 "
+                            :class="{'active' : this.isSelected('Python')}"
+                            @click="this.selectTag('Python')"
                             data-filter=".app"
                         >
-                            App
+                            Python
+                        </button>
+                        <button
+                            class="
+                  sm:font-semibold
+                  ud-text-sm
+                  sm:ud-text-base
+                  ud-block ud-py-2 ud-px-5
+                  md:ud-mx-2
+                  ud-mb-2 ud-rounded-full ud-text-body-color
+                  hover:ud-bg-primary hover:ud-text-white
+                "
+                            :class="{'active' : this.isSelected('C++')}"
+                            @click="this.selectTag('C++')"
+                            data-filter=".app"
+                        >
+                            C++
+                        </button>
+                        <button
+                            class="
+                  sm:font-semibold
+                  ud-text-sm
+                  sm:ud-text-base
+                  ud-block ud-py-2 ud-px-5
+                  md:ud-mx-2
+                  ud-mb-2 ud-rounded-full ud-text-body-color
+                  hover:ud-bg-primary hover:ud-text-white
+                "
+                            :class="{'active' : this.isSelected('C#')}"
+                            @click="this.selectTag('C#')"
+                            data-filter=".app"
+                        >
+                            C#
                         </button>
                     </div>
                 </div>
@@ -106,334 +145,7 @@
                 ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]
               "
                     >
-                        <div class="ud-w-full md:ud-w-1/2 ud-px-4 item web app">
-                            <div class="ud-mb-12">
-                                <div
-                                    class="
-                      ud-relative
-                      ud-group
-                      ud-mb-8
-                      ud-overflow-hidden
-                      ud-shadow-service
-                      ud-rounded-md
-                    "
-                                >
-                                    <img
-                                        src="images/portfolio/portfolio-01.jpg"
-                                        alt="image"
-                                        class="ud-w-full"
-                                    />
-                                    <div
-                                        class="
-                        ud-absolute
-                        ud-w-full
-                        ud-h-full
-                        ud-top-0
-                        ud-left-0
-                        ud-bg-primary
-                        ud-bg-opacity-[17%]
-                        ud-flex
-                        ud-items-center
-                        ud-justify-center
-                        ud-opacity-0
-                        ud-invisible
-                        group-hover:ud-opacity-100 group-hover:ud-visible
-                        ud-transition
-                      "
-                                    >
-                                        <a
-                                            href="images/portfolio/portfolio-01.jpg"
-                                            class="
-                          glightbox
-                          ud-w-10
-                          ud-h-10
-                          ud-flex
-                          ud-items-center
-                          ud-justify-center
-                          ud-bg-primary
-                          ud-text-white
-                          ud-rounded-full
-                        "
-                                        >
-                                            <svg
-                                                width="14"
-                                                height="14"
-                                                viewBox="0 0 14 14"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z"
-                                                    fill="white"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h3 class="mt-6">
-                                    <a
-                                        href="portfolio-details.html"
-                                        class="
-                        ud-font-semibold ud-text-black
-                        hover:ud-text-primary
-                        ud-text-xl ud-inline-block ud-mb-3
-                      "
-                                    >
-                                        Startup landing page
-                                    </a>
-                                </h3>
-                                <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Maecenas vitae dolor ultrices libero.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="ud-w-full md:ud-w-1/2 ud-px-4 item graphics web">
-                            <div class="ud-mb-12">
-                                <div
-                                    class="
-                      ud-relative
-                      ud-group
-                      ud-mb-8
-                      ud-overflow-hidden
-                      ud-shadow-service
-                      ud-rounded-md
-                    "
-                                >
-                                    <img
-                                        src="images/portfolio/portfolio-02.jpg"
-                                        alt="image"
-                                        class="ud-w-full"
-                                    />
-                                    <div
-                                        class="
-                        ud-absolute
-                        ud-w-full
-                        ud-h-full
-                        ud-top-0
-                        ud-left-0
-                        ud-bg-primary
-                        ud-bg-opacity-[17%]
-                        ud-flex
-                        ud-items-center
-                        ud-justify-center
-                        ud-opacity-0
-                        ud-invisible
-                        group-hover:ud-opacity-100 group-hover:ud-visible
-                        ud-transition
-                      "
-                                    >
-                                        <a
-                                            href="images/portfolio/portfolio-02.jpg"
-                                            class="
-                          glightbox
-                          ud-w-10
-                          ud-h-10
-                          ud-flex
-                          ud-items-center
-                          ud-justify-center
-                          ud-bg-primary
-                          ud-text-white
-                          ud-rounded-full
-                        "
-                                        >
-                                            <svg
-                                                width="14"
-                                                height="14"
-                                                viewBox="0 0 14 14"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z"
-                                                    fill="white"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h3 class="mt-6">
-                                    <a
-                                        href="portfolio-details.html"
-                                        class="
-                        ud-font-semibold ud-text-black
-                        hover:ud-text-primary
-                        ud-text-xl ud-inline-block ud-mb-3
-                      "
-                                    >
-                                        Job portal landing page
-                                    </a>
-                                </h3>
-                                <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Maecenas vitae dolor ultrices libero.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="ud-w-full md:ud-w-1/2 ud-px-4 item app">
-                            <div class="ud-mb-12">
-                                <div
-                                    class="
-                      ud-relative
-                      ud-group
-                      ud-mb-8
-                      ud-overflow-hidden
-                      ud-shadow-service
-                      ud-rounded-md
-                    "
-                                >
-                                    <img
-                                        src="images/portfolio/portfolio-03.jpg"
-                                        alt="image"
-                                        class="ud-w-full"
-                                    />
-                                    <div
-                                        class="
-                        ud-absolute
-                        ud-w-full
-                        ud-h-full
-                        ud-top-0
-                        ud-left-0
-                        ud-bg-primary
-                        ud-bg-opacity-[17%]
-                        ud-flex
-                        ud-items-center
-                        ud-justify-center
-                        ud-opacity-0
-                        ud-invisible
-                        group-hover:ud-opacity-100 group-hover:ud-visible
-                        ud-transition
-                      "
-                                    >
-                                        <a
-                                            href="images/portfolio/portfolio-03.jpg"
-                                            class="
-                          glightbox
-                          ud-w-10
-                          ud-h-10
-                          ud-flex
-                          ud-items-center
-                          ud-justify-center
-                          ud-bg-primary
-                          ud-text-white
-                          ud-rounded-full
-                        "
-                                        >
-                                            <svg
-                                                width="14"
-                                                height="14"
-                                                viewBox="0 0 14 14"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z"
-                                                    fill="white"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h3 class="mt-6">
-                                    <a
-                                        href="portfolio-details.html"
-                                        class="
-                        ud-font-semibold ud-text-black
-                        hover:ud-text-primary
-                        ud-text-xl ud-inline-block ud-mb-3
-                      "
-                                    >
-                                        SaaS landing page
-                                    </a>
-                                </h3>
-                                <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Maecenas vitae dolor ultrices libero.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="ud-w-full md:ud-w-1/2 ud-px-4 item graphics web">
-                            <div class="ud-mb-12">
-                                <div
-                                    class="
-                      ud-relative
-                      ud-group
-                      ud-mb-8
-                      ud-overflow-hidden
-                      ud-shadow-service
-                      ud-rounded-md
-                    "
-                                >
-                                    <img
-                                        src="images/portfolio/portfolio-04.jpg"
-                                        alt="image"
-                                        class="ud-w-full"
-                                    />
-                                    <div
-                                        class="
-                        ud-absolute
-                        ud-w-full
-                        ud-h-full
-                        ud-top-0
-                        ud-left-0
-                        ud-bg-primary
-                        ud-bg-opacity-[17%]
-                        ud-flex
-                        ud-items-center
-                        ud-justify-center
-                        ud-opacity-0
-                        ud-invisible
-                        group-hover:ud-opacity-100 group-hover:ud-visible
-                        ud-transition
-                      "
-                                    >
-                                        <a
-                                            href="images/portfolio/portfolio-04.jpg"
-                                            class="
-                          glightbox
-                          ud-w-10
-                          ud-h-10
-                          ud-flex
-                          ud-items-center
-                          ud-justify-center
-                          ud-bg-primary
-                          ud-text-white
-                          ud-rounded-full
-                        "
-                                        >
-                                            <svg
-                                                width="14"
-                                                height="14"
-                                                viewBox="0 0 14 14"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z"
-                                                    fill="white"
-                                                />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <h3 class="mt-6">
-                                    <a
-                                        href="portfolio-details.html"
-                                        class="
-                        ud-font-semibold ud-text-black
-                        hover:ud-text-primary
-                        ud-text-xl ud-inline-block ud-mb-3
-                      "
-                                    >
-                                        Business & corporate template
-                                    </a>
-                                </h3>
-                                <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Maecenas vitae dolor ultrices libero.
-                                </p>
-                            </div>
-                        </div>
+                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="portfolio_item.title.english" :description="portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item-v2>
                     </div>
                 </div>
             </div>
@@ -444,7 +156,50 @@
 
 <script>
 export default {
-    name: "RecentWorks"
+    props: ["get_all_portfolio_items_route"],
+    name: "RecentWorks",
+    data() {
+        return {
+            portfolio_items: [],
+            current_page : 1,
+            selected_tag : 'All'
+        }
+    },
+    components: {},
+    mounted() {
+        this.getAllPortfolioItems();
+    },
+    methods: {
+        getAllPortfolioItems() {
+            axios
+                .get(this.get_all_portfolio_items_route)
+                .then(( { data } ) => {
+                    this.portfolio_items = data.payload.portfolio_items.data;
+                });
+        },
+        getPortfolioItemsWithTag(tag) {
+            axios
+                .get(this.get_all_portfolio_items_route + "?tag=" + encodeURIComponent(tag))
+                .then(( { data } ) => {
+                    this.portfolio_items = data.payload.portfolio_items.data;
+                });
+        },
+        isSelected(tagName)
+        {
+            return this.selected_tag === tagName;
+        },
+        selectTag(tagName)
+        {
+            this.selected_tag = tagName;
+            if (tagName !== 'All')
+            {
+                this.getPortfolioItemsWithTag(tagName);
+            } else {
+                this.getAllPortfolioItems();
+            }
+        },
+
+    }
 }
 </script>
 

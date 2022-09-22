@@ -25,7 +25,7 @@
                         href="/"
                         class="header-logo ud-w-full ud-block ud-py-6 lg:ud-py-8"
                     >
-                        <img src="images/Mecctech_Solutions.png" alt="logo" class="ud-w-full" />
+                        <img :src="this.$root.baseUrl() + '/images/Mecctech_Solutions.png'" alt="logo" class="ud-w-full" />
                     </a>
                 </div>
                 <div
@@ -114,7 +114,7 @@
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
-                                        href="#about"
+                                        :href="this.$root.baseUrl() + '#about'"
                                         class="
                         menu-scroll
                         ud-text-base ud-text-black
@@ -131,7 +131,7 @@
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
-                                        href="#services"
+                                        :href="this.$root.baseUrl() + '#services'"
                                         class="
                         menu-scroll
                         ud-text-base ud-text-black
@@ -148,24 +148,7 @@
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
-                                        href="#pricing"
-                                        class="
-                        menu-scroll
-                        ud-text-base ud-text-black
-                        group-hover:ud-text-primary
-                        ud-py-2
-                        lg:ud-py-6 lg:ud-inline-flex lg:ud-px-0
-                        ud-flex ud-mx-8
-                        lg:ud-mr-0 lg:ud-ml-8
-                        xl:ud-ml-12
-                      "
-                                    >
-                                        Pricing
-                                    </a>
-                                </li>
-                                <li class="ud-relative ud-group" @click="this.navbarActive = false">
-                                    <a
-                                        href="#contact"
+                                        :href="this.$root.baseUrl() + '#contact'"
                                         class="
                         menu-scroll
                         ud-text-base ud-text-black
@@ -225,7 +208,7 @@
                       "
                                     >
                                         <a
-                                            href="portfolio-details.html"
+                                            href="/portfolio/details"
                                             class="
                           ud-block ud-text-sm ud-text-black ud-rounded
                           hover:ud-text-primary
@@ -233,17 +216,6 @@
                         "
                                         >
                                             Portfolio Details Page
-                                        </a>
-
-                                        <a
-                                            href="blog-grids.html"
-                                            class="
-                          ud-block ud-text-sm ud-text-black ud-rounded
-                          hover:ud-text-primary
-                          ud-py-[10px] ud-px-4
-                        "
-                                        >
-                                            Blog Grids Page
                                         </a>
                                         <a
                                             href="blog-details.html"
@@ -301,7 +273,7 @@ export default {
         toggleNavbar()
         {
             this.navbarActive = ! this.navbarActive;
-        }
+        },
     }
 }
 </script>

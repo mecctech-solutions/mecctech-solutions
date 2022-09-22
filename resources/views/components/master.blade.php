@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Floris Meccanici | MeccTech Solutions | Laravel / Vue.js Developer</title>
+    <title>Floris Meccanici | Laravel / Vue.js Developer</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
         }
     </style>
 
+    <link rel="icon" href="/images/Mecctech_Solutions.png">
 {{--    <link rel="stylesheet" href="{{ asset('css/animate.css') }}" />--}}
 {{--    <link rel="stylesheet" href="{{ asset('css/glightbox.min.css') }}" />--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
