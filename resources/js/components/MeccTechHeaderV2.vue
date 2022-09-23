@@ -1,5 +1,4 @@
 <template>
-    <!-- ====== Navbar Section Start -->
     <header
         class="
         header
@@ -162,72 +161,6 @@
                                     >
                                         Contact
                                     </a>
-                                </li>
-                                <li class="ud-relative ud-group submenu-item" @click="this.navbarActive = false">
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="
-                        ud-text-base ud-text-black
-                        group-hover:ud-text-primary
-                        ud-py-2
-                        lg:ud-py-6 lg:ud-inline-flex lg:ud-pl-0 lg:ud-pr-4
-                        ud-flex ud-mx-8
-                        lg:ud-mr-0 lg:ud-ml-8
-                        xl:ud-ml-12
-                        ud-relative
-                        after:ud-absolute
-                        after:ud-w-2
-                        after:ud-h-2
-                        after:ud-border-b-2
-                        after:ud-border-r-2
-                        after:ud-border-current
-                        after:ud-rotate-45
-                        lg:after:ud-right-0
-                        after:ud-right-1
-                        after:ud-top-1/2
-                        after:ud-translate-y-[-50%]
-                        after:ud-mt-[-2px]
-                      "
-                                    >
-                                        Pages
-                                    </a>
-                                    <div
-                                        class="
-                        submenu
-                        ud-hidden ud-relative
-                        lg:ud-absolute
-                        ud-w-[250px] ud-top-full
-                        lg:ud-top-[110%]
-                        ud-left-0 ud-rounded-sm
-                        lg:ud-shadow-lg
-                        ud-p-4
-                        lg:ud-block lg:ud-opacity-0 lg:ud-invisible
-                        group-hover:ud-opacity-100
-                        lg:group-hover:ud-visible lg:group-hover:ud-top-full
-                        ud-bg-white ud-transition-[top] ud-duration-300
-                      "
-                                    >
-                                        <a
-                                            href="/portfolio/details"
-                                            class="
-                          ud-block ud-text-sm ud-text-black ud-rounded
-                          hover:ud-text-primary
-                          ud-py-[10px] ud-px-4
-                        "
-                                        >
-                                            Portfolio Details Page
-                                        </a>
-                                        <a
-                                            href="blog-details.html"
-                                            class="
-                          ud-block ud-text-sm ud-text-black ud-rounded
-                          hover:ud-text-primary
-                          ud-py-[10px] ud-px-4
-                        "
-                                        >
-                                            Blog Details Page
-                                        </a>
-                                    </div>
                                 </li>
                             </ul>
                         </nav>

@@ -9,7 +9,7 @@ class CustomerMapper
 {
     public static function toEntity(EloquentCustomer $model): Customer
     {
-        return new Customer($model->customer_number, $model->first_name, $model->last_name, $model->email);
+        return new Customer($model->customer_number, $model->first_name, $model->last_name, $model->email, $model->phone_number);
     }
 
     public static function toEloquent(Customer $customer): EloquentCustomer
@@ -18,7 +18,8 @@ class CustomerMapper
             'customer_number' => $customer->customerNumber(),
             'first_name' => $customer->firstName(),
             'last_name' => $customer->lastName(),
-            'email' => $customer->email()
+            'email' => $customer->email(),
+            'phone_number' => $customer->phoneNumber()
         ]);
     }
 }

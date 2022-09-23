@@ -35,7 +35,8 @@
               "
                 >
                     <a
-                        :href="this.$root.baseUrl() + '/' + this.main_image_url"
+                        @click="this.toggleModal"
+                        href="javascript:void(0)"
                         class="
                   glightbox
                   ud-w-10
@@ -48,24 +49,15 @@
                   ud-rounded-full
                 "
                     >
-                        <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 14 14"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z"
-                                fill="white"
-                            />
-                        </svg>
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
                 </div>
             </div>
+
             <h3 class="mt-6">
                 <a
-                    :href="this.$root.baseUrl() + '/portfolio/details'"
+                    @click="this.toggleModal"
+                    href="javascript:void(0)"
                     class="
                 ud-font-semibold ud-text-black
                 hover:ud-text-primary
@@ -75,9 +67,10 @@
                     {{ this.title }}
                 </a>
             </h3>
-            <div>
+            <div
+                @click="this.toggleModal">
                 <p
-                    class="ud-font-medium ud-text-base ud-text-body-color"
+                    class="ud-font-medium ud-text-base ud-text-body-color ud-cursor-pointer"
                     style="overflow: hidden;
                             display: -webkit-box;
                             -webkit-line-clamp: 3;
@@ -86,8 +79,10 @@
                     {{ this.description }}
                 </p>
             </div>
-
         </div>
+
+        <portfolio-item-modal-v2 :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal-v2>
+
     </div>
 </template>
 
@@ -95,13 +90,21 @@
     export default {
         props: ['title', 'tags', 'main_image_url', 'images', 'description', 'website_url'],
         data() {
-
+            return {
+                view_modal: false
+            }
         },
         mounted() {
 
         },
         methods : {
-
+            toggleModal()
+            {
+                this.view_modal = this.view_modal !== true;
+            },
+            turnOffModal() {
+                this.view_modal = false;
+            }
         }
 
     }

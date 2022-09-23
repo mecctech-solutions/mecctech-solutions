@@ -52,6 +52,7 @@ app.component('skill', require('./components/Skill.vue').default);
 app.component('portfolio-items', require('./components/PortfolioItems.vue').default);
 app.component('portfolio-item', require('./components/PortfolioItem.vue').default);
 app.component('portfolio-item-modal', require('./components/PortfolioItemModal.vue').default);
+app.component('portfolio-item-modal-v2', require('./components/PortfolioItemModalV2.vue').default);
 app.component('contact-form', require('./components/ContactForm.vue').default);
 app.component('section-title', require('./components/SectionTitle.vue').default);
 app.component('mecc-tech-footer', require('./components/MeccTechFooter.vue').default);

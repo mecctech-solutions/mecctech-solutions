@@ -27,8 +27,7 @@
                                 My Services
                             </h2>
                             <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+                                Apart from writing software with Laravel and Vue.js I offer the following services
                             </p>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
                     ud-mb-3
                   "
                             >
-                                User Research
+                                Requirements
                             </h3>
                             <p
                                 class="
@@ -97,8 +96,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Quisque ligulavel in.
+                                I make sure it is clear what you want me to build
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -275,7 +273,7 @@
                     ud-mb-3
                   "
                             >
-                                Visual Design
+                                Code Design
                             </h3>
                             <p
                                 class="
@@ -284,8 +282,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Quisque ligulavel in.
+                                I design my code before building, following Domain Driven Design
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -462,7 +459,7 @@
                     ud-mb-3
                   "
                             >
-                                User Testing
+                                Testing
                             </h3>
                             <p
                                 class="
@@ -471,8 +468,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Quisque ligulavel in.
+                                I make sure my Laravel code is thoroughly tested
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -649,7 +645,7 @@
                     ud-mb-3
                   "
                             >
-                                Prototype
+                                User Interface
                             </h3>
                             <p
                                 class="
@@ -658,8 +654,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Quisque ligulavel in.
+                                Visually appealing, dynamic and responsive UI
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">

@@ -52,12 +52,11 @@
                   ud-mb-11
                 "
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                            interdum consequat convallis.
+                            Count on me for writing complete web applications that are scalable and maintainable.
                         </p>
                         <div class="ud-flex ud-items-center">
                             <a
-                                href="javascript:void(0)"
+                                :href="this.$root.baseUrl() + '#contact'"
                                 class="
                     ud-text-base
                     ud-font-semibold
@@ -73,7 +72,7 @@
                                 Contact Me
                             </a>
                             <a
-                                href="javascript:void(0)"
+                                href="#services"
                                 class="
                     ud-text-base
                     ud-font-semibold

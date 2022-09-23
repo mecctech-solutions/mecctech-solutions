@@ -3,6 +3,7 @@
 namespace App\CustomerRelationshipManagement\Domain\Customers;
 
 use Faker\Factory;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
@@ -10,7 +11,7 @@ class CustomerFactory
 {
     public static function fromArray(array $customer): Customer
     {
-        return new Customer($customer["customer_number"], $customer["first_name"], $customer["last_name"], $customer["email"]);
+        return new Customer($customer["customer_number"], $customer["first_name"], $customer["last_name"], $customer["email"], Arr::get($customer, 'phone_number'));
     }
 
     public static function create(int $amount = 1, array $attributes = []): Collection|Customer
@@ -21,7 +22,7 @@ class CustomerFactory
 
         for ($i = 0; $i < $amount; $i++)
         {
-            $customer = new Customer(uniqid(), $faker->firstName, $faker->lastName, $faker->email);
+            $customer = new Customer(uniqid(), $faker->firstName, $faker->lastName, $faker->email, $faker->phoneNumber);
 
             foreach (array_keys($attributes) as $attributeName)
             {

@@ -1,7 +1,5 @@
 <template>
-
-    <!-- ====== Footer Section Start  -->
-    <footer class="ud-bg-black ud-pt-[100px] ud-pb-12 ud-relative ud-z-10">
+    <footer id="footer" class="ud-bg-black ud-pt-[100px] ud-pb-12 ud-relative ud-z-10">
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud--mx-4">
                 <div class="ud-w-full md:ud-w-1/2 lg:ud-w-4/12 ud-px-4">
@@ -25,173 +23,14 @@
                             Contact Info
                         </h3>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
-                            closerpage@email.com
+                            florismeccanici@mecctech-solutions.nl
                         </p>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
-                            12 Hilton St, Manchester M1 1JF
+                            Delft, The Netherlands
                         </p>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
-                            +44 012 34 5678
+                            +31 6 81639449
                         </p>
-                    </div>
-                </div>
-                <div class="ud-w-full md:ud-w-1/2 lg:ud-w-3/12 ud-px-4">
-                    <div class="ud-mb-10">
-                        <h3 class="ud-font-semibold ud-text-white ud-text-xl ud-mb-9">
-                            What I Do?
-                        </h3>
-                        <ul>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    The Studio
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Sponsoring
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Newsletter
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Contact Us
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="ud-w-full md:ud-w-1/2 lg:ud-w-2/12 ud-px-4">
-                    <div class="ud-mb-10">
-                        <h3 class="ud-font-semibold ud-text-white ud-text-xl ud-mb-9">
-                            News
-                        </h3>
-                        <ul>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Hot Stuff
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Perfect Place
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Vintage
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Products
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="ud-w-full md:ud-w-1/2 lg:ud-w-3/12 ud-px-4">
-                    <div class="ud-mb-10">
-                        <h3 class="ud-font-semibold ud-text-white ud-text-xl ud-mb-9">
-                            Quick Links
-                        </h3>
-                        <ul>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Style
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Health
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Relationship
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
-                      ud-inline-block ud-text-base ud-text-body-color ud-mb-3
-                      hover:ud-text-primary
-                    "
-                                >
-                                    Legal & Privacy
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -202,6 +41,33 @@
           "
             >
                 <div class="ud-flex ud-items-center ud-justify-center ud-mb-5">
+                    <a
+                        href="https://www.linkedin.com/in/florismeccanici"
+                        class="
+                ud-flex
+                ud-items-center
+                ud-justify-center
+                ud-w-8
+                ud-h-8
+                ud-founded-full
+                ud-mx-2
+                ud-text-body-color
+                hover:ud-text-primary
+              "
+                        aria-label="social-link"
+                        name="social-link"
+                    >
+                        <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            class="ud-fill-current"
+                        >
+                            <path
+                                d="M16 0C7.16479 0 0 7.16479 0 16C0 24.8352 7.16479 32 16 32C24.8352 32 32 24.8352 32 16C32 7.16479 24.8352 0 16 0ZM11.3506 24.1875H7.45386V12.4641H11.3506V24.1875ZM9.40234 10.8633H9.37695C8.06934 10.8633 7.22363 9.96313 7.22363 8.83813C7.22363 7.68774 8.09521 6.8125 9.42822 6.8125C10.7612 6.8125 11.5815 7.68774 11.6069 8.83813C11.6069 9.96313 10.7612 10.8633 9.40234 10.8633ZM25.4014 24.1875H21.5051V17.9158C21.5051 16.3396 20.9409 15.2646 19.531 15.2646C18.4546 15.2646 17.8135 15.9897 17.5317 16.6897C17.4287 16.9402 17.4036 17.2903 17.4036 17.6406V24.1875H13.5071C13.5071 24.1875 13.5581 13.564 13.5071 12.4641H17.4036V14.124C17.9214 13.3252 18.8479 12.189 20.9153 12.189C23.479 12.189 25.4014 13.8645 25.4014 17.4653V24.1875Z"
+                            />
+                        </svg>
+                    </a>
                     <a
                         href="javascript:void(0)"
                         class="
@@ -263,68 +129,7 @@
                             />
                         </svg>
                     </a>
-                    <a
-                        href="javascript:void(0)"
-                        class="
-                ud-flex
-                ud-items-center
-                ud-justify-center
-                ud-w-8
-                ud-h-8
-                ud-founded-full
-                ud-mx-2
-                ud-text-body-color
-                hover:ud-text-primary
-              "
-                        aria-label="social-link"
-                        name="social-link"
-                    >
-                        <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 32 32"
-                            class="ud-fill-current"
-                        >
-                            <path
-                                d="M16 0C7.16479 0 0 7.16479 0 16C0 24.8352 7.16479 32 16 32C24.8352 32 32 24.8352 32 16C32 7.16479 24.8352 0 16 0ZM23.3054 12.4751C23.3125 12.6326 23.3159 12.7908 23.3159 12.9497C23.3159 17.8025 19.6221 23.3984 12.8669 23.3987H12.8672H12.8669C10.793 23.3987 8.86304 22.7908 7.23779 21.749C7.52515 21.783 7.81763 21.7998 8.11377 21.7998C9.83447 21.7998 11.418 21.2129 12.675 20.2278C11.0674 20.198 9.71191 19.1362 9.24414 17.677C9.46802 17.72 9.69824 17.7434 9.93433 17.7434C10.2695 17.7434 10.5942 17.6982 10.9028 17.614C9.22241 17.2776 7.95654 15.7925 7.95654 14.0142C7.95654 13.9976 7.95654 13.9827 7.95703 13.9673C8.4519 14.2424 9.01782 14.408 9.62036 14.4265C8.63428 13.7686 7.98608 12.6438 7.98608 11.3696C7.98608 10.6968 8.16797 10.0664 8.4834 9.52368C10.2944 11.7458 13.001 13.2073 16.0532 13.3608C15.9902 13.0918 15.9578 12.8115 15.9578 12.5234C15.9578 10.4961 17.6025 8.85132 19.6306 8.85132C20.687 8.85132 21.6411 9.29785 22.3113 10.0117C23.1479 9.84668 23.9336 9.54102 24.6433 9.12036C24.3687 9.97754 23.7866 10.6968 23.0283 11.1516C23.7712 11.0627 24.4792 10.8657 25.1372 10.5732C24.6458 11.3098 24.0225 11.9568 23.3054 12.4751Z"
-                            />
-                        </svg>
-                    </a>
-                    <a
-                        href="javascript:void(0)"
-                        class="
-                ud-flex
-                ud-items-center
-                ud-justify-center
-                ud-w-8
-                ud-h-8
-                ud-founded-full
-                ud-mx-2
-                ud-text-body-color
-                hover:ud-text-primary
-              "
-                        aria-label="social-link"
-                        name="social-link"
-                    >
-                        <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 32 32"
-                            class="ud-fill-current"
-                        >
-                            <path
-                                d="M16 0C7.16479 0 0 7.16479 0 16C0 24.8352 7.16479 32 16 32C24.8352 32 32 24.8352 32 16C32 7.16479 24.8352 0 16 0ZM11.3506 24.1875H7.45386V12.4641H11.3506V24.1875ZM9.40234 10.8633H9.37695C8.06934 10.8633 7.22363 9.96313 7.22363 8.83813C7.22363 7.68774 8.09521 6.8125 9.42822 6.8125C10.7612 6.8125 11.5815 7.68774 11.6069 8.83813C11.6069 9.96313 10.7612 10.8633 9.40234 10.8633ZM25.4014 24.1875H21.5051V17.9158C21.5051 16.3396 20.9409 15.2646 19.531 15.2646C18.4546 15.2646 17.8135 15.9897 17.5317 16.6897C17.4287 16.9402 17.4036 17.2903 17.4036 17.6406V24.1875H13.5071C13.5071 24.1875 13.5581 13.564 13.5071 12.4641H17.4036V14.124C17.9214 13.3252 18.8479 12.189 20.9153 12.189C23.479 12.189 25.4014 13.8645 25.4014 17.4653V24.1875Z"
-                            />
-                        </svg>
-                    </a>
                 </div>
-                <p
-                    class="
-              ud-font-medium ud-text-base ud-text-body-color ud-text-center
-            "
-                >
-                    All rights reserved by © Portfolio creative 2024
-                </p>
             </div>
         </div>
 
@@ -591,7 +396,6 @@
             </svg>
         </div>
     </footer>
-    <!-- ====== Footer Section End  -->
 </template>
 
 <script>

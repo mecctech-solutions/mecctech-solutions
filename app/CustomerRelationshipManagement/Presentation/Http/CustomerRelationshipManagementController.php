@@ -14,35 +14,32 @@ class CustomerRelationshipManagementController
 {
     public function submitContactRequest(Request $request)
     {
-        try {
-            $submitContactRequest = new SubmitContactRequest(App::make(CustomerRepositoryInterface::class),
-                App::make(NotificationSenderServiceInterface::class));
-            $firstName = $request->input('first_name');
-            $lastName = $request->input('last_name');
-            $email = $request->input('email');
-            $message = $request->input('message');
+        $submitContactRequest = new SubmitContactRequest(App::make(CustomerRepositoryInterface::class),
+            App::make(NotificationSenderServiceInterface::class));
+        $name = $request->input('name');
+        $parts = explode(" ", $name);
+        $lastName = array_pop($parts);
+        $firstName = implode(" ", $parts);
 
-            $submitContactRequestInput = new SubmitContactRequestInput([
-                'customer' => [
-                    'customer_number' => null,
-                    'first_name' => $firstName,
-                    'last_name' => $lastName,
-                    'email' => $email
-                ],
-                'message' => $message
-            ]);
+        $email = $request->input('email');
+        $message = $request->input('message');
+        $phone = $request->input('phone');
 
-            $submitContactRequestResult = $submitContactRequest->execute($submitContactRequestInput);
+        $submitContactRequestInput = new SubmitContactRequestInput([
+            'customer' => [
+                'customer_number' => null,
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'phone_number' => $phone
+            ],
+            'message' => $message
+        ]);
 
-            $response["meta"]["created_at"] = time();
-            $response["payload"]["message"] = $submitContactRequestResult->notificationSent()->message();
+        $submitContactRequestResult = $submitContactRequest->execute($submitContactRequestInput);
 
-        } catch (\Exception $e)
-        {
-            $response["meta"]["created_at"] = time();
-            $response["error"]["code"] = $e->getCode();
-            $response["error"]["message"] = $e->getMessage();
-        }
+        $response["meta"]["created_at"] = time();
+        $response["payload"]["message"] = $submitContactRequestResult->notificationSent()->message();
 
         return redirect()->back()->with('submit_contact_request_successful', true);
     }

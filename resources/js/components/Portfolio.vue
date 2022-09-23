@@ -13,7 +13,7 @@
                   ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
                 "
               >
-                Creative Portfolios
+                  Portfolio
               </span>
                         <h2
                             class="
@@ -26,8 +26,7 @@
                             Recent Works
                         </h2>
                         <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                            There are many variations of passages of Lorem Ipsum available
-                            but the majority have suffered alteration in some form.
+                            The below section shows the projects a have worked on in the past
                         </p>
                     </div>
                 </div>
@@ -84,6 +83,22 @@
                             data-filter=".graphics"
                         >
                             Vue.js
+                        </button>
+                        <button
+                            class="
+                  sm:font-semibold
+                  ud-text-sm
+                  sm:ud-text-base
+                  ud-block ud-py-2 ud-px-5
+                  md:ud-mx-2
+                  ud-mb-2 ud-rounded-full ud-text-body-color
+                  hover:ud-bg-primary hover:ud-text-white
+                "
+                            :class="{'active' : this.isSelected('Wordpress')}"
+                            @click="this.selectTag('Wordpress')"
+                            data-filter=".graphics"
+                        >
+                            Wordpress
                         </button>
                         <button
                             class="

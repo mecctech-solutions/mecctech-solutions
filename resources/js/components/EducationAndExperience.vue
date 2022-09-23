@@ -1,6 +1,4 @@
 <template>
-
-    <!-- ====== Education Section Start  -->
     <section
         id="education"
         class="ud-pt-[120px] ud-bg-white ud-relative ud-z-10"
@@ -30,8 +28,7 @@
                                 My Resume
                             </h2>
                             <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+                                After finishing my master studies at Delft University of Technology I started working as a freelance web developer
                             </p>
                         </div>
                     </div>
@@ -71,14 +68,14 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    UI/UX Designer
+                                    Laravel & Vue.js Developer
                                 </h3>
                                 <p
                                     class="
                       ud-font-semibold ud-text-base ud-text-body-color ud-mb-3
                     "
                                 >
-                                    Google INC | New York
+                                    Home Design Shops | Zoetermeer
                                 </p>
                                 <span
                                     class="
@@ -95,17 +92,68 @@
                       ud-mb-5
                     "
                                 >
-                    2011 - 2013
+                    2020 - now
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusm tempor incididunt ut labore et dolore magna
-                                    aliqua Loremipsum dolor sit amet, consectetur adipisicing
-                                    elit.
+                                    I have been working at Home Design Shops as a freelancer for 3 days a week for the past two years. I build many different web applications for them in Laravel, mostly focussed on automating business processes.
                                 </p>
                             </div>
                         </div>
-                        <div class="ud-w-full lg:ud-w-1/2 ud-px-4"></div>
+                        <div class="ud-w-full lg:ud-w-1/2 ud-px-4">
+                            <div
+                                class="
+                    lg:ud-max-w-[428px]
+                    xl:ud-max-w-[490px]
+                    ud-w-full ud-pl-8
+                    sm:ud-pl-11
+                    lg:ud-pl-0 lg:ud-ml-5
+                    ud-relative ud-pb-12
+                  "
+                            >
+                  <span
+                      class="
+                      ud-absolute ud-top-1 ud-left-0
+                      lg:ud--left-11
+                      ud-w-4
+                      ud-h-4
+                      ud-rounded-full
+                      ud-bg-white
+                      ud-border-4
+                      ud-border-primary
+                    "
+                  ></span>
+                                <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
+                                    Freelance Laravel & Vue.js Developer
+                                </h3>
+                                <p
+                                    class="
+                      ud-font-semibold ud-text-base ud-text-body-color ud-mb-3
+                    "
+                                >
+                                    MeccTech Solutions | Delft
+                                </p>
+                                <span
+                                    class="
+                      ud-inline-flex
+                      ud-items-center
+                      ud-justify-center
+                      ud-py-2
+                      ud-px-4
+                      ud-rounded-full
+                      ud-bg-primary
+                      ud-text-white
+                      ud-text-xs
+                      ud-font-semibold
+                      ud-mb-5
+                    "
+                                >
+                    2020 - now
+                  </span>
+                                <p class="ud-font-medium ud-text-base ud-text-body-color">
+                                    Besides working for Home Design Shops I worked on other projects as a freelancer, including web applications (Laravel and Wordpress) as well as embedded software (Arduino and Python / ROS).
+                                </p>
+                            </div>
+                        </div>
                         <div class="ud-w-full lg:ud-w-1/2 ud-px-4"></div>
                         <div class="ud-w-full lg:ud-w-1/2 ud-px-4">
                             <div
@@ -131,14 +179,14 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    Specialization Course
+                                    Graduate (MSc.) Intern Robotics Software Developer
                                 </h3>
                                 <p
                                     class="
                       ud-font-semibold ud-text-base ud-text-body-color ud-mb-3
                     "
                                 >
-                                    Stanford University | New York
+                                    Heemskerk Innovative Technology | Delft
                                 </p>
                                 <span
                                     class="
@@ -155,13 +203,10 @@
                       ud-mb-5
                     "
                                 >
-                    2017 - 2018
+                    2019 - 2021
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusm tempor incididunt ut labore et dolore magna
-                                    aliqua Loremipsum dolor sit amet, consectetur adipisicing
-                                    elit.
+                                    I conducted my <a class="ud-text-primary hover:ud-text-black" href="https://repository.tudelft.nl/islandora/object/uuid%3A346f2743-121c-419f-afa2-96c8745d1003">master thesis</a> for Delft University of Technology at Heemskerk Innovative Technology, which was about applying machine learning on a care robot to learn how to pick and place. The whole system was build using Python, C++ and ROS.
                                 </p>
                             </div>
                         </div>
@@ -189,14 +234,14 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    Web Designer
+                                    Intern Robotic Software Developer
                                 </h3>
                                 <p
                                     class="
                       ud-font-semibold ud-text-base ud-text-body-color ud-mb-3
                     "
                                 >
-                                    Facebook INC | New York
+                                    Heemskerk Innovative Technology & Delft University of Technology | Delft
                                 </p>
                                 <span
                                     class="
@@ -216,10 +261,7 @@
                     2014 - 2016
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusm tempor incididunt ut labore et dolore magna
-                                    aliqua Loremipsum dolor sit amet, consectetur adipisicing
-                                    elit.
+                                    In my internship I contributed to building an autonomous pick-and-place pipeline for a care robot, build using Python, C++ and ROS.
                                 </p>
                             </div>
                         </div>
@@ -249,14 +291,14 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    Bachelor Degree
+                                    Bachelor of Science
                                 </h3>
                                 <p
                                     class="
                       ud-font-semibold ud-text-base ud-text-body-color ud-mb-3
                     "
                                 >
-                                    Stanford University | New York
+                                    Delft University of Technology | Delft
                                 </p>
                                 <span
                                     class="
@@ -273,13 +315,10 @@
                       ud-mb-5
                     "
                                 >
-                    2019 - 2021
+                    2012 - 2016
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusm tempor incididunt ut labore et dolore magna
-                                    aliqua Loremipsum dolor sit amet, consectetur adipisicing
-                                    elit.
+                                    I finished my BSc. in Mechanical Engineering with the final project of building a iMicroFluidic pipette. This was a mechatronic system controlled with an Arduino and an Android app, that was able to handle fluids in the order of micro liters.
                                 </p>
                             </div>
                         </div>
@@ -386,7 +425,6 @@
         </span>
         </div>
     </section>
-    <!-- ====== Education Section End  -->
 </template>
 
 <script>
