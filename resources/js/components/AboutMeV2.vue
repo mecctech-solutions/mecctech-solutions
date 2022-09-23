@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-        <div class="ud-absolute ud-right-0 ud-top-1/2 -translate-y-1/2">
+        <div class="ud-absolute ud-right-0 ud-top-1/2 -translate-y-1/2 ud--z-50">
             <svg
                 width="60"
                 height="120"
