@@ -10,9 +10,7 @@
         ud-flex
         ud-items-center
         ud-transition
-        ud-sticky
-        ud-top-0
-        ud-bg-white
+        ud-bg-transparent
       "
     >
         <div class="ud-container">
