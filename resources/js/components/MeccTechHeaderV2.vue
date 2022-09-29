@@ -2,7 +2,6 @@
     <header
         class="
         header
-        ud-bg-transparent
         ud-absolute
         ud-top-0
         ud-left-0
@@ -11,6 +10,9 @@
         ud-flex
         ud-items-center
         ud-transition
+        ud-sticky
+        ud-top-0
+        ud-bg-white
       "
     >
         <div class="ud-container">
