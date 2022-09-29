@@ -19,8 +19,7 @@
                             Some of My Happy Clients
                         </h2>
                         <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                            There are many variations of passages of Lorem Ipsum available
-                            but the majority have suffered alteration in some form.
+                            The clients I worked with in the past and which I currently work with
                         </p>
                     </div>
                 </div>
@@ -35,7 +34,7 @@
               "
                     >
                         <a
-                            href="https://uideck.com"
+                            href="https://www.homedesignshops.nl/"
                             target="_blank"
                             rel="nofollow noreferrer"
                             class="
@@ -54,10 +53,10 @@
                   ud-transition
                 "
                         >
-                            <img src="images/brands/uideck.svg" alt="uideck" />
+                            <img src="/images/clients/hds_logo.png" alt="home_design_shops" />
                         </a>
                         <a
-                            href="https://tailgrids.com"
+                            href="https://www.depotop.nu/"
                             target="_blank"
                             rel="nofollow noreferrer"
                             class="
@@ -76,10 +75,10 @@
                   ud-transition
                 "
                         >
-                            <img src="images/brands/tailgrids.svg" alt="tailgrids" />
+                            <img src="/images/clients/depotop_logo.svg" alt="depotop" />
                         </a>
                         <a
-                            href="https://lineicons.com"
+                            href="https://www.supra-solutions.com/"
                             target="_blank"
                             rel="nofollow noreferrer"
                             class="
@@ -98,10 +97,10 @@
                   ud-transition
                 "
                         >
-                            <img src="images/brands/lineicons.svg" alt="lineicons" />
+                            <img src="/images/clients/supra_solutions_logo.png" alt="supra_solutions" />
                         </a>
                         <a
-                            href="https://ayroui.com"
+                            href="https://www.ryberg.nl/"
                             target="_blank"
                             rel="nofollow noreferrer"
                             class="
@@ -120,29 +119,7 @@
                   ud-transition
                 "
                         >
-                            <img src="images/brands/ayroui.svg" alt="ayroui" />
-                        </a>
-                        <a
-                            href="https://plainadmin.com"
-                            target="_blank"
-                            rel="nofollow noreferrer"
-                            class="
-                  ud-flex ud-items-center ud-justify-center ud-max-w-[120px]
-                  lg:ud-max-w-[130px]
-                  xl:ud-max-w-[150px]
-                  2xl:ud-max-w-[160px]
-                  ud-mx-3
-                  sm:ud-mx-4
-                  xl:ud-mx-6
-                  2xl:ud-mx-8
-                  ud-py-[15px] ud-grayscale
-                  hover:ud-grayscale-0
-                  ud-opacity-60
-                  hover:ud-opacity-100
-                  ud-transition
-                "
-                        >
-                            <img src="images/brands/plainadmin.svg" alt="plainadmin" />
+                            <img src="/images/clients/ryberg_logo.png" alt="ryberg" />
                         </a>
                     </div>
                 </div>

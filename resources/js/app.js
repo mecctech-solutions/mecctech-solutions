@@ -68,6 +68,7 @@ app.component('education-and-experience', require('./components/EducationAndExpe
 app.component('contact-form-v2', require('./components/ContactFormV2.vue').default);
 app.component('portfolio-details', require('./components/PortfolioDetails.vue').default);
 app.component('portfolio-item-v2', require('./components/PortfolioItemV2.vue').default);
+app.component('clients', require('./components/Clients.vue').default);
 
 app.mount('#app');
 app.use(vClickOutside)
