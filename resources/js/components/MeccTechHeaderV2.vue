@@ -185,7 +185,7 @@
                   ud-transition ud-ease-in-out ud-duration-300
                 "
                         >
-                            Download CV
+                            Contact Me
                         </a>
                     </div>
                 </div>
