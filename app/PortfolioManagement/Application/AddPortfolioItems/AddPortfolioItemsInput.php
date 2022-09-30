@@ -33,6 +33,12 @@ final class AddPortfolioItemsInput
                     ],
                     "tags" => [
                         "*" => ":string"
+                    ],
+                    "bullet_points" => [
+                        "*" => [
+                            "dutch" => ":string",
+                            "english" => ":string"
+                        ]
                     ]
                 ]
             ]

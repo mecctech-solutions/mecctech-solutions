@@ -4,6 +4,7 @@ namespace Tests\Feature\PortfolioManagement;
 
 use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTag;
 use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTagInput;
+use App\PortfolioManagement\Domain\PortfolioItems\BulletPointFactory;
 use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\ImageFactory;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
@@ -33,8 +34,9 @@ class GetPortfolioItemsWithTagTest extends TestCase
         $firstTag = "Tag 1";
         $secondTag = "Tag 2";
         $tags = collect(array($firstTag, $secondTag));
+        $bulletPoints = BulletPointFactory::multiple(10);
 
-        $portfolioItemWithTags = new PortfolioItem(new Title("Title", "Titel"), ImageFactory::placeholder(), new Description("Description", "Beschrijving"), "Website Url", $images, $tags);
+        $portfolioItemWithTags = new PortfolioItem(new Title("Title", "Titel"), ImageFactory::placeholder(), new Description("Description", "Beschrijving"), "Website Url", $images, $tags, $bulletPoints);
         $portfolioItemsWithoutTags = PortfolioItemFactory::create(50);
 
         $this->portfolioItemRepository->add($portfolioItemWithTags);

@@ -2,11 +2,12 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
+use App\PortfolioManagement\Domain\PortfolioItems\BulletPointFactory;
 use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\ImageFactory;
-use App\PortfolioManagement\Domain\PortfolioItems\TagFactory;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Domain\PortfolioItems\TagFactory;
 use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use Tests\TestCase;
 
@@ -24,7 +25,9 @@ class PortfolioItemTest extends TestCase
         $this->websiteUrl = "Test Portfolio Item Website Url";
         $this->images = ImageFactory::placeholders(4);
         $this->tags = TagFactory::multiple(10);
-        $this->portfolioItem = new PortfolioItem($this->title, $this->mainImage, $this->description, $this->websiteUrl, $this->images, $this->tags);
+        $this->bulletPoints = BulletPointFactory::multiple(10);
+
+        $this->portfolioItem = new PortfolioItem($this->title, $this->mainImage, $this->description, $this->websiteUrl, $this->images, $this->tags, $this->bulletPoints);
     }
 
 
@@ -70,6 +73,7 @@ class PortfolioItemTest extends TestCase
     {
         $imagesAsArray = [];
         $tagsAsArray = [];
+        $bulletPointsAsArray = [];
 
         foreach ($this->images as $image)
         {
@@ -81,13 +85,19 @@ class PortfolioItemTest extends TestCase
             $tagsAsArray[] = $tag;
         }
 
+        foreach ($this->bulletPoints as $bulletPoint)
+        {
+            $bulletPointsAsArray[] = $bulletPoint->toArray();
+        }
+
         $expectedArray = [
             "title" => $this->title->toArray(),
             "main_image" => $this->mainImage->asArray(),
             "description" => $this->description->toArray(),
             "website_url" => $this->websiteUrl,
             "images" => $imagesAsArray,
-            "tags" => $tagsAsArray
+            "tags" => $tagsAsArray,
+            "bullet_points" => $bulletPointsAsArray
         ];
 
         self::assertEquals($expectedArray, $this->portfolioItem->asArray());

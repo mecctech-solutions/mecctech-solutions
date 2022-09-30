@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
+use App\PortfolioManagement\Domain\PortfolioItems\BulletPoint;
 use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
@@ -56,6 +57,7 @@ class PortfolioItemFactoryTest extends TestCase
         $tag1 = "Tag Name 1";
         $tag2 = "Tag Name 2";
         $mainImageUrl = "Main Image Url";
+        $bulletPoint1 = new BulletPoint("Test Bullet Point 1", "Test Bullet Punt 1");
 
         $portfolioItemAsArray = [
             "title" => [
@@ -80,6 +82,9 @@ class PortfolioItemFactoryTest extends TestCase
             ],
             "tags" => [
                 $tag1, $tag2
+            ],
+            "bullet_points" => [
+                0 => $bulletPoint1->toArray()
             ]
         ];
 
@@ -96,6 +101,8 @@ class PortfolioItemFactoryTest extends TestCase
         self::assertEquals($image2Url, $portfolioItem->images()[1]->url());
         self::assertEquals($tag1, $portfolioItem->tags()->first());
         self::assertEquals($tag2, $portfolioItem->tags()[1]);
+        self::assertEquals($bulletPoint1, $portfolioItem->bulletPoints()->first());
+
     }
 
     /** @test */
@@ -110,6 +117,7 @@ class PortfolioItemFactoryTest extends TestCase
         $tag1 = "Tag Name 1";
         $tag2 = "Tag Name 2";
         $mainImageUrl = "Main Image Url";
+        $bulletPoint1 = new BulletPoint("Test Bullet Point 1", "Test Bullet Punt 1");
 
         $portfolioItemsAsArray = [
                 0 => [
@@ -129,6 +137,9 @@ class PortfolioItemFactoryTest extends TestCase
                     ],
                     "tags" => [
                         $tag1, $tag2
+                    ],
+                    "bullet_points" => [
+                        0 => $bulletPoint1->toArray()
                     ]
                 ],
             1 => [
@@ -148,6 +159,9 @@ class PortfolioItemFactoryTest extends TestCase
                 ],
                 "tags" => [
                     $tag1, $tag2
+                ],
+                "bullet_points" => [
+                    0 => $bulletPoint1->toArray()
                 ]
             ]
         ];
