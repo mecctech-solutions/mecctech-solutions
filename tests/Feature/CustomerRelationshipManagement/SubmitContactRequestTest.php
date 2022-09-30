@@ -5,9 +5,7 @@ namespace Tests\Feature\CustomerRelationshipManagement;
 use App\CustomerRelationshipManagement\Application\SubmitContactRequest\SubmitContactRequest;
 use App\CustomerRelationshipManagement\Application\SubmitContactRequest\SubmitContactRequestInput;
 use App\CustomerRelationshipManagement\Domain\Customers\Customer;
-use App\CustomerRelationshipManagement\Domain\Exceptions\CustomerNotFoundException;
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
-use App\CustomerRelationshipManagement\Domain\Repositories\CustomerRepositoryInterface;
 use App\CustomerRelationshipManagement\Domain\Services\NotificationSenderServiceInterface;
 use Mockery\MockInterface;
 use Tests\TestCase;
@@ -33,7 +31,8 @@ class SubmitContactRequestTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'johndoe@example.com',
-            'message' => 'Test Message'
+            'message' => 'Test Message',
+            'phone' => '0612345678'
         ]);
 
         // Then
@@ -51,7 +50,8 @@ class SubmitContactRequestTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'johndoe@example.com',
-            'message' => 'Test Message'
+            'message' => 'Test Message',
+            'phone' => '0612345678'
         ]);
 
         // Then
@@ -62,7 +62,7 @@ class SubmitContactRequestTest extends TestCase
     public function it_should_add_customer_if_it_does_not_exist(){
 
         // Given
-        $customer = new Customer(null, "John", "Doe", "johndoe@example.com");
+        $customer = new Customer(null, "John", "Doe", "johndoe@example.com", '0612345678');
         $message = "johndoe@example.com";
         $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) use ($message) {
             $mock->shouldReceive('send')
@@ -88,7 +88,7 @@ class SubmitContactRequestTest extends TestCase
     public function it_should_send_notification_of_new_message(){
 
         // Given
-        $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com");
+        $customer = new Customer(uniqid(), "John", "Doe", "johndoe@example.com", '0612345678');
         $message = "Test Message";
 
         $submitContactRequest = new SubmitContactRequest($this->customerRepository,
@@ -110,7 +110,7 @@ class SubmitContactRequestTest extends TestCase
     /** @test */
     public function it_should_create_a_customer_number_when_customer_does_not_exist(){
 
-        $customer = new Customer(null, "John", "Doe", "johndoe@example.com");
+        $customer = new Customer(null, "John", "Doe", "johndoe@example.com", '0612345678');
         $message = "johndoe@example.com";
         $notificationSenderServiceMock = $this->mock(NotificationSenderServiceInterface::class, function (MockInterface $mock) use ($message) {
             $mock->shouldReceive('send')

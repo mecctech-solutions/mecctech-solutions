@@ -11,19 +11,22 @@ class Customer implements Arrayable
     private string $firstName;
     private string $lastName;
     private string $email;
+    private string $phoneNumber;
 
     /**
      * @param string|null $customerNumber
      * @param string $firstName
      * @param string $lastName
      * @param string $email
+     * @param string $phoneNumber
      */
-    public function __construct(?string $customerNumber, string $firstName, string $lastName, string $email)
+    public function __construct(?string $customerNumber, string $firstName, string $lastName, string $email, string $phoneNumber)
     {
         $this->customerNumber = $customerNumber;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
+        $this->phoneNumber = $phoneNumber;
     }
 
     public function customerNumber(): ?string
@@ -71,13 +74,19 @@ class Customer implements Arrayable
         return $this->firstName." ".$this->lastName;
     }
 
+    public function phoneNumber(): string
+    {
+        return $this->phoneNumber;
+    }
+
     public function toArray()
     {
         return [
             "customer_number" => $this->customerNumber,
             "first_name" => $this->firstName,
             "last_name" => $this->lastName,
-            "email" => $this->email
+            "email" => $this->email,
+            'phone_number' => $this->phoneNumber
         ];
     }
 

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $first_name
  * @property string $last_name
+ * @property string $phone_number
  */
 class EloquentCustomer extends Model
 {
