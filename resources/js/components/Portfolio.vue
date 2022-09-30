@@ -144,7 +144,7 @@
                 ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]
               "
                     >
-                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="portfolio_item.title.english" :description="portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item-v2>
+                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="portfolio_item.title.english" :description="portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images" :bullet_points="portfolio_item.bullet_points"></portfolio-item-v2>
                     </div>
                 </div>
             </div>
