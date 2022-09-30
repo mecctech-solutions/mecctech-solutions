@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script defer src="{{ mix('js/app.js') }}"></script>
     <script src="/lang-{{ app()->getLocale() }}.js"></script>
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="GYAWFWYG" defer></script>
+    <!-- / Fathom -->
 </head>
     <body>
 
