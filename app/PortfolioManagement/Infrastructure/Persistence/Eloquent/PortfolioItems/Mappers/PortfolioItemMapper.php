@@ -2,14 +2,15 @@
 
 namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers;
 
+use App\PortfolioManagement\Domain\PortfolioItems\BulletPoint;
 use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\Title;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentBulletPoint;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentImage;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentTag;
-use phpDocumentor\Reflection\DocBlock\TagFactory;
 
 class PortfolioItemMapper
 {
@@ -42,7 +43,15 @@ class PortfolioItemMapper
             $images->push(new Image($imageModel->url));
         }
 
-        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
+        $bulletPoints = collect();
+        $bulletPointModels = $model->bulletPoints;
+
+        foreach ($bulletPointModels as $bulletPointModel)
+        {
+            $bulletPoints->push(new BulletPoint($bulletPointModel->text_nl, $bulletPointModel->text_en));
+        }
+
+        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
     }
 
     public static function toEloquent(PortfolioItem $portfolioItem): EloquentPortfolioItem
@@ -66,6 +75,14 @@ class PortfolioItemMapper
         {
             $model->images[] = new EloquentImage([
                 "url" => $image->url()
+            ]);
+        }
+
+        foreach ($portfolioItem->bulletPoints() as $bulletPoint)
+        {
+            $model->bulletPoints[] = new EloquentBulletPoint([
+                "text_en" => $bulletPoint->english(),
+                "text_nl" => $bulletPoint->dutch(),
             ]);
         }
 

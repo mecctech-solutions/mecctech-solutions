@@ -13,6 +13,7 @@ class PortfolioItem extends ValueObject implements Arrayable
     private Description $description;
     private string $websiteUrl;
     private Image $mainImage;
+
     /**
      * @var Collection<Image>
      */
@@ -23,7 +24,12 @@ class PortfolioItem extends ValueObject implements Arrayable
      */
     private Collection $tags;
 
-    public function __construct(Title $title, Image $mainImage, Description $description, string $websiteUrl, Collection $images, Collection $tags)
+    /**
+     * @var Collection<BulletPoint>
+     */
+    private Collection $bulletPoints;
+
+    public function __construct(Title $title, Image $mainImage, Description $description, string $websiteUrl, Collection $images, Collection $tags, Collection $bulletPoints)
     {
         $this->title = $title;
         $this->mainImage = $mainImage;
@@ -31,6 +37,7 @@ class PortfolioItem extends ValueObject implements Arrayable
         $this->websiteUrl = $websiteUrl;
         $this->images = $images;
         $this->tags = $tags;
+        $this->bulletPoints = $bulletPoints;
     }
 
     public function title(): Title
@@ -63,6 +70,11 @@ class PortfolioItem extends ValueObject implements Arrayable
         return $this->tags;
     }
 
+    public function bulletPoints()
+    {
+        return $this->bulletPoints;
+    }
+
     public function hasTag(string $tag): bool
     {
         foreach ($this->tags as $presentTag)
@@ -80,6 +92,7 @@ class PortfolioItem extends ValueObject implements Arrayable
     {
         $imagesAsArray = [];
         $tagsAsArray = [];
+        $bulletPointsAsArray = [];
 
         foreach ($this->images as $image)
         {
@@ -103,7 +116,8 @@ class PortfolioItem extends ValueObject implements Arrayable
             ],
             "website_url" => $this->websiteUrl,
             "images" => $imagesAsArray,
-            "tags" => $tagsAsArray
+            "tags" => $tagsAsArray,
+            'bullet_points' => $this->bulletPoints->toArray()
         ];
     }
 

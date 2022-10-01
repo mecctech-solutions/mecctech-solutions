@@ -168,25 +168,21 @@
                     <div
                         class="sm:ud-flex ud-justify-end ud-hidden ud-pr-16 lg:ud-pr-0"
                     >
-                        <a
+                        <div
                             href="#contact"
                             class="
-                  ud-text-base
-                  ud-font-bold
-                  ud-text-white
-                  ud-bg-primary
-                  ud-rounded-full
                   ud-py-3
                   ud-px-8
                   md:ud-px-9
                   lg:ud-px-8
                   xl:ud-px-9
-                  hover:ud-shadow-signUp hover:ud-bg-opacity-90
-                  ud-transition ud-ease-in-out ud-duration-300
                 "
                         >
-                            Download CV
-                        </a>
+                            <div class="ud-flex ud-space-x-1 ud-mb-1">
+                                <a @click="changeLocale('nl')" class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img style="width: 30px" src="/icons/netherlands.png" alt=""></a>
+                                <a @click="changeLocale('en')" class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img style="width: 30px" src="/icons/uk.png" alt=""></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,6 +202,10 @@ export default {
         toggleNavbar()
         {
             this.navbarActive = ! this.navbarActive;
+        },
+        changeLocale(locale) {
+            this.$lang.setLocale(locale);
+            this.$store.commit('changeLocale', locale);
         },
     }
 }

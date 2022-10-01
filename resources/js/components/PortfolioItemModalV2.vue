@@ -6,12 +6,19 @@
             <i @click="nextImage" class="fa-solid fa-angle-right ud-text-xl md:ud-text-5xl ud-p-5 ud-pr-10 ud-pl-10 ud-text-primary hover:ud-scale-125 ud-transform ud-transition ud-ease-in-out ud-duration-500 ud-cursor-pointer"></i>
         </div>
         <div class="ud-text-left ud-p-10 ud-mb-10">
-            <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
-            <p>{{ description }}</p>
+            <div class="ud-flex ud-items-center ud-space-x-3">
+                <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
+                <p v-for="tag in this.tags">{{ tag }}</p>
+            </div>
+            <ul class="ud-mt-4">
+                <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
+                    {{ bullet_point.english }}
+                </li>
+            </ul>
         </div>
 
         <div class="ud-w-1/6 ud-inline ud-bg-primary md:ud-pt-6 ud-pt-3 md:ud-pb-5 ud-pb-3 md:ud-pr-10 ud-pr-5 md:ud-pl-10 ud-pl-5 md:ud-mt-32 ud-mt-8 ud-ml-10 ud-mr-10 hover:ud-bg-white hover:ud-text-primary ud-transition ud-ease-in-out ud-duration-500 ud-cursor-pointer ud-text-white">
-            <a :href="website_url" class="ud-text-sm md:ud-text-xl"><i class="fa-solid fa-desktop ud-pr-5 ud-text-sm md:ud-text-xl"></i> VIEW SITE</a>
+            <a :href="website_url" class="ud-text-sm md:ud-text-xl"><i class="fa-solid fa-desktop ud-pr-5 ud-text-sm md:ud-text-xl"></i> VIEW SITE / CODE</a>
         </div>
     </div>
     <div v-else-if="is_mobile" class="ud-fixed ud-z-50 ud-top-0 ud-h-full ud-m-0 ud-bg-white ud-left-0">
@@ -23,12 +30,22 @@
         </div>
 
         <div class="ud-p-5 ud-mb-5">
-            <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
-            <p class="ud-text-sm">{{ description }}</p>
+            <div class="ud-mb-4">
+                <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
+                <div class="ud-flex ud-space-x-3 ud-text-sm">
+                    <p v-for="tag in this.tags">{{ tag }}</p>
+                </div>
+            </div>
+
+            <ul class="ud-space-y-3 ud-mt-4">
+                <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
+                    {{ bullet_point.english }}
+                </li>
+            </ul>
         </div>
         <div class="ud-flex ud-justify-between ud-bottom-0">
             <div>
-                <a :href="website_url" class="ud-text-sm md:ud-text-xl ud-bg-primary ud-pt-3 ud-pb-3 ud-pr-5 ud-pl-5 ud-ml-4"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE</a>
+                <a :href="website_url" class="ud-text-sm md:ud-text-xl ud-bg-primary ud-pt-3 ud-pb-3 ud-pr-5 ud-pl-5 ud-ml-4"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> VIEW SITE / CODE</a>
             </div>
         </div>
         <i @click="emitTurnOffModalEvent" class="fa-solid fa-xmark ud-cursor-pointer ud-p-5 ud-text-3xl ud-fixed ud-right-0 ud-bottom-0"></i>
@@ -37,7 +54,7 @@
 
 <script>
     export default {
-        props: ['title', 'tags', 'images', 'description', 'website_url'],
+        props: ['title', 'tags', 'images', 'description', 'website_url', 'bullet_points'],
         data()  {
             return {
                 current_image_url: '',

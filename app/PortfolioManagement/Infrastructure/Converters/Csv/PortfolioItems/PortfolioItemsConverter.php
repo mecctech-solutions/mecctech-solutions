@@ -7,7 +7,6 @@ use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Infrastructure\Exceptions\PortfolioItemsConverterOperationException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
-use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class PortfolioItemsConverter
 {
@@ -16,6 +15,9 @@ class PortfolioItemsConverter
 
     }
 
+    /**
+     * @throws PortfolioItemsConverterOperationException
+     */
     public static function toEntity(UploadedFile $uploadedFile): Collection
     {
         $path = $uploadedFile->getRealPath();
@@ -26,9 +28,9 @@ class PortfolioItemsConverter
 
         while (($row = fgetcsv($file)) !== FALSE)
         {
-            if (sizeof($row) !== 17)
+            if (sizeof($row) !== 23)
             {
-                throw new PortfolioItemsConverterOperationException("Excel file should have 17 columns");
+                throw new PortfolioItemsConverterOperationException("Excel file should have 23 columns");
             }
 
             if ($rowNumber === 0)
@@ -110,6 +112,33 @@ class PortfolioItemsConverter
                 $tags[] = $row[16];
             }
 
+            // Bullet points
+            $bulletPoints = [];
+            if ($row[17] !== "" && $row[18] !== "")
+            {
+                $bulletPoints[] = [
+                    "dutch" => $row[17],
+                    "english" => $row[18]
+                ];
+            }
+
+
+            if ($row[19] !== "" && $row[20] !== "")
+            {
+                $bulletPoints[] = [
+                    "dutch" => $row[19],
+                    "english" => $row[20]
+                ];
+            }
+
+            if ($row[21] !== "" && $row[22] !== "")
+            {
+                $bulletPoints[] = [
+                    "dutch" => $row[21],
+                    "english" => $row[22]
+                ];
+            }
+
             $portfolioItem = [
                 "title" => [
                     "english" => $row[0],
@@ -124,7 +153,8 @@ class PortfolioItemsConverter
                 ],
                 "website_url" => $row[5],
                 "images" => $images,
-                "tags" => $tags
+                "tags" => $tags,
+                "bullet_points" => $bulletPoints
             ];
 
             $portfolioItems->push(PortfolioItemFactory::fromArray($portfolioItem));

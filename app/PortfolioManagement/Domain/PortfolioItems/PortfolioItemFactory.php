@@ -2,8 +2,9 @@
 
 namespace App\PortfolioManagement\Domain\PortfolioItems;
 
-use Illuminate\Support\Collection;
 use Faker;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class PortfolioItemFactory
 {
@@ -43,7 +44,8 @@ class PortfolioItemFactory
                 $tags = TagFactory::multiple(2);
             }
 
-            $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
+            $bulletPoints = Arr::get($attributes, 'bullet_points', BulletPointFactory::multiple(rand(1, 10)));
+            $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
             $result->push($portfolioItem);
         }
 
@@ -63,8 +65,11 @@ class PortfolioItemFactory
             }, $portfolioItemAsArray["images"]));
 
         $tags = collect($portfolioItemAsArray["tags"]);
+        $bulletPoints = collect(array_map(function ($bulletPoint) {
+            return new BulletPoint($bulletPoint["dutch"], Arr::get($bulletPoint, "english"));
+        }, $portfolioItemAsArray["bullet_points"]));
 
-        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags);
+        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
     }
 
     public static function multipleFromArray(array $portfolioItemsAsArray): Collection

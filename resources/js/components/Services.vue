@@ -14,7 +14,7 @@
                     ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
                   "
                 >
-                  What I Offer?
+                  How I work?
                 </span>
                             <h2
                                 class="
@@ -24,11 +24,8 @@
                     ud-mb-5
                   "
                             >
-                                My Services
+                                My Approach
                             </h2>
-                            <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                                Apart from writing software with Laravel and Vue.js I offer the following services
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +93,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                I make sure it is clear what you want me to build
+                                I make sure it is clear what you want me to build, before writing any software
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -273,7 +270,7 @@
                     ud-mb-3
                   "
                             >
-                                Code Design
+                                Tests
                             </h3>
                             <p
                                 class="
@@ -282,193 +279,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                I design my code before building, following Domain Driven Design
-                            </p>
-                            <div>
-                  <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
-                    <svg
-                        width="218"
-                        height="109"
-                        viewBox="0 0 218 109"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                          opacity="0.05"
-                          cx="156.5"
-                          cy="-47.5"
-                          r="156.5"
-                          fill="white"
-                      />
-                      <circle
-                          opacity="0.08"
-                          cx="210"
-                          cy="6"
-                          r="62"
-                          fill="white"
-                      />
-                    </svg>
-                  </span>
-                                <span class="ud-absolute ud-bottom-1 ud-left-1 ud--z-1">
-                    <svg
-                        width="23"
-                        height="32"
-                        viewBox="0 0 23 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                          cx="21.262"
-                          cy="1.12081"
-                          r="1.12081"
-                          transform="rotate(90 21.262 1.12081)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="21.262"
-                          cy="30.4863"
-                          r="1.12081"
-                          transform="rotate(90 21.262 30.4863)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="1.76005"
-                          cy="1.12081"
-                          r="1.12081"
-                          transform="rotate(90 1.76005 1.12081)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="1.76005"
-                          cy="30.4863"
-                          r="1.12081"
-                          transform="rotate(90 1.76005 30.4863)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="11.6228"
-                          cy="1.12081"
-                          r="1.12081"
-                          transform="rotate(90 11.6228 1.12081)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="11.6228"
-                          cy="30.4863"
-                          r="1.12081"
-                          transform="rotate(90 11.6228 30.4863)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="21.262"
-                          cy="10.9839"
-                          r="1.12081"
-                          transform="rotate(90 21.262 10.9839)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="1.76005"
-                          cy="10.9839"
-                          r="1.12081"
-                          transform="rotate(90 1.76005 10.9839)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="11.6228"
-                          cy="10.9839"
-                          r="1.12081"
-                          transform="rotate(90 11.6228 10.9839)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="21.262"
-                          cy="20.8469"
-                          r="1.12081"
-                          transform="rotate(90 21.262 20.8469)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="1.76005"
-                          cy="20.8469"
-                          r="1.12081"
-                          transform="rotate(90 1.76005 20.8469)"
-                          fill="white"
-                      />
-                      <circle
-                          cx="11.6228"
-                          cy="20.8469"
-                          r="1.12081"
-                          transform="rotate(90 11.6228 20.8469)"
-                          fill="white"
-                      />
-                    </svg>
-                  </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ud-w-full md:ud-w-1/2 xl:ud-w-1/4 ud-px-4">
-                        <div
-                            class="
-                  ud-bg-white ud-group
-                  hover:ud-bg-primary
-                  ud-shadow-service
-                  ud-py-10
-                  ud-px-8
-                  ud-rounded-xl
-                  ud-relative
-                  ud-z-10
-                  ud-overflow-hidden
-                  ud-text-center
-                  ud-duration-200
-                  ud-mb-8
-                "
-                        >
-                            <div
-                                class="
-                    ud-mx-auto
-                    ud-w-20
-                    ud-h-20
-                    ud-mb-6
-                    ud-rounded-full
-                    ud-bg-primary
-                    ud-flex
-                    ud-items-center
-                    ud-justify-center
-                    ud-text-white
-                    group-hover:ud-bg-white group-hover:ud-text-primary
-                  "
-                            >
-                                <svg
-                                    width="40"
-                                    height="25"
-                                    viewBox="0 0 40 25"
-                                    class="ud-fill-current"
-                                >
-                                    <path
-                                        d="M20 0.166748C21.5471 0.166748 23.0308 0.78133 24.1248 1.87529C25.2188 2.96925 25.8333 4.45298 25.8333 6.00008C25.8333 7.54718 25.2188 9.03091 24.1248 10.1249C23.0308 11.2188 21.5471 11.8334 20 11.8334C18.4529 11.8334 16.9692 11.2188 15.8752 10.1249C14.7812 9.03091 14.1667 7.54718 14.1667 6.00008C14.1667 4.45298 14.7812 2.96925 15.8752 1.87529C16.9692 0.78133 18.4529 0.166748 20 0.166748ZM8.33333 4.33341C9.26667 4.33341 10.1333 4.58341 10.8833 5.03341C10.6333 7.41675 11.3333 9.78341 12.7667 11.6334C11.9333 13.2334 10.2667 14.3334 8.33333 14.3334C7.00725 14.3334 5.73548 13.8066 4.7978 12.8689C3.86012 11.9313 3.33333 10.6595 3.33333 9.33341C3.33333 8.00733 3.86012 6.73556 4.7978 5.79788C5.73548 4.8602 7.00725 4.33341 8.33333 4.33341ZM31.6667 4.33341C32.9927 4.33341 34.2645 4.8602 35.2022 5.79788C36.1399 6.73556 36.6667 8.00733 36.6667 9.33341C36.6667 10.6595 36.1399 11.9313 35.2022 12.8689C34.2645 13.8066 32.9927 14.3334 31.6667 14.3334C29.7333 14.3334 28.0667 13.2334 27.2333 11.6334C28.6667 9.78341 29.3667 7.41675 29.1167 5.03341C29.8667 4.58341 30.7333 4.33341 31.6667 4.33341ZM9.16667 21.4167C9.16667 17.9667 14.0167 15.1667 20 15.1667C25.9833 15.1667 30.8333 17.9667 30.8333 21.4167V24.3334H9.16667V21.4167ZM0 24.3334V21.8334C0 19.5167 3.15 17.5667 7.41667 17.0001C6.43333 18.1334 5.83333 19.7001 5.83333 21.4167V24.3334H0ZM40 24.3334H34.1667V21.4167C34.1667 19.7001 33.5667 18.1334 32.5833 17.0001C36.85 17.5667 40 19.5167 40 21.8334V24.3334Z"
-                                    />
-                                </svg>
-                            </div>
-                            <h3
-                                class="
-                    ud-font-bold ud-text-black ud-text-xl
-                    sm:ud-text-2xl
-                    lg:ud-text-xl
-                    2xl:ud-text-2xl
-                    group-hover:ud-text-white
-                    ud-mb-3
-                  "
-                            >
-                                Testing
-                            </h3>
-                            <p
-                                class="
-                    ud-font-medium ud-text-body-color
-                    group-hover:ud-text-white
-                    ud-leading-relaxed ud-text-sm
-                  "
-                            >
-                                I make sure my Laravel code is thoroughly tested
+                                By first writing tests, I make sure the requirements will be covered if the tests pass
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -645,6 +456,192 @@
                     ud-mb-3
                   "
                             >
+                                Building
+                            </h3>
+                            <p
+                                class="
+                    ud-font-medium ud-text-body-color
+                    group-hover:ud-text-white
+                    ud-leading-relaxed ud-text-sm
+                  "
+                            >
+                                Using software design patterns I make sure the code is extensible and maintainable
+                            </p>
+                            <div>
+                  <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
+                    <svg
+                        width="218"
+                        height="109"
+                        viewBox="0 0 218 109"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                          opacity="0.05"
+                          cx="156.5"
+                          cy="-47.5"
+                          r="156.5"
+                          fill="white"
+                      />
+                      <circle
+                          opacity="0.08"
+                          cx="210"
+                          cy="6"
+                          r="62"
+                          fill="white"
+                      />
+                    </svg>
+                  </span>
+                                <span class="ud-absolute ud-bottom-1 ud-left-1 ud--z-1">
+                    <svg
+                        width="23"
+                        height="32"
+                        viewBox="0 0 23 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                          cx="21.262"
+                          cy="1.12081"
+                          r="1.12081"
+                          transform="rotate(90 21.262 1.12081)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="21.262"
+                          cy="30.4863"
+                          r="1.12081"
+                          transform="rotate(90 21.262 30.4863)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="1.76005"
+                          cy="1.12081"
+                          r="1.12081"
+                          transform="rotate(90 1.76005 1.12081)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="1.76005"
+                          cy="30.4863"
+                          r="1.12081"
+                          transform="rotate(90 1.76005 30.4863)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="11.6228"
+                          cy="1.12081"
+                          r="1.12081"
+                          transform="rotate(90 11.6228 1.12081)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="11.6228"
+                          cy="30.4863"
+                          r="1.12081"
+                          transform="rotate(90 11.6228 30.4863)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="21.262"
+                          cy="10.9839"
+                          r="1.12081"
+                          transform="rotate(90 21.262 10.9839)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="1.76005"
+                          cy="10.9839"
+                          r="1.12081"
+                          transform="rotate(90 1.76005 10.9839)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="11.6228"
+                          cy="10.9839"
+                          r="1.12081"
+                          transform="rotate(90 11.6228 10.9839)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="21.262"
+                          cy="20.8469"
+                          r="1.12081"
+                          transform="rotate(90 21.262 20.8469)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="1.76005"
+                          cy="20.8469"
+                          r="1.12081"
+                          transform="rotate(90 1.76005 20.8469)"
+                          fill="white"
+                      />
+                      <circle
+                          cx="11.6228"
+                          cy="20.8469"
+                          r="1.12081"
+                          transform="rotate(90 11.6228 20.8469)"
+                          fill="white"
+                      />
+                    </svg>
+                  </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ud-w-full md:ud-w-1/2 xl:ud-w-1/4 ud-px-4">
+                        <div
+                            class="
+                  ud-bg-white ud-group
+                  hover:ud-bg-primary
+                  ud-shadow-service
+                  ud-py-10
+                  ud-px-8
+                  ud-rounded-xl
+                  ud-relative
+                  ud-z-10
+                  ud-overflow-hidden
+                  ud-text-center
+                  ud-duration-200
+                  ud-mb-8
+                "
+                        >
+                            <div
+                                class="
+                    ud-mx-auto
+                    ud-w-20
+                    ud-h-20
+                    ud-mb-6
+                    ud-rounded-full
+                    ud-bg-primary
+                    ud-flex
+                    ud-items-center
+                    ud-justify-center
+                    ud-text-white
+                    group-hover:ud-bg-white group-hover:ud-text-primary
+                  "
+                            >
+                                <svg
+                                    width="40"
+                                    height="25"
+                                    viewBox="0 0 40 25"
+                                    class="ud-fill-current"
+                                >
+                                    <path
+                                        d="M20 0.166748C21.5471 0.166748 23.0308 0.78133 24.1248 1.87529C25.2188 2.96925 25.8333 4.45298 25.8333 6.00008C25.8333 7.54718 25.2188 9.03091 24.1248 10.1249C23.0308 11.2188 21.5471 11.8334 20 11.8334C18.4529 11.8334 16.9692 11.2188 15.8752 10.1249C14.7812 9.03091 14.1667 7.54718 14.1667 6.00008C14.1667 4.45298 14.7812 2.96925 15.8752 1.87529C16.9692 0.78133 18.4529 0.166748 20 0.166748ZM8.33333 4.33341C9.26667 4.33341 10.1333 4.58341 10.8833 5.03341C10.6333 7.41675 11.3333 9.78341 12.7667 11.6334C11.9333 13.2334 10.2667 14.3334 8.33333 14.3334C7.00725 14.3334 5.73548 13.8066 4.7978 12.8689C3.86012 11.9313 3.33333 10.6595 3.33333 9.33341C3.33333 8.00733 3.86012 6.73556 4.7978 5.79788C5.73548 4.8602 7.00725 4.33341 8.33333 4.33341ZM31.6667 4.33341C32.9927 4.33341 34.2645 4.8602 35.2022 5.79788C36.1399 6.73556 36.6667 8.00733 36.6667 9.33341C36.6667 10.6595 36.1399 11.9313 35.2022 12.8689C34.2645 13.8066 32.9927 14.3334 31.6667 14.3334C29.7333 14.3334 28.0667 13.2334 27.2333 11.6334C28.6667 9.78341 29.3667 7.41675 29.1167 5.03341C29.8667 4.58341 30.7333 4.33341 31.6667 4.33341ZM9.16667 21.4167C9.16667 17.9667 14.0167 15.1667 20 15.1667C25.9833 15.1667 30.8333 17.9667 30.8333 21.4167V24.3334H9.16667V21.4167ZM0 24.3334V21.8334C0 19.5167 3.15 17.5667 7.41667 17.0001C6.43333 18.1334 5.83333 19.7001 5.83333 21.4167V24.3334H0ZM40 24.3334H34.1667V21.4167C34.1667 19.7001 33.5667 18.1334 32.5833 17.0001C36.85 17.5667 40 19.5167 40 21.8334V24.3334Z"
+                                    />
+                                </svg>
+                            </div>
+                            <h3
+                                class="
+                    ud-font-bold ud-text-black ud-text-xl
+                    sm:ud-text-2xl
+                    lg:ud-text-xl
+                    2xl:ud-text-2xl
+                    group-hover:ud-text-white
+                    ud-mb-3
+                  "
+                            >
                                 User Interface
                             </h3>
                             <p
@@ -654,7 +651,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Visually appealing, dynamic and responsive UI
+                                If necessary, I make a visually appealing, dynamic and responsive UI
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">

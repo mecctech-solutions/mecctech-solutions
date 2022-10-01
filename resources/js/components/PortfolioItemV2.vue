@@ -66,29 +66,29 @@
                 >
                     {{ this.title }}
                 </a>
+                <ul class="ud-text-sm ud-font-normal ud-flex ud-space-x-3">
+
+                    <li v-for="tag in this.tags" href="">{{ tag }}</li>
+
+                </ul>
             </h3>
             <div
                 @click="this.toggleModal">
-                <p
+                <ul
                     class="ud-font-medium ud-text-base ud-text-body-color ud-cursor-pointer"
-                    style="overflow: hidden;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 3;
-                             -webkit-box-orient: vertical;"
                 >
-                    {{ this.description }}
-                </p>
+                </ul>
             </div>
         </div>
 
-        <portfolio-item-modal-v2 :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal-v2>
+        <portfolio-item-modal-v2 :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" :bullet_points="this.bullet_points" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal-v2>
 
     </div>
 </template>
 
 <script>
     export default {
-        props: ['title', 'tags', 'main_image_url', 'images', 'description', 'website_url'],
+        props: ['title', 'tags', 'main_image_url', 'images', 'description', 'website_url', 'bullet_points'],
         data() {
             return {
                 view_modal: false

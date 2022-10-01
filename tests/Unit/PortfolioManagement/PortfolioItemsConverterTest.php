@@ -4,8 +4,6 @@ namespace Tests\Unit\PortfolioManagement;
 
 use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
 use Illuminate\Http\UploadedFile;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Tests\TestCase;
 
 class PortfolioItemsConverterTest extends TestCase
@@ -20,8 +18,8 @@ class PortfolioItemsConverterTest extends TestCase
     {
         // Given
         $portfolioItems = array(
-            array("Title", "Titel", "Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4"),
-            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "image-1-url", "image-2-url", "image-3-url", "image-4-url", "image-5-url", "image-6-url", "image-7-url", "Tag 1", "Tag 2", "Tag 3", "Tag 4")
+            array("Title", "Titel", "Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Bullet 1 NL", "Bullet 1 NL", "Bullet 2 NL", "Bullet 2 NL", "Bullet 3 NL", "Bullet 3 EN"),
+            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "image-1-url", "image-2-url", "image-3-url", "image-4-url", "image-5-url", "image-6-url", "image-7-url", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Bullet 1", "Bullet 2", "Bullet 3", "Bullet 4", "Bullet 5", "Bullet 6")
         );
 
         $filename = 'portfolio_items.csv';
@@ -50,8 +48,8 @@ class PortfolioItemsConverterTest extends TestCase
 
         // Given
         $portfolioItems = array(
-            array("Title", "Titel", "Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4"),
-            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "", "", "", "", "", "", "", "Tag 1", "Tag 2", "Tag 3", "Tag 4")
+            array("Title", "Titel", "Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Bullet 1 NL", "Bullet 1 NL", "Bullet 2 NL", "Bullet 2 NL", "Bullet 3 NL", "Bullet 3 EN"),
+            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "", "", "", "", "", "", "", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Bullet 1", "bullet 2", "Bullet 3", "Bullet 4", "Bullet 5", "Bullet 6")
         );
 
         $filename = 'portfolio_items.csv';
@@ -79,8 +77,8 @@ class PortfolioItemsConverterTest extends TestCase
 
         // Given
         $portfolioItems = array(
-            array("Title", "Titel","Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4"),
-            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "image-1-url", "image-2-url", "image-3-url", "image-4-url", "image-5-url", "image-6-url", "image-7-url", "", "", "", "")
+            array("Title", "Titel","Main Image URL", "Description", "Beschrijving", "Website URL", "Image 1 URL", "Image 2 URL", "Image 3 URL", "Image 4 URL", "Image 5 URL", "Image 6 URL", "Image 7 URL", "Tag 1", "Tag 2", "Tag 3", "Tag 4", "Bullet 1 NL", "Bullet 1 NL", "Bullet 2 NL", "Bullet 2 NL", "Bullet 3 NL", "Bullet 3 EN"),
+            array("Test Title 1", "Test Titel 1", "main-image-url-1", 'Description 1', "Beschrijving 1", 'website-url-1', "image-1-url", "image-2-url", "image-3-url", "image-4-url", "image-5-url", "image-6-url", "image-7-url", "", "", "", "", "Bullet 1", "bullet 2", "Bullet 3", "Bullet 4", "Bullet 5", "Bullet 6")
         );
 
         $filename = 'portfolio_items.csv';

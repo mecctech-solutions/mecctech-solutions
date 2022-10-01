@@ -7,6 +7,7 @@
     <mecc-tech-header-v2></mecc-tech-header-v2>
     <hero-section></hero-section>
     <about-me-v2></about-me-v2>
+    <skills-v2></skills-v2>
     <services></services>
     <portfolio get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"></portfolio>
 {{--    <cta></cta>--}}
