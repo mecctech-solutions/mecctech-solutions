@@ -10,7 +10,7 @@
                 <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
                 <p v-for="tag in this.tags">{{ tag }}</p>
             </div>
-            <ul>
+            <ul class="ud-mt-4">
                 <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
                     {{ bullet_point.english }}
                 </li>
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <ul class="ud-space-y-3">
+            <ul class="ud-space-y-3 ud-mt-4">
                 <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
                     {{ bullet_point.english }}
                 </li>
