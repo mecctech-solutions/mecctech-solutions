@@ -66,6 +66,11 @@
                 >
                     {{ this.title }}
                 </a>
+                <ul class="ud-text-sm ud-font-normal ud-flex ud-space-x-3">
+
+                    <li v-for="tag in this.tags" href="">{{ tag }}</li>
+
+                </ul>
             </h3>
             <div
                 @click="this.toggleModal">

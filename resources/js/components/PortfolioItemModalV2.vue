@@ -6,9 +6,12 @@
             <i @click="nextImage" class="fa-solid fa-angle-right ud-text-xl md:ud-text-5xl ud-p-5 ud-pr-10 ud-pl-10 ud-text-primary hover:ud-scale-125 ud-transform ud-transition ud-ease-in-out ud-duration-500 ud-cursor-pointer"></i>
         </div>
         <div class="ud-text-left ud-p-10 ud-mb-10">
-            <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
+            <div class="ud-flex ud-items-center ud-space-x-3">
+                <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
+                <p v-for="tag in this.tags">{{ tag }}</p>
+            </div>
             <ul>
-                <li class="ud-text-base" v-for="bullet_point in this.bullet_points">
+                <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
                     {{ bullet_point.english }}
                 </li>
             </ul>
@@ -27,9 +30,15 @@
         </div>
 
         <div class="ud-p-5 ud-mb-5">
-            <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
-            <ul>
-                <li class="ud-text-base" v-for="bullet_point in this.bullet_points">
+            <div class="ud-mb-4">
+                <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
+                <div class="ud-flex ud-space-x-3 ud-text-sm">
+                    <p v-for="tag in this.tags">{{ tag }}</p>
+                </div>
+            </div>
+
+            <ul class="ud-space-y-3">
+                <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
                     {{ bullet_point.english }}
                 </li>
             </ul>

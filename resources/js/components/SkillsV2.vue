@@ -33,7 +33,7 @@
                     <skill-v2 :name="'Vue.js'" :level="'Intermediate'" :percentage="80"></skill-v2>
                     <skill-v2 :name="'TailwindCSS'" :level="'Intermediate'" :percentage="80"></skill-v2>
                     <skill-v2 :name="'HTML'" :level="'Intermediate'" :percentage="80"></skill-v2>
-                    <skill-v2 :name="'CSS'" :level="'Intermediate'" :percentage="80"></skill-v2>
+                    <skill-v2 :name="'CSS'" :level="'Intermediate'" :percentage="70"></skill-v2>
                     <skill-v2 :name="'Javascript'" :level="'Intermediate'" :percentage="70"></skill-v2>
                 </div>
             </div>
