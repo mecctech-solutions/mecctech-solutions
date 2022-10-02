@@ -56,7 +56,7 @@
                     <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-10">
                         {{ $lang.get('about.connect_text') }}
                     </p>
-                    <div class="ud-flex ud-space-x-12">
+                    <div class="ud-flex md:ud-flex-row ud-flex-col ud-items-center md:ud-items-start ud-space-y-10 md:ud-space-y-0 ud-space-x-12">
                         <div class="ud-space-y-8">
                             <a
                                 :href="this.$root.baseUrl() + '#contact'"
