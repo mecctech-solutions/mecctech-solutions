@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="ud-w-1/2 ud-mx-auto">
+                <div class="ud-w-3/4 ud-mx-auto">
                     <skill-v2 :name="'Laravel'" :level="'Advanced'" :percentage="90"></skill-v2>
                     <skill-v2 :name="'PHP'" :level="'Advanced'" :percentage="90"></skill-v2>
                     <skill-v2 :name="'Vue.js'" :level="'Intermediate'" :percentage="80"></skill-v2>
