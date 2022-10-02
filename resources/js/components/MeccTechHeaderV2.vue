@@ -223,7 +223,7 @@ export default {
         changeLocale(locale) {
             this.$lang.setLocale(locale);
             this.$store.commit('changeLocale', locale);
-            this.$forceUpdate();
+            this.rerenderComponents();
         },
     }
 }
