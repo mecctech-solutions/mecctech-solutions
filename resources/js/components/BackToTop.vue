@@ -1,11 +1,8 @@
 <template>
     <!-- ====== Back To Top Start -->
     <a
-        href="javascript:void(0)"
+        href="#"
         class="
-        ud-hidden
-        ud-items-center
-        ud-justify-center
         ud-bg-primary
         ud-text-white
         ud-w-10
@@ -14,24 +11,24 @@
         ud-fixed
         ud-bottom-8
         ud-right-8
-        ud-left-auto
         ud-z-[999]
         hover:ud-shadow-signUp
         ud-transition ud-duration-300
         back-to-top
+        ud-flex
       "
     >
-      <span
+      <i
           class="
-          ud-w-3
-          ud-h-3
-          ud-border-t
-          ud-border-l
-          ud-border-white
-          ud-rotate-45
-          ud-mt-[6px]
+          fa-solid
+          fa-chevron-up
+          ud-text-xl
+          ud-font-bold
+          ud-mx-auto
+          ud-my-auto
         "
-      ></span>
+      >
+      </i>
     </a>
     <!-- ====== Back To Top End -->
 </template>

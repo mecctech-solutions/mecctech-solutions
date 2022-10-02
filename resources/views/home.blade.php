@@ -1,34 +1,16 @@
 <x-master>
-{{--    <section id="home">--}}
-{{--        <div class="flex h-screen">--}}
-{{--            <view-my-work></view-my-work>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    <back-to-top></back-to-top>
     <mecc-tech-header-v2></mecc-tech-header-v2>
     <hero-section></hero-section>
     <about-me-v2></about-me-v2>
     <skills-v2></skills-v2>
     <approach></approach>
     <portfolio get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"></portfolio>
-{{--    <cta></cta>--}}
     <clients></clients>
     <education-and-experience></education-and-experience>
     <contact-form-v2 :submit_contact_request_route="'{{ route('submit-contact-request') }}'" :csrf_token="'{{ csrf_token() }}'" :contact_form_successfully_sent="{{ session()->get('submit_contact_request_successful') }}"></contact-form-v2>
     <mecc-tech-footer-v2></mecc-tech-footer-v2>
 
-{{--    <section id="about-me">--}}
-{{--        <about-me></about-me>--}}
-{{--    </section>--}}
-{{--    <section id="projects">--}}
-{{--        <portfolio-items get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"></portfolio-items>--}}
-{{--    </section>--}}
-{{--    <section id="contact">--}}
-{{--        <contact-form :submit_contact_request_route="'{{ route('submit-contact-request') }}'" :csrf_token="'{{ csrf_token() }}'" :contact_form_successfully_sent="{{ session()->get('submit_contact_request_successful') }}"></contact-form>--}}
-{{--    </section>--}}
-
-{{--    <footer>--}}
-{{--        <mecc-tech-footer></mecc-tech-footer>--}}
-{{--    </footer>--}}
 </x-master>
 
 <script>
