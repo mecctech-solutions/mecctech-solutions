@@ -55,33 +55,32 @@
 <script>
     export default {
         props: ['title', 'tags', 'images', 'description', 'website_url', 'bullet_points'],
-        data()  {
+        data() {
             return {
                 current_image_url: '',
                 count: 0,
                 current_image_index: 0,
                 max_image_index: this.images.length,
-                is_mobile : innerWidth <= 760
+                is_mobile: innerWidth <= 760
             }
         },
         created() {
             addEventListener('resize', () => {
                 this.is_mobile = innerWidth <= 760
-            })
+            });
+            this.addSwipeEventListeners();
         },
         mounted() {
             this.current_image_url = this.images[this.current_image_index].url;
         },
-        methods : {
-            emitTurnOffModalEvent()
-            {
+        methods: {
+            emitTurnOffModalEvent() {
                 this.$emit('turn-off-modal');
             },
             nextImage() {
                 let index = this.current_image_index + 1;
 
-                if (index >= this.max_image_index)
-                {
+                if (index >= this.max_image_index) {
                     index = this.max_image_index;
                 }
 
@@ -91,16 +90,48 @@
             previousImage() {
                 let index = this.current_image_index - 1;
 
-                if (index < 0)
-                {
+                if (index < 0) {
                     index = this.current_image_index;
                 }
 
                 this.current_image_index = index;
                 this.current_image_url = this.images[this.current_image_index].url;
+            },
+            addSwipeEventListeners() {
+                window.addEventListener('touchstart', this.handleTouchStart);
+                window.addEventListener('touchend', this.handleTouchEnd);
+            },
+            handleTouchStart() {
+                this.touchStartX = event.changedTouches[0].screenX;
+                this.touchStartY = event.changedTouches[0].screenY;
+            },
+            handleTouchEnd() {
+                this.touchEndX = event.changedTouches[0].screenX;
+                this.touchEndY = event.changedTouches[0].screenY;
+
+                if (this.touchEndX < this.touchStartX) {
+                    // 'Swiped Left'
+                    this.nextImage();
+                }
+
+                if (this.touchEndX > this.touchStartX) {
+                    // 'Swiped Right'
+                    this.previousImage();
+                }
+
+                if (this.touchEndY < this.touchStartY) {
+                    // 'Swiped Up'
+                }
+
+                if (this.touchEndY > this.touchStartY) {
+                    // 'Swiped Down'
+                }
+
+                if (this.touchEndY === this.touchStartY) {
+                    // 'Tap'
+                }
             }
         }
-
     }
 </script>
 
