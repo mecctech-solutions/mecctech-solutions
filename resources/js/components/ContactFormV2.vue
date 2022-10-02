@@ -11,7 +11,7 @@
                   ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
                 "
               >
-                Contact With Me
+                {{  $lang.get('contact.contact_me') }}
               </span>
                         <h2
                             class="
@@ -21,11 +21,10 @@
                   ud-mb-5
                 "
                         >
-                            Have a Project in Mind?
+                            {{  $lang.get('contact.project') }}
                         </h2>
                         <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                            If you want to hire me for your project, feel free to contact me with this contact form. You can also contact me directly via <a class="ud-text-primary hover:ud-text-black ud-font-bold" href="mailto:florismeccanici@mecctech-solutions.nl">email</a>, <a class="ud-text-primary hover:ud-text-black ud-font-bold" href="#footer">phone</a> or <a class="ud-text-primary hover:ud-text-black ud-font-bold" href="#footer">social media</a>
-
+                            {{  $lang.get('contact.project_text') }}
                         </p>
                     </div>
                 </div>
@@ -41,7 +40,7 @@
                                     <input
                                         name="name"
                                         type="text"
-                                        placeholder="Enter your name"
+                                        :placeholder="$lang.get('contact.name')"
                                         required
                                         class="input-field"
                                     />
@@ -52,7 +51,7 @@
                                     <input
                                         name="company"
                                         type="text"
-                                        placeholder="Company (Optional)"
+                                        :placeholder="$lang.get('contact.company')"
                                         class="input-field"
                                     />
                                 </div>
@@ -62,7 +61,7 @@
                                     <input
                                         name="email"
                                         type="email"
-                                        placeholder="Enter your email"
+                                        :placeholder="$lang.get('contact.email')"
                                         class="input-field"
                                         required
                                     />
@@ -73,7 +72,7 @@
                                     <input
                                         name="phone"
                                         type="text"
-                                        placeholder="Phone number"
+                                        :placeholder="$lang.get('contact.phone')"
                                         class="input-field"
                                         required
                                     />
@@ -84,7 +83,7 @@
                     <textarea
                         name="message"
                         rows="4"
-                        placeholder="Tell me about your project"
+                        :placeholder="$lang.get('contact.enter_project')"
                         class="input-field ud-resize-none"
                         required
                     ></textarea>
@@ -111,7 +110,7 @@
                         hover:ud-shadow-signUp hover:ud-bg-opacity-90
                       "
                                     >
-                                        Contact Me
+                                        {{  $lang.get('contact.contact_me_2') }}
                                     </button>
                                 </div>
                             </div>

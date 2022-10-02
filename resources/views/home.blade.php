@@ -8,7 +8,7 @@
     <hero-section></hero-section>
     <about-me-v2></about-me-v2>
     <skills-v2></skills-v2>
-    <services></services>
+    <approach></approach>
     <portfolio get_all_portfolio_items_route="{{ route("all-portfolio-items") }}"></portfolio>
 {{--    <cta></cta>--}}
     <clients></clients>

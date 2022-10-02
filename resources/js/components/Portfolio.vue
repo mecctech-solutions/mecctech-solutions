@@ -23,10 +23,10 @@
                   ud-mb-5
                 "
                         >
-                            Recent Works
+                            {{ $lang.get('portfolio.recent_projects') }}
                         </h2>
                         <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                            The below section shows the projects a have worked on in the past
+                            {{ $lang.get('portfolio.recent_projects_text') }}
                         </p>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                 ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]
               "
                     >
-                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="portfolio_item.title.english" :description="portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images" :bullet_points="portfolio_item.bullet_points"></portfolio-item-v2>
+                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title.dutch : portfolio_item.title.english" :description="locale === 'nl' ? portfolio_item.description.dutch : portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images" :bullet_points="portfolio_item.bullet_points"></portfolio-item-v2>
                     </div>
                 </div>
             </div>
@@ -135,6 +135,11 @@ export default {
     components: {},
     mounted() {
         this.getAllPortfolioItems();
+    },
+    computed: {
+        locale() {
+            return this.$store.state.locale
+        }
     },
     methods: {
         getAllPortfolioItems() {

@@ -1,7 +1,7 @@
 <template>
 
     <!-- ====== Services Section Start  -->
-    <section id="services">
+    <section id="approach">
         <div class="ud-container">
             <div class="ud-pt-[120px] ud-pb-[90px] ud-border-t ud-border-[#E9ECF8]">
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
@@ -14,7 +14,7 @@
                     ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
                   "
                 >
-                  How I work?
+                  {{ $lang.get('approach.how_i_work') }}
                 </span>
                             <h2
                                 class="
@@ -24,7 +24,7 @@
                     ud-mb-5
                   "
                             >
-                                My Approach
+                                {{ $lang.get('approach.my_approach') }}
                             </h2>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     ud-mb-3
                   "
                             >
-                                Requirements
+                                {{ $lang.get('approach.requirements') }}
                             </h3>
                             <p
                                 class="
@@ -93,7 +93,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                I make sure it is clear what you want me to build, before writing any software
+                                {{ $lang.get('approach.requirements_text') }}
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -270,7 +270,7 @@
                     ud-mb-3
                   "
                             >
-                                Tests
+                                {{ $lang.get('approach.tests') }}
                             </h3>
                             <p
                                 class="
@@ -279,7 +279,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                By first writing tests, I make sure the requirements will be covered if the tests pass
+                                {{ $lang.get('approach.tests_text') }}
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -456,7 +456,7 @@
                     ud-mb-3
                   "
                             >
-                                Development
+                                {{ $lang.get('approach.development') }}
                             </h3>
                             <p
                                 class="
@@ -465,7 +465,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                Using software design patterns I make sure the code is extensible and maintainable
+                                {{ $lang.get('approach.development_text') }}
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">
@@ -642,7 +642,7 @@
                     ud-mb-3
                   "
                             >
-                                User Interface
+                                {{ $lang.get('approach.user_interface') }}
                             </h3>
                             <p
                                 class="
@@ -651,7 +651,7 @@
                     ud-leading-relaxed ud-text-sm
                   "
                             >
-                                If necessary, I make a visually appealing, dynamic and responsive UI
+                                {{ $lang.get('approach.user_interface_text') }}
                             </p>
                             <div>
                   <span class="ud-absolute ud-top-0 ud-right-0 ud--z-1">

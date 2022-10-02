@@ -20,7 +20,7 @@
                 ud-mb-3
               "
             >
-              ABOUT ME
+              {{ $lang.get('about.about_me') }}
             </span>
                     <h2
                         class="
@@ -33,14 +33,14 @@
                 ud-mb-5
               "
                     >
-                        Solving problems with high quality software
+                        {{ $lang.get('about.solving_problems') }}
                     </h2>
                     <p
                         class="
                 ud-max-w-[570px] ud-font-medium ud-text-base ud-text-body-color
               "
                     >
-                        I am passionate about building high quality Laravel applications that are extensible / maintainable, solve complex business problems and delight users, thus improving their life.
+                        {{ $lang.get('about.about_me_text') }}
                     </p>
                 </div>
                 <div class="ud-w-full lg:ud-w-1/2 xl:ud-w-5/12 ud-px-4">
@@ -51,11 +51,10 @@
                 ud-mb-6
               "
                     >
-                        Connect With Me
+                        {{ $lang.get('about.connect') }}
                     </h3>
                     <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-10">
-                        If you have an interesting idea or project that you want to develop with Laravel and Vue.js, feel free to contact me via the
-                        <a class="ud-text-primary hover:ud-text-black ud-font-bold" href="#contact">contact form</a>, via social media or my personal <a class="ud-text-primary hover:ud-text-black ud-font-bold" href="#footer">contact information</a>.
+                        {{ $lang.get('about.connect_text') }}
                     </p>
                     <div class="ud-flex ud-items-center">
                         <a

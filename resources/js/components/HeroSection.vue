@@ -15,7 +15,7 @@
                 <div class="ud-w-full lg:ud-w-1/2 ud-self-center ud-px-4">
                     <div>
                         <h1 class="ud-text-base ud-font-semibold ud-text-primary ud-mb-3">
-                            Hi there! I am
+                            {{ $lang.get('home.hi') }}
 
                             <span
                                 class="
@@ -38,9 +38,9 @@
                   ud-mb-5
                 "
                         >
-                            Freelance
+                            {{ $lang.get('home.freelance') }}
 
-                            <span class="ud-text-black">Laravel and Vue.js developer </span>
+                            <span class="ud-text-black">{{ $lang.get('home.i_am') }} </span>
                         </h2>
                         <p
                             class="
@@ -52,7 +52,7 @@
                   ud-mb-11
                 "
                         >
-                            Count on me for writing complete web applications that are scalable and maintainable.
+                            {{ $lang.get('home.headline') }}
                         </p>
                         <div class="ud-flex ud-items-center">
                             <a
@@ -69,7 +69,7 @@
                     ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
                   "
                             >
-                                Contact Me
+                                {{ $lang.get('home.contact') }}
                             </a>
                             <a
                                 href="#services"
@@ -84,7 +84,7 @@
                     ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
                   "
                             >
-                                Learn More
+                                {{ $lang.get('home.learn_more') }}
                             </a>
                         </div>
                     </div>

@@ -16,10 +16,10 @@
                   ud-text-white ud-mb-4
                 "
                         >
-                            Some of My Happy Clients
+                            {{ $lang.get('clients.happy_clients') }}
                         </h2>
                         <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                            The clients I worked with in the past and which I currently work with
+                            {{ $lang.get('clients.happy_clients_text') }}
                         </p>
                     </div>
                 </div>

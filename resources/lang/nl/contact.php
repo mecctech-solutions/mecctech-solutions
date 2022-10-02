@@ -1,16 +1,13 @@
 <?php
 
 return [
-    "get_in_touch" => "Neem contact met mij op",
-    "get_in_touch_text" => "Als je mij wilt inhuren voor je project kun je het contact formulier invullen of mij bereiken op mijn telefoonnummer, mail of via social media.",
-    "name" => "Naam",
-    "address" => "Adres",
-    "address_name" => "Delft, Zuid-Holland",
-    "email" => "Email",
+    "contact_me" => "Contacteer mij",
+    "project" => "Heb je een project in gedachte?",
+    "project_text" => "Als je me wilt inhuren voor je project, voel je vrij mij te contacteren via dit contact formulier. Je kan me ook bereiken via email, telefoon nummer of social media",
+    "name" => "Voer je naam in",
+    "company" => "Bedrijf (Optioneel)",
+    "email" => "Voer je email adres in",
     "phone" => "Telefoonnummer",
-    "first_name" => "Voornaam",
-    "last_name" => "Achternaam",
-    "message" => "Bericht",
-    "thanks_for_contacting" => "Dankjewel voor je bericht, ik zal zo snel mogelijk reageren!",
-    "send" => "Verzenden"
+    "enter_project" => "Vertel me over je project",
+    "contact_me_2" => "Contacteer Mij",
 ];

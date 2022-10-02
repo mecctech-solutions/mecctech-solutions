@@ -13,20 +13,21 @@
                   ud-mb-5
                 "
                         >
-                            Let's Talk!
+                            {{  $lang.get('footer.lets_talk') }}
                         </h2>
                         <h3
                             class="
                   ud-font-bold ud-text-white ud-opacity-70 ud-text-2xl ud-mb-2
                 "
                         >
-                            Contact Info
+                            {{  $lang.get('footer.info') }}
                         </h3>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
                             florismeccanici@mecctech-solutions.nl
                         </p>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
-                            Delft, The Netherlands
+                            Delft, {{  $lang.get('footer.netherlands') }}
+
                         </p>
                         <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-1">
                             +31 6 81639449

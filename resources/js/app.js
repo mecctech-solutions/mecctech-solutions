@@ -61,7 +61,7 @@ app.component('mecc-tech-header', require('./components/MeccTechHeader.vue').def
 app.component('mecc-tech-header-v2', require('./components/MeccTechHeaderV2.vue').default);
 app.component('hero-section', require('./components/HeroSection.vue').default);
 app.component('about-me-v2', require('./components/AboutMeV2.vue').default);
-app.component('services', require('./components/Services.vue').default);
+app.component('approach', require('./components/Approach.vue').default);
 app.component('portfolio', require('./components/Portfolio.vue').default);
 app.component('cta', require('./components/Cta.vue').default);
 app.component('education-and-experience', require('./components/EducationAndExperience.vue').default);

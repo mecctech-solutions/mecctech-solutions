@@ -108,7 +108,7 @@
                         lg:ud-mr-0
                       "
                                     >
-                                        Home
+                                        {{ $lang.get('header.home') }}
                                     </a>
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
@@ -125,12 +125,12 @@
                         xl:ud-ml-12
                       "
                                     >
-                                        About
+                                        {{ $lang.get('header.about_me') }}
                                     </a>
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
-                                        :href="this.$root.baseUrl() + '#services'"
+                                        :href="this.$root.baseUrl() + '#skills'"
                                         class="
                         menu-scroll
                         ud-text-base ud-text-black
@@ -142,7 +142,24 @@
                         xl:ud-ml-12
                       "
                                     >
-                                        Services
+                                        {{ $lang.get('header.skills') }}
+                                    </a>
+                                </li>
+                                <li class="ud-relative ud-group" @click="this.navbarActive = false">
+                                    <a
+                                        :href="this.$root.baseUrl() + '#approach'"
+                                        class="
+                        menu-scroll
+                        ud-text-base ud-text-black
+                        group-hover:ud-text-primary
+                        ud-py-2
+                        lg:ud-py-6 lg:ud-inline-flex lg:ud-px-0
+                        ud-flex ud-mx-8
+                        lg:ud-mr-0 lg:ud-ml-8
+                        xl:ud-ml-12
+                      "
+                                    >
+                                        {{ $lang.get('header.approach') }}
                                     </a>
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
@@ -159,7 +176,7 @@
                         xl:ud-ml-12
                       "
                                     >
-                                        Contact
+                                        {{ $lang.get('header.contact') }}
                                     </a>
                                 </li>
                             </ul>
@@ -206,6 +223,7 @@ export default {
         changeLocale(locale) {
             this.$lang.setLocale(locale);
             this.$store.commit('changeLocale', locale);
+            this.$forceUpdate();
         },
     }
 }
