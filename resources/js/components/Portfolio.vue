@@ -100,38 +100,6 @@
                         >
                             Wordpress
                         </button>
-                        <button
-                            class="
-                  sm:font-semibold
-                  ud-text-sm
-                  sm:ud-text-base
-                  ud-block ud-py-2 ud-px-5
-                  md:ud-mx-2
-                  ud-mb-2 ud-rounded-full ud-text-body-color
-                  hover:ud-bg-primary hover:ud-text-white
-                "
-                            :class="{'active' : this.isSelected('Python')}"
-                            @click="this.selectTag('Python')"
-                            data-filter=".app"
-                        >
-                            Python
-                        </button>
-                        <button
-                            class="
-                  sm:font-semibold
-                  ud-text-sm
-                  sm:ud-text-base
-                  ud-block ud-py-2 ud-px-5
-                  md:ud-mx-2
-                  ud-mb-2 ud-rounded-full ud-text-body-color
-                  hover:ud-bg-primary hover:ud-text-white
-                "
-                            :class="{'active' : this.isSelected('C++')}"
-                            @click="this.selectTag('C++')"
-                            data-filter=".app"
-                        >
-                            C++
-                        </button>
                     </div>
                 </div>
             </div>
