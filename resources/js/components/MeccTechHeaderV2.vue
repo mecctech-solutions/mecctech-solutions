@@ -166,7 +166,7 @@
                         </nav>
                     </div>
                     <div
-                        class="sm:ud-flex ud-justify-end ud-hidden ud-pr-16 lg:ud-pr-0"
+                        class="ud-flex ud-justify-end ud-pr-16 lg:ud-pr-0"
                     >
                         <div
                             href="#contact"
