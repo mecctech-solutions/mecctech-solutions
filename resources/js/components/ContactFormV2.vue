@@ -1,5 +1,5 @@
 <template>
-    <section id="contact" class="ud-py-[120px]">
+    <section id="contact" class="ud-py-[120px]" :key="locale">
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div class="ud-w-full ud-px-4">
@@ -132,6 +132,11 @@
 export default {
     name: "Contact",
     props: ['csrf_token', 'submit_contact_request_route', 'contact_form_successfully_sent'],
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 
 }
 </script>

@@ -12,6 +12,7 @@
         ud-transition
         ud-bg-transparent
       "
+        :key="locale"
     >
         <div class="ud-container">
             <div
@@ -215,6 +216,11 @@ export default {
             navbarActive: false
         }
     },
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
     methods: {
         toggleNavbar()
         {
@@ -223,8 +229,9 @@ export default {
         changeLocale(locale) {
             this.$lang.setLocale(locale);
             this.$store.commit('changeLocale', locale);
-            this.rerenderComponents();
+            this.$root.rerenderComponents();
         },
+
     }
 }
 </script>

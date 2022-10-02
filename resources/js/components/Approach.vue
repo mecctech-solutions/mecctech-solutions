@@ -1,7 +1,7 @@
 <template>
 
     <!-- ====== Services Section Start  -->
-    <section id="approach">
+    <section id="approach" :key="locale">
         <div class="ud-container">
             <div class="ud-pt-[120px] ud-pb-[90px] ud-border-t ud-border-[#E9ECF8]">
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
@@ -784,7 +784,12 @@
 
 <script>
 export default {
-    name: "Services"
+    name: "Services",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

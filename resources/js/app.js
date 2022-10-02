@@ -11,6 +11,7 @@ const app = Vue.createApp({
     el: '#app',
     methods: {
         rerenderComponents() {
+            console.log('Rerendering components...')
             this.$forceUpdate();
         },
         baseUrl() {

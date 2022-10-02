@@ -1,5 +1,5 @@
 <template>
-    <footer id="footer" class="ud-bg-black ud-pt-[100px] ud-pb-12 ud-relative ud-z-10">
+    <footer id="footer" class="ud-bg-black ud-pt-[100px] ud-pb-12 ud-relative ud-z-10" :key="locale">
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud--mx-4">
                 <div class="ud-w-full md:ud-w-1/2 lg:ud-w-4/12 ud-px-4">
@@ -401,7 +401,12 @@
 
 <script>
 export default {
-    name: "MeccTechFooterV2"
+    name: "MeccTechFooterV2",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

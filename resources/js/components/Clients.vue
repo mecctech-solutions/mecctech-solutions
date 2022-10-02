@@ -4,6 +4,7 @@
     <section
         id="clients"
         class="ud-pt-20 ud-pb-[250px] ud-bg-black ud-relative"
+        :key="locale"
     >
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
@@ -110,7 +111,12 @@
 
 <script>
 export default {
-    name: "Clients"
+    name: "Clients",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

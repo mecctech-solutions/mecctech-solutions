@@ -1,5 +1,5 @@
 <template>
-    <section id="skills">
+    <section id="skills" :key="locale">
         <div class="ud-container">
             <div class="ud-pt-[120px] ud-pb-[90px] ud-border-t ud-border-[#E9ECF8]">
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
@@ -45,7 +45,12 @@
 
 <script>
 export default {
-    name: "SkillsV2"
+    name: "SkillsV2",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 
 </script>

@@ -1,7 +1,7 @@
 <template>
 
     <!-- ====== About Section Start -->
-    <section id="about" class="ud-pt-[145px] ud-pb-[120px] ud-relative ud-z-10">
+    <section :key="locale" id="about" class="ud-pt-[145px] ud-pb-[120px] ud-relative ud-z-10">
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div
@@ -213,7 +213,12 @@
 
 <script>
 export default {
-    name: "AboutMeV2"
+    name: "AboutMeV2",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

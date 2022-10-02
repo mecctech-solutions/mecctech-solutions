@@ -2,6 +2,7 @@
     <section
         id="education"
         class="ud-pt-[120px] ud-bg-white ud-relative ud-z-10"
+        :key="locale"
     >
         <div class="ud-container">
             <div class="ud-border-b ud-border-[#E9ECF8] ud-pb-[70px]">
@@ -429,7 +430,12 @@
 
 <script>
 export default {
-    name: "EducationAndExperience"
+    name: "EducationAndExperience",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

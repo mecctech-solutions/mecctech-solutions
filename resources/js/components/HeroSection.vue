@@ -9,6 +9,7 @@
         ud-items-center
         2xl:ud-h-[700px]
       "
+        :key="locale"
     >
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
@@ -191,7 +192,12 @@
 
 <script>
 export default {
-    name: "HeroSection"
+    name: "HeroSection",
+    computed: {
+        locale() {
+            return this.$store.state.locale;
+        }
+    },
 }
 </script>
 

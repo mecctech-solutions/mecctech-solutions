@@ -1,7 +1,7 @@
 <template>
 
     <!-- ====== Portfolio Section Start  -->
-    <section id="portfolio" class="ud-pt-[120px] ud-pb-[70px] ud-bg-[#f8f9ff]">
+    <section id="portfolio" class="ud-pt-[120px] ud-pb-[70px] ud-bg-[#f8f9ff]" :key="locale">
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div class="ud-w-full ud-px-4">
