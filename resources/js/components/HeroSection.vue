@@ -73,7 +73,7 @@
                                 {{ $lang.get('home.contact') }}
                             </a>
                             <a
-                                href="#services"
+                                href="#skills"
                                 class="
                     ud-text-base
                     ud-font-semibold
