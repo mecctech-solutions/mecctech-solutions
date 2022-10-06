@@ -73,6 +73,7 @@ app.component('clients', require('./components/Clients.vue').default);
 app.component('skills-v2', require('./components/SkillsV2.vue').default);
 app.component('skill-v2', require('./components/SkillV2.vue').default);
 app.component('back-to-top', require('./components/BackToTop.vue').default);
+app.component('whatsapp', require('./components/Whatsapp.vue').default);
 
 app.mount('#app');
 app.use(vClickOutside)

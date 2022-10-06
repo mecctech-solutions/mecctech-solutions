@@ -1,5 +1,6 @@
 <x-master>
     <back-to-top></back-to-top>
+    <whatsapp></whatsapp>
     <mecc-tech-header-v2></mecc-tech-header-v2>
     <hero-section></hero-section>
     <about-me-v2></about-me-v2>

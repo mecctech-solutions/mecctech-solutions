@@ -16,6 +16,7 @@ module.exports = {
             primary: "#e30613",
             yellow: "#FBB040",
             "body-color": "#959CB1",
+            "whatsapp-green" : "#25D366"
         },
         screens: {
             sm: "540px",
