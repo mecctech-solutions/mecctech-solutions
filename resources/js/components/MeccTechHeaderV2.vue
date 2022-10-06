@@ -98,7 +98,7 @@
                             <ul class="ud-blcok lg:ud-flex">
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
-                                        href="#home"
+                                        :href="this.$root.baseUrl() + '#home'"
                                         class="
                         menu-scroll
                         ud-text-base ud-text-black
