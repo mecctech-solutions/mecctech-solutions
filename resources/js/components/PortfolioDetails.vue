@@ -476,35 +476,6 @@ public function it_should_generate_purchasing_advice_while_taking_minimum_purcha
                     Laravel, PHP, API, E-Commerce
                   </span>
                             </li>
-                            <li class="ud-flex lg:ud-flex-wrap xl:ud-flex-nowrap ud-mb-3">
-                  <span
-                      class="
-                      ud-max-w-[90px]
-                      ud-w-full
-                      ud-font-medium
-                      ud-text-black
-                      ud-text-base
-                      ud-flex
-                      ud-justify-between
-                    "
-                  >
-                    Website
-                    <span class="ud-text-body-color">:</span>
-                  </span>
-                                <span
-                                    class="
-                      ud-w-full
-                      ud-font-medium
-                      ud-text-body-color
-                      ud-text-base
-                      ud-pl-5
-                      lg:ud-pl-0
-                      xl:ud-pl-5
-                    "
-                                >
-                    www.yoursite.com
-                  </span>
-                            </li>
                             <li class="ud-flex lg:ud-flex-wrap xl:ud-flex-nowrap">
                   <span
                       class="
