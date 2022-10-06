@@ -21,6 +21,6 @@ Route::get('/partners', function () {
     return view('partners');
 });
 
-Route::get('/portfolio/details', function () {
+Route::get('/case-study', function () {
     return view('portfolio.details');
 });

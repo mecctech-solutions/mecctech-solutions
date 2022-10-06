@@ -3,6 +3,7 @@
     <!-- ====== Services Section Start  -->
     <section id="approach" :key="locale">
         <div class="ud-container">
+
             <div class="ud-pt-[120px] ud-pb-[90px] ud-border-t ud-border-[#E9ECF8]">
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                     <div class="ud-w-full ud-px-4">
@@ -775,8 +776,32 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="
+                    ud-flex
+                    ud-items-center
+                    ud-flex-col
+                    ">
+                    <a
+                        :href="this.$root.baseUrl() + '/case-study'"
+                        class="
+                    ud-text-base
+                    ud-font-semibold
+                    ud-text-white
+                    ud-bg-primary
+                    ud-py-3
+                    ud-px-8
+                    ud-mr-4
+                    hover:ud-shadow-signUp hover:ud-bg-opacity-90
+                    ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+                  "
+                    >
+                        Case study
+                    </a>
                 </div>
             </div>
+
         </div>
     </section>
     <!-- ====== Services Section End  -->

@@ -25,7 +25,7 @@
                         href="/"
                         class="header-logo ud-w-full ud-block ud-py-6 lg:ud-py-8"
                     >
-                        <img :src="this.$root.baseUrl() + '/images/Mecctech_Solutions.png'" alt="logo" class="ud-w-full" />
+                        <img :src="this.$root.baseUrl() + '/images/MeccTechlogo-01.png'" alt="logo" class="ud-w-full" />
                     </a>
                 </div>
                 <div
