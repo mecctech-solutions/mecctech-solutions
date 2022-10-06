@@ -30,6 +30,7 @@
                 <div class="ud-w-3/4 ud-mx-auto">
                     <skill-v2 :name="'Laravel'" :level="$lang.get('skills.advanced')" :percentage="90"></skill-v2>
                     <skill-v2 :name="'PHP'" :level="$lang.get('skills.advanced')" :percentage="90"></skill-v2>
+                    <skill-v2 :name="'MySQL'" :level="$lang.get('skills.advanced')" :percentage="90"></skill-v2>
                     <skill-v2 :name="'Vue.js'" :level="$lang.get('skills.intermediate')" :percentage="80"></skill-v2>
                     <skill-v2 :name="'TailwindCSS'" :level="$lang.get('skills.intermediate')" :percentage="80"></skill-v2>
                     <skill-v2 :name="'HTML'" :level="$lang.get('skills.intermediate')" :percentage="80"></skill-v2>
