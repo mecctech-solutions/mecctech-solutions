@@ -74,6 +74,7 @@
                                 {{ $lang.get('home.contact') }}
                             </a>
                             <a
+                                onclick="window.fathom.trackGoal('TXHZJNBX', 0);"
                                 href="#skills"
                                 class="
                     ud-text-base

@@ -92,6 +92,7 @@
                             <div class="ud-w-full ud-px-4">
                                 <div class="ud-pt-4 ud-text-center">
                                     <button
+                                        onclick="window.fathom.trackGoal('XOKBRMSL', 0);"
                                         type="submit"
                                         class="
                         ud-inline-flex

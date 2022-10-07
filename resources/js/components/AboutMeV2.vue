@@ -59,6 +59,7 @@
                     <div class="ud-flex md:ud-flex-row ud-flex-col ud-items-center md:ud-items-start ud-space-y-10 md:ud-space-y-0 ud-space-x-12">
                         <div class="ud-space-y-8">
                             <a
+                                onclick="window.fathom.trackGoal('TMEFSIVC', 0);"
                                 :href="this.$root.baseUrl() + '#contact'"
                                 class="
                     ud-text-base

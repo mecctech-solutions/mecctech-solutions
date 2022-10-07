@@ -784,6 +784,7 @@
                     ud-flex-col
                     ">
                     <a
+                        onclick="window.fathom.trackGoal('P0EOJKXV', 0);"
                         :href="this.$root.baseUrl() + '/case-study'"
                         class="
                     ud-text-base
