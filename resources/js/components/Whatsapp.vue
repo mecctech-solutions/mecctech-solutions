@@ -1,6 +1,7 @@
 <template>
     <!-- ====== Back To Top Start -->
     <a
+        onclick="window.fathom.trackGoal('ENSYRN0L', 0);"
         href="https://wa.me/31681639449"
         class="
         ud-w-10
