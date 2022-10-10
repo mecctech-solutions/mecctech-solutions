@@ -55,9 +55,20 @@
                 </li>
             </ul>
         </div>
-        <div class="ud-flex ud-justify-between ud-bottom-0">
-            <div>
-                <a :href="website_url" class="ud-text-sm md:ud-text-xl ud-bg-primary ud-pt-3 ud-pb-3 ud-pr-5 ud-pl-5 ud-ml-4"><i class="fa-solid fa-desktop pr-5 text-sm md:text-xl"></i> SITE / CODE</a>
+        <div class="ud-flex ud-flex-col ud-items-center">
+            <div class="
+            ud-text-base
+            ud-font-semibold
+            ud-text-white
+            ud-bg-primary
+            ud-py-3
+            ud-px-8
+            ud-mr-4
+            hover:ud-shadow-signUp hover:ud-bg-opacity-90
+            ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+            ud-cursor-pointer
+            ">
+                <a :href="website_url" class="ud-text-sm md:ud-text-xl"><i class="fa-solid fa-desktop ud-pr-5 ud-text-sm md:ud-text-xl"></i> SITE / CODE</a>
             </div>
         </div>
         <i @click="emitTurnOffModalEvent" class="fa-solid fa-xmark ud-cursor-pointer ud-p-5 ud-text-3xl ud-fixed ud-right-0 ud-bottom-0"></i>

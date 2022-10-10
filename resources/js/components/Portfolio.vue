@@ -94,6 +94,22 @@
                   ud-mb-2 ud-rounded-full ud-text-body-color
                   hover:ud-bg-primary hover:ud-text-white
                 "
+                            :class="{'active' : this.isSelected('PHP')}"
+                            @click="this.selectTag('PHP')"
+                            data-filter=".graphics"
+                        >
+                            PHP
+                        </button>
+                        <button
+                            class="
+                  sm:font-semibold
+                  ud-text-sm
+                  sm:ud-text-base
+                  ud-block ud-py-2 ud-px-5
+                  md:ud-mx-2
+                  ud-mb-2 ud-rounded-full ud-text-body-color
+                  hover:ud-bg-primary hover:ud-text-white
+                "
                             :class="{'active' : this.isSelected('Wordpress')}"
                             @click="this.selectTag('Wordpress')"
                             data-filter=".graphics"
