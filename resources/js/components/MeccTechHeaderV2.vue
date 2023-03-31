@@ -165,6 +165,23 @@
                                 </li>
                                 <li class="ud-relative ud-group" @click="this.navbarActive = false">
                                     <a
+                                        :href="this.$root.baseUrl() + '#portfolio'"
+                                        class="
+                        menu-scroll
+                        ud-text-base ud-text-black
+                        group-hover:ud-text-primary
+                        ud-py-2
+                        lg:ud-py-6 lg:ud-inline-flex lg:ud-px-0
+                        ud-flex ud-mx-8
+                        lg:ud-mr-0 lg:ud-ml-8
+                        xl:ud-ml-12
+                      "
+                                    >
+                                        Portfolio
+                                    </a>
+                                </li>
+                                <li class="ud-relative ud-group" @click="this.navbarActive = false">
+                                    <a
                                         :href="this.$root.baseUrl() + '#contact'"
                                         class="
                         menu-scroll
