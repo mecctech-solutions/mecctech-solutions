@@ -5,7 +5,7 @@ return [
     "hi" => "Hi! Ik ben",
     "freelance" => "ZZP",
     "i_am" => "Laravel en Vue.js ontwikkelaar",
-    "headline" => "Reken op mij voor het schrijven van complete web applicaties die schaalbaar en onderhoudbaar zijn.",
+    "headline" => "Op maat gemaakte en robuuste web applicaties om jouw bedrijfsprocessen te optimaliseren",
     "contact" => "Contact",
     "learn_more" => "Meer Informatie"
 ];
