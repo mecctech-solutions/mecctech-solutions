@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "offer" => "Wat heb ik de bieden?",
+    "offer" => "Wat heb ik te bieden?",
     "my_skills" => "Mijn Skills",
     "advanced" => "Geavanceerd",
     "intermediate" => "Gevorderd",
