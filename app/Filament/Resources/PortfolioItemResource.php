@@ -23,7 +23,10 @@ class PortfolioItemResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title_nl')->label('Title (NL)'),
                 Forms\Components\TextInput::make('title_en')->label('Title (EN)'),
-                Forms\Components\FileUpload::make('main_image_url')->label('Main Image URL'),
+                Forms\Components\FileUpload::make('main_image_url')
+                    ->directory('/images/projects')
+                    ->preserveFilenames()
+                    ->label('Main Image URL'),
                 Forms\Components\TextInput::make('website_url')->label('Website URL'),
                 Forms\Components\Textarea::make('description_nl')->label('Description (NL)'),
                 Forms\Components\Textarea::make('description_en')->label('Description (EN)'),
