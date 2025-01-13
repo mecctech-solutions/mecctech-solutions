@@ -60,7 +60,7 @@ class PortfolioItemResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'tags' => RelationManagers\TagsRelationManager::class,
         ];
     }
 
