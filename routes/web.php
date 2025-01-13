@@ -1,5 +1,6 @@
 <?php
 
+use App\CustomerRelationshipManagement\Presentation\Http\CustomerRelationshipManagementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,6 @@ Route::get('/partners', function () {
 Route::get('/case-study', function () {
     return view('portfolio.details');
 });
+
+Route::get('/customerrelationshipmanagement', [CustomerRelationshipManagementController::class, 'index']);
+Route::post('/submit-contact-request', [CustomerRelationshipManagementController::class, 'submitContactRequest'])->name('submit-contact-request');

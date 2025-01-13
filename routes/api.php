@@ -1,5 +1,7 @@
 <?php
 
+use App\CustomerRelationshipManagement\Presentation\Http\Api\CustomerRelationshipManagementController;
+use App\PortfolioManagement\Presentation\Http\Api\PortfolioManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/customerrelationshipmanagement', [CustomerRelationshipManagementController::class, 'index']);
+Route::get("portfolio-items", [PortfolioManagementController::class, "getPortfolioItems"])
+    ->name("all-portfolio-items")
+    ->middleware('cors');
+
+Route::post("portfolio-items/add-multiple", [PortfolioManagementController::class, "addMultiplePortfolioItems"])
+    ->name("add-portfolio-items")
+    ->middleware('cors');
+
+Route::post("portfolio-items/import", [PortfolioManagementController::class, "importPortfolioItems"])
+    ->name("import-portfolio-items");
