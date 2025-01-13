@@ -62,6 +62,7 @@ class PortfolioItemResource extends Resource
         return [
             'tags' => RelationManagers\TagsRelationManager::class,
             'bulletPoints' => RelationManagers\BulletPointsRelationManager::class,
+            'images' => RelationManagers\ImagesRelationManager::class,
         ];
     }
 
