@@ -7,14 +7,14 @@ use App\PortfolioManagement\Domain\PortfolioItems\Description;
 use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\Title;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentBulletPoint;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentImage;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentTag;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\BulletPoint;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Image;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Tag;
 
 class PortfolioItemMapper
 {
-    public static function toEntity(?EloquentPortfolioItem $model): ?PortfolioItem
+    public static function toEntity(?PortfolioItem $model): ?PortfolioItem
     {
         if (! $model)
         {
@@ -56,9 +56,9 @@ class PortfolioItemMapper
         return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $position, $images, $tags, $bulletPoints);
     }
 
-    public static function toEloquent(PortfolioItem $portfolioItem): EloquentPortfolioItem
+    public static function toEloquent(PortfolioItem $portfolioItem): PortfolioItem
     {
-        $model = new EloquentPortfolioItem();
+        $model = new PortfolioItem();
         $model->title_en = $portfolioItem->title()->english();
         $model->title_nl = $portfolioItem->title()->dutch();
         $model->main_image_url = $portfolioItem->mainImage()->url();
@@ -69,21 +69,21 @@ class PortfolioItemMapper
 
         foreach ($portfolioItem->tags() as $tag)
         {
-            $model->tags[] = new EloquentTag([
+            $model->tags[] = new Tag([
                 "name" => $tag
             ]);
         }
 
         foreach ($portfolioItem->images() as $image)
         {
-            $model->images[] = new EloquentImage([
+            $model->images[] = new Image([
                 "url" => $image->url()
             ]);
         }
 
         foreach ($portfolioItem->bulletPoints() as $bulletPoint)
         {
-            $model->bulletPoints[] = new EloquentBulletPoint([
+            $model->bulletPoints[] = new BulletPoint([
                 "text_en" => $bulletPoint->english(),
                 "text_nl" => $bulletPoint->dutch(),
             ]);

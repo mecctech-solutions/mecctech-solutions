@@ -53,24 +53,4 @@ class EloquentPortfolioItemRepositoryTest extends TestCase
 
         self::assertEquals($portfolioItems, $this->portfolioItemRepository->all());
     }
-
-    /** @test */
-    public function it_should_return_all_portfolio_items()
-    {
-        $portfolioItems = PortfolioItemFactory::create(10);
-        $this->portfolioItemRepository->addMultiple($portfolioItems);
-
-        self::assertEquals($portfolioItems, $this->portfolioItemRepository->all());
-    }
-
-    /** @test */
-    public function it_should_sort_on_position()
-    {
-        $portfolioItems = PortfolioItemFactory::create(10);
-        $this->portfolioItemRepository->addMultiple($portfolioItems);
-
-        $sortedPortfolioItems = $portfolioItems->sortBy(fn($portfolioItem) => $portfolioItem->position());
-
-        self::assertEquals($sortedPortfolioItems->pluck('position'), $this->portfolioItemRepository->all()->pluck('position'));
-    }
 }

@@ -7,8 +7,8 @@ use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers\PortfolioItemMapper;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
 use Illuminate\Support\Collection;
 use function collect;
 
@@ -18,7 +18,7 @@ class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterfac
     public function all(): Collection
     {
         $result = collect();
-        $models = EloquentPortfolioItem::all()->sortBy("position");
+        $models = PortfolioItem::all()->sortBy("position");
 
         foreach ($models as $model)
         {
@@ -46,7 +46,7 @@ class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterfac
 
     public function find(Title $title, Image $mainImage, Description $description, string $websiteUrl): ?PortfolioItem
     {
-        $model = EloquentPortfolioItem::where([
+        $model = PortfolioItem::where([
             "title_en" => $title->english(),
             "title_nl" => $title->dutch(),
             "main_image_url" => $mainImage->url(),

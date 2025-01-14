@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentImage;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Image;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,7 +15,7 @@ class EloquentImageTest extends TestCase
     {
         parent::setUp();
 
-        $this->eloquentPortfolioItem = new EloquentPortfolioItem([
+        $this->eloquentPortfolioItem = new PortfolioItem([
             "title_en" => "Test Title",
             "title_nl" => "Test Titel",
             "main_image_url" => "Test Url",
@@ -26,7 +26,7 @@ class EloquentImageTest extends TestCase
 
         $this->eloquentPortfolioItem->save();
 
-        $this->eloquentImage = new EloquentImage([
+        $this->eloquentImage = new Image([
             "url" => "/images/placeholder.png",
             "portfolio_item_id" => $this->eloquentPortfolioItem->id,
         ]);

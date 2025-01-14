@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\GetAllPortfolioItems;
 use App\Actions\ImportPortfolioItems;
 use App\CustomerRelationshipManagement\Presentation\Http\Api\CustomerRelationshipManagementController;
 use App\PortfolioManagement\Presentation\Http\Api\PortfolioManagementController;
@@ -22,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/customerrelationshipmanagement', [CustomerRelationshipManagementController::class, 'index']);
-Route::get("portfolio-items", [PortfolioManagementController::class, "getPortfolioItems"])
+Route::get("portfolio-items", GetAllPortfolioItems::class)
     ->name("all-portfolio-items")
     ->middleware('cors');
 
