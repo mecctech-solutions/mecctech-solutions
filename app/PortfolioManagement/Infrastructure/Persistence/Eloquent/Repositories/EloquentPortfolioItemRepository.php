@@ -18,7 +18,7 @@ class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterfac
     public function all(): Collection
     {
         $result = collect();
-        $models = EloquentPortfolioItem::all();
+        $models = EloquentPortfolioItem::all()->sortBy("position");
 
         foreach ($models as $model)
         {

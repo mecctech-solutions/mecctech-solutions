@@ -25,6 +25,8 @@ class PortfolioItemMapper
         $mainImage = new Image($model->main_image_full_url);
         $description = new Description($model->description_nl, $model->description_en);
         $websiteUrl = $model->website_url;
+        $position = $model->position;
+
         $tagModels = $model->tags;
 
         $tags = collect();
@@ -51,7 +53,7 @@ class PortfolioItemMapper
             $bulletPoints->push(new BulletPoint($bulletPointModel->text_nl, $bulletPointModel->text_en));
         }
 
-        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
+        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $position, $images, $tags, $bulletPoints);
     }
 
     public static function toEloquent(PortfolioItem $portfolioItem): EloquentPortfolioItem
@@ -63,6 +65,7 @@ class PortfolioItemMapper
         $model->description_en = $portfolioItem->description()->english();
         $model->description_nl = $portfolioItem->description()->dutch();
         $model->website_url = $portfolioItem->websiteUrl();
+        $model->position = $portfolioItem->position();
 
         foreach ($portfolioItem->tags() as $tag)
         {

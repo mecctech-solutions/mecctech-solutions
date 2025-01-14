@@ -36,7 +36,7 @@ class GetPortfolioItemsWithTagTest extends TestCase
         $tags = collect(array($firstTag, $secondTag));
         $bulletPoints = BulletPointFactory::multiple(10);
 
-        $portfolioItemWithTags = new PortfolioItem(new Title("Title", "Titel"), ImageFactory::placeholder(), new Description("Description", "Beschrijving"), "Website Url", $images, $tags, $bulletPoints);
+        $portfolioItemWithTags = new PortfolioItem(new Title("Title", "Titel"), ImageFactory::placeholder(), new Description("Description", "Beschrijving"), "Website Url", 1, $images, $tags, $bulletPoints);
         $portfolioItemsWithoutTags = PortfolioItemFactory::create(50);
 
         $this->portfolioItemRepository->add($portfolioItemWithTags);

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\PortfolioManagement;
 
+use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\Repositories\EloquentPortfolioItemRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,6 +24,7 @@ class EloquentPortfolioItemRepositoryTest extends TestCase
     /** @test */
     public function it_should_find_a_portfolio_item()
     {
+        /** @var PortfolioItem $portfolioItem */
         $portfolioItem = PortfolioItemFactory::create(1)->first();
         $this->portfolioItemRepository->add($portfolioItem);
         $title = $portfolioItem->title();
@@ -61,4 +63,14 @@ class EloquentPortfolioItemRepositoryTest extends TestCase
         self::assertEquals($portfolioItems, $this->portfolioItemRepository->all());
     }
 
+    /** @test */
+    public function it_should_sort_on_position()
+    {
+        $portfolioItems = PortfolioItemFactory::create(10);
+        $this->portfolioItemRepository->addMultiple($portfolioItems);
+
+        $sortedPortfolioItems = $portfolioItems->sortBy(fn($portfolioItem) => $portfolioItem->position());
+
+        self::assertEquals($sortedPortfolioItems->pluck('position'), $this->portfolioItemRepository->all()->pluck('position'));
+    }
 }

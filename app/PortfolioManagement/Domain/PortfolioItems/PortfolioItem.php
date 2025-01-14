@@ -12,6 +12,8 @@ class PortfolioItem extends ValueObject implements Arrayable
     private Title $title;
     private Description $description;
     private string $websiteUrl;
+
+    private int $position;
     private Image $mainImage;
 
     /**
@@ -29,12 +31,13 @@ class PortfolioItem extends ValueObject implements Arrayable
      */
     private Collection $bulletPoints;
 
-    public function __construct(Title $title, Image $mainImage, Description $description, string $websiteUrl, Collection $images, Collection $tags, Collection $bulletPoints)
+    public function __construct(Title $title, Image $mainImage, Description $description, string $websiteUrl, int $position, Collection $images, Collection $tags, Collection $bulletPoints)
     {
         $this->title = $title;
         $this->mainImage = $mainImage;
         $this->description = $description;
         $this->websiteUrl = $websiteUrl;
+        $this->position = $position;
         $this->images = $images;
         $this->tags = $tags;
         $this->bulletPoints = $bulletPoints;
@@ -58,6 +61,11 @@ class PortfolioItem extends ValueObject implements Arrayable
     public function websiteUrl(): string
     {
         return $this->websiteUrl;
+    }
+
+    public function position(): int
+    {
+        return $this->position;
     }
 
     public function images(): Collection
@@ -115,6 +123,7 @@ class PortfolioItem extends ValueObject implements Arrayable
                 "english" => $this->description->english()
             ],
             "website_url" => $this->websiteUrl,
+            "position" => $this->position,
             "images" => $imagesAsArray,
             "tags" => $tagsAsArray,
             'bullet_points' => $this->bulletPoints->toArray()

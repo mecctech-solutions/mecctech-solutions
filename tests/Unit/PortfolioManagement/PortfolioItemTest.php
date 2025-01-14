@@ -27,7 +27,7 @@ class PortfolioItemTest extends TestCase
         $this->tags = TagFactory::multiple(10);
         $this->bulletPoints = BulletPointFactory::multiple(10);
 
-        $this->portfolioItem = new PortfolioItem($this->title, $this->mainImage, $this->description, $this->websiteUrl, $this->images, $this->tags, $this->bulletPoints);
+        $this->portfolioItem = new PortfolioItem($this->title, $this->mainImage, $this->description, $this->websiteUrl, 1, $this->images, $this->tags, $this->bulletPoints);
     }
 
 
@@ -95,6 +95,7 @@ class PortfolioItemTest extends TestCase
             "main_image" => $this->mainImage->asArray(),
             "description" => $this->description->toArray(),
             "website_url" => $this->websiteUrl,
+            "position" => 1,
             "images" => $imagesAsArray,
             "tags" => $tagsAsArray,
             "bullet_points" => $bulletPointsAsArray

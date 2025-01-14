@@ -26,6 +26,7 @@ final class AddPortfolioItemsInput
                         "url" => ":string"
                     ],
                     "website_url" => ":string",
+                    "position" => ":number",
                     "images" => [
                         "*" => [
                             "url" => ":string"

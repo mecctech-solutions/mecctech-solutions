@@ -23,6 +23,7 @@ class PortfolioItemResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('position')->label('Position'),
                 Forms\Components\TextInput::make('title_nl')->label('Title (NL)'),
                 Forms\Components\TextInput::make('title_en')->label('Title (EN)'),
                 Forms\Components\FileUpload::make('main_image_url')
@@ -39,6 +40,7 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('position'),
                 Tables\Columns\TextColumn::make('title_nl'),
                 Tables\Columns\TextColumn::make('title_en'),
                 Tables\Columns\ImageColumn::make('main_image_url'),

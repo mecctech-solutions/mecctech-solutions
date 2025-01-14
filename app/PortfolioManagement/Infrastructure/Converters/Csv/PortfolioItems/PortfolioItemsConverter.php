@@ -147,6 +147,7 @@ class PortfolioItemsConverter
                 "main_image" => [
                     "url" => 'images/'.$row[2]
                 ],
+                "position" => $rowNumber,
                 "description" => [
                     "english" => $row[3],
                     "dutch" => $row[4]

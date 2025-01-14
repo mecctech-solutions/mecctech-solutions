@@ -69,6 +69,7 @@ class PortfolioItemFactoryTest extends TestCase
                 "english" => $descriptionEnglish
             ],
             "website_url" => $websiteUrl,
+            "position" => 1,
             "main_image" => [
                 "url" => $mainImageUrl
             ],
@@ -127,6 +128,7 @@ class PortfolioItemFactoryTest extends TestCase
                     "main_image" => [
                         "url" => $mainImageUrl
                     ],
+                    "position" => 1,
                     "images" => [
                         0 => [
                             "url" => $image1Url
@@ -149,6 +151,7 @@ class PortfolioItemFactoryTest extends TestCase
                 "main_image" => [
                         "url" => $mainImageUrl
                     ],
+                "position" => 1,
                 "images" => [
                     0 => [
                         "url" => $image1Url

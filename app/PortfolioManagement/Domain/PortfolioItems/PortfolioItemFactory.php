@@ -33,6 +33,7 @@ class PortfolioItemFactory
 
             $title = new Title($titleEn, $titleNl);
             $description = new Description($faker->text, $faker->text);
+            $position = $faker->numberBetween(1, 100);
             $mainImage = ImageFactory::placeholder();
             $websiteUrl = $faker->url;
             $images = ImageFactory::placeholders(5);
@@ -45,7 +46,7 @@ class PortfolioItemFactory
             }
 
             $bulletPoints = Arr::get($attributes, 'bullet_points', BulletPointFactory::multiple(rand(1, 10)));
-            $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
+            $portfolioItem = new PortfolioItem($title, $mainImage, $description, $websiteUrl, $position, $images, $tags, $bulletPoints);
             $result->push($portfolioItem);
         }
 
@@ -59,7 +60,7 @@ class PortfolioItemFactory
         $websiteUrl = $portfolioItemAsArray["website_url"];
         $mainImageUrl = $portfolioItemAsArray["main_image"]["url"];
         $mainImage = new Image($mainImageUrl);
-
+        $position = $portfolioItemAsArray["position"];
         $images = collect(array_map(function ($image) {
                 return new Image($image["url"]);
             }, $portfolioItemAsArray["images"]));
@@ -69,7 +70,7 @@ class PortfolioItemFactory
             return new BulletPoint($bulletPoint["dutch"], Arr::get($bulletPoint, "english"));
         }, $portfolioItemAsArray["bullet_points"]));
 
-        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $images, $tags, $bulletPoints);
+        return new PortfolioItem($title, $mainImage, $description, $websiteUrl, $position, $images, $tags, $bulletPoints);
     }
 
     public static function multipleFromArray(array $portfolioItemsAsArray): Collection
