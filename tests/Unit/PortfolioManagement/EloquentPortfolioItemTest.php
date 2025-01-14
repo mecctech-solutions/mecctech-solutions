@@ -40,4 +40,29 @@ class EloquentPortfolioItemTest extends TestCase
     {
         self::assertEquals($this->eloquentTag->attributesToArray(), $this->eloquentPortfolioItem->tags()->first()->attributesToArray());
     }
+
+    /** @test */
+    public function it_should_return_main_image_url_with_storage_when_it_exists()
+    {
+        // Arrange
+        \Storage::fake();
+        $fileName = "test.jpg";
+        \Storage::put($fileName, "test");
+        $this->eloquentPortfolioItem->main_image_url = $fileName;
+        $this->eloquentPortfolioItem->save();
+
+        // Act & Assert
+        self::assertEquals("/storage/test.jpg", $this->eloquentPortfolioItem->main_image_url);
+    }
+
+    /** @test */
+    public function it_should_return_main_image_url_without_storage_when_it_does_not_exist()
+    {
+        // Arrange
+        $this->eloquentPortfolioItem->main_image_url = "test.jpg";
+        $this->eloquentPortfolioItem->save();
+
+        // Act & Assert
+        self::assertEquals("test.jpg", $this->eloquentPortfolioItem->main_image_url);
+    }
 }
