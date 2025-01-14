@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\ImageFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    use HasFactory;
+
     protected $table = "images";
     protected $guarded = [];
 
@@ -20,5 +24,10 @@ class Image extends Model
 
                 return url($this->url);
             });
+    }
+
+    protected static function newFactory(): ImageFactory
+    {
+        return new ImageFactory();
     }
 }

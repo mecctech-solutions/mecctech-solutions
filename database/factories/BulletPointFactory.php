@@ -12,8 +12,8 @@ class BulletPointFactory extends Factory
     public function definition(): array
     {
         return [
-            "content_nl" => $this->faker->sentence,
-            "content_en" => $this->faker->sentence,
+            "text_nl" => $this->faker->sentence,
+            "text_en" => $this->faker->sentence,
         ];
     }
 }

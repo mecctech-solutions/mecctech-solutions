@@ -12,8 +12,7 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            "name_nl" => $this->faker->word,
-            "name_en" => $this->faker->word,
+            "name" => $this->faker->word,
         ];
     }
 }

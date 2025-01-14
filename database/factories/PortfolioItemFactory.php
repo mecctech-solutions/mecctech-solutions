@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\BulletPoint;
+use App\Models\Image;
 use App\Models\PortfolioItem;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PortfolioItemFactory extends Factory
@@ -20,5 +23,17 @@ class PortfolioItemFactory extends Factory
             "website_url" => $this->faker->url,
             "position" => $this->faker->numberBetween(1, 100),
         ];
+    }
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (PortfolioItem $portfolioItem) {
+            BulletPoint::factory()->count(3)->create(['portfolio_item_id' => $portfolioItem->id]);
+
+            Image::factory()->count(3)->create(['portfolio_item_id' => $portfolioItem->id]);
+
+            $tags = Tag::factory()->count(3)->create();
+            $portfolioItem->tags()->sync($tags->pluck('id')->toArray());
+        });
     }
 }
