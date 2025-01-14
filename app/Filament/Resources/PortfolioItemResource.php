@@ -33,6 +33,16 @@ class PortfolioItemResource extends Resource
                 Forms\Components\TextInput::make('website_url')->label('Website URL'),
                 Forms\Components\Textarea::make('description_nl')->label('Description (NL)'),
                 Forms\Components\Textarea::make('description_en')->label('Description (EN)'),
+                Forms\Components\Select::make('tags')
+                    ->relationship(name: 'tags', titleAttribute: 'name')
+                    ->multiple()
+                    ->label('Tags')
+                    ->createOptionForm(function (Form $form) {
+                        return $form
+                            ->schema([
+                                Forms\Components\TextInput::make('name')->label('Name'),
+                            ]);
+                    }),
             ]);
     }
 
@@ -64,7 +74,6 @@ class PortfolioItemResource extends Resource
     public static function getRelations(): array
     {
         return [
-            'tags' => RelationManagers\TagsRelationManager::class,
             'bulletPoints' => RelationManagers\BulletPointsRelationManager::class,
             'images' => RelationManagers\ImagesRelationManager::class,
         ];
