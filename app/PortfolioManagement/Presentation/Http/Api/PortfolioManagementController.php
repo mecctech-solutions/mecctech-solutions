@@ -11,11 +11,9 @@ use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioIte
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
-use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\App;
-use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class PortfolioManagementController
 {
@@ -79,27 +77,6 @@ class PortfolioManagementController
             $response["error"]["code"] = $e->getCode();
             $response["error"]["message"] = $e->getMessage();
         }
-
-        return $response;
-    }
-
-    public function importPortfolioItems(Request $request)
-    {
-        try {
-            $uploadedFile = $request->file('portfolio_items');
-
-            $portfolioItems = PortfolioItemsConverter::toEntity($uploadedFile);
-            $this->portfolioManagementService->addPortfolioItems(collect($portfolioItems));
-
-            $response["meta"]["created_at"] = time();
-
-        } catch (\Exception $e)
-        {
-            $response["meta"]["created_at"] = time();
-            $response["error"]["code"] = $e->getCode();
-            $response["error"]["message"] = $e->getMessage();
-        }
-
 
         return $response;
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\ImportPortfolioItems;
 use App\CustomerRelationshipManagement\Presentation\Http\Api\CustomerRelationshipManagementController;
 use App\PortfolioManagement\Presentation\Http\Api\PortfolioManagementController;
 use Illuminate\Http\Request;
@@ -29,5 +30,5 @@ Route::post("portfolio-items/add-multiple", [PortfolioManagementController::clas
     ->name("add-portfolio-items")
     ->middleware('cors');
 
-Route::post("portfolio-items/import", [PortfolioManagementController::class, "importPortfolioItems"])
+Route::post("portfolio-items/import", ImportPortfolioItems::class)
     ->name("import-portfolio-items");

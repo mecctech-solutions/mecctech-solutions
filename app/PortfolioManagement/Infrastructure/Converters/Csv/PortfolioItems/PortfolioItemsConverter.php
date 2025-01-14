@@ -5,7 +5,6 @@ namespace App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Infrastructure\Exceptions\PortfolioItemsConverterOperationException;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 
 class PortfolioItemsConverter
@@ -18,9 +17,8 @@ class PortfolioItemsConverter
     /**
      * @throws PortfolioItemsConverterOperationException
      */
-    public static function toEntity(UploadedFile $uploadedFile): Collection
+    public static function toEntity(string $path): Collection
     {
-        $path = $uploadedFile->getRealPath();
         $file = fopen($path, 'r');
 
         $portfolioItems = collect();
