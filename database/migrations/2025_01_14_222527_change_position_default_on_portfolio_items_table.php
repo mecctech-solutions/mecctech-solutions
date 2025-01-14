@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::table('portfolio_items', function (Blueprint $table) {
             $table->integer('position')->default(1)->change();
+            DB::table('portfolio_items')->update(['position' => 1]);
         });
     }
 
@@ -16,6 +17,7 @@ return new class extends Migration {
     {
         Schema::table('portfolio_items', function (Blueprint $table) {
             $table->integer('position')->default(0)->change();
+            DB::table('portfolio_items')->update(['position' => 0]);
         });
     }
 };
