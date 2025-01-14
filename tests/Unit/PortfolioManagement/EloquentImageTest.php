@@ -33,14 +33,15 @@ class EloquentImageTest extends TestCase
     public function it_should_return_main_image_url_with_storage_when_it_exists()
     {
         // Arrange
-        \Storage::fake();
         $fileName = "test.jpg";
         \Storage::put($fileName, "test");
         $this->eloquentImage->url = $fileName;
         $this->eloquentImage->save();
 
         // Act & Assert
-        self::assertEquals("/storage/test.jpg", $this->eloquentImage->url);
+        self::assertEquals(url("/storage/test.jpg"), $this->eloquentImage->url);
+
+        \Storage::delete($fileName);
     }
 
     /** @test */
@@ -51,7 +52,7 @@ class EloquentImageTest extends TestCase
         $this->eloquentImage->save();
 
         // Act & Assert
-        self::assertEquals("test.jpg", $this->eloquentImage->url);
+        self::assertEquals(url("test.jpg"), $this->eloquentImage->url);
     }
 }
 

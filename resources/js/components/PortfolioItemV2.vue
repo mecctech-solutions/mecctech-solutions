@@ -12,7 +12,7 @@
             "
             >
                 <img
-                    :src="this.$root.baseUrl() + '/' + this.main_image_url"
+                    :src="this.main_image_url"
                     alt="image"
                     class="ud-w-full ud-h-60 ud-object-scale-down"
                 />

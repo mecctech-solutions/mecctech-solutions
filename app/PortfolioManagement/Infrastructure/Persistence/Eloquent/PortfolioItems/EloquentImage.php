@@ -17,7 +17,7 @@ class EloquentImage extends \Illuminate\Database\Eloquent\Model
                     return \Storage::url($value);
                 }
 
-                return $value;
+                return url($value);
             },
             set: function ($value) {
                 return $value;
