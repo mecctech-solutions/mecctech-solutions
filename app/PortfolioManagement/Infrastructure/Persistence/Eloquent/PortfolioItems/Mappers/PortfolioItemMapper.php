@@ -22,7 +22,7 @@ class PortfolioItemMapper
         }
 
         $title = new Title($model->title_nl, $model->title_en);
-        $mainImage = new Image($model->main_image_url);
+        $mainImage = new Image($model->main_image_full_url);
         $description = new Description($model->description_nl, $model->description_en);
         $websiteUrl = $model->website_url;
         $tagModels = $model->tags;

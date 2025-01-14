@@ -42,7 +42,7 @@ class EloquentPortfolioItemTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_main_image_url_with_storage_when_it_exists()
+    public function it_should_return_main_image_full_url_with_storage_when_it_exists()
     {
         // Arrange
         $fileName = "test.jpg";
@@ -51,19 +51,19 @@ class EloquentPortfolioItemTest extends TestCase
         $this->eloquentPortfolioItem->save();
 
         // Act & Assert
-        self::assertEquals(url("/storage/test.jpg"), $this->eloquentPortfolioItem->main_image_url);
+        self::assertEquals(url("/storage/test.jpg"), $this->eloquentPortfolioItem->main_image_full_url);
 
         \Storage::delete($fileName);
     }
 
     /** @test */
-    public function it_should_return_main_image_url_without_storage_when_it_does_not_exist()
+    public function it_should_return_main_image_full_url_without_storage_when_it_does_not_exist()
     {
         // Arrange
         $this->eloquentPortfolioItem->main_image_url = "test.jpg";
         $this->eloquentPortfolioItem->save();
 
         // Act & Assert
-        self::assertEquals(url("test.jpg"), $this->eloquentPortfolioItem->main_image_url);
+        self::assertEquals(url("test.jpg"), $this->eloquentPortfolioItem->main_image_full_url);
     }
 }
