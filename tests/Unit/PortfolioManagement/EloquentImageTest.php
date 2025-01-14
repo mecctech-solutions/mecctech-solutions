@@ -4,10 +4,13 @@ namespace Tests\Unit\PortfolioManagement;
 
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentImage;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class EloquentImageTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -39,7 +42,7 @@ class EloquentImageTest extends TestCase
         $this->eloquentImage->save();
 
         // Act & Assert
-        self::assertEquals(url("/storage/test.jpg"), $this->eloquentImage->url);
+        self::assertEquals(url("/storage/test.jpg"), $this->eloquentImage->full_url);
 
         \Storage::delete($fileName);
     }
@@ -52,7 +55,7 @@ class EloquentImageTest extends TestCase
         $this->eloquentImage->save();
 
         // Act & Assert
-        self::assertEquals(url("test.jpg"), $this->eloquentImage->url);
+        self::assertEquals(url("test.jpg"), $this->eloquentImage->full_url);
     }
 }
 

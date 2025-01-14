@@ -40,7 +40,7 @@ class PortfolioItemMapper
 
         foreach ($imageModels as $imageModel)
         {
-            $images->push(new Image($imageModel->url));
+            $images->push(new Image($imageModel->full_url));
         }
 
         $bulletPoints = collect();
