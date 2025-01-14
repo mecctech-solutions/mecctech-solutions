@@ -2,8 +2,6 @@
 
 namespace App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
-
 /**
  * @property string $title_en
  * @property string $title_nl
@@ -18,21 +16,6 @@ class EloquentPortfolioItem extends \Illuminate\Database\Eloquent\Model
     protected $fillable = [
         "title_nl", "title_en", "main_image_url", "description_nl", "description_en", "website_url"
     ];
-
-    public function mainImageUrl(): Attribute
-    {
-        return new Attribute(
-            get: function ($value) {
-                if (\Storage::exists($value)) {
-                    return \Storage::url($value);
-                }
-
-                return url($value);
-            },
-            set: function ($value) {
-                return $value;
-            });
-    }
 
     public function save(array $options = [])
     {

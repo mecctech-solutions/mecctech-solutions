@@ -30,7 +30,7 @@ class EloquentImageTest extends TestCase
     }
 
     /** @test */
-    public function it_should_return_main_image_url_with_storage_when_it_exists()
+    public function it_should_return_url_with_storage_when_it_exists()
     {
         // Arrange
         $fileName = "test.jpg";
