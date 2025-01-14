@@ -13,14 +13,3 @@
     <mecc-tech-footer-v2></mecc-tech-footer-v2>
 
 </x-master>
-
-<script>
-    import HeroSection from "../js/components/HeroSection";
-    import AboutMeV2 from "../js/components/AboutMeV2";
-    import EducationAndExperience from "../js/components/EducationAndExperience";
-    import MeccTechFooterV2 from "../js/components/MeccTechFooterV2";
-
-    export default {
-        components: {MeccTechFooterV2, EducationAndExperience, AboutMeV2, HeroSection}
-    }
-</script>

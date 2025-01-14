@@ -25,7 +25,10 @@
 </template>
 
 <script>
-    export default {
+import PortfolioItem from "./PortfolioItem.vue";
+
+export default {
+        components: {PortfolioItem},
         props: ["get_all_portfolio_items_route"],
         computed: {
             locale() {
