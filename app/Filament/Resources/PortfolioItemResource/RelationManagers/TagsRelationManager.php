@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 class TagsRelationManager extends RelationManager
 {
     protected static string $relationship = 'tags';
+    protected static ?string $label = 'Tags';
 
     public function form(Form $form): Form
     {
