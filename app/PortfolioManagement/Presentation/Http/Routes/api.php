@@ -1,8 +1,5 @@
 <?php
 
-use App\PortfolioManagement\Presentation\Http\Api\PortfolioManagementController;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,13 +11,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("portfolio-items", [PortfolioManagementController::class, "getPortfolioItems"])
-    ->name("all-portfolio-items")
-    ->middleware('cors');
-
-Route::post("portfolio-items/add-multiple", [PortfolioManagementController::class, "addMultiplePortfolioItems"])
-    ->name("add-portfolio-items")
-    ->middleware('cors');
-
-Route::post("portfolio-items/import", [PortfolioManagementController::class, "importPortfolioItems"])
-    ->name("import-portfolio-items");
