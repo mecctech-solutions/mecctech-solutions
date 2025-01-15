@@ -9,7 +9,7 @@ class PortfolioItem extends Model
 {
     protected $table = "portfolio_items";
     protected $fillable = [
-        "title_nl", "title_en", "main_image_url", "description_nl", "description_en", "website_url"
+        "title_nl", "title_en", "main_image_url", "description_nl", "description_en", "website_url", "position"
     ];
 
     protected $appends = [
