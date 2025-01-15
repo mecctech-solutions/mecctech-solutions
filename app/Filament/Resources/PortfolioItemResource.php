@@ -31,8 +31,16 @@ class PortfolioItemResource extends Resource
                     ->preserveFilenames()
                     ->label('Main Image URL'),
                 Forms\Components\TextInput::make('website_url')->label('Website URL'),
-                Forms\Components\Textarea::make('description_nl')->label('Description (NL)'),
-                Forms\Components\Textarea::make('description_en')->label('Description (EN)'),
+                Forms\Components\RichEditor::make('description_nl')
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('portfolio_items')
+                    ->fileAttachmentsVisibility('public')
+                    ->label('Description (NL)'),
+                Forms\Components\RichEditor::make('description_en')
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('portfolio_items')
+                    ->fileAttachmentsVisibility('public')
+                    ->label('Description (EN)'),
                 Forms\Components\Select::make('tags')
                     ->relationship(name: 'tags', titleAttribute: 'name')
                     ->multiple()
@@ -50,7 +58,8 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('position'),
+                Tables\Columns\TextColumn::make('position')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('title_nl'),
                 Tables\Columns\TextColumn::make('title_en'),
                 Tables\Columns\ImageColumn::make('main_image_url'),
