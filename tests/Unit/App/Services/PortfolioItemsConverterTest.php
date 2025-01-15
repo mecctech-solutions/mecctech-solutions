@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\PortfolioManagement;
+namespace tests\Unit\App\Services;
 
-use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
+use app\Services\CsvPortfolioItemsConverter;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
@@ -36,7 +36,7 @@ class PortfolioItemsConverterTest extends TestCase
         $file =  new UploadedFile( $path, $filename, null,null,true);
 
         // When
-        $portfolioItems = PortfolioItemsConverter::toEntity($file);
+        $portfolioItems = CsvPortfolioItemsConverter::toEntity($file);
 
         // Then
         self::assertEquals(1, sizeof($portfolioItems));
@@ -66,7 +66,7 @@ class PortfolioItemsConverterTest extends TestCase
         $file =  new UploadedFile( $path, $filename, null,null,true);
 
         // When
-        $portfolioItems = PortfolioItemsConverter::toEntity($file);
+        $portfolioItems = CsvPortfolioItemsConverter::toEntity($file);
 
         // Then
         self::assertEmpty($portfolioItems->first()->images());
@@ -95,7 +95,7 @@ class PortfolioItemsConverterTest extends TestCase
         $file =  new UploadedFile( $path, $filename, null,null,true);
 
         // When
-        $portfolioItems = PortfolioItemsConverter::toEntity($file);
+        $portfolioItems = CsvPortfolioItemsConverter::toEntity($file);
 
         // Then
         self::assertEmpty($portfolioItems->first()->tags());

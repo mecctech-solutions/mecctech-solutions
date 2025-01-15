@@ -1,13 +1,13 @@
 <?php
 
-namespace App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems;
+namespace app\Services;
 
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Infrastructure\Exceptions\PortfolioItemsConverterOperationException;
 use Illuminate\Support\Collection;
 
-class PortfolioItemsConverter
+class CsvPortfolioItemsConverter
 {
     public static function toExcel(PortfolioItem $portfolioItem)
     {

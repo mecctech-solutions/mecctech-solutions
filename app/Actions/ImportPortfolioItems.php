@@ -3,8 +3,8 @@
 namespace App\Actions;
 
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
-use App\PortfolioManagement\Infrastructure\Converters\Csv\PortfolioItems\PortfolioItemsConverter;
 use App\PortfolioManagement\Infrastructure\Exceptions\PortfolioItemsConverterOperationException;
+use App\Services\CsvPortfolioItemsConverter;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
 
@@ -20,7 +20,7 @@ class ImportPortfolioItems
      */
     public function handle(string $path): void
     {
-        $portfolioItems = PortfolioItemsConverter::toEntity($path);
+        $portfolioItems = CsvPortfolioItemsConverter::toEntity($path);
         $this->portfolioManagementService->addPortfolioItems(collect($portfolioItems));
     }
 

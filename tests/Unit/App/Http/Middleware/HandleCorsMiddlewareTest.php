@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace tests\Unit\App\Http\Middleware;
 
 use App\Http\Middleware\HandleCorsMiddleware;
 use Illuminate\Http\Request;
