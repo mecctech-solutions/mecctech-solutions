@@ -13,7 +13,10 @@ class GetAllPortfolioItemsTest extends TestCase
     public function it_should_return_all_portfolio_items()
     {
         self::assertEmpty(PortfolioItem::all());
-        $portfolioItems = PortfolioItemFactory::new()->count(10)->create();
+        $portfolioItems = PortfolioItemFactory::new()
+            ->count(10)
+            ->create()
+            ->load('tags', 'images', 'bulletPoints');
         self::assertEquals($portfolioItems->toArray(), GetAllPortfolioItems::run()->toArray());
     }
 
@@ -36,7 +39,8 @@ class GetAllPortfolioItemsTest extends TestCase
         $portfolioItemsWithFirstTag = PortfolioItemFactory::new()
             ->count(5)
             ->withTags(['name' => $firstTag])
-            ->create();
+            ->create()
+            ->load('tags', 'images', 'bulletPoints');
 
         PortfolioItemFactory::new()
             ->count(5)

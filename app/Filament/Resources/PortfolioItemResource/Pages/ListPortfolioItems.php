@@ -17,7 +17,8 @@ class ListPortfolioItems extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            Actions\Action::make('Import from Excel')
+            Actions\Action::make('import_from_excel')
+                ->label('Import from Excel')
                 ->action(function (array $data) {
                     $fileName = $data['file'];
                     $fileFullPath = Storage::disk('public')->path($fileName);
