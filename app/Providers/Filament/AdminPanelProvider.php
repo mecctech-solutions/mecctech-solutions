@@ -40,7 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
             ])
-            ->favicon(asset('images/MeccTechlogo-01.png'))
+            ->favicon(asset('images/Mecctech_Solutions.png'))
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
