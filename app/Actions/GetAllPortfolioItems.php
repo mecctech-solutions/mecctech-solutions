@@ -3,39 +3,31 @@
 namespace App\Actions;
 
 use App\Models\PortfolioItem;
-use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTag;
-use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTagInput;
-use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Collection;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class GetAllPortfolioItems
 {
     use AsAction;
 
-    public function handle()
+    public function handle(?string $tag = null): Collection
     {
-        return PortfolioItem::all()->sortBy('position');
+        $query = PortfolioItem::query();
+
+        if ($tag)
+        {
+            $query->whereRelation('tags', 'name', $tag);
+        }
+
+        return $query->get()->sortBy('position');
     }
 
     public function asController(Request $request)
     {
         try {
-            if ($tag = $request->query("tag"))
-            {
-                $useCase = new GetPortfolioItemsWithTag(App::make(PortfolioItemRepositoryInterface::class));
-                $useCaseInput = new GetPortfolioItemsWithTagInput([
-                    "tag" => $tag
-                ]);
-
-                $useCaseResult = $useCase->execute($useCaseInput);
-                $portfolioItems = $useCaseResult->portfolioItems();
-            } else {
-                $portfolioItems = $this->handle();
-            }
-
+            $portfolioItems = $this->handle($request->query('tag'));
             $response["meta"]["created_at"] = time();
             $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItems, $portfolioItems->count(), 3);
 

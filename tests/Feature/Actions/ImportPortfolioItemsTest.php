@@ -9,7 +9,7 @@ class ImportPortfolioItemsTest extends TestCase
 {
 
     /** @test */
-    public function it_should_be_able_to_call_the_route_for_importing_portfolio_items()
+    public function it_should_be_able_to_call_the_route()
     {
         // Given
         $url = route("import-portfolio-items");

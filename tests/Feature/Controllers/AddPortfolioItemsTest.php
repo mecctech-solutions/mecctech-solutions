@@ -7,6 +7,7 @@ use App\Models\BulletPoint;
 use App\Models\Image;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
+use Database\Factories\PortfolioItemFactory;
 use Tests\TestCase;
 
 class AddPortfolioItemsTest extends TestCase
@@ -19,7 +20,7 @@ class AddPortfolioItemsTest extends TestCase
         $bulletPoints = BulletPoint::factory()->count(3)->make();
         $images = Image::factory()->count(3)->make();
         $tags = Tag::factory()->count(3)->make();
-        $portfolioItems = \Database\Factories\PortfolioItemFactory::new()
+        $portfolioItems = PortfolioItemFactory::new()
             ->count(20)
             ->make()
             ->map(function ($portfolioItem) use ($bulletPoints, $images, $tags) {
@@ -49,7 +50,7 @@ class AddPortfolioItemsTest extends TestCase
     public function it_should_not_add_items_with_same_title()
     {
         // Given
-        $portfolioItems = \Database\Factories\PortfolioItemFactory::new()
+        $portfolioItems = PortfolioItemFactory::new()
             ->count(2)
             ->make([
                 "title_nl" => "Same title",

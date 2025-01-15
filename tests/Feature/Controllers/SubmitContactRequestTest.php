@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\CustomerRelationshipManagement;
+namespace Tests\Feature\Controllers;
 
 use App\CustomerRelationshipManagement\Application\SubmitContactRequest\SubmitContactRequest;
 use App\CustomerRelationshipManagement\Application\SubmitContactRequest\SubmitContactRequestInput;
@@ -8,6 +8,8 @@ use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use App\CustomerRelationshipManagement\Domain\Notifications\Notification;
 use App\CustomerRelationshipManagement\Domain\Services\NotificationSenderServiceInterface;
 use Mockery\MockInterface;
+use Tests\Feature\CustomerRelationshipManagement\DummyCustomerRepository;
+use Tests\Feature\CustomerRelationshipManagement\DummyNotificationSenderService;
 use Tests\TestCase;
 
 class SubmitContactRequestTest extends TestCase

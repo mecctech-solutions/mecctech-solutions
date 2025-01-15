@@ -7,10 +7,9 @@ use App\PortfolioManagement\Domain\PortfolioItems\Image;
 use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
 use App\PortfolioManagement\Domain\PortfolioItems\Title;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
+use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\EloquentPortfolioItem;
 use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Mappers\PortfolioItemMapper;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
 use Illuminate\Support\Collection;
-use function collect;
 
 class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterface
 {
@@ -18,7 +17,7 @@ class EloquentPortfolioItemRepository implements PortfolioItemRepositoryInterfac
     public function all(): Collection
     {
         $result = collect();
-        $models = PortfolioItem::all()->sortBy("position");
+        $models = EloquentPortfolioItem::all()->sortBy("position");
 
         foreach ($models as $model)
         {

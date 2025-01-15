@@ -39,7 +39,6 @@ class ImportPortfolioItems
             $response["error"]["message"] = $e->getMessage();
         }
 
-
         return $response;
     }
 }

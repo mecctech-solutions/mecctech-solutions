@@ -25,6 +25,14 @@ class PortfolioItemFactory extends Factory
         ];
     }
 
+    public function withTags(array $attributes, int $count = 1): static
+    {
+        return $this->afterCreating(function (PortfolioItem $portfolioItem) use ($attributes, $count) {
+            $tags = Tag::factory()->count($count)->create($attributes);
+            $portfolioItem->tags()->sync($tags->pluck('id')->toArray());
+        });
+    }
+
     public function configure(): static
     {
         return $this->afterCreating(function (PortfolioItem $portfolioItem) {

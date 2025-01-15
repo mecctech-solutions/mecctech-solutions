@@ -26,4 +26,25 @@ class GetAllPortfolioItemsTest extends TestCase
 
         self::assertEquals($sortedPortfolioItems->pluck('position'), GetAllPortfolioItems::run()->pluck('position'));
     }
+
+    /** @test */
+    public function it_should_return_portfolio_items_with_certain_tag()
+    {
+        // Given
+        $firstTag = "Tag 1";
+        $secondTag = "Tag 2";
+        $portfolioItemsWithFirstTag = PortfolioItemFactory::new()
+            ->count(5)
+            ->withTags(['name' => $firstTag])
+            ->create();
+
+        PortfolioItemFactory::new()
+            ->count(5)
+            ->withTags(['name' => $secondTag])
+            ->create();
+
+        // When
+        $result = GetAllPortfolioItems::run($firstTag);
+        self::assertEquals($portfolioItemsWithFirstTag->toArray(), $result->toArray());
+    }
 }
