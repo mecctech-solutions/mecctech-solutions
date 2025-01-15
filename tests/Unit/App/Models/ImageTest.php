@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Unit\PortfolioManagement;
+namespace tests\Unit\App\Models;
 
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\Image;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
+use App\Models\Image;
+use App\Models\PortfolioItem;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class EloquentImageTest extends TestCase
+class ImageTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -15,7 +15,7 @@ class EloquentImageTest extends TestCase
     {
         parent::setUp();
 
-        $this->eloquentPortfolioItem = new PortfolioItem([
+        $this->portfolioItem = new PortfolioItem([
             "title_en" => "Test Title",
             "title_nl" => "Test Titel",
             "main_image_url" => "Test Url",
@@ -24,11 +24,11 @@ class EloquentImageTest extends TestCase
             "website_url" => "Test Website Url"
         ]);
 
-        $this->eloquentPortfolioItem->save();
+        $this->portfolioItem->save();
 
-        $this->eloquentImage = new Image([
+        $this->image = new Image([
             "url" => "/images/placeholder.png",
-            "portfolio_item_id" => $this->eloquentPortfolioItem->id,
+            "portfolio_item_id" => $this->portfolioItem->id,
         ]);
     }
 
@@ -38,11 +38,11 @@ class EloquentImageTest extends TestCase
         // Arrange
         $fileName = "test.jpg";
         \Storage::put($fileName, "test");
-        $this->eloquentImage->url = $fileName;
-        $this->eloquentImage->save();
+        $this->image->url = $fileName;
+        $this->image->save();
 
         // Act & Assert
-        self::assertEquals(url("/storage/test.jpg"), $this->eloquentImage->full_url);
+        self::assertEquals(url("/storage/test.jpg"), $this->image->full_url);
 
         \Storage::delete($fileName);
     }
@@ -51,11 +51,11 @@ class EloquentImageTest extends TestCase
     public function it_should_return_main_image_url_without_storage_when_it_does_not_exist()
     {
         // Arrange
-        $this->eloquentImage->url = "test.jpg";
-        $this->eloquentImage->save();
+        $this->image->url = "test.jpg";
+        $this->image->save();
 
         // Act & Assert
-        self::assertEquals(url("test.jpg"), $this->eloquentImage->full_url);
+        self::assertEquals(url("test.jpg"), $this->image->full_url);
     }
 }
 
