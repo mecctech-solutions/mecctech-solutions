@@ -401,7 +401,7 @@
 
 <script>
 export default {
-    name: "MeccTechFooterV2",
+    name: "SiteFooter",
     computed: {
         locale() {
             return this.$store.state.locale;
