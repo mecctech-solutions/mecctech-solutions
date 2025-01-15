@@ -16,7 +16,7 @@
                     ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
                   "
                 >
-                  {{ $lang.get('resume.education') }}
+                  {{ trans('resume.education') }}
                 </span>
                             <h2
                                 class="
@@ -26,10 +26,10 @@
                     ud-mb-5
                   "
                             >
-                                {{ $lang.get('resume.resume') }}
+                                {{ trans('resume.resume') }}
                             </h2>
                             <p class="ud-font-medium ud-text-lg ud-text-body-color">
-                                {{ $lang.get('resume.resume_text') }}
+                                {{ trans('resume.resume_text') }}
                             </p>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    {{ $lang.get('resume.laravel_and_vuejs') }}
+                                    {{ trans('resume.laravel_and_vuejs') }}
                                 </h3>
                                 <p
                                     class="
@@ -93,10 +93,10 @@
                       ud-mb-5
                     "
                                 >
-                    2020 - {{ $lang.get('resume.now') }}
+                    2020 - {{ trans('resume.now') }}
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    {{ $lang.get('resume.laravel_and_vuejs_text') }}
+                                    {{ trans('resume.laravel_and_vuejs_text') }}
                                 </p>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    {{ $lang.get('resume.freelance_laravel_and_vuejs') }}
+                                    {{ trans('resume.freelance_laravel_and_vuejs') }}
                                 </h3>
                                 <p
                                     class="
@@ -148,10 +148,10 @@
                       ud-mb-5
                     "
                                 >
-                    2020 - {{ $lang.get('resume.now') }}
+                    2020 - {{ trans('resume.now') }}
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    {{ $lang.get('resume.freelance_laravel_and_vuejs_text') }}
+                                    {{ trans('resume.freelance_laravel_and_vuejs_text') }}
                                 </p>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    {{ $lang.get('resume.graduate_msc') }}
+                                    {{ trans('resume.graduate_msc') }}
                                 </h3>
                                 <p
                                     class="
@@ -207,7 +207,7 @@
                     2019 - 2021
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    {{ $lang.get('resume.graduate_msc_text_1') }} <a class="ud-text-primary hover:ud-text-black" href="https://repository.tudelft.nl/islandora/object/uuid%3A346f2743-121c-419f-afa2-96c8745d1003">{{ $lang.get('resume.graduate_msc_text_thesis')}}</a> {{ $lang.get('resume.graduate_msc_text_2') }}
+                                    {{ trans('resume.graduate_msc_text_1') }} <a class="ud-text-primary hover:ud-text-black" href="https://repository.tudelft.nl/islandora/object/uuid%3A346f2743-121c-419f-afa2-96c8745d1003">{{ trans('resume.graduate_msc_text_thesis')}}</a> {{ trans('resume.graduate_msc_text_2') }}
                                 </p>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
                     "
                   ></span>
                                 <h3 class="ud-font-semibold ud-text-xl ud-text-black ud-mb-1">
-                                    {{  $lang.get('resume.intern_robotics') }}
+                                    {{  trans('resume.intern_robotics') }}
                                 </h3>
                                 <p
                                     class="
@@ -262,7 +262,7 @@
                     2014 - 2016
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    {{  $lang.get('resume.intern_robotics_text') }}
+                                    {{  trans('resume.intern_robotics_text') }}
                                 </p>
                             </div>
                         </div>
@@ -319,7 +319,7 @@
                     2012 - 2016
                   </span>
                                 <p class="ud-font-medium ud-text-base ud-text-body-color">
-                                    {{  $lang.get('resume.bachelor_text') }}
+                                    {{  trans('resume.bachelor_text') }}
                                 </p>
                             </div>
                         </div>
@@ -427,18 +427,25 @@
         </div>
     </section>
 </template>
+<script setup>
+import {computed} from "vue";
+import {trans} from "laravel-vue-i18n";
+import {usePage} from "@inertiajs/vue3";
 
-<script>
-export default {
-    name: "EducationAndExperience",
-    computed: {
-        locale() {
-            return this.$store.state.locale;
-        }
+const page = usePage();
+const locale = computed(() => page.props.locale);
+
+const educationExperienceItems = [
+    {
+        title: "resume.laravel_and_vuejs",
+        location: "Home Design Shops | Zoetermeer",
+        timeframe: "2020 - now",
+        description: "resume.laravel_and_vuejs_text",
     },
-}
+    // Add other experience/education objects here
+];
 </script>
 
 <style scoped>
-
+/* Add styles as needed */
 </style>

@@ -13,7 +13,7 @@
 <script>
 export default {
     props: ['name', 'level', 'percentage'],
-    name: "SkillsV2"
+    name: "Skill"
 }
 </script>
 

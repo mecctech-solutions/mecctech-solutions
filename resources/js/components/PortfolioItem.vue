@@ -81,13 +81,16 @@
             </div>
         </div>
 
-        <portfolio-item-modal :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" :bullet_points="this.bullet_points" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></portfolio-item-modal>
+        <PortfolioItemModal :title="this.title" :tags="this.tags" :images="this.images" :description="this.description" :website_url="this.website_url" :bullet_points="this.bullet_points" v-on:turn-off-modal="turnOffModal" v-if="view_modal"></PortfolioItemModal>
 
     </div>
 </template>
 
 <script>
-    export default {
+import PortfolioItemModal from "./PortfolioItemModal.vue";
+
+export default {
+        components: {PortfolioItemModal},
         props: ['title', 'tags', 'main_image_url', 'images', 'description', 'website_url', 'bullet_points'],
         data() {
             return {

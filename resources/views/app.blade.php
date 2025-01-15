@@ -37,7 +37,6 @@
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB61P7MT21"></script>
         @endenv
 
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @inertiaHead
         @routes

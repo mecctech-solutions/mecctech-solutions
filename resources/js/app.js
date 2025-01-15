@@ -4,6 +4,7 @@ import '../css/app.css';
 import './bootstrap';
 import {route} from 'ziggy-js';
 import {i18nVue} from 'laravel-vue-i18n'
+import vClickOutside from "click-outside-vue3"
 
 createInertiaApp({
     resolve: name => {
@@ -20,6 +21,7 @@ createInertiaApp({
                 return await langs[`../../lang/${lang}.json`]();
             }
         })
+        vueApp.use(vClickOutside)
         vueApp.config.globalProperties.$route = route;
         vueApp.mount(el);
     },
