@@ -3,6 +3,7 @@
 namespace Tests\Feature\Actions;
 
 use App\Actions\AddPortfolioItems;
+use App\Data\PortfolioItemData;
 use App\Models\BulletPoint;
 use App\Models\Image;
 use App\Models\PortfolioItem;
@@ -28,28 +29,33 @@ class AddPortfolioItemsTest extends TestCase
                 $portfolioItem['images'] = $images->toArray();
                 $portfolioItem['tags'] = $tags->toArray();
                 return $portfolioItem;
-            })
-            ->toArray();
+            });
+        $portfolioItems = PortfolioItemData::collect($portfolioItems);
 
         // When
         AddPortfolioItems::run($portfolioItems);
 
         // Then
-        $expectedPortfolioItems = collect($portfolioItems)->map(function ($item) {
-            unset($item['bullet_points'], $item['images'], $item['tags']); // Relationships not in the database
+        $expectedTags = $portfolioItems->map(function (PortfolioItemData $item) {
+            return $item->tags->toArray();
+        })->flatten()->unique()->toArray();
+
+        $actualTags = Tag::query()->pluck('name')->toArray();
+
+        $expectedPortfolioItems = $portfolioItems->map(function (PortfolioItemData $item) {
+            unset($item->bullet_points, $item->images, $item->tags);
             return $item;
         })->toArray();
 
         $actualPortfolioItems = PortfolioItem::query()
-            ->select(['title_nl', 'title_en', 'main_image_url', 'description_nl', 'description_en', 'website_url', 'position'])
+            ->select(['title_nl', 'title_en', 'main_image_url', 'description_nl', 'description_en', 'website_url', 'position',])
             ->get()
             ->toArray();
 
-        $expectedTags = collect($portfolioItems)->map(function ($item) {
-            return collect($item['tags'])->pluck('name')->toArray();
-        })->flatten()->unique()->toArray();
-
-        $actualTags = Tag::query()->pluck('name')->toArray();
+        $actualPortfolioItems = array_map(function ($item) {
+            unset($item['main_image_full_url']); // Remove unnecessary attributes
+            return $item;
+        }, $actualPortfolioItems);
 
         // Then
         self::assertEquals($expectedPortfolioItems, $actualPortfolioItems);

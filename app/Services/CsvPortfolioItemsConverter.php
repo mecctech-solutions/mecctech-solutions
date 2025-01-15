@@ -1,34 +1,28 @@
 <?php
 
-namespace app\Services;
+namespace App\Services;
 
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItem;
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
-use App\PortfolioManagement\Infrastructure\Exceptions\PortfolioItemsConverterOperationException;
+use App\Data\PortfolioItemData;
 use Illuminate\Support\Collection;
 
 class CsvPortfolioItemsConverter
 {
-    public static function toExcel(PortfolioItem $portfolioItem)
-    {
-
-    }
-
     /**
-     * @throws PortfolioItemsConverterOperationException
+     * @param  string  $path
+     * @return Collection<PortfolioItemData>
      */
-    public static function toEntity(string $path): Collection
+    public static function import(string $path): Collection
     {
         $file = fopen($path, 'r');
 
-        $portfolioItems = collect();
+        $portfolioItems = [];
         $rowNumber = 0;
 
         while (($row = fgetcsv($file)) !== FALSE)
         {
             if (sizeof($row) !== 23)
             {
-                throw new PortfolioItemsConverterOperationException("Excel file should have 23 columns");
+                throw new \InvalidArgumentException("Excel file should have 23 columns");
             }
 
             if ($rowNumber === 0)
@@ -92,22 +86,22 @@ class CsvPortfolioItemsConverter
 
             if ($row[13] !== "")
             {
-                $tags[] = $row[13];
+                $tags[]['name'] = $row[13];
             }
 
             if ($row[14] !== "")
             {
-                $tags[] = $row[14];
+                $tags[]['name'] = $row[14];
             }
 
             if ($row[15] !== "")
             {
-                $tags[] = $row[15];
+                $tags[]['name'] = $row[15];
             }
 
             if ($row[16] !== "")
             {
-                $tags[] = $row[16];
+                $tags[]['name'] = $row[16];
             }
 
             // Bullet points
@@ -115,8 +109,8 @@ class CsvPortfolioItemsConverter
             if ($row[17] !== "" && $row[18] !== "")
             {
                 $bulletPoints[] = [
-                    "dutch" => $row[17],
-                    "english" => $row[18]
+                    "text_nl" => $row[17],
+                    "text_en" => $row[18]
                 ];
             }
 
@@ -124,44 +118,38 @@ class CsvPortfolioItemsConverter
             if ($row[19] !== "" && $row[20] !== "")
             {
                 $bulletPoints[] = [
-                    "dutch" => $row[19],
-                    "english" => $row[20]
+                    "text_nl" => $row[19],
+                    "text_en" => $row[20]
                 ];
             }
 
             if ($row[21] !== "" && $row[22] !== "")
             {
                 $bulletPoints[] = [
-                    "dutch" => $row[21],
-                    "english" => $row[22]
+                    "text_nl" => $row[21],
+                    "text_en" => $row[22]
                 ];
             }
 
             $portfolioItem = [
-                "title" => [
-                    "english" => $row[0],
-                    "dutch" => $row[1]
-                ],
-                "main_image" => [
-                    "url" => 'images/'.$row[2]
-                ],
+                "title_en" => $row[0],
+                "title_nl" => $row[1],
+                "main_image_url" => 'images/'.$row[2],
                 "position" => $rowNumber,
-                "description" => [
-                    "english" => $row[3],
-                    "dutch" => $row[4]
-                ],
+                "description_en" => $row[3],
+                "description_nl" => $row[4],
                 "website_url" => $row[5],
                 "images" => $images,
                 "tags" => $tags,
-                "bullet_points" => $bulletPoints
+                "bullet_points" => $bulletPoints,
             ];
 
-            $portfolioItems->push(PortfolioItemFactory::fromArray($portfolioItem));
+            $portfolioItems[] = PortfolioItemData::from($portfolioItem);
 
             $rowNumber++;
 
         }
 
-        return $portfolioItems;
+        return PortfolioItemData::collect($portfolioItems, Collection::class);
     }
 }

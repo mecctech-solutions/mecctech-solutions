@@ -2,11 +2,16 @@
 
 namespace App\Actions;
 
+use App\Data\BulletPointData;
+use App\Data\ImageData;
+use App\Data\PortfolioItemData;
+use App\Data\TagData;
 use App\Models\BulletPoint;
 use App\Models\Image;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class AddPortfolioItems
@@ -14,17 +19,15 @@ class AddPortfolioItems
     use AsAction;
 
     /**
-     * @param  array $portfolioItems
+     * @param  Collection<PortfolioItemData> $portfolioItems
      * @return void
      */
-    public function handle(array $portfolioItems)
+    public function handle(Collection $portfolioItems): void
     {
-        $portfolioItems = collect($portfolioItems);
+        $portfolioItems->each(function (PortfolioItemData $portfolioItem) {
 
-        $portfolioItems->each(function (array $portfolioItem) {
-
-            $existingPortfolioItem = PortfolioItem::where("title_nl", $portfolioItem['title_nl'])
-                ->orWhere("title_en", $portfolioItem['title_en'])
+            $existingPortfolioItem = PortfolioItem::where("title_nl", $portfolioItem->title_nl)
+                ->orWhere("title_en", $portfolioItem->title_en)
                 ->first();
 
             if ($existingPortfolioItem)
@@ -33,32 +36,35 @@ class AddPortfolioItems
             }
 
             $newPortfolioItem = PortfolioItem::create([
-                "title_nl" => $portfolioItem['title_nl'],
-                "title_en" => $portfolioItem['title_en'],
-                "description_nl" => $portfolioItem['description_nl'],
-                "description_en" => $portfolioItem['description_en'],
-                "position" => $portfolioItem['position'],
-                "website_url" => $portfolioItem['website_url'],
-                "main_image_url" => $portfolioItem['main_image_url'],
+                "title_nl" => $portfolioItem->title_nl,
+                "title_en" => $portfolioItem->title_en,
+                "description_nl" => $portfolioItem->description_nl,
+                "description_en" => $portfolioItem->description_en,
+                "position" => $portfolioItem->position,
+                "website_url" => $portfolioItem->website_url,
+                "main_image_url" => $portfolioItem->main_image_url,
             ]);
 
-            collect($portfolioItem['bullet_points'])->each(function ($bulletPoint) use ($newPortfolioItem) {
+
+            $portfolioItem->bullet_points->each(function (BulletPointData $bulletPoint) use ($newPortfolioItem) {
                 BulletPoint::create([
-                    "text_nl" => $bulletPoint['text_nl'],
-                    "text_en" => $bulletPoint['text_en'],
-                    "portfolio_item_id" => $newPortfolioItem['id'],
+                    "text_nl" => $bulletPoint->text_nl,
+                    "text_en" => $bulletPoint->text_en,
+                    "portfolio_item_id" => $newPortfolioItem->id,
                 ]);
             });
 
-            collect($portfolioItem['images'])->each(function ($image) use ($newPortfolioItem) {
+            $portfolioItem->images->each(function (ImageData $image) use ($newPortfolioItem) {
                 Image::create([
-                    "url" => $image['url'],
-                    "portfolio_item_id" => $newPortfolioItem['id'],
+                    "url" => $image->url,
+                    "portfolio_item_id" => $newPortfolioItem->id,
                 ]);
             });
 
-            collect($portfolioItem['tags'])->each(function ($tag) use ($newPortfolioItem) {
-                $tag = Tag::firstOrCreate($tag);
+            $portfolioItem->tags->each(function (TagData $tag) use ($newPortfolioItem) {
+                $tag = Tag::firstOrCreate([
+                    "name" => $tag->name,
+                ]);
                 $newPortfolioItem->tags()->attach($tag->id);
             });
         });

@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers;
 
 use App\Actions\AddPortfolioItems;
 use App\Actions\GetAllPortfolioItems;
+use App\Data\PortfolioItemData;
 use App\Models\BulletPoint;
 use App\Models\Image;
 use App\Models\PortfolioItem;
@@ -29,8 +30,9 @@ class AddPortfolioItemsTest extends TestCase
                 $portfolioItem['images'] = $images->toArray();
                 $portfolioItem['tags'] = $tags->toArray();
                 return $portfolioItem;
-            })
-            ->toArray();
+            });
+
+        $portfolioItems = PortfolioItemData::collect($portfolioItems);
 
         // Then
         AddPortfolioItems::partialMock()
@@ -56,8 +58,9 @@ class AddPortfolioItemsTest extends TestCase
             ->make([
                 "title_nl" => "Same title",
                 "title_en" => "Zelfde titel",
-            ])
-            ->toArray();
+            ]);
+
+        $portfolioItems = PortfolioItemData::collect($portfolioItems);
 
         // When
         $response = $this->post(route("add-portfolio-items"), [
