@@ -30,5 +30,5 @@ Route::post('/submit-contact-request', SubmitContactRequest::class)
 
 Route::get('language/{language}', function ($language) {
     session()->put('locale', $language);
-    return;
+    return redirect()->back();
 })->name('language');

@@ -1,8 +1,10 @@
 <script setup>
-    function changeLanguage(language) {
-        Inertia.get(route('language', language));
-        location.reload();
-    }
+import {router} from '@inertiajs/vue3'
+
+function changeLanguage(language) {
+    router.get(route('language', language));
+    location.reload();
+}
 </script>
 
 <template>
@@ -19,8 +21,12 @@
                 "
         >
             <div class="ud-flex ud-space-x-1 ud-mb-1">
-                <a @click="changeLanguage('nl')" class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img style="width: 30px" src="/icons/netherlands.png" alt=""></a>
-                <a @click="changeLanguage('en')" class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img style="width: 30px" src="/icons/uk.png" alt=""></a>
+                <a @click="changeLanguage('nl')"
+                   class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img
+                    style="width: 30px" src="/icons/netherlands.png" alt=""></a>
+                <a @click="changeLanguage('en')"
+                   class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img
+                    style="width: 30px" src="/icons/uk.png" alt=""></a>
             </div>
         </div>
     </div>
