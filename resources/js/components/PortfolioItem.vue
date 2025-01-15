@@ -5,7 +5,7 @@
             <div class="overlay">
                 <div class="text">
                     <h1 class="text-lg md:text-3xl">{{ title }}</h1>
-                    <p class="text-md md:text-xl">{{ tags.join(" / ") }}</p>
+                    <p class="text-md md:text-xl">{{ tags.map((tag) => tag.name).join(" / ") }}</p>
                     <button @click="toggleModal" class="text-lg md:text-2xl border-mecctech-red border-4 pl-5 pr-5 pt-1 pb-1 mt-5 hover:bg-mecctech-red hover:text-white transition transform ease-in-out duration-500">
                         {{ $lang.get('projects.learn_more') }}</button>
                 </div>

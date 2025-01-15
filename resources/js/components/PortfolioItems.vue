@@ -19,7 +19,7 @@
             </ul>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-24 pl-16 pr-16 lg:pl-96 lg:pr-96 mt-20">
-            <portfolio-item v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title.dutch : portfolio_item.title.english" :description="locale === 'nl' ? portfolio_item.description.dutch : portfolio_item.description.english" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item>
+            <portfolio-item v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title_nl : portfolio_item.title_en" :description="locale === 'nl' ? portfolio_item.description_nl : portfolio_item.description_en" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image.url" :website_url="portfolio_item.website_url" :images="portfolio_item.images"></portfolio-item>
         </div>
     </div>
 </template>

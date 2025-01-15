@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Data\PortfolioItemData;
 use App\Models\PortfolioItem;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -14,7 +15,7 @@ class GetAllPortfolioItems
 
     public function handle(?string $tag = null): Collection
     {
-        $query = PortfolioItem::query();
+        $query = PortfolioItem::query()->with('images', 'tags', 'bulletPoints');
 
         if ($tag)
         {
@@ -28,8 +29,9 @@ class GetAllPortfolioItems
     {
         try {
             $portfolioItems = $this->handle($request->query('tag'));
+
             $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItems, $portfolioItems->count(), 3);
+            $response["payload"]["portfolio_items"] = new LengthAwarePaginator(PortfolioItemData::collect($portfolioItems), $portfolioItems->count(), 3);
 
         } catch (\Exception $e)
         {

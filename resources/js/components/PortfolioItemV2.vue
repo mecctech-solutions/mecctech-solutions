@@ -68,7 +68,7 @@
                 </a>
                 <ul class="ud-text-sm ud-font-normal ud-flex ud-space-x-3">
 
-                    <li v-for="tag in this.tags" href="">{{ tag }}</li>
+                    <li v-for="tag in this.tags" href="">{{ tag.name }}</li>
 
                 </ul>
             </h3>

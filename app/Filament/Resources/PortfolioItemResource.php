@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PortfolioItemResource\Pages;
 use App\Filament\Resources\PortfolioItemResource\RelationManagers;
-use App\PortfolioManagement\Infrastructure\Persistence\Eloquent\PortfolioItems\PortfolioItem;
+use App\Models\PortfolioItem;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
