@@ -8,11 +8,11 @@
         <div class="ud-text-left ud-p-5">
             <div class="ud-flex ud-items-center ud-space-x-3">
                 <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
-                <p v-for="tag in this.tags">{{ tag }}</p>
+                <p v-for="tag in this.tags">{{ tag.name }}</p>
             </div>
             <ul class="ud-mt-4">
                 <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
-                    {{ locale === 'nl' ? bullet_point.dutch : bullet_point.english }}
+                    {{ locale === 'nl' ? bullet_point.text_nl : bullet_point.text_en }}
                 </li>
             </ul>
         </div>
@@ -45,13 +45,13 @@
             <div class="ud-mb-4">
                 <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
                 <div class="ud-flex ud-space-x-3 ud-text-sm">
-                    <p v-for="tag in this.tags">{{ tag }}</p>
+                    <p v-for="tag in this.tags">{{ tag.name }}</p>
                 </div>
             </div>
 
             <ul class="ud-space-y-3 ud-mt-4">
                 <li class="ud-text-base ud-list-disc" v-for="bullet_point in this.bullet_points">
-                    {{ locale === 'nl' ? bullet_point.dutch : bullet_point.english }}
+                    {{ locale === 'nl' ? bullet_point.text_nl : bullet_point.text_en }}
                 </li>
             </ul>
         </div>

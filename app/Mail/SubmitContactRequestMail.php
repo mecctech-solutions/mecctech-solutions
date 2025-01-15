@@ -2,9 +2,7 @@
 
 namespace App\Mail;
 
-use App\CustomerRelationshipManagement\Domain\Customers\Customer;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,8 +10,8 @@ class SubmitContactRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private string $message;
-    private string $recipientEmailAddress;
+    public string $message;
+    public string $recipientEmailAddress;
 
     /**
      * Create a new message instance.

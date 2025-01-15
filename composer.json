@@ -18,7 +18,8 @@
         "maatwebsite/excel": "^3.1",
         "mariuzzo/laravel-js-localization": "^1.9",
         "phpoffice/phpexcel": "^1.8",
-        "phpoffice/phpspreadsheet": "^1.22"
+        "phpoffice/phpspreadsheet": "^1.22",
+        "spatie/laravel-data": "^4.11"
     },
     "require-dev": {
         "laravel/sail": "^1.0.1",
@@ -67,11 +68,5 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "packages/homedesignshops/laravel-ddd"
-        }
-    ]
+    "prefer-stable": true
 }
