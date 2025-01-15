@@ -160,7 +160,7 @@
                 ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]
               "
                     >
-                        <portfolio-item-v2 v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title_nl : portfolio_item.title_en" :description="locale === 'nl' ? portfolio_item.description_nl : portfolio_item.description_en" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image_url" :website_url="portfolio_item.website_url" :images="portfolio_item.images" :bullet_points="portfolio_item.bullet_points"></portfolio-item-v2>
+                        <portfolio-item v-for="portfolio_item in this.portfolio_items" :title="locale === 'nl' ? portfolio_item.title_nl : portfolio_item.title_en" :description="locale === 'nl' ? portfolio_item.description_nl : portfolio_item.description_en" :tags="portfolio_item.tags" :main_image_url="portfolio_item.main_image_url" :website_url="portfolio_item.website_url" :images="portfolio_item.images" :bullet_points="portfolio_item.bullet_points"></portfolio-item>
                     </div>
                 </div>
             </div>

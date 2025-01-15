@@ -77,6 +77,7 @@
 
 <script>
     export default {
+        name: "PortfolioItemModal",
         props: ['title', 'tags', 'images', 'description', 'website_url', 'bullet_points'],
         data() {
             return {

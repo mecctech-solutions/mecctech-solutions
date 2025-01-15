@@ -60,6 +60,7 @@ app.component('education-and-experience', require('./components/EducationAndExpe
 app.component('contact-form', require('./components/ContactForm.vue').default);
 app.component('portfolio-details', require('./components/PortfolioDetails.vue').default);
 app.component('portfolio-item', require('./components/PortfolioItem.vue').default);
+app.component('portfolio-item', require('./components/PortfolioItems.vue').default);
 app.component('clients', require('./components/Clients.vue').default);
 app.component('skills', require('./components/Skills.vue').default);
 app.component('skill', require('./components/Skill.vue').default);
