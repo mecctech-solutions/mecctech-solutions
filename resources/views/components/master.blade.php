@@ -22,19 +22,14 @@
     </style>
 
     <link rel="icon" href="/images/Mecctech_Solutions.png">
-{{--    <link rel="stylesheet" href="{{ asset('css/animate.css') }}" />--}}
-{{--    <link rel="stylesheet" href="{{ asset('css/glightbox.min.css') }}" />--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <!-- Fathom - beautiful, simple website analytics -->
-    <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="GYAWFWYG" defer></script>
-    <!-- / Fathom -->
 
     <script defer src="{{ mix('js/app.js') }}"></script>
     <script src="/lang-{{ app()->getLocale() }}.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VB61P7MT21"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -45,7 +40,6 @@
 
 </head>
     <body>
-
         <div id="app">
             {{ $slot }}
         </div>

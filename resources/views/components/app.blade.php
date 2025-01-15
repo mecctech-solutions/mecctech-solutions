@@ -1,11 +1,11 @@
 <x-master>
 
-    <mecc-tech-header></mecc-tech-header>
+    <site-header></site-header>
 
     {{ $slot }}
 
-    <footer class="fixed inset-x-0 bottom-0">
-        <mecc-tech-footer></mecc-tech-footer>
-    </footer>
+    <site-footer></site-footer>
 
+    <back-to-top></back-to-top>
+    <whatsapp></whatsapp>
 </x-master>
