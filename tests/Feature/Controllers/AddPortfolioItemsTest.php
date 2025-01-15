@@ -2,94 +2,70 @@
 
 namespace Tests\Feature\Controllers;
 
-use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItems;
-use App\PortfolioManagement\Application\AddPortfolioItems\AddPortfolioItemsInput;
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
-use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\App;
+use App\Actions\AddPortfolioItems;
+use App\Models\BulletPoint;
+use App\Models\Image;
+use App\Models\PortfolioItem;
+use App\Models\Tag;
 use Tests\TestCase;
-use Tests\Unit\PortfolioManagement\DummyPortfolioItemRepository;
 
 class AddPortfolioItemsTest extends TestCase
 {
 
     /** @test */
-    public function it_should_add_portfolio_items()
-    {
-        // Given
-        $portfolioItems = PortfolioItemFactory::create(20);
-        $portfolioItemsAsArray = [];
-
-        foreach ($portfolioItems as $portfolioItem)
-        {
-            $portfolioItemsAsArray[] = $portfolioItem->asArray();
-        }
-
-        // When
-        $useCase = new AddPortfolioItems($this->portfolioItemRepository);
-        $useCaseInput = new AddPortfolioItemsInput([
-            "portfolio_items" => $portfolioItemsAsArray
-        ]);
-
-        // When
-        $useCaseResult = $useCase->execute($useCaseInput);
-
-        // Then
-        self::assertEquals($portfolioItems, $this->portfolioItemRepository->all());
-    }
-
-    /** @test */
     public function it_should_be_able_to_call_the_route()
     {
         // Given
-        $portfolioItems = PortfolioItemFactory::create(1);
+        $bulletPoints = BulletPoint::factory()->count(3)->make();
+        $images = Image::factory()->count(3)->make();
+        $tags = Tag::factory()->count(3)->make();
+        $portfolioItems = \Database\Factories\PortfolioItemFactory::new()
+            ->count(20)
+            ->make()
+            ->map(function ($portfolioItem) use ($bulletPoints, $images, $tags) {
+                $portfolioItem['bullet_points'] = $bulletPoints->toArray();
+                $portfolioItem['images'] = $images->toArray();
+                $portfolioItem['tags'] = $tags->toArray();
+                return $portfolioItem;
+            })
+            ->toArray();
 
-        App::bind(PortfolioItemRepositoryInterface::class, DummyPortfolioItemRepository::class);
+        // Then
+        AddPortfolioItems::partialMock()
+            ->shouldReceive("handle")
+            ->once()
+            ->with($portfolioItems);
 
         // When
         $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems->toArray()
+            "portfolio_items" => $portfolioItems
         ]);
 
-        $response->assertStatus(200);
-    }
-
-    /** @test */
-    public function it_should_be_able_to_call_the_route_for_importing_portfolio_items()
-    {
-        // Given
-        $url = route("import-portfolio-items");
-
-        // When
-        $response = $this->post($url, [
-            "portfolio_items" => UploadedFile::fake()->create(1)
-        ]);
-
-        $response->assertStatus(200);
+        // Then
+        $response->assertOk();
     }
 
     /** @test */
     public function it_should_not_add_items_with_same_title()
     {
         // Given
-        $portfolioItems = PortfolioItemFactory::create(1, [
-            "title_en" => "Test Title",
-            "title_nl" => "Test Titel"
-        ]);
-
-        $portfolioItemRepository = new DummyPortfolioItemRepository();
-        $this->app->instance(PortfolioItemRepositoryInterface::class, $portfolioItemRepository);
+        $portfolioItems = \Database\Factories\PortfolioItemFactory::new()
+            ->count(2)
+            ->make([
+                "title_nl" => "Same title",
+                "title_en" => "Zelfde titel",
+            ])
+            ->toArray();
 
         // When
         $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems->toArray()
+            "portfolio_items" => $portfolioItems
         ]);
 
         $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems->toArray()
+            "portfolio_items" => $portfolioItems
         ]);
 
-        self::assertEquals(1, $portfolioItemRepository->all()->count());
+        self::assertEquals(1, PortfolioItem::count());
     }
 }

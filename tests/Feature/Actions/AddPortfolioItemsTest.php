@@ -28,7 +28,7 @@ class AddPortfolioItemsTest extends TestCase
             ->count(20)
             ->make()
             ->map(function ($portfolioItem) use ($bulletPoints, $images, $tags) {
-                $portfolioItem['bulletPoints'] = $bulletPoints->toArray();
+                $portfolioItem['bullet_points'] = $bulletPoints->toArray();
                 $portfolioItem['images'] = $images->toArray();
                 $portfolioItem['tags'] = $tags->toArray();
                 return $portfolioItem;
@@ -40,7 +40,7 @@ class AddPortfolioItemsTest extends TestCase
 
         // Then
         $expectedPortfolioItems = collect($portfolioItems)->map(function ($item) {
-            unset($item['bulletPoints'], $item['images'], $item['tags']); // Relationships not in the database
+            unset($item['bullet_points'], $item['images'], $item['tags']); // Relationships not in the database
             return $item;
         })->toArray();
 

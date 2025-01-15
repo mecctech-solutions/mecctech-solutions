@@ -8,7 +8,6 @@ use App\PortfolioManagement\Application\GetAllPortfolioItems\GetAllPortfolioItem
 use App\PortfolioManagement\Application\GetAllPortfolioItems\GetAllPortfolioItemsInput;
 use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTag;
 use App\PortfolioManagement\Application\GetPortfolioItemsWithTag\GetPortfolioItemsWithTagInput;
-use App\PortfolioManagement\Domain\PortfolioItems\PortfolioItemFactory;
 use App\PortfolioManagement\Domain\Repositories\PortfolioItemRepositoryInterface;
 use App\PortfolioManagement\Domain\Services\PortfolioManagementServiceInterface;
 use Illuminate\Http\Request;
@@ -53,24 +52,6 @@ class PortfolioManagementController
             $response["meta"]["created_at"] = time();
             $response["payload"]["portfolio_items"] = new LengthAwarePaginator($portfolioItemsAsArray, $portfolioItems->count(), 3);
 
-        } catch (\Exception $e)
-        {
-            $response["meta"]["created_at"] = time();
-            $response["error"]["code"] = $e->getCode();
-            $response["error"]["message"] = $e->getMessage();
-        }
-
-        return $response;
-    }
-
-    public function addMultiplePortfolioItems(Request $request)
-    {
-
-        try {
-            $portfolioItems = PortfolioItemFactory::multipleFromArray($request->input("portfolio_items"));
-            $this->portfolioManagementService->addPortfolioItems(collect($portfolioItems));
-
-            $response["meta"]["created_at"] = time();
         } catch (\Exception $e)
         {
             $response["meta"]["created_at"] = time();

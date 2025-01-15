@@ -22,6 +22,16 @@ class AddPortfolioItems
         $portfolioItems = collect($portfolioItems);
 
         $portfolioItems->each(function (array $portfolioItem) {
+
+            $existingPortfolioItem = PortfolioItem::where("title_nl", $portfolioItem['title_nl'])
+                ->orWhere("title_en", $portfolioItem['title_en'])
+                ->first();
+
+            if ($existingPortfolioItem)
+            {
+                return;
+            }
+
             $newPortfolioItem = PortfolioItem::create([
                 "title_nl" => $portfolioItem['title_nl'],
                 "title_en" => $portfolioItem['title_en'],
@@ -32,7 +42,7 @@ class AddPortfolioItems
                 "main_image_url" => $portfolioItem['main_image_url'],
             ]);
 
-            collect($portfolioItem['bulletPoints'])->each(function ($bulletPoint) use ($newPortfolioItem) {
+            collect($portfolioItem['bullet_points'])->each(function ($bulletPoint) use ($newPortfolioItem) {
                 BulletPoint::create([
                     "text_nl" => $bulletPoint['text_nl'],
                     "text_en" => $bulletPoint['text_en'],
@@ -56,6 +66,18 @@ class AddPortfolioItems
 
     public function asController(Request $request)
     {
-        $this->handle();
+        try {
+            $portfolioItems = $request->input("portfolio_items");
+            $this->handle($portfolioItems);
+
+            return response()->json([], 200);
+        } catch (\Exception $e)
+        {
+            $response["meta"]["created_at"] = time();
+            $response["error"]["code"] = $e->getCode();
+            $response["error"]["message"] = $e->getMessage();
+        }
+
+        return $response;
     }
 }
