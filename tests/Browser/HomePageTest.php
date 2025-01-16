@@ -23,7 +23,8 @@ class HomePageTest extends DuskTestCase
         ]);
 
         $this->browse(function (Browser $browser) use ($visibleTag, $invisibleTag) {
-            $browser->visit(route('home'))
+            $browser
+                ->visit(route('home'))
                 ->assertSee($visibleTag->name)
                 ->assertDontSee($invisibleTag->name);
         });
