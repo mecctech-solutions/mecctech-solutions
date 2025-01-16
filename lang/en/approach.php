@@ -33,6 +33,7 @@ return [
             "subtitle" => "Ensuring Reliability",
             "text" => [
                 "Write and execute automated and manual tests to ensure the product meets requirements.",
+                "Conduct debugging and performance optimization.",
             ],
         ],
         "deployment_delivery" => [
