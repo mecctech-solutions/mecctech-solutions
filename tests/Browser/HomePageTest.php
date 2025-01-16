@@ -16,15 +16,18 @@ class HomePageTest extends DuskTestCase
     {
         $visibleTag = Tag::factory()->create([
             'visible' => true,
+            'name' => 'Visible Tag',
         ]);
 
         $invisibleTag = Tag::factory()->create([
             'visible' => false,
+            'name' => 'Invisible Tag',
         ]);
 
         $this->browse(function (Browser $browser) use ($visibleTag, $invisibleTag) {
+            $url = route('home');
             $browser
-                ->visit(route('home'))
+                ->visit($url)
                 ->assertSee($visibleTag->name)
                 ->assertDontSee($invisibleTag->name);
         });

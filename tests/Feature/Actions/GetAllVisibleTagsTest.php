@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Actions;
+namespace Feature\Actions;
 
 use App\Actions\GetAllVisibleTags;
 use App\Models\Tag;
