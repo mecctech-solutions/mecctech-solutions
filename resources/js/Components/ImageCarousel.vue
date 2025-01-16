@@ -39,11 +39,12 @@ onMounted(() => {
 
 const updateMobileStatus = () => {
     isMobile.value = window.innerWidth <= 760;
+    console.log(isMobile.value);
 };
 </script>
 
 <template>
-    <div v-if="isMobile" class="ud-flex ud-justify-around ud-items-center">
+    <div v-if="!isMobile" class="ud-flex ud-justify-center ud-items-center">
         <i
             @click="previousImage"
             class="fa-solid fa-angle-left ud-text-xl md:ud-text-5xl ud-pt-5 ud-pb-5 ud-pr-10 ud-pl-10 ud-text-primary hover:ud-scale-125 ud-transform ud-transition ud-ease-in-out ud-duration-500 ud-cursor-pointer"
