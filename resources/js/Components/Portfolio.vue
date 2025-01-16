@@ -2,6 +2,7 @@
     <!-- ====== Portfolio Section Start  -->
     <section
         id="portfolio"
+        dusk="portfolio"
         class="ud-pt-[120px] ud-pb-[70px] ud-bg-[#f8f9ff]"
         :key="locale"
     >
@@ -105,6 +106,10 @@ tags.unshift(allTag);
 
 const portfolioItems: Ref = ref(page.props.portfolioItems);
 const selectedTag: Ref = ref(allTag.name);
+
+const currentPage: Ref = ref(1);
+const itemsPerPage = 10;
+const totalItems: Ref = ref(page.props.totalItems);
 
 const isSelected = (tagName: string) => selectedTag.value === tagName;
 
