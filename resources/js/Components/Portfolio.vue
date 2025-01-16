@@ -87,10 +87,9 @@
     <!-- ====== Portfolio Section End  -->
 </template>
 
-<script setup>
-import {computed, onMounted, ref} from "vue";
-import axios from "axios";
-import {usePage} from "@inertiajs/vue3";
+<script setup lang="ts">
+import {computed, ref} from "vue";
+import {router, usePage} from "@inertiajs/vue3";
 import PortfolioItem from "./PortfolioItem.vue";
 import {trans} from "laravel-vue-i18n";
 
@@ -98,34 +97,23 @@ const page = usePage();
 const locale = computed(() => page.props.appUrl);
 
 const tags = ["All", "Laravel", "Vue.js", "PHP", "Wordpress", "Python", "C++"];
-const portfolioItems = ref([]);
+
+const portfolioItems = ref(page.props.portfolioItems);
 const selectedTag = ref("All");
-
-const getAllPortfolioItemsRoute = computed(() => route('all-portfolio-items')); // Replace with actual route
-
-const fetchPortfolioItems = async (tag = "All") => {
-    try {
-        const route =
-            tag === "All"
-                ? getAllPortfolioItemsRoute.value
-                : `${getAllPortfolioItemsRoute.value}?tag=${encodeURIComponent(tag)}`;
-        const { data } = await axios.get(route);
-        portfolioItems.value = data.payload.portfolio_items.data;
-    } catch (error) {
-        console.error("Error fetching portfolio items:", error);
-    }
-};
 
 const isSelected = (tagName) => selectedTag.value === tagName;
 
 const selectTag = (tagName) => {
     selectedTag.value = tagName;
-    fetchPortfolioItems(tagName);
+    router.get(route('home'), { tag: tagName }, {
+        preserveScroll: true,
+        preserveState: true,
+        onSuccess: (page) => {
+            portfolioItems.value = page.props.portfolioItems;
+        }
+    });
 };
 
-onMounted(() => {
-    fetchPortfolioItems();
-});
 </script>
 
 <style scoped></style>

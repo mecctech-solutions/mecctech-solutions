@@ -9,8 +9,15 @@ class PageController extends Controller
 {
     public function home()
     {
+        $tag = request()->query('tag');
+
+        if ($tag == 'All')
+        {
+            $tag = null;
+        }
+
         return Inertia::render('Home')->with([
-            'portfolioItems' => GetAllPortfolioItems::run(),
+            'portfolioItems' => GetAllPortfolioItems::run($tag),
         ]);
     }
 }
