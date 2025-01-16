@@ -48,7 +48,7 @@ import ApproachItem from "@/Components/ApproachItem.vue";
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const approachItems = [
+const approachItems = computed(() => [
     {
         title: trans('approach.approach.discovery.title'),
         subtitle: trans('approach.approach.discovery.subtitle'),
@@ -85,7 +85,7 @@ const approachItems = [
         text: trans('approach.approach.support_iteration.text'),
         icon: 'Repeat',
     },
-];
+]);
 </script>
 
 <style scoped></style>
