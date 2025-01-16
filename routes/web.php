@@ -17,13 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/partners', function () {
-    return view('partners');
-});
-
-Route::get('/case-study', function () {
-    return view('portfolio.details');
-});
-
 Route::post('/submit-contact-request', SubmitContactRequest::class)
     ->name('submit-contact-request');
