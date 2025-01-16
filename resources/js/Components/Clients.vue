@@ -2,9 +2,10 @@
     <!-- ====== Clients Section Start  -->
     <section
         id="clients"
-        class="ud-pt-20 ud-pb-[250px] ud-bg-white ud-relative"
+        class="ud-py-[120px] ud-bg-white ud-relative"
         :key="locale"
     >
+
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div class="ud-w-full ud-px-4">
@@ -30,7 +31,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="ud-w-full ud-px-4">
+                <div class="ud-w-full ud-border-b ud-pb-[120px] ud-px-4">
                     <div
                         class="
               ud-flex ud-flex-wrap ud-items-center ud-justify-center
