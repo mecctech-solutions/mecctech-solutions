@@ -7,6 +7,7 @@ export type ImageData = {
 url: string;
 };
 export type PortfolioItemData = {
+main_image_full_url: string;
 title_en: string;
 title_nl: string;
 description_en: string;
@@ -20,5 +21,6 @@ tags: Array<App.Data.TagData> | null;
 };
 export type TagData = {
 name: string;
+visible: boolean;
 };
 }

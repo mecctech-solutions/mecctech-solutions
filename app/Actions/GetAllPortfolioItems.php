@@ -22,7 +22,7 @@ class GetAllPortfolioItems
             $query->whereRelation('tags', 'name', $tag);
         }
 
-        return $query->get()->sortBy('position');
+        return PortfolioItemData::collect($query->get()->sortBy('position'));
     }
 
     public function asController(Request $request)
