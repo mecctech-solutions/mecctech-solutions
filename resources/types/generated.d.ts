@@ -4,6 +4,7 @@ text_en: string;
 text_nl: string;
 };
 export type ImageData = {
+full_url: string;
 url: string;
 };
 export type PortfolioItemData = {
