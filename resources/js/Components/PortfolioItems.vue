@@ -1,11 +1,11 @@
 <template>
     <div class="flex flex-col items-center">
-        <h1 class="text-4xl font-bold mt-10">{{ $lang.get('sections.projects') }}</h1>
+        <h1 class="text-4xl font-bold mt-10">{{ trans('sections.projects') }}</h1>
         <div class="border-t border-4 border-black mt-5 w-1/16"></div>
 
         <div>
             <ul class="grid md:grid-cols-4 grid-cols-2 m-10 text-xl">
-                <li :class="{'bg-mecctech-red text-white' : this.isSelected('All')}" @click="this.selectTag('All')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-all">{{ $lang.get('tags.all') }}</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('All')}" @click="this.selectTag('All')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-all">{{ trans('tags.all') }}</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Laravel')}" @click="this.selectTag('Laravel')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-laravel">Laravel</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Vue.js')}" @click="this.selectTag('Vue.js')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-vue">Vue.js</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('E-commerce')}" @click="this.selectTag('E-commerce')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-vue">E-commerce</li>
@@ -14,8 +14,8 @@
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C#')}" @click="this.selectTag('C#')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-c#">C#</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('C')}" @click="this.selectTag('C')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-arduino">C</li>
                 <li :class="{'bg-mecctech-red text-white' : this.isSelected('Matlab')}" @click="this.selectTag('Matlab')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">Matlab</li>
-                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Courses')}" @click="this.selectTag('Courses')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ $lang.get('tags.courses') }}</li>
-                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Books')}" @click="this.selectTag('Books')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ $lang.get('tags.books') }}</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Courses')}" @click="this.selectTag('Courses')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ trans('tags.courses') }}</li>
+                <li :class="{'bg-mecctech-red text-white' : this.isSelected('Books')}" @click="this.selectTag('Books')" class="pl-10 pr-10 pt-3 pb-3 cursor-pointer" id="tag-matlab">{{ trans('tags.books') }}</li>
             </ul>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-x-24 pl-16 pr-16 lg:pl-96 lg:pr-96 mt-20">
@@ -26,6 +26,7 @@
 
 <script>
 import PortfolioItem from "./PortfolioItem.vue";
+import {trans} from "laravel-vue-i18n";
 
 export default {
     components: {PortfolioItem},
@@ -46,6 +47,7 @@ export default {
         this.getAllPortfolioItems();
     },
     methods: {
+        trans,
         getAllPortfolioItems() {
             axios
                 .get(this.get_all_portfolio_items_route)

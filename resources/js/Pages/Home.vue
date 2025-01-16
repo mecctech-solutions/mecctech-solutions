@@ -11,6 +11,10 @@ import Portfolio from "../Components/Portfolio.vue";
 import Clients from "../Components/Clients.vue";
 import EducationAndExperience from "../Components/EducationAndExperience.vue";
 import ContactForm from "../Components/ContactForm.vue";
+
+const props = defineProps({
+    portfolioItems: Array,
+});
 </script>
 
 <template>

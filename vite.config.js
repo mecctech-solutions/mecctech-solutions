@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import i18n from 'laravel-vue-i18n/vite';
+import {watch} from "vite-plugin-watch"
 
 export default defineConfig({
     plugins: [
@@ -24,6 +25,9 @@ export default defineConfig({
             extensions: ['vue'],
             deep: true,
         }),
-
+        watch({
+            pattern: "app/{Data,Enums}/**/*.php",
+            command: "php artisan typescript:transform",
+        }),
     ],
 });
