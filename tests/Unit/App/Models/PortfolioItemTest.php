@@ -26,11 +26,9 @@ class PortfolioItemTest extends TestCase
 
         $this->portfolioItem->save();
 
-        $this->tag = new Tag([
+        $this->tag = Tag::factory()->create([
             "name" => "Test Tag"
         ]);
-
-        $this->tag->save();
 
         $this->portfolioItem->tags()->attach($this->tag);
     }

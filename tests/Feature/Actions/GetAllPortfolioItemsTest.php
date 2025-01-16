@@ -3,6 +3,7 @@
 namespace Tests\Feature\Actions;
 
 use App\Actions\GetAllPortfolioItems;
+use App\Data\PortfolioItemData;
 use App\Models\PortfolioItem;
 use Database\Factories\PortfolioItemFactory;
 use Tests\TestCase;
@@ -49,6 +50,6 @@ class GetAllPortfolioItemsTest extends TestCase
 
         // When
         $result = GetAllPortfolioItems::run($firstTag);
-        self::assertEquals($portfolioItemsWithFirstTag->toArray(), $result->toArray());
+        self::assertEquals(PortfolioItemData::collect($portfolioItemsWithFirstTag), $result);
     }
 }

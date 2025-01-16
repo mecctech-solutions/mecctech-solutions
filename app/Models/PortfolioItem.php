@@ -25,7 +25,7 @@ class PortfolioItem extends Model
     {
         return new Attribute(
             get: function () {
-                DetermineFullFileUrl::run($this->main_image_url);
+                return DetermineFullFileUrl::run($this->main_image_url);
             });
     }
 

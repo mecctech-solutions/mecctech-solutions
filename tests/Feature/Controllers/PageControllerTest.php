@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Feature\Controllers;
 
 use App\Models\PortfolioItem;
 use Inertia\Testing\AssertableInertia;

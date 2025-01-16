@@ -64,6 +64,9 @@ class AddPortfolioItems
             $portfolioItem->tags->each(function (TagData $tag) use ($newPortfolioItem) {
                 $tag = Tag::firstOrCreate([
                     "name" => $tag->name,
+                ], [
+                    "name" => $tag->name,
+                    "visible" => $tag->visible,
                 ]);
                 $newPortfolioItem->tags()->attach($tag->id);
             });
