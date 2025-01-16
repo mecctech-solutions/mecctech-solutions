@@ -24,5 +24,6 @@ export default defineConfig({
             extensions: ['vue'],
             deep: true,
         }),
+
     ],
 });
