@@ -22,6 +22,9 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
+                TextInput::make('position')
+                    ->label('Position')
+                    ->required(),
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
@@ -35,6 +38,8 @@ class TagResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('position')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

@@ -13,6 +13,7 @@ class GetAllVisibleTags
 
     public function handle(): Collection
     {
-        return TagData::collect(Tag::query()->where('visible', true)->get());
+        $tags = Tag::query()->where('visible', true)->orderBy('position')->get();
+        return TagData::collect($tags);
     }
 }
