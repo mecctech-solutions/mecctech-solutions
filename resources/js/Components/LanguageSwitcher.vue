@@ -1,9 +1,8 @@
 <script setup>
-import {router} from '@inertiajs/vue3'
+import {loadLanguageAsync} from 'laravel-vue-i18n';
 
 function changeLanguage(language) {
-    router.get(route('language', language));
-    location.reload();
+    loadLanguageAsync(language)
 }
 </script>
 
