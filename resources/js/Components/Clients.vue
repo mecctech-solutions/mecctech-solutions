@@ -32,94 +32,11 @@
             "
                         data-wow-delay=".1s"
                     >
-                        <a
-                            href="https://www.homedesignshops.nl/"
-                            target="_blank"
-                            rel="nofollow noreferrer"
-                            class="
-                ud-flex ud-items-center ud-justify-center ud-max-w-[120px]
-                lg:ud-max-w-[130px]
-                xl:ud-max-w-[150px]
-                2xl:ud-max-w-[160px]
-                ud-mx-3
-                sm:ud-mx-4
-                xl:ud-mx-6
-                2xl:ud-mx-8
-                ud-py-[15px] ud-grayscale
-                hover:ud-grayscale-0
-                ud-opacity-60
-                hover:ud-opacity-100
-                ud-transition
-              "
-                        >
-                            <img src="/images/clients/hds_logo.png" alt="home_design_shops" />
-                        </a>
-                        <a
-                            href="https://www.depotop.nu/"
-                            target="_blank"
-                            rel="nofollow noreferrer"
-                            class="
-                ud-flex ud-items-center ud-justify-center ud-max-w-[120px]
-                lg:ud-max-w-[130px]
-                xl:ud-max-w-[150px]
-                2xl:ud-max-w-[160px]
-                ud-mx-3
-                sm:ud-mx-4
-                xl:ud-mx-6
-                2xl:ud-mx-8
-                ud-py-[15px] ud-grayscale
-                hover:ud-grayscale-0
-                ud-opacity-60
-                hover:ud-opacity-100
-                ud-transition
-              "
-                        >
-                            <img src="/images/clients/depotop_logo.svg" alt="depotop" />
-                        </a>
-                        <a
-                            href="https://www.supra-solutions.com/"
-                            target="_blank"
-                            rel="nofollow noreferrer"
-                            class="
-                ud-flex ud-items-center ud-justify-center ud-max-w-[120px]
-                lg:ud-max-w-[130px]
-                xl:ud-max-w-[150px]
-                2xl:ud-max-w-[160px]
-                ud-mx-3
-                sm:ud-mx-4
-                xl:ud-mx-6
-                2xl:ud-mx-8
-                ud-py-[15px] ud-grayscale
-                hover:ud-grayscale-0
-                ud-opacity-60
-                hover:ud-opacity-100
-                ud-transition
-              "
-                        >
-                            <img src="/images/clients/supra_solutions_logo.png" alt="supra_solutions" />
-                        </a>
-                        <a
-                            href="https://www.ryberg.nl/"
-                            target="_blank"
-                            rel="nofollow noreferrer"
-                            class="
-                ud-flex ud-items-center ud-justify-center ud-max-w-[120px]
-                lg:ud-max-w-[130px]
-                xl:ud-max-w-[150px]
-                2xl:ud-max-w-[160px]
-                ud-mx-3
-                sm:ud-mx-4
-                xl:ud-mx-6
-                2xl:ud-mx-8
-                ud-py-[15px] ud-grayscale
-                hover:ud-grayscale-0
-                ud-opacity-60
-                hover:ud-opacity-100
-                ud-transition
-              "
-                        >
-                            <img src="/images/clients/ryberg_logo.png" alt="ryberg" />
-                        </a>
+                        <ClientLogo imageUrl="/images/clients/nina_care_logo.svg" imageAlt="Nina Care" websiteUrl="https://www.nina.care/" />
+                        <ClientLogo imageUrl="/images/clients/hds_logo.png" imageAlt="Home Design Shops" websiteUrl="https://www.homedesignshops.nl/" />
+                        <ClientLogo imageUrl="/images/clients/depotop_logo.svg" imageAlt="De Pot Op" websiteUrl="https://www.depotop.nu/" />
+                        <ClientLogo imageUrl="/images/clients/supra_solutions_logo.png" imageAlt="Supra Solutions" websiteUrl="https://www.supra-solutions.com/" />
+                        <ClientLogo imageUrl="/images/clients/ryberg_logo.png" imageAlt="Ryberg" websiteUrl="https://www.ryberg.nl/" />
                     </div>
                 </div>
             </div>
@@ -132,6 +49,7 @@
 import {computed} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {usePage} from "@inertiajs/vue3";
+import ClientLogo from "@/Components/ClientLogo.vue";
 
 const page = usePage();
 const locale = computed(() => page.props.appUrl);
