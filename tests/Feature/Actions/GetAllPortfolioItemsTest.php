@@ -18,7 +18,7 @@ class GetAllPortfolioItemsTest extends TestCase
             ->count(10)
             ->create()
             ->load('tags', 'images', 'bulletPoints');
-        self::assertEquals($portfolioItems->toArray(), GetAllPortfolioItems::run()->toArray());
+        self::assertEquals(PortfolioItemData::collect($portfolioItems), GetAllPortfolioItems::run());
     }
 
     /** @test */
