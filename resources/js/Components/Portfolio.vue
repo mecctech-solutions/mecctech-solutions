@@ -73,11 +73,12 @@
                             :title="locale === 'nl' ? portfolioItem.title_nl : portfolioItem.title_en"
                             :description="locale === 'nl' ? portfolioItem.description_nl : portfolioItem.description_en"
                             :tags="portfolioItem.tags"
-                            :main_image_url="portfolioItem.main_image_url"
-                            :website_url="portfolioItem.website_url"
+                            :main-image-url="portfolioItem.main_image_url"
+                            :website-url="portfolioItem.website_url"
                             :images="portfolioItem.images"
-                            :bullet_points="portfolioItem.bullet_points"
+                            :bullet-points="portfolioItem.bullet_points"
                         />
+
                     </div>
                 </div>
             </div>

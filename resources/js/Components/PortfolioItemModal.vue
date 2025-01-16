@@ -62,7 +62,7 @@
   >
     <div class="ud-flex ud-flex-col ud-items-center">
       <img
-          class="ud-w-full ud-h-60 ud-object-scale-down"
+          class="ud-w-200 ud-h-60 ud-object-scale-down"
           :src="currentImageUrl"
           alt=""
       />
