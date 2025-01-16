@@ -63,22 +63,10 @@
                         class="ud-flex md:ud-flex-row ud-flex-col ud-items-center md:ud-items-start ud-space-y-10 md:ud-space-y-0 ud-space-x-12"
                     >
                         <div class="ud-space-y-8">
-                            <a
-                                :href="page.props.appUrl + '#contact'"
-                                class="
-                  ud-text-base
-                  ud-font-semibold
-                  ud-text-white
-                  ud-bg-primary
-                  ud-py-3
-                  ud-px-8
-                  ud-mr-4
-                  hover:ud-shadow-signUp hover:ud-bg-opacity-90
-                  ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
-                "
-                            >
-                                {{ trans('home.contact') }}
-                            </a>
+                            <PrimaryButton
+                                :url="page.props.appUrl + '#contact'"
+                                :text="trans('home.contact')"
+                            ></PrimaryButton>
                             <div class="ud-flex ud-items-center">
                                 <SocialLink
                                     border
@@ -147,6 +135,7 @@ import {computed} from "vue";
 import {usePage} from "@inertiajs/vue3";
 import {trans} from "laravel-vue-i18n";
 import SocialLink from "@/Components/SocialLink.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const page = usePage();
 const locale = computed(() => page.props.locale);
