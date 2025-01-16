@@ -70,6 +70,7 @@ import ApproachItem from "@/Components/ApproachItem.vue";
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
+console.log(trans('approach'));
 const approachItems = [
     {
         title: trans('approach.approach.discovery.title'),
