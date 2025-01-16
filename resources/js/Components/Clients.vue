@@ -2,18 +2,25 @@
     <!-- ====== Clients Section Start  -->
     <section
         id="clients"
-        class="ud-pt-20 ud-pb-[250px] ud-bg-black ud-relative"
+        class="ud-pt-20 ud-pb-[250px] ud-bg-white ud-relative"
         :key="locale"
     >
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div class="ud-w-full ud-px-4">
                     <div class="ud-max-w-[570px] ud-mx-auto ud-mb-12 ud-text-center">
+                                    <span
+                                        class="
+                ud-font-semibold ud-text-lg ud-text-primary ud-block ud-mb-2
+              "
+                                    >
+              {{ trans("clients.clients") }}
+            </span>
                         <h2
                             class="
                 ud-font-bold ud-text-3xl
                 md:ud-text-4xl
-                ud-text-white ud-mb-4
+                ud-text-black ud-mb-4
               "
                         >
                             {{ trans('clients.happy_clients') }}
