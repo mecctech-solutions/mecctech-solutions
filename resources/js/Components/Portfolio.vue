@@ -2,6 +2,7 @@
     <!-- ====== Portfolio Section Start  -->
     <section
         id="portfolio"
+        dusk="portfolio"
         class="ud-pt-[120px] ud-pb-[70px] ud-bg-[#f8f9ff]"
         :key="locale"
     >
@@ -40,7 +41,7 @@
                     >
                         <button
                             v-for="tag in tags"
-                            :key="tag"
+                            :key="tag.name"
                             class="
                 sm:font-semibold
                 ud-text-sm
@@ -50,10 +51,10 @@
                 ud-mb-2 ud-rounded-full ud-text-body-color
                 hover:ud-bg-primary hover:ud-text-white
               "
-                            :class="{ active: isSelected(tag) }"
-                            @click="selectTag(tag)"
+                            :class="{ active: isSelected(tag.name) }"
+                            @click="selectTag(tag.name)"
                         >
-                            {{ tag }}
+                            {{ tag.name }}
                         </button>
                     </div>
                 </div>
@@ -88,22 +89,31 @@
 </template>
 
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, Ref, ref} from "vue";
 import {router, usePage} from "@inertiajs/vue3";
 import PortfolioItem from "./PortfolioItem.vue";
 import {trans} from "laravel-vue-i18n";
+import {route} from "ziggy-js";
+import TagData = App.Data.TagData;
 
 const page = usePage();
-const locale = computed(() => page.props.appUrl);
+const tags: Array<TagData> = page.props.tags;
+const allTag: TagData = { name: "All", visible: true };
 
-const tags = ["All", "Laravel", "Vue.js", "PHP", "Wordpress", "Python", "C++"];
+const locale: string = computed(() => page.props.appUrl);
 
-const portfolioItems = ref(page.props.portfolioItems);
-const selectedTag = ref("All");
+tags.unshift(allTag);
 
-const isSelected = (tagName) => selectedTag.value === tagName;
+const portfolioItems: Ref = ref(page.props.portfolioItems);
+const selectedTag: Ref = ref(allTag.name);
 
-const selectTag = (tagName) => {
+const currentPage: Ref = ref(1);
+const itemsPerPage = 10;
+const totalItems: Ref = ref(page.props.totalItems);
+
+const isSelected = (tagName: string) => selectedTag.value === tagName;
+
+const selectTag = (tagName: string) => {
     selectedTag.value = tagName;
     router.get(route('home'), { tag: tagName }, {
         preserveScroll: true,

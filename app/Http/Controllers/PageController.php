@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Actions\GetAllPortfolioItems;
+use App\Actions\GetAllVisibleTags;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PageController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $tag = request()->query('tag');
+        $tag = $request->query('tag');
 
         if ($tag == 'All')
         {
@@ -18,6 +20,7 @@ class PageController extends Controller
 
         return Inertia::render('Home')->with([
             'portfolioItems' => GetAllPortfolioItems::run($tag),
+            'tags' => GetAllVisibleTags::run(),
         ]);
     }
 }

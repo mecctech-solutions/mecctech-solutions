@@ -15,7 +15,7 @@ class PortfolioItemResource extends Resource
 {
     protected static ?string $model = PortfolioItem::class;
     protected static ?string $navigationLabel = 'Portfolio Items';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
     protected static ?string $label = 'Portfolio Item';
 

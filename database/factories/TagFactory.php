@@ -13,6 +13,8 @@ class TagFactory extends Factory
     {
         return [
             "name" => $this->faker->word,
+            "visible" => $this->faker->boolean,
+            "position" => $this->faker->numberBetween(1, 100),
         ];
     }
 }

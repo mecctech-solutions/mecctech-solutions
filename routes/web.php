@@ -27,8 +27,3 @@ Route::get('/case-study', function () {
 
 Route::post('/submit-contact-request', SubmitContactRequest::class)
     ->name('submit-contact-request');
-
-Route::get('language/{language}', function ($language) {
-    session()->put('locale', $language);
-    return redirect()->back();
-})->name('language');

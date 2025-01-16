@@ -36,29 +36,13 @@ class AddPortfolioItemsTest extends TestCase
         AddPortfolioItems::run($portfolioItems);
 
         // Then
-        $expectedTags = $portfolioItems->map(function (PortfolioItemData $item) {
-            return $item->tags->toArray();
-        })->flatten()->unique()->toArray();
+        $expectedPortfolioItems = $portfolioItems;
 
-        $actualTags = Tag::query()->pluck('name')->toArray();
-
-        $expectedPortfolioItems = $portfolioItems->map(function (PortfolioItemData $item) {
-            unset($item->bullet_points, $item->images, $item->tags);
-            return $item;
-        })->toArray();
-
-        $actualPortfolioItems = PortfolioItem::query()
-            ->select(['title_nl', 'title_en', 'main_image_url', 'description_nl', 'description_en', 'website_url', 'position',])
-            ->get()
-            ->toArray();
-
-        $actualPortfolioItems = array_map(function ($item) {
-            unset($item['main_image_full_url']); // Remove unnecessary attributes
-            return $item;
-        }, $actualPortfolioItems);
+        $actualPortfolioItems = PortfolioItemData::collect(PortfolioItem::query()
+            ->with('tags', 'images', 'bulletPoints')
+            ->get());
 
         // Then
         self::assertEquals($expectedPortfolioItems, $actualPortfolioItems);
-        self::assertEquals($expectedTags, $actualTags);
     }
 }
