@@ -30,9 +30,7 @@
                 </div>
 
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
-                    <ApproachItem :title="trans('approach.requirements')" :text="trans('approach.requirements_text')" :icon="'ProfileHourGlass'"/>
-                    <ApproachItem :title="trans('approach.tests')" :text="trans('approach.tests_text')" :icon="'Grid'"/>
-                    <ApproachItem :title="trans('approach.development')" :text="trans('approach.development_text')" :icon="'Blocks'"/>
+                    <ApproachItem v-for="item in approachItems" :key="item.title" :title="item.title" :text="item.text" :icon="item.icon" :subtitle="item.subtitle" />
                 </div>
                 <div class="
                     ud-flex
@@ -67,44 +65,47 @@
 import {computed} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {usePage} from "@inertiajs/vue3";
-import ProfileHourGlass from "@/Components/Icons/ProfileHourGlass.vue";
 import ApproachItem from "@/Components/ApproachItem.vue";
 
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const approaches = [
+const approachItems = [
     {
-        title: trans('approach.requirements'),
-        text: trans('approach.requirements_text'),
-        iconPath:
-            "M22.8335 14.0001C27.0002 14.0001 30.3335 17.3334 30.3335 21.5001C30.3335...",
-        iconWidth: 35,
-        iconHeight: 33,
+        title: trans('approach.approach.discovery.title'),
+        subtitle: trans('approach.approach.discovery.subtitle'),
+        text: trans('approach.approach.discovery.text'),
+        icon: 'ProfileHourGlass',
     },
     {
-        title: trans('approach.tests'),
-        text: trans('approach.tests_text'),
-        iconPath:
-            "M18.6668 28.6666C18.6668 28.1666 18.6668 27.4999 18.8335 26.9999H10.3335...",
-        iconWidth: 36,
-        iconHeight: 36,
+        title: trans('approach.approach.planning_design.title'),
+        subtitle: trans('approach.approach.planning_design.subtitle'),
+        text: trans('approach.approach.planning_design.text'),
+        icon: 'Draft',
     },
     {
-        title: trans('approach.development'),
-        text: trans('approach.development_text'),
-        iconPath:
-            "M16.6667 0V13.3333H30V0H16.6667ZM0 30H13.3333V16.6667H0V30ZM0...",
-        iconWidth: 30,
-        iconHeight: 30,
+        title: trans('approach.approach.development.title'),
+        subtitle: trans('approach.approach.development.subtitle'),
+        text: trans('approach.approach.development.text'),
+        icon: 'Blocks',
     },
     {
-        title: trans('approach.user_interface'),
-        text: trans('approach.user_interface_text'),
-        iconPath:
-            "M20 0.166748C21.5471 0.166748 23.0308 0.78133 24.1248 1.87529...",
-        iconWidth: 40,
-        iconHeight: 25,
+        title: trans('approach.approach.testing_qa.title'),
+        subtitle: trans('approach.approach.testing_qa.subtitle'),
+        text: trans('approach.approach.testing_qa.text'),
+        icon: 'Checkmark',
+    },
+    {
+        title: trans('approach.approach.deployment_delivery.title'),
+        subtitle: trans('approach.approach.deployment_delivery.subtitle'),
+        text: trans('approach.approach.deployment_delivery.text'),
+        icon: 'Rocket',
+    },
+    {
+        title: trans('approach.approach.support_iteration.title'),
+        subtitle: trans('approach.approach.support_iteration.subtitle'),
+        text: trans('approach.approach.support_iteration.text'),
+        icon: 'Repeat',
     },
 ];
 </script>
