@@ -81,10 +81,12 @@
                             </a>
                             <div class="ud-flex ud-items-center">
                                 <SocialLink
+                                    border
                                     url="https://www.linkedin.com/in/florismeccanici/"
                                     type="linkedin"
                                 />
                                 <SocialLink
+                                    border
                                     url="https://github.com/mecctech-solutions"
                                     type="github"
                                 />
