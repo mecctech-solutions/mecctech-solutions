@@ -1,95 +1,15 @@
+@import '/node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*@layer components {*/
-/*    .text-input {*/
-/*        @apply border-2 border-b*/
-/*    }*/
-/*}*/
 
 html, body {
     width: 100%;
     height:100%;
     scroll-behavior: smooth;
 }
-
-/*section#home {*/
-/*    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);*/
-/*    background-size: 400% 400%;*/
-/*    animation: gradient 15s ease infinite;*/
-/*}*/
-
-/*footer {*/
-/*    background: linear-gradient(-45deg, #e30613, #e73c7e, #23a6d5, #23d5ab);*/
-/*    background-size: 400% 400%;*/
-/*    animation: gradient 15s ease infinite;*/
-/*}*/
-
-/*@keyframes gradient {*/
-/*    0% {*/
-/*        background-position: 0% 50%;*/
-/*    }*/
-/*    50% {*/
-/*        background-position: 100% 50%;*/
-/*    }*/
-/*    100% {*/
-/*        background-position: 0% 50%;*/
-/*    }*/
-/*}*/
-
-/*.btn {*/
-/*    line-height: 50px;*/
-/*    height: 50px;*/
-/*    text-align: center;*/
-/*    width: 250px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.view-my-work-btn {*/
-/*    color: #FFF;*/
-/*    transition: all 0.5s;*/
-/*    position: relative;*/
-/*}*/
-/*.view-my-work-btn span {*/
-/*    z-index: 2;*/
-/*    display: block;*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-/*.view-my-work-btn::before {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    z-index: 1;*/
-/*    transition: all 0.5s;*/
-/*    border: 1px solid rgba(255,255,255,0.2);*/
-/*    background-color: rgba(255,255,255,0.1);*/
-/*}*/
-/*.view-my-work-btn::after {*/
-/*    content: '';*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    z-index: 1;*/
-/*    transition: all 0.5s;*/
-/*    border: 1px solid rgba(255,255,255,0.2);*/
-/*    background-color: rgba(255,255,255,0.1);*/
-/*}*/
-/*.view-my-work-btn:hover::before {*/
-/*    transform: rotate(-45deg);*/
-/*    background-color: rgba(255,255,255,0);*/
-/*}*/
-/*.view-my-work-btn:hover::after {*/
-/*    transform: rotate(45deg);*/
-/*    background-color: rgba(255,255,255,0);*/
-/*}*/
 
 body {
     font-family: "Inter", sans-serif;

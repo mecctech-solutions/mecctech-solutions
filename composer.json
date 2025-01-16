@@ -9,6 +9,7 @@
         "fakerphp/faker": "^1.9.1",
         "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
@@ -16,10 +17,12 @@
         "lezhnev74/pasvl": "^1.0",
         "lorisleiva/laravel-actions": "^2.8",
         "maatwebsite/excel": "^3.1",
-        "mariuzzo/laravel-js-localization": "^1.9",
+        "mariuzzo/laravel-js-localization": "^1.11",
         "phpoffice/phpexcel": "^1.8",
         "phpoffice/phpspreadsheet": "^1.22",
-        "spatie/laravel-data": "^4.11"
+        "spatie/laravel-data": "^4.11",
+        "spatie/laravel-typescript-transformer": "^2.5",
+        "tightenco/ziggy": "^2.4"
     },
     "require-dev": {
         "laravel/sail": "^1.0.1",
