@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/*@layer components {*/
+/*@layer Components {*/
 /*    .text-input {*/
 /*        @apply border-2 border-b*/
 /*    }*/

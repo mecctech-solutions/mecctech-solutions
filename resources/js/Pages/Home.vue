@@ -1,14 +1,14 @@
 <script setup>
 import HomeLayout from "../Layouts/HomeLayout.vue";
 import {Head} from '@inertiajs/vue3'
-import HeroSection from "../components/HeroSection.vue";
-import AboutMe from "../components/AboutMe.vue";
-import Skills from "../components/Skills.vue";
-import Approach from "../components/Approach.vue";
-import Portfolio from "../components/Portfolio.vue";
-import EducationAndExperience from "../components/EducationAndExperience.vue";
-import Clients from "../components/Clients.vue";
-import ContactForm from "../components/ContactForm.vue";
+import HeroSection from "../Components/HeroSection.vue";
+import AboutMe from "../Components/AboutMe.vue";
+import Skills from "../Components/Skills.vue";
+import Approach from "../Components/Approach.vue";
+import Portfolio from "../Components/Portfolio.vue";
+import EducationAndExperience from "../Components/EducationAndExperience.vue";
+import Clients from "../Components/Clients.vue";
+import ContactForm from "../Components/ContactForm.vue";
 </script>
 
 <template>

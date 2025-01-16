@@ -1,9 +1,9 @@
 <script setup>
 
-import SiteHeader from "../components/SiteHeader.vue";
-import SiteFooter from "../components/SiteFooter.vue";
-import BackToTop from "../components/BackToTop.vue";
-import Whatsapp from "../components/Whatsapp.vue";
+import SiteHeader from "../Components/SiteHeader.vue";
+import SiteFooter from "../Components/SiteFooter.vue";
+import BackToTop from "../Components/BackToTop.vue";
+import Whatsapp from "../Components/Whatsapp.vue";
 import {usePage} from "@inertiajs/vue3";
 
 const page = usePage();

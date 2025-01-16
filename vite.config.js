@@ -2,6 +2,7 @@ import {defineConfig} from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
+import i18n from 'laravel-vue-i18n/vite';
 
 export default defineConfig({
     plugins: [
@@ -17,6 +18,7 @@ export default defineConfig({
                 },
             },
         }),
+        i18n(),
         Components({
             dirs: ['resources/js/Components'],
             extensions: ['vue'],
