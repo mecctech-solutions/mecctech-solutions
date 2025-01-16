@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\GetAllPortfolioItems;
+use App\Actions\GetAllVisibleTags;
 use Inertia\Inertia;
 
 class PageController extends Controller
@@ -18,6 +19,7 @@ class PageController extends Controller
 
         return Inertia::render('Home')->with([
             'portfolioItems' => GetAllPortfolioItems::run($tag),
+            'tags' => GetAllVisibleTags::run(),
         ]);
     }
 }

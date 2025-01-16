@@ -39,6 +39,8 @@ class TagResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('visible')
+                    ->label('Visible')
+                    ->sortable(),
             ])
             ->filters([
                 //
