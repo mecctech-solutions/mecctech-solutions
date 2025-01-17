@@ -11,13 +11,14 @@ defineProps({
         type: Boolean,
         default: true,
     },
+    modelValue: [String, Number, null],
 })
 </script>
 
 <template>
     <input
-        :name="name"
-        :type="type"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
         :placeholder="placeholder"
         :required="required"
         class="input-field"

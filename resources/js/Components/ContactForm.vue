@@ -29,13 +29,14 @@
             </div>
             <div class="ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full lg:ud-w-9/12 ud-px-4">
-                    <form :action="route('submit-contact-request')" method="POST" enctype="multipart/form-data">
+                    <form @submit.prevent="form.post(route('submit-contact-request'))" enctype="multipart/form-data">
                         <input type="hidden" name="_token" :value="page.props.csrfToken" />
 
                         <div class="ud-flex ud-flex-wrap ud--mx-4">
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
                                     <InputField
+                                        v-model="form.name"
                                         name="name"
                                         :placeholder="trans('contact.name')"
                                     />
@@ -44,6 +45,7 @@
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
                                     <InputField
+                                        v-model="form.company"
                                         name="company"
                                         :placeholder="trans('contact.company')"
                                     />
@@ -52,6 +54,7 @@
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
                                     <InputField
+                                        v-model="form.email"
                                         name="email"
                                         type="email"
                                         :placeholder="trans('contact.email')"
@@ -61,6 +64,7 @@
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
                                     <InputField
+                                        v-model="form.phone"
                                         name="phone"
                                         type="text"
                                         :placeholder="trans('contact.phone')"
@@ -70,6 +74,7 @@
                             <div class="ud-w-full ud-px-4">
                                 <div class="ud-mb-6">
                   <textarea
+                      v-model="form.message"
                       name="message"
                       rows="4"
                       :placeholder="trans('contact.enter_project')"
@@ -126,7 +131,7 @@
 <script setup>
 import {computed, ref} from "vue";
 import {trans} from "laravel-vue-i18n";
-import {usePage} from "@inertiajs/vue3";
+import {useForm, usePage} from "@inertiajs/vue3";
 import InputField from "@/Components/Form/InputField.vue";
 import {route} from "ziggy-js";
 
@@ -138,6 +143,14 @@ const page = usePage();
 const locale = computed(() => page.props.locale);
 
 const contactFormSuccessfullySent = ref(props.contactFormSuccessfullySent);
+
+const form = useForm({
+    name: null,
+    email: null,
+    company: null,
+    phone: null,
+    message: null,
+})
 </script>
 
 <style scoped>
