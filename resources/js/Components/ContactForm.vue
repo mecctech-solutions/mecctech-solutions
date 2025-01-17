@@ -29,7 +29,13 @@
             </div>
             <div class="ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full lg:ud-w-9/12 ud-px-4">
-                    <form @submit.prevent="form.post(route('submit-contact-request'))" enctype="multipart/form-data">
+                    <form @submit.prevent="form.post(route('submit-contact-request'), {
+                        preserveScroll: true,
+                        onSuccess: () => {
+                            form.reset();
+                            contactFormSuccessfullySent = true;
+                        },
+                    })" enctype="multipart/form-data">
                         <input type="hidden" name="_token" :value="page.props.csrfToken" />
 
                         <div class="ud-flex ud-flex-wrap ud--mx-4">
@@ -116,7 +122,7 @@
         <transition name="fade">
             <div
                 v-if="contactFormSuccessfullySent"
-                class="ud-w-1/2 md:ud-w-1/3 ud-bg-black ud-p-10 ud-m-5 ud-font-bold ud-text-xl ud-fixed ud-z-50 ud-bottom-0 ud-right-0 ud-rounded-lg ud-text-white"
+                class="ud-w-1/2 md:ud-w-1/3 ud-bg-mecctech-red-500 ud-p-6 ud-m-5 ud-font-bold ud-text-sm ud-fixed ud-z-50 ud-bottom-0 ud-left-0 ud-rounded-lg ud-text-white"
             >
                 <p>{{ trans('contact.notification')}}</p>
                 <i
@@ -128,21 +134,17 @@
     </section>
 </template>
 
-<script setup>
-import {computed, ref} from "vue";
+<script setup lang="ts">
+import {computed, Ref, ref} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {useForm, usePage} from "@inertiajs/vue3";
 import InputField from "@/Components/Form/InputField.vue";
 import {route} from "ziggy-js";
 
-const props = defineProps({
-    contactFormSuccessfullySent: Boolean,
-});
-
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const contactFormSuccessfullySent = ref(props.contactFormSuccessfullySent);
+const contactFormSuccessfullySent: Ref<boolean> = ref(false);
 
 const form = useForm({
     name: null,
