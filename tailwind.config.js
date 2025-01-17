@@ -10,7 +10,18 @@ module.exports = {
   theme: {
     extend: {
         colors : {
-            "mecctech-red" : "#e30613",
+            "mecctech-red": {
+                50: "#fde8ea",   // Lightest
+                100: "#fbd1d4",  // Very light
+                200: "#f6a3a8",  // Light
+                300: "#f1757c",  // Light-medium
+                400: "#ed4750",  // Medium
+                500: "#e30613",  // Base color
+                600: "#cc0511",  // Dark-medium
+                700: "#b3050f",  // Dark
+                800: "#8e040c",  // Very dark
+                900: "#6a0309",  // Darkest
+            },
             black: "#090E34",
             dark: "#1D2144",
             primary: "#e30613",

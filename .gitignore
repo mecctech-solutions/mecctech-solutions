@@ -10,6 +10,8 @@
 .htaccess
 .env
 .env.backup
+.env.dusk.testing
+.env.testing
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
