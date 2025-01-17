@@ -4,7 +4,7 @@ namespace App\Actions;
 
 use App\Jobs\SendMailJob;
 use App\Mail\SubmitContactRequestMail;
-use App\Models\Customer;
+use App\Models\ContactRequest;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
 
@@ -14,26 +14,27 @@ class SubmitContactRequest
 
     public function handle(array $customer, string $message)
     {
-        $foundCustomer = Customer::where([
+        $foundCustomer = ContactRequest::where([
             'email' => $customer['email']
         ])->first();
 
         if ($foundCustomer === null)
         {
             $customerNumber = uniqid();
-            $customer = Customer::create([
+            $customer = ContactRequest::create([
                 "customer_number" => $customerNumber,
                 "first_name" => $customer['first_name'],
                 "last_name" => $customer['last_name'],
                 "email" => $customer['email'],
-                "phone_number" => $customer['phone_number']
+                "phone_number" => $customer['phone_number'],
+                "message" => $message
             ]);
         } else {
             $customer = $foundCustomer;
         }
 
         $myEmail = 'florismeccanici@tutanota.com';
-        $message = $customer->name." with email address ".$customer->email." has sent the following message: ".$message;
+        $message = $customer->full_name." with email address ".$customer->email." has sent the following message: ".$message;
         $mailable = new SubmitContactRequestMail($message, $myEmail);
 
         SendMailJob::dispatch(
@@ -59,6 +60,6 @@ class SubmitContactRequest
             'phone_number' => $phone
         ], $message);
 
-        return redirect()->back()->with('submit_contact_request_successful', true);
+        return redirect()->back();
     }
 }

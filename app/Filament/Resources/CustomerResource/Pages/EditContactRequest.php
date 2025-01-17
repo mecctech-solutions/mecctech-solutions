@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\CustomerResource\Pages;
 
-use App\Filament\Resources\CustomerResource;
+use App\Filament\Resources\ContactRequestResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditCustomer extends EditRecord
+class EditContactRequest extends EditRecord
 {
-    protected static string $resource = CustomerResource::class;
+    protected static string $resource = ContactRequestResource::class;
 
     protected function getHeaderActions(): array
     {

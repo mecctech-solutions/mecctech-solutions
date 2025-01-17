@@ -10,4 +10,5 @@ return [
     "phone" => "Telefoonnummer",
     "enter_project" => "Vertel me over je project",
     "contact_me_2" => "Contacteer Mij",
+    "notification" => "Bedankt voor je interesse! Ik neem zsm contact met je op."
 ];

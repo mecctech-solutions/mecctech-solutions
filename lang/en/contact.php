@@ -10,4 +10,5 @@ return [
     "phone" => "Phone number",
     "enter_project" => "Tell me about your project",
     "contact_me_2" => "Contact Me",
+    "notification" => "Thanks for contacting me! I will reply as soon as possible"
 ];

@@ -2,23 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Customers\EloquentCustomer;
 use App\Filament\Resources\CustomerResource\Pages;
 use App\Filament\Resources\CustomerResource\RelationManagers;
-use App\Models\Customer;
+use App\Models\ContactRequest;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class CustomerResource extends Resource
+class ContactRequestResource extends Resource
 {
-    protected static ?string $model = Customer::class;
-    protected static ?string $navigationLabel = 'Customers';
+    protected static ?string $model = ContactRequest::class;
+    protected static ?string $navigationLabel = 'Contact Requests';
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $label = 'Customers';
+    protected static ?string $label = 'Contact Requests';
 
     public static function form(Form $form): Form
     {
@@ -32,6 +31,9 @@ class CustomerResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('email')
                     ->label('Email')
+                    ->required(),
+                Forms\Components\TextInput::make('message')
+                    ->label('Message')
                     ->required(),
             ]);
     }
@@ -47,6 +49,9 @@ class CustomerResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('message')
                     ->searchable()
                     ->sortable(),
             ])
@@ -73,9 +78,9 @@ class CustomerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCustomers::route('/'),
-            'create' => Pages\CreateCustomer::route('/create'),
-            'edit' => Pages\EditCustomer::route('/{record}/edit'),
+            'index' => Pages\ListContactRequest::route('/'),
+            'create' => Pages\CreateContactRequest::route('/create'),
+            'edit' => Pages\EditContactRequest::route('/{record}/edit'),
         ];
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Customer;
+use App\Models\ContactRequest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
-class CustomerFactory extends Factory
+class ContactRequestFactory extends Factory
 {
-    protected $model = Customer::class;
+    protected $model = ContactRequest::class;
 
     public function definition(): array
     {
