@@ -29,50 +29,41 @@
             </div>
             <div class="ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full lg:ud-w-9/12 ud-px-4">
-                    <form :action="submitContactRequestRoute" method="POST" enctype="multipart/form-data">
+                    <form :action="route('submit-contact-request')" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" :value="csrfToken" />
 
                         <div class="ud-flex ud-flex-wrap ud--mx-4">
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
-                                    <input
+                                    <InputField
                                         name="name"
-                                        type="text"
                                         :placeholder="trans('contact.name')"
-                                        required
-                                        class="input-field"
                                     />
                                 </div>
                             </div>
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
-                                    <input
+                                    <InputField
                                         name="company"
-                                        type="text"
                                         :placeholder="trans('contact.company')"
-                                        class="input-field"
                                     />
                                 </div>
                             </div>
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
-                                    <input
+                                    <InputField
                                         name="email"
                                         type="email"
                                         :placeholder="trans('contact.email')"
-                                        class="input-field"
-                                        required
                                     />
                                 </div>
                             </div>
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
                                 <div class="ud-mb-6">
-                                    <input
+                                    <InputField
                                         name="phone"
                                         type="text"
                                         :placeholder="trans('contact.phone')"
-                                        class="input-field"
-                                        required
                                     />
                                 </div>
                             </div>
@@ -122,7 +113,7 @@
                 v-if="contactFormSuccessfullySent"
                 class="ud-w-1/2 md:ud-w-1/3 ud-bg-black ud-p-10 ud-m-5 ud-font-bold ud-text-xl ud-fixed ud-z-50 ud-bottom-0 ud-right-0 ud-rounded-lg ud-text-white"
             >
-                <p>Thanks for contacting me! I will reply as soon as possible</p>
+                <p>{{ trans('contact.notification')}}</p>
                 <i
                     @click="contactFormSuccessfullySent = false"
                     class="fa-solid fa-xmark ud-absolute ud-top-0 ud-right-0 ud-p-3 ud-cursor-pointer"
@@ -136,6 +127,7 @@
 import {computed, ref} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {usePage} from "@inertiajs/vue3";
+import InputField from "@/Components/Form/InputField.vue";
 
 const props = defineProps({
     csrfToken: String,
