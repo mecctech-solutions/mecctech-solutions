@@ -30,7 +30,7 @@
             <div class="ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full lg:ud-w-9/12 ud-px-4">
                     <form :action="route('submit-contact-request')" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="_token" :value="csrfToken" />
+                        <input type="hidden" name="_token" :value="page.props.csrfToken" />
 
                         <div class="ud-flex ud-flex-wrap ud--mx-4">
                             <div class="ud-w-full md:ud-w-1/2 ud-px-4">
@@ -128,10 +128,9 @@ import {computed, ref} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {usePage} from "@inertiajs/vue3";
 import InputField from "@/Components/Form/InputField.vue";
+import {route} from "ziggy-js";
 
 const props = defineProps({
-    csrfToken: String,
-    submitContactRequestRoute: String,
     contactFormSuccessfullySent: Boolean,
 });
 

@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'locale' => app()->getLocale(),
             'appUrl' => config('app.url'),
+            'csrfToken' => csrf_token(),
         ]);
     }
 }

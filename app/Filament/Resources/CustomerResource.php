@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\CustomerRelationshipManagement\Infrastructure\Persistence\Eloquent\Customers\EloquentCustomer;
 use App\Filament\Resources\CustomerResource\Pages;
 use App\Filament\Resources\CustomerResource\RelationManagers;
-use App\Models\Customer;
+use App\Models\ContactRequest;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,7 +14,7 @@ use Filament\Tables\Table;
 
 class CustomerResource extends Resource
 {
-    protected static ?string $model = Customer::class;
+    protected static ?string $model = ContactRequest::class;
     protected static ?string $navigationLabel = 'Customers';
     protected static ?string $navigationIcon = 'heroicon-o-user';
 

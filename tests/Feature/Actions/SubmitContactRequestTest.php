@@ -3,8 +3,8 @@
 namespace Tests\Feature\Actions;
 
 use App\Mail\SubmitContactRequestMail;
-use App\Models\Customer;
-use Database\Factories\CustomerFactory;
+use App\Models\ContactRequest;
+use Database\Factories\ContactRequestFactory;
 use Tests\TestCase;
 
 class SubmitContactRequestTest extends TestCase
@@ -14,17 +14,17 @@ class SubmitContactRequestTest extends TestCase
 
         // Given
         $email = 'test@test.com';
-        $customer = Customer::where('email', $email)->first();
+        $customer = ContactRequest::where('email', $email)->first();
         self::assertNull($customer);
 
-        $customer = CustomerFactory::new()->make();
+        $customer = ContactRequestFactory::new()->make();
         $message = "johndoe@example.com";
 
         // When
         \App\Actions\SubmitContactRequest::run($customer->getAttributes(), $message);
 
         // Then
-        self::assertNotNull(Customer::where('email', $customer->email)->first());
+        self::assertNotNull(ContactRequest::where('email', $customer->email)->first());
     }
 
     /** @test */
@@ -32,7 +32,7 @@ class SubmitContactRequestTest extends TestCase
 
         // Given
         \Mail::fake();
-        $customer = Customer::factory()->create();
+        $customer = ContactRequest::factory()->create();
         $message = "Test Message";
 
         // When
