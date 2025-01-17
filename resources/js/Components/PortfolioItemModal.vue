@@ -8,16 +8,15 @@
         :images="images"
         @updateCurrentImage="currentImageUrl = $event"
     ></ImageCarousel>
-    <div class="ud-text-left ud-p-5">
+    <div class="ud-text-left ud-p-5 ud-m-8">
       <div class="ud-flex ud-items-center ud-space-x-3">
         <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
         <p v-for="tag in tags" :key="tag.name">{{ tag.name }}</p>
       </div>
-      <ul class="ud-mt-4">
+      <ul class="ud-mt-4 ud-text-base ud-list-disc ud-list-inside">
         <li
             v-for="bulletPoint in bulletPoints"
             :key="bulletPoint.text_nl || bulletPoint.text_en"
-            class="ud-text-base ud-list-disc"
         >
           {{ locale === 'nl' ? bulletPoint.text_nl : bulletPoint.text_en }}
         </li>
@@ -53,18 +52,17 @@
         :images="images"
         @updateCurrentImage="currentImageUrl = $event">
     </ImageCarousel>
-    <div class="ud-p-5 ud-mb-5">
+    <div class="ud-p-8 ud-mb-5">
       <div class="ud-mb-4">
         <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
         <div class="ud-flex ud-space-x-3 ud-text-sm">
           <p v-for="tag in tags" :key="tag.name">{{ tag.name }}</p>
         </div>
       </div>
-      <ul class="ud-space-y-3 ud-mt-4">
+      <ul class="ud-space-y-3 ud-mt-4 ud-text-base ud-list-disc ud-list-inside">
         <li
             v-for="bulletPoint in bulletPoints"
             :key="bulletPoint.text_nl || bulletPoint.text_en"
-            class="ud-text-base ud-list-disc"
         >
           {{ locale === 'nl' ? bulletPoint.text_nl : bulletPoint.text_en }}
         </li>
@@ -93,7 +91,7 @@
     </div>
     <i
         @click="emitTurnOffModalEvent"
-        class="fa-solid fa-xmark ud-cursor-pointer ud-p-5 ud-text-3xl ud-fixed ud-right-0 ud-bottom-0"
+        class="fa-solid fa-xmark ud-text-mecctech-red-500 ud-cursor-pointer ud-p-5 ud-text-3xl ud-fixed ud-right-0 ud-top-0"
     ></i>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, ref, watchEffect} from 'vue';
+import {defineProps, shallowRef, watchEffect} from 'vue';
 
 const props = defineProps({
   title: String,
@@ -17,7 +17,7 @@ const props = defineProps({
   },
 });
 
-const resolvedIcon = ref(null);
+const resolvedIcon = shallowRef(null);
 const iconContext = import.meta.glob('./Icons/*.vue', { eager: false });
 
 watchEffect(async () => {

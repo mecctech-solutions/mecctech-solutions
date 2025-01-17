@@ -2,7 +2,7 @@
     <header
         class="
       header
-      ud-absolute
+      ud-sticky
       ud-top-0
       ud-left-0
       ud-z-40
@@ -10,7 +10,7 @@
       ud-flex
       ud-items-center
       ud-transition
-      ud-bg-transparent
+      ud-bg-white
     "
         :key="page.props.locale"
     >
@@ -20,7 +20,7 @@
           ud-flex ud-mx-[-16px] ud-items-center ud-justify-between ud-relative
         "
             >
-                <div class="ud-px-4 ud-w-60 ud-max-w-full">
+                <div class="ud-px-4 ud-w-44 ud-max-w-full">
                     <a
                         href="/"
                         class="header-logo ud-w-full ud-block ud-py-6 lg:ud-py-8"

@@ -21,9 +21,9 @@ const props = defineProps({
     <Head title="Home"></Head>
         <HeroSection></HeroSection>
         <AboutMe></AboutMe>
+        <Portfolio></Portfolio>
         <Skills></Skills>
         <Approach></Approach>
-        <Portfolio></Portfolio>
         <Clients></Clients>
         <ContactForm></ContactForm>
     </HomeLayout>

@@ -27,46 +27,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="ud-w-3/4 ud-mx-auto">
+                <div class="ud-grid ud-grid-cols-1 sm:ud-grid-cols-2 lg:ud-grid-cols-3 ud-gap-4 ud-w-3/4 ud-mx-auto ud-place-items-left">
                     <Skill
-                        :name="'Laravel'"
-                        :level="trans('skills.advanced')"
-                        :percentage="90"
-                    ></Skill>
-                    <Skill
-                        :name="'PHP'"
-                        :level="trans('skills.advanced')"
-                        :percentage="90"
-                    ></Skill>
-                    <Skill
-                        :name="'MySQL'"
-                        :level="trans('skills.advanced')"
-                        :percentage="90"
-                    ></Skill>
-                    <Skill
-                        :name="'Vue.js'"
-                        :level="trans('skills.intermediate')"
-                        :percentage="80"
-                    ></Skill>
-                    <Skill
-                        :name="'TailwindCSS'"
-                        :level="trans('skills.intermediate')"
-                        :percentage="80"
-                    ></Skill>
-                    <Skill
-                        :name="'HTML'"
-                        :level="trans('skills.intermediate')"
-                        :percentage="80"
-                    ></Skill>
-                    <Skill
-                        :name="'CSS'"
-                        :level="trans('skills.intermediate')"
-                        :percentage="70"
-                    ></Skill>
-                    <Skill
-                        :name="'Javascript'"
-                        :level="trans('skills.intermediate')"
-                        :percentage="70"
+                        v-for="(skill, index) in skills"
+                        :key="index"
+                        :name="skill.name"
+                        :description="skill.description"
                     ></Skill>
                 </div>
             </div>
@@ -82,6 +48,24 @@ import {usePage} from "@inertiajs/vue3";
 
 const page = usePage();
 const locale = computed(() => page.props.appUrl);
+
+const skills = computed(() => [
+    { name: trans("skills.Laravel.name"), description: trans("skills.Laravel.description") },
+    { name: trans("skills.Vue.js.name"), description: trans("skills.Vue.js.description") },
+    { name: trans("skills.Inertia.js.name"), description: trans("skills.Inertia.js.description") },
+    { name: trans("skills.PHP.name"), description: trans("skills.PHP.description") },
+    { name: trans("skills.Javascript.name"), description: trans("skills.Javascript.description") },
+    { name: trans("skills.MySQL.name"), description: trans("skills.MySQL.description") },
+    { name: trans("skills.TailwindCSS.name"), description: trans("skills.TailwindCSS.description") },
+    { name: trans("skills.Laravel Sail & Docker.name"), description: trans("skills.Laravel Sail & Docker.description") },
+    { name: trans("skills.Redis.name"), description: trans("skills.Redis.description") },
+    { name: trans("skills.Pest & PHP Unit.name"), description: trans("skills.Pest & PHP Unit.description") },
+    { name: trans("skills.Laravel Forge.name"), description: trans("skills.Laravel Forge.description") },
+    { name: trans("skills.CI/CD (GitHub Actions).name"), description: trans("skills.CI/CD (GitHub Actions).description") },
+    { name: trans("skills.Laravel Dusk.name"), description: trans("skills.Laravel Dusk.description") },
+    { name: trans("skills.Webpack & Vite.name"), description: trans("skills.Webpack & Vite.description") },
+    { name: trans("skills.Git.name"), description: trans("skills.Git.description") },
+]);
 </script>
 
 <style scoped></style>

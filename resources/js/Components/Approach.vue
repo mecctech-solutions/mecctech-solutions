@@ -32,28 +32,6 @@
                 <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                     <ApproachItem v-for="item in approachItems" :key="item.title" :title="item.title" :text="item.text" :icon="item.icon" :subtitle="item.subtitle" />
                 </div>
-                <div class="
-                    ud-flex
-                    ud-items-center
-                    ud-flex-col
-                    ">
-                    <a
-                        :href="page.props.appUrl + '/case-study'"
-                        class="
-                    ud-text-base
-                    ud-font-semibold
-                    ud-text-white
-                    ud-bg-primary
-                    ud-py-3
-                    ud-px-8
-                    ud-mr-4
-                    hover:ud-shadow-signUp hover:ud-bg-opacity-90
-                    ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
-                  "
-                    >
-                        Case study
-                    </a>
-                </div>
             </div>
 
         </div>
@@ -70,7 +48,7 @@ import ApproachItem from "@/Components/ApproachItem.vue";
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const approachItems = [
+const approachItems = computed(() => [
     {
         title: trans('approach.approach.discovery.title'),
         subtitle: trans('approach.approach.discovery.subtitle'),
@@ -107,7 +85,7 @@ const approachItems = [
         text: trans('approach.approach.support_iteration.text'),
         icon: 'Repeat',
     },
-];
+]);
 </script>
 
 <style scoped></style>
