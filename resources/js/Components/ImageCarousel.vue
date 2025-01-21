@@ -45,7 +45,7 @@ onMounted(() => {
             class="fa-solid fa-angle-left ud-text-xl md:ud-text-5xl ud-pt-5 ud-pb-5 ud-pr-10 ud-pl-10 ud-text-primary hover:ud-scale-125 ud-transform ud-transition ud-ease-in-out ud-duration-500 ud-cursor-pointer"
         ></i>
         <img
-            class="uw-w-32 md:ud-w-200 md:ud-h-100 lg:ud-h-140 ud-object-scale-down"
+            class="uw-w-32 md:ud-w-200 md:ud-h-100 ud-object-scale-down"
             :src="currentImageUrl"
             alt=""
         />
