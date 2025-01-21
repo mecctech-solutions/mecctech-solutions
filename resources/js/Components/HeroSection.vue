@@ -89,21 +89,7 @@
                             alt="image"
                             class="ud-max-w-full ud-mx-auto"
                         />
-                        <span class="ud-absolute ud-lefter-[-8px] ud-bottom-2 ud--z-1">
-              <svg
-                  width="40"
-                  height="38"
-                  viewBox="0 0 40 38"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                    d="M9.31451 3.18282L32.4926 6.24789C36.3084 6.75249 38.147 11.1986 35.8021 14.2508L21.5587 32.7911C19.2138 35.8434 14.444 35.2126 12.9731 31.6558L4.03852 10.0504C2.56762 6.49355 5.49873 2.67822 9.31451 3.18282Z"
-                    stroke="#e30613"
-                    stroke-width="6"
-                />
-              </svg>
-            </span>
+                        <span class="ud-absolute ud-lefter-[-8px] ud-bottom-2 ud--z-1"></span>
                     </div>
                 </div>
             </div>
