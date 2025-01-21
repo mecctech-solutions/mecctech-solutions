@@ -100,6 +100,7 @@
 import {computed, onMounted, ref} from "vue";
 import {usePage} from "@inertiajs/vue3";
 import ImageCarousel from "./ImageCarousel.vue";
+import useScreenSize from "@/Composables/screensize.ts";
 
 const props = defineProps({
   title: String,
@@ -115,16 +116,11 @@ const emit = defineEmits(["turn-off-modal"]);
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const isMobile = ref(window.innerWidth <= 760);
+const {isMobile, isTablet, isDesktop} = useScreenSize();
 const currentImageUrl = ref("");
-
-const updateMobileStatus = () => {
-    isMobile.value = window.innerWidth <= 760;
-};
 
 onMounted(() => {
     currentImageUrl.value = props.images[0].url;
-    window.addEventListener("resize", updateMobileStatus);
 });
 
 const emitTurnOffModalEvent = () => {
