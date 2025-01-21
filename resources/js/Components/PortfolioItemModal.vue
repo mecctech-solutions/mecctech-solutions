@@ -116,7 +116,7 @@ const emit = defineEmits(["turn-off-modal"]);
 const page = usePage();
 const locale = computed(() => page.props.locale);
 
-const {isMobile, isTablet, isDesktop} = useScreenSize();
+const {isMobile} = useScreenSize();
 const currentImageUrl = ref("");
 
 onMounted(() => {

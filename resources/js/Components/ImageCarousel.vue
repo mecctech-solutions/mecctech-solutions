@@ -1,6 +1,7 @@
 <script setup>
 
 import {computed, onMounted, ref} from "vue";
+import useScreenSize from "@/Composables/screensize.ts";
 
 const props = defineProps({
     images: Array,
@@ -30,17 +31,11 @@ const previousImage = () => {
     }
 };
 
-const isMobile = ref(window.innerWidth <= 760);
+const {isMobile} = useScreenSize();
 
 onMounted(() => {
     currentImageUrl.value = props.images[0].url;
-    window.addEventListener("resize", updateMobileStatus);
 });
-
-const updateMobileStatus = () => {
-    isMobile.value = window.innerWidth <= 760;
-    console.log(isMobile.value);
-};
 </script>
 
 <template>
