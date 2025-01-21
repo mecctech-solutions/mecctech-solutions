@@ -28,18 +28,18 @@ class SubmitContactRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_should_send_email_new_message(){
+    public function it_should_send_email_with_new_message(){
 
         // Given
         \Mail::fake();
-        $customer = ContactRequest::factory()->create();
         $message = "Test Message";
+        $customer = ContactRequest::factory()->create(['message' => $message]);
 
         // When
         \App\Actions\SubmitContactRequest::run($customer->getAttributes(), $message);
 
         // Then
-        $expectedMessage = $customer->name." with email address ".$customer->email." has sent the following message: ".$message;
+        $expectedMessage = $customer->full_name." with email address ".$customer->email." has sent the following message: ".$message;
 
         \Mail::assertSent(SubmitContactRequestMail::class, function (SubmitContactRequestMail $mail) use ($expectedMessage) {
             return $mail->message === $expectedMessage && $mail->recipientEmailAddress === 'florismeccanici@tutanota.com';
