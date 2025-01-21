@@ -17,7 +17,10 @@ class GetAllPortfolioItemsTest extends TestCase
         $portfolioItems = PortfolioItemFactory::new()
             ->count(10)
             ->create()
-            ->load('tags', 'images', 'bulletPoints');
+            ->load('tags', 'images', 'bulletPoints')
+            ->sortBy('position')
+            ->values();
+
         self::assertEquals(PortfolioItemData::collect($portfolioItems), GetAllPortfolioItems::run());
     }
 
@@ -41,7 +44,9 @@ class GetAllPortfolioItemsTest extends TestCase
             ->count(5)
             ->withTags(['name' => $firstTag])
             ->create()
-            ->load('tags', 'images', 'bulletPoints');
+            ->load('tags', 'images', 'bulletPoints')
+            ->sortBy('position')
+            ->values();
 
         PortfolioItemFactory::new()
             ->count(5)
