@@ -3,11 +3,10 @@
     <section
         id="home"
         class="
-      ud-relative ud-z-10 ud-pt-[150px]
-      lg:ud-pt-[100px]
+      ud-relative ud-z-10
       2xl:ud-flex
       ud-items-center
-      2xl:ud-h-[700px]
+      2xl:ud-h-[620px]
     "
         :key="locale"
     >
