@@ -2,7 +2,7 @@
     <header
         class="
       header
-      ud-sticky
+      ud-absolute
       ud-top-0
       ud-left-0
       ud-z-40

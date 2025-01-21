@@ -3,10 +3,11 @@
     <section
         id="home"
         class="
-      ud-relative ud-z-10
+      ud-relative ud-z-10 ud-pt-[150px]
+      lg:ud-pt-[100px]
       2xl:ud-flex
       ud-items-center
-      2xl:ud-h-[620px]
+      2xl:ud-h-[700px]
     "
         :key="locale"
     >
@@ -95,7 +96,7 @@
             </div>
         </div>
         <div>
-      <span class="ud-absolute ud-left-0 ud-top-32 ud--z-10">
+      <span class="ud-absolute ud-left-0 ud-top-64 ud--z-10">
         <svg
             width="48"
             height="95"
