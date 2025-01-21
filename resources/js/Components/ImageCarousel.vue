@@ -63,7 +63,7 @@ onMounted(() => {
         <div class="ud-flex ud-space-x-2 ud-mt-10">
             <i
                 v-for="image in images"
-                :key="image.url"
+                :key="image.full_url"
                 @click="currentImageUrl = image.url"
                 :class="{
             'ud-text-primary': image.url === currentImageUrl,
