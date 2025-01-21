@@ -67,8 +67,9 @@
                     {{ title }}
                 </a>
                 <ul class="ud-text-sm ud-font-normal ud-flex ud-space-x-3">
-                    <li v-for="tag in tags" :key="tag.name">{{ tag.name }}</li>
+                  <Tag v-for="tag in tags" :key="tag.name" :name="tag.name"></Tag>
                 </ul>
+
             </h3>
             <div @click="toggleModal">
                 <ul class="ud-font-medium ud-text-base ud-text-body-color ud-cursor-pointer"></ul>
@@ -91,6 +92,7 @@
 <script setup>
 import {ref} from "vue";
 import PortfolioItemModal from "./PortfolioItemModal.vue";
+import Tag from "@/Components/Tag.vue";
 
 const props = defineProps({
     title: String,
