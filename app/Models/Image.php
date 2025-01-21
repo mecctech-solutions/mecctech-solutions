@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Actions\DetermineFullFileUrl;
 use Database\Factories\ImageFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,11 +19,7 @@ class Image extends Model
     {
         return new Attribute(
             get: function () {
-                if (\Storage::exists($this->url)) {
-                    return \Storage::url($this->url);
-                }
-
-                return url($this->url);
+                return DetermineFullFileUrl::run($this->url);
             });
     }
 
