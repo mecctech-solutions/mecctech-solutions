@@ -11,7 +11,7 @@
     <div class="ud-text-left ud-p-5 ud-m-8">
       <div class="ud-flex ud-items-center ud-space-x-3">
         <h1 class="ud-text-4xl ud-font-bold">{{ title }}</h1>
-        <p v-for="tag in tags" :key="tag.name">{{ tag.name }}</p>
+        <Tag v-for="tag in tags" :key="tag.name" :name="tag.name"/>
       </div>
       <ul class="ud-mt-4 ud-text-base ud-list-disc ud-list-inside">
         <li
