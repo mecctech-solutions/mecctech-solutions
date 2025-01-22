@@ -16,7 +16,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::rename('contact_requests', 'customers');
-        Schema::table('contact_requests', function (Blueprint $table) {
+        Schema::table('customers', function (Blueprint $table) {
             $table->dropColumn('message');
         });
     }
