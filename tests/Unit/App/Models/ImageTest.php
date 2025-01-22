@@ -16,19 +16,19 @@ class ImageTest extends TestCase
         parent::setUp();
 
         $this->portfolioItem = new PortfolioItem([
-            "title_en" => "Test Title",
-            "title_nl" => "Test Titel",
-            "main_image_url" => "Test Url",
-            "description_nl" => "Test Beschrijving",
-            "description_en" => "Test Description",
-            "website_url" => "Test Website Url"
+            'title_en' => 'Test Title',
+            'title_nl' => 'Test Titel',
+            'main_image_url' => 'Test Url',
+            'description_nl' => 'Test Beschrijving',
+            'description_en' => 'Test Description',
+            'website_url' => 'Test Website Url',
         ]);
 
         $this->portfolioItem->save();
 
         $this->image = new Image([
-            "url" => "/images/placeholder.png",
-            "portfolio_item_id" => $this->portfolioItem->id,
+            'url' => '/images/placeholder.png',
+            'portfolio_item_id' => $this->portfolioItem->id,
         ]);
     }
 
@@ -36,13 +36,13 @@ class ImageTest extends TestCase
     public function it_should_return_url_with_storage_when_it_exists()
     {
         // Arrange
-        $fileName = "test.jpg";
-        \Storage::put($fileName, "test");
+        $fileName = 'test.jpg';
+        \Storage::put($fileName, 'test');
         $this->image->url = $fileName;
         $this->image->save();
 
         // Act & Assert
-        self::assertEquals(url("/storage/test.jpg"), $this->image->full_url);
+        self::assertEquals(url('/storage/test.jpg'), $this->image->full_url);
 
         \Storage::delete($fileName);
     }
@@ -52,11 +52,10 @@ class ImageTest extends TestCase
     {
         // Arrange
         \Storage::fake('public');
-        $this->image->url = "test.jpg";
+        $this->image->url = 'test.jpg';
         $this->image->save();
 
         // Act & Assert
-        self::assertEquals(url("test.jpg"), $this->image->full_url);
+        self::assertEquals(url('test.jpg'), $this->image->full_url);
     }
 }
-

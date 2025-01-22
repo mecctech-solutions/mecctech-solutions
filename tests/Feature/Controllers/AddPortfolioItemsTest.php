@@ -14,7 +14,6 @@ use Tests\TestCase;
 
 class AddPortfolioItemsTest extends TestCase
 {
-
     /** @test */
     public function it_should_be_able_to_call_the_route()
     {
@@ -32,6 +31,7 @@ class AddPortfolioItemsTest extends TestCase
                 $portfolioItem['images'] = $images->toArray();
                 $portfolioItem['tags'] = $tags->toArray();
                 $portfolioItem['position'] = $n + 1;
+
                 return $portfolioItem;
             });
 
@@ -39,13 +39,13 @@ class AddPortfolioItemsTest extends TestCase
 
         // Then
         AddPortfolioItems::partialMock()
-            ->shouldReceive("handle")
+            ->shouldReceive('handle')
             ->once()
             ->with($portfolioItems);
 
         // When
-        $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems
+        $response = $this->post(route('add-portfolio-items'), [
+            'portfolio_items' => $portfolioItems,
         ]);
 
         // Then
@@ -59,20 +59,20 @@ class AddPortfolioItemsTest extends TestCase
         $portfolioItems = PortfolioItemFactory::new()
             ->count(2)
             ->make([
-                "title_nl" => "Same title",
-                "title_en" => "Zelfde titel",
-                "position" => 1
+                'title_nl' => 'Same title',
+                'title_en' => 'Zelfde titel',
+                'position' => 1,
             ]);
 
         $portfolioItems = PortfolioItemData::collect($portfolioItems);
 
         // When
-        $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems
+        $response = $this->post(route('add-portfolio-items'), [
+            'portfolio_items' => $portfolioItems,
         ]);
 
-        $response = $this->post(route("add-portfolio-items"), [
-            "portfolio_items" => $portfolioItems
+        $response = $this->post(route('add-portfolio-items'), [
+            'portfolio_items' => $portfolioItems,
         ]);
 
         self::assertEquals(1, PortfolioItem::count());
@@ -83,29 +83,29 @@ class AddPortfolioItemsTest extends TestCase
     {
         $url = route('all-portfolio-items');
         $response = $this->get($url);
-        self::assertNotNull($response["meta"]["created_at"]);
-        self::assertNotNull($response["payload"]["portfolio_items"]);
+        self::assertNotNull($response['meta']['created_at']);
+        self::assertNotNull($response['payload']['portfolio_items']);
     }
 
     /** @test */
     public function it_should_return_response_with_error_message_when_failed_to_get_all_portfolio_items()
     {
-        GetAllPortfolioItems::partialMock()->shouldReceive("handle")->andThrow(new \Exception("Failed to get all portfolio items"));
+        GetAllPortfolioItems::partialMock()->shouldReceive('handle')->andThrow(new \Exception('Failed to get all portfolio items'));
         $url = route('all-portfolio-items');
         $response = $this->get($url);
-        self::assertNotNull($response["meta"]["created_at"]);
-        self::assertNotNull($response["error"]["message"]);
-        self::assertNotNull($response["error"]["code"]);
+        self::assertNotNull($response['meta']['created_at']);
+        self::assertNotNull($response['error']['message']);
+        self::assertNotNull($response['error']['code']);
     }
 
     /** @test */
     public function it_should_return_response_with_portfolio_items_filtered_by_tag()
     {
         $url = route('all-portfolio-items', [
-            "tag" => "Test Tag"
+            'tag' => 'Test Tag',
         ]);
         $response = $this->get($url);
-        self::assertNotNull($response["payload"]["portfolio_items"]);
-        self::assertNotNull($response["meta"]["created_at"]);
+        self::assertNotNull($response['payload']['portfolio_items']);
+        self::assertNotNull($response['meta']['created_at']);
     }
 }

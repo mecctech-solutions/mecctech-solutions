@@ -16,8 +16,8 @@ class CreatePortfolioItemTagTable extends Migration
         Schema::create('portfolio_item_tag', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger("portfolio_item_id");
-            $table->unsignedBigInteger("tag_id");
+            $table->unsignedBigInteger('portfolio_item_id');
+            $table->unsignedBigInteger('tag_id');
         });
     }
 

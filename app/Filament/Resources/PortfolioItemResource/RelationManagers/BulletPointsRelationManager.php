@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 class BulletPointsRelationManager extends RelationManager
 {
     protected static string $relationship = 'bulletPoints';
+
     protected static ?string $label = 'Bullet Points';
 
     public function form(Form $form): Form

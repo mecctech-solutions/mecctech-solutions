@@ -1,8 +1,8 @@
 <?php
 
 return [
-    "offer" => "Wat heb ik te bieden?",
-    "my_skills" => "Mijn Skills",
+    'offer' => 'Wat heb ik te bieden?',
+    'my_skills' => 'Mijn Skills',
     'Laravel' => [
         'name' => 'Laravel',
         'description' => 'Framework voor backend-ontwikkeling',

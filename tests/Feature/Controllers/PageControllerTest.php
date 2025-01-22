@@ -21,36 +21,35 @@ class PageControllerTest extends TestCase
         $response->assertInertia(function (AssertableInertia $page) use ($portfolioItem) {
             $page->component('Home');
             $page->has('portfolioItems', 1)
-            ->has('portfolioItems.0', function (AssertableInertia $page) use ($portfolioItem) {
-                $page
-                    ->where('title_nl', $portfolioItem->title_nl)
-                    ->where('title_en', $portfolioItem->title_en)
-                    ->where('description_nl', $portfolioItem->description_nl)
-                    ->where('description_en', $portfolioItem->description_en)
-                    ->where('website_url', $portfolioItem->website_url)
-                    ->where('main_image_url', $portfolioItem->main_image_url)
-                    ->where('main_image_full_url', $portfolioItem->main_image_full_url)
-                    ->where('position', $portfolioItem->position)
-                    ->has('tags', $portfolioItem->tags->count())
-                    ->has('tags.0', function (AssertableInertia $page) use ($portfolioItem) {
-                        $page
-                            ->where('name', $portfolioItem->tags->first()->name)
-                            ->where('visible', (bool) $portfolioItem->tags->first()->visible);
-                    })
-                    ->has('images', $portfolioItem->images->count())
-                    ->has('images.0', function (AssertableInertia $page) use ($portfolioItem) {
-                        $page
-                            ->where('url', $portfolioItem->images->first()->url)
-                            ->where('full_url', $portfolioItem->images->first()->full_url);
-                    })
-                    ->has('bullet_points', $portfolioItem->bulletPoints->count())
-                    ->has('bullet_points.0', function (AssertableInertia $page) use ($portfolioItem) {
-                        $page
-                            ->where('text_nl', $portfolioItem->bulletPoints->first()->text_nl)
-                            ->where('text_en', $portfolioItem->bulletPoints->first()->text_en);
-                    })
-                ;
-            });
+                ->has('portfolioItems.0', function (AssertableInertia $page) use ($portfolioItem) {
+                    $page
+                        ->where('title_nl', $portfolioItem->title_nl)
+                        ->where('title_en', $portfolioItem->title_en)
+                        ->where('description_nl', $portfolioItem->description_nl)
+                        ->where('description_en', $portfolioItem->description_en)
+                        ->where('website_url', $portfolioItem->website_url)
+                        ->where('main_image_url', $portfolioItem->main_image_url)
+                        ->where('main_image_full_url', $portfolioItem->main_image_full_url)
+                        ->where('position', $portfolioItem->position)
+                        ->has('tags', $portfolioItem->tags->count())
+                        ->has('tags.0', function (AssertableInertia $page) use ($portfolioItem) {
+                            $page
+                                ->where('name', $portfolioItem->tags->first()->name)
+                                ->where('visible', (bool) $portfolioItem->tags->first()->visible);
+                        })
+                        ->has('images', $portfolioItem->images->count())
+                        ->has('images.0', function (AssertableInertia $page) use ($portfolioItem) {
+                            $page
+                                ->where('url', $portfolioItem->images->first()->url)
+                                ->where('full_url', $portfolioItem->images->first()->full_url);
+                        })
+                        ->has('bullet_points', $portfolioItem->bulletPoints->count())
+                        ->has('bullet_points.0', function (AssertableInertia $page) use ($portfolioItem) {
+                            $page
+                                ->where('text_nl', $portfolioItem->bulletPoints->first()->text_nl)
+                                ->where('text_en', $portfolioItem->bulletPoints->first()->text_en);
+                        });
+                });
         });
     }
 }

@@ -21,13 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("portfolio-items", GetAllPortfolioItems::class)
-    ->name("all-portfolio-items")
+Route::get('portfolio-items', GetAllPortfolioItems::class)
+    ->name('all-portfolio-items')
     ->middleware('cors');
 
-Route::post("portfolio-items/add-multiple", AddPortfolioItems::class)
-    ->name("add-portfolio-items")
+Route::post('portfolio-items/add-multiple', AddPortfolioItems::class)
+    ->name('add-portfolio-items')
     ->middleware('cors');
 
-Route::post("portfolio-items/import", ImportPortfolioItems::class)
-    ->name("import-portfolio-items");
+Route::post('portfolio-items/import', ImportPortfolioItems::class)
+    ->name('import-portfolio-items');

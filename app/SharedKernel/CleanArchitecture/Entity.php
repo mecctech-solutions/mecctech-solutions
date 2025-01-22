@@ -2,7 +2,4 @@
 
 namespace App\SharedKernel\CleanArchitecture;
 
-abstract class Entity
-{
-
-}
+abstract class Entity {}

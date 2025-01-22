@@ -12,7 +12,7 @@ class PortfolioItemFactoryTest extends TestCase
         $portfolioItem = PortfolioItemFactory::new()->create();
 
         // Then
-        self::assertDatabaseHas("portfolio_items", $portfolioItem->getAttributes());
+        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
     }
 
     /** @test */
@@ -22,7 +22,7 @@ class PortfolioItemFactoryTest extends TestCase
         $portfolioItem = PortfolioItemFactory::new()->create();
 
         // Then
-        self::assertDatabaseHas("portfolio_items", $portfolioItem->getAttributes());
+        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
         self::assertCount(3, $portfolioItem->tags);
     }
 
@@ -33,7 +33,7 @@ class PortfolioItemFactoryTest extends TestCase
         $portfolioItem = PortfolioItemFactory::new()->create();
 
         // Then
-        self::assertDatabaseHas("portfolio_items", $portfolioItem->getAttributes());
+        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
         self::assertCount(3, $portfolioItem->images);
     }
 
@@ -44,7 +44,7 @@ class PortfolioItemFactoryTest extends TestCase
         $portfolioItem = PortfolioItemFactory::new()->create();
 
         // Then
-        self::assertDatabaseHas("portfolio_items", $portfolioItem->getAttributes());
+        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
         self::assertCount(3, $portfolioItem->bulletPoints);
     }
 }

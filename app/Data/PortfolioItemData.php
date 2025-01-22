@@ -12,6 +12,7 @@ class PortfolioItemData extends Data
 {
     #[Computed]
     public string $main_image_full_url;
+
     public function __construct(
         public string $title_en,
         public string $title_nl,
@@ -29,8 +30,7 @@ class PortfolioItemData extends Data
 
         #[DataCollectionOf(TagData::class)]
         public ?DataCollection $tags,
-    )
-    {
+    ) {
         $this->main_image_full_url = DetermineFullFileUrl::run($this->main_image_url);
     }
 }

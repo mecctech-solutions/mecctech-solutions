@@ -15,26 +15,25 @@ class SubmitContactRequest
     public function handle(array $customer, string $message)
     {
         $foundCustomer = ContactRequest::where([
-            'email' => $customer['email']
+            'email' => $customer['email'],
         ])->first();
 
-        if ($foundCustomer === null)
-        {
+        if ($foundCustomer === null) {
             $customerNumber = uniqid();
             $customer = ContactRequest::create([
-                "customer_number" => $customerNumber,
-                "first_name" => $customer['first_name'],
-                "last_name" => $customer['last_name'],
-                "email" => $customer['email'],
-                "phone_number" => $customer['phone_number'],
-                "message" => $message
+                'customer_number' => $customerNumber,
+                'first_name' => $customer['first_name'],
+                'last_name' => $customer['last_name'],
+                'email' => $customer['email'],
+                'phone_number' => $customer['phone_number'],
+                'message' => $message,
             ]);
         } else {
             $customer = $foundCustomer;
         }
 
         $myEmail = 'florismeccanici@tutanota.com';
-        $message = $customer->full_name." with email address ".$customer->email." has sent the following message: ".$message;
+        $message = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$message;
         $mailable = new SubmitContactRequestMail($message, $myEmail);
 
         SendMailJob::dispatch(
@@ -45,9 +44,9 @@ class SubmitContactRequest
     public function asController(Request $request)
     {
         $name = $request->input('name');
-        $parts = explode(" ", $name);
+        $parts = explode(' ', $name);
         $lastName = array_pop($parts);
-        $firstName = implode(" ", $parts);
+        $firstName = implode(' ', $parts);
 
         $email = $request->input('email');
         $message = $request->input('message');
@@ -57,7 +56,7 @@ class SubmitContactRequest
             'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $email,
-            'phone_number' => $phone
+            'phone_number' => $phone,
         ], $message);
 
         return redirect()->back();
