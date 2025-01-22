@@ -13,7 +13,6 @@ use Tests\TestCase;
 
 class AddPortfolioItemsTest extends TestCase
 {
-
     /** @test */
     public function it_should_add_portfolio_items_with_relations()
     {
@@ -31,6 +30,7 @@ class AddPortfolioItemsTest extends TestCase
                 $portfolioItem['tags'] = $tags->toArray();
                 $portfolioItem['position'] = $n + 1;
                 $n++;
+
                 return $portfolioItem;
             });
         $portfolioItems = PortfolioItemData::collect($portfolioItems);

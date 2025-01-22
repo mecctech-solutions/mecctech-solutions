@@ -10,7 +10,8 @@ use Tests\TestCase;
 class SubmitContactRequestTest extends TestCase
 {
     /** @test */
-    public function it_should_add_customer_if_it_does_not_exist(){
+    public function it_should_add_customer_if_it_does_not_exist()
+    {
 
         // Given
         $email = 'test@test.com';
@@ -18,7 +19,7 @@ class SubmitContactRequestTest extends TestCase
         self::assertNull($customer);
 
         $customer = ContactRequestFactory::new()->make();
-        $message = "johndoe@example.com";
+        $message = 'johndoe@example.com';
 
         // When
         \App\Actions\SubmitContactRequest::run($customer->getAttributes(), $message);
@@ -28,18 +29,19 @@ class SubmitContactRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_should_send_email_with_new_message(){
+    public function it_should_send_email_with_new_message()
+    {
 
         // Given
         \Mail::fake();
-        $message = "Test Message";
+        $message = 'Test Message';
         $customer = ContactRequest::factory()->create(['message' => $message]);
 
         // When
         \App\Actions\SubmitContactRequest::run($customer->getAttributes(), $message);
 
         // Then
-        $expectedMessage = $customer->full_name." with email address ".$customer->email." has sent the following message: ".$message;
+        $expectedMessage = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$message;
 
         \Mail::assertSent(SubmitContactRequestMail::class, function (SubmitContactRequestMail $mail) use ($expectedMessage) {
             return $mail->message === $expectedMessage && $mail->recipientEmailAddress === 'florismeccanici@tutanota.com';

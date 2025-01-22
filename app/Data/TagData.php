@@ -9,7 +9,5 @@ class TagData extends Data
     public function __construct(
         public string $name,
         public bool $visible = false,
-    )
-    {
-    }
+    ) {}
 }

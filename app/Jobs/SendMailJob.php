@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Mail\Mailable;
@@ -16,6 +15,7 @@ class SendMailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private Mailable $mailable;
+
     private string $recipientEmailAddress;
 
     /**
@@ -24,7 +24,7 @@ class SendMailJob implements ShouldQueue
      * @return void
      */
     public function __construct(Mailable $mailable,
-                                string $recipientEmailAddress)
+        string $recipientEmailAddress)
     {
         $this->mailable = $mailable;
         $this->recipientEmailAddress = $recipientEmailAddress;

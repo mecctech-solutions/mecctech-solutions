@@ -27,9 +27,8 @@ class ListPortfolioItems extends ListRecords
                 ->form([
                     FileUpload::make('file')
                         ->label('Upload Excel File')
-                        ->required()
-                ])
-            ,
+                        ->required(),
+                ]),
         ];
     }
 }

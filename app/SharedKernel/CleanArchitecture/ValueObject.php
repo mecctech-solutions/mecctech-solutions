@@ -2,7 +2,4 @@
 
 namespace App\SharedKernel\CleanArchitecture;
 
-abstract class ValueObject
-{
-
-}
+abstract class ValueObject {}

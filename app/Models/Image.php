@@ -12,7 +12,8 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $table = "images";
+    protected $table = 'images';
+
     protected $guarded = [];
 
     public function fullUrl(): Attribute
@@ -25,6 +26,6 @@ class Image extends Model
 
     protected static function newFactory(): ImageFactory
     {
-        return new ImageFactory();
+        return new ImageFactory;
     }
 }

@@ -6,9 +6,9 @@ use Tests\TestCase;
 
 class SubmitContactRequestTest extends TestCase
 {
-
     /** @test */
-    public function it_should_return_status_redirect(){
+    public function it_should_return_status_redirect()
+    {
 
         // Given
         $url = route('submit-contact-request');
@@ -19,7 +19,7 @@ class SubmitContactRequestTest extends TestCase
             'last_name' => 'Doe',
             'email' => 'johndoe@example.com',
             'message' => 'Test Message',
-            'phone' => '0612345678'
+            'phone' => '0612345678',
         ]);
 
         // Then
