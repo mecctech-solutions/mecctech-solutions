@@ -21,6 +21,7 @@ class PortfolioItemData extends Data
         public string $main_image_url,
         public string $website_url,
         public int $position,
+        public bool $visible,
 
         #[DataCollectionOf(BulletPointData::class)]
         public ?DataCollection $bullet_points,

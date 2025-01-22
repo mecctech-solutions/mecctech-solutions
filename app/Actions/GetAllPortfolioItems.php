@@ -16,7 +16,9 @@ class GetAllPortfolioItems
     public function handle(?string $tag = null): Collection
     {
         /** @phpstan-ignore-next-line  */
-        $query = PortfolioItem::query()->with('images', 'tags', 'bulletPoints');
+        $query = PortfolioItem::query()
+            ->where('visible', true)
+            ->with('images', 'tags', 'bulletPoints');
 
         if ($tag) {
             /** @phpstan-ignore-next-line  */
