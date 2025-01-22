@@ -16,7 +16,10 @@ class GetAllPortfolioItemsTest extends TestCase
         self::assertEmpty(PortfolioItem::all());
         $portfolioItems = PortfolioItemFactory::new()
             ->count(10)
-            ->create()
+            ->create([
+                'description_en' => null,
+                'description_nl' => null,
+            ])
             ->load('tags', 'images', 'bulletPoints')
             ->sortBy('position')
             ->values();
