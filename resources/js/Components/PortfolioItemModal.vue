@@ -120,7 +120,7 @@ const {isMobile} = useScreenSize();
 const currentImageUrl = ref("");
 
 onMounted(() => {
-    currentImageUrl.value = props.images[0].url;
+    currentImageUrl.value = props.images[0].full_url;
 });
 
 const emitTurnOffModalEvent = () => {
