@@ -64,10 +64,10 @@ onMounted(() => {
             <i
                 v-for="image in images"
                 :key="image.full_url"
-                @click="currentImageUrl = image.url"
+                @click="currentImageUrl = image.full_url"
                 :class="{
-            'ud-text-primary': image.url === currentImageUrl,
-            'ud-text-black': image.url !== currentImageUrl,
+            'ud-text-primary': image.full_url === currentImageUrl,
+            'ud-text-black': image.full_url !== currentImageUrl,
           }"
                 class="fas fa-circle ud-cursor-pointer"
             ></i>
