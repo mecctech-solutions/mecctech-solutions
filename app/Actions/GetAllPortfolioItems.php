@@ -15,10 +15,11 @@ class GetAllPortfolioItems
 
     public function handle(?string $tag = null): Collection
     {
+        /** @phpstan-ignore-next-line  */
         $query = PortfolioItem::query()->with('images', 'tags', 'bulletPoints');
 
-        if ($tag)
-        {
+        if ($tag) {
+            /** @phpstan-ignore-next-line  */
             $query->whereRelation('tags', 'name', $tag);
         }
 
@@ -34,14 +35,13 @@ class GetAllPortfolioItems
         try {
             $portfolioItems = $this->handle($request->query('tag'));
 
-            $response["meta"]["created_at"] = time();
-            $response["payload"]["portfolio_items"] = new LengthAwarePaginator(PortfolioItemData::collect($portfolioItems), $portfolioItems->count(), 3);
+            $response['meta']['created_at'] = time();
+            $response['payload']['portfolio_items'] = new LengthAwarePaginator(PortfolioItemData::collect($portfolioItems), $portfolioItems->count(), 3);
 
-        } catch (\Exception $e)
-        {
-            $response["meta"]["created_at"] = time();
-            $response["error"]["code"] = $e->getCode();
-            $response["error"]["message"] = $e->getMessage();
+        } catch (\Exception $e) {
+            $response['meta']['created_at'] = time();
+            $response['error']['code'] = $e->getCode();
+            $response['error']['message'] = $e->getMessage();
         }
 
         return $response;

@@ -22,13 +22,12 @@ class ImportPortfolioItems
             $uploadedFile = $request->file('portfolio_items');
             $path = $uploadedFile->getRealPath();
             $this->handle($path);
-            $response["meta"]["created_at"] = time();
+            $response['meta']['created_at'] = time();
 
-        } catch (\Exception $e)
-        {
-            $response["meta"]["created_at"] = time();
-            $response["error"]["code"] = $e->getCode();
-            $response["error"]["message"] = $e->getMessage();
+        } catch (\Exception $e) {
+            $response['meta']['created_at'] = time();
+            $response['error']['code'] = $e->getCode();
+            $response['error']['message'] = $e->getMessage();
         }
 
         return $response;

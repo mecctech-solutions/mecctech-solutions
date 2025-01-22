@@ -5,6 +5,7 @@ namespace Tests\Unit\App\Models;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class PortfolioItemTest extends TestCase
@@ -16,18 +17,18 @@ class PortfolioItemTest extends TestCase
         parent::setUp();
 
         $this->portfolioItem = new PortfolioItem([
-            "title_en" => "Test Title",
-            "title_nl" => "Test Titel",
-            "main_image_url" => "Test Url",
-            "description_nl" => "Test Beschrijving",
-            "description_en" => "Test Description",
-            "website_url" => "Test Website Url"
+            'title_en' => 'Test Title',
+            'title_nl' => 'Test Titel',
+            'main_image_url' => 'Test Url',
+            'description_nl' => 'Test Beschrijving',
+            'description_en' => 'Test Description',
+            'website_url' => 'Test Website Url',
         ]);
 
         $this->portfolioItem->save();
 
         $this->tag = Tag::factory()->create([
-            "name" => "Test Tag"
+            'name' => 'Test Tag',
         ]);
 
         $this->portfolioItem->tags()->attach($this->tag);
@@ -43,26 +44,27 @@ class PortfolioItemTest extends TestCase
     public function it_should_return_main_image_full_url_with_storage_when_it_exists()
     {
         // Arrange
-        $fileName = "test.jpg";
-        \Storage::put($fileName, "test");
+        $fileName = 'test.jpg';
+        Storage::put($fileName, 'test');
         $this->portfolioItem->main_image_url = $fileName;
         $this->portfolioItem->save();
 
         // Act & Assert
-        self::assertEquals(url("/storage/test.jpg"), $this->portfolioItem->main_image_full_url);
+        self::assertEquals(url('/storage/test.jpg'), $this->portfolioItem->main_image_full_url);
 
-        \Storage::delete($fileName);
+        Storage::delete($fileName);
     }
 
     /** @test */
     public function it_should_return_main_image_full_url_without_storage_when_it_does_not_exist()
     {
         // Arrange
-        $this->portfolioItem->main_image_url = "test.jpg";
+        Storage::fake('public');
+        $this->portfolioItem->main_image_url = 'test.jpg';
         $this->portfolioItem->save();
 
         // Act & Assert
-        self::assertEquals(url("test.jpg"), $this->portfolioItem->main_image_full_url);
+        self::assertEquals(url('test.jpg'), $this->portfolioItem->main_image_full_url);
     }
 
     /** @test */

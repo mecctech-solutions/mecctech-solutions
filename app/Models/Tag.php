@@ -10,11 +10,12 @@ class Tag extends Model
 {
     use HasFactory;
 
-    protected $table = "tags";
+    protected $table = 'tags';
+
     protected $guarded = [];
 
     protected static function newFactory(): TagFactory
     {
-        return new TagFactory();
+        return new TagFactory;
     }
 }

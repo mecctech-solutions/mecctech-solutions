@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class PortfolioItemDataTest extends TestCase
 {
-
     /** @test */
     public function it_should_handle_descriptions_that_are_null()
     {

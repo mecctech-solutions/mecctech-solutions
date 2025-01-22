@@ -15,7 +15,7 @@ class PortfolioItemsSeeder extends Seeder
      */
     public function run()
     {
-        $portfolioItemRepository = new EloquentPortfolioItemRepository();
+        $portfolioItemRepository = new EloquentPortfolioItemRepository;
         $portfolioItems = PortfolioItemFactory::create(10);
         $portfolioItemRepository->addMultiple($portfolioItems);
     }

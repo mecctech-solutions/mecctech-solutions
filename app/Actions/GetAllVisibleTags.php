@@ -14,6 +14,7 @@ class GetAllVisibleTags
     public function handle(): Collection
     {
         $tags = Tag::query()->where('visible', true)->orderBy('position')->get();
+
         return TagData::collect($tags);
     }
 }

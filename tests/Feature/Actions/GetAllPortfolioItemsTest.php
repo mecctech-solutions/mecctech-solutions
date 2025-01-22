@@ -32,7 +32,7 @@ class GetAllPortfolioItemsTest extends TestCase
     {
         $portfolioItems = PortfolioItemFactory::new()->count(10)->create();
 
-        $sortedPortfolioItems = $portfolioItems->sortBy(fn(PortfolioItem $portfolioItem) => $portfolioItem->position);
+        $sortedPortfolioItems = $portfolioItems->sortBy(fn (PortfolioItem $portfolioItem) => $portfolioItem->position);
 
         self::assertEquals($sortedPortfolioItems->pluck('position'), GetAllPortfolioItems::run()->pluck('position'));
     }
@@ -41,8 +41,8 @@ class GetAllPortfolioItemsTest extends TestCase
     public function it_should_return_portfolio_items_with_certain_tag()
     {
         // Given
-        $firstTag = "Tag 1";
-        $secondTag = "Tag 2";
+        $firstTag = 'Tag 1';
+        $secondTag = 'Tag 2';
         $portfolioItemsWithFirstTag = PortfolioItemFactory::new()
             ->count(5)
             ->withTags(['name' => $firstTag])
