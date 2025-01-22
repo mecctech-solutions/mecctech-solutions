@@ -19,6 +19,7 @@ class PageController extends Controller
             $tag = null;
         }
 
+
         return Inertia::render('Home')->with([
             'portfolioItems' => PortfolioItemData::collect(GetAllPortfolioItems::run($tag)),
             'tags' => TagData::collect(GetAllVisibleTags::run()),
