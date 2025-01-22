@@ -34,7 +34,6 @@ class HomePageTest extends DuskTestCase
                 ->waitFor('@portfolio')
                 ->assertSee($visibleTag->name)
                 ->assertDontSee($invisibleTag->name);
-            $browser->screenshotElement('@portfolio', 'filename');
         });
     }
 
