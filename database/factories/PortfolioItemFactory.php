@@ -32,6 +32,13 @@ class PortfolioItemFactory extends Factory
         });
     }
 
+    public function withImages(int $count = 1)
+    {
+        return $this->afterCreating(function (PortfolioItem $portfolioItem) use ($count) {
+            Image::factory()->count($count)->create(['portfolio_item_id' => $portfolioItem->id]);
+        });
+    }
+
     public function configure(): static
     {
         return $this->afterCreating(function (PortfolioItem $portfolioItem) {

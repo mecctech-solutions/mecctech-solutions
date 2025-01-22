@@ -81,4 +81,26 @@ class PortfolioItemTest extends TestCase
         self::assertEquals(1, $position1);
         self::assertEquals(2, $position2);
     }
+
+    /** @test */
+    public function it_should_sort_images_of_one_portfolio_item_not_affecting_the_other()
+    {
+        // Given
+        $portfolioItem1 = PortfolioItem::factory()->withImages(2)->create();
+        $portfolioItem2 = PortfolioItem::factory()->withImages(2)->create();
+        $firstImagePortfolioItem1 = $portfolioItem1->images()->first();
+        $firstImagePortfolioItem2 = $portfolioItem2->images()->first();
+        self::assertTrue($portfolioItem1->images()->first()->is($firstImagePortfolioItem1));
+        self::assertTrue($portfolioItem2->images()->first()->is($firstImagePortfolioItem2));
+
+        // When
+        $portfolioItem1->images()->first()->moveOrderDown();
+        $firstImagePortfolioItem1 = $portfolioItem1->images()->first();
+        $firstImagePortfolioItem2 = $portfolioItem2->images()->first();
+
+        // Then
+        self::assertEquals(2, $firstImagePortfolioItem1->position);
+        self::assertEquals(1, $firstImagePortfolioItem2->position);
+    }
+
 }
