@@ -18,12 +18,12 @@ class SubmitContactRequestTest extends TestCase
             // Otherwise CORS error will be thrown (419)
             ->withoutMiddleware()
             ->post($url, [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'johndoe@example.com',
-            'message' => 'Test Message',
-            'phone' => '0612345678',
-        ]);
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'johndoe@example.com',
+                'message' => 'Test Message',
+                'phone' => '0612345678',
+            ]);
 
         // Then
         self::assertEquals(302, $response->status());
