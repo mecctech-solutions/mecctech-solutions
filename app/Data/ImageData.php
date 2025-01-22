@@ -13,6 +13,7 @@ class ImageData extends Data
 
     public function __construct(
         public string $url,
+        public int $position,
     ) {
         $this->full_url = DetermineFullFileUrl::run($this->url);
     }
