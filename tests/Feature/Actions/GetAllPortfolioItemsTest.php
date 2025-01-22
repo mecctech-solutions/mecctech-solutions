@@ -60,4 +60,22 @@ class GetAllPortfolioItemsTest extends TestCase
         $result = GetAllPortfolioItems::run($firstTag);
         self::assertEquals(PortfolioItemData::collect($portfolioItemsWithFirstTag), $result);
     }
+
+    /** @test */
+    public function it_should_sort_images_and_bullet_points_by_position()
+    {
+        // Given
+        $portfolioItem = PortfolioItemFactory::new()->create();
+        $images = $portfolioItem->images;
+        $bulletPoints = $portfolioItem->bulletPoints;
+        $sortedImages = $images->sortBy('position');
+        $sortedBulletPoints = $bulletPoints->sortBy('position');
+
+        // When
+        $result = GetAllPortfolioItems::run()->first();
+
+        // Then
+        self::assertEquals($sortedImages->pluck('position'), collect($result->images)->map(fn ($image) => $image['position']));
+        self::assertEquals($sortedBulletPoints->pluck('position'), collect($result->bullet_points)->map(fn ($image) => $image['position']));
+    }
 }

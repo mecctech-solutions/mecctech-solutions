@@ -25,7 +25,13 @@ class GetAllPortfolioItems
 
         $portfolioItems = $query->get()
             ->sortBy('position')
-            ->values();
+            ->values()
+            ->map(function (PortfolioItem $portfolioItem) {
+                $portfolioItem->images = $portfolioItem->images->sortBy('position')->values();
+                $portfolioItem->bulletPoints = $portfolioItem->bulletPoints->sortBy('position')->values();
+
+                return $portfolioItem;
+            });
 
         return PortfolioItemData::collect($portfolioItems);
     }

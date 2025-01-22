@@ -35,6 +35,7 @@ class BulletPointsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('text_nl'),
                 Tables\Columns\TextColumn::make('text_en'),
             ])
+            ->reorderable('position')
             ->filters([
                 //
             ])

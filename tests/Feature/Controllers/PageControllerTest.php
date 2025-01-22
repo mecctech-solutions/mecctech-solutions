@@ -41,13 +41,15 @@ class PageControllerTest extends TestCase
                         ->has('images.0', function (AssertableInertia $page) use ($portfolioItem) {
                             $page
                                 ->where('url', $portfolioItem->images->first()->url)
-                                ->where('full_url', $portfolioItem->images->first()->full_url);
+                                ->where('full_url', $portfolioItem->images->first()->full_url)
+                                ->where('position', $portfolioItem->images->first()->position);
                         })
                         ->has('bullet_points', $portfolioItem->bulletPoints->count())
                         ->has('bullet_points.0', function (AssertableInertia $page) use ($portfolioItem) {
                             $page
                                 ->where('text_nl', $portfolioItem->bulletPoints->first()->text_nl)
-                                ->where('text_en', $portfolioItem->bulletPoints->first()->text_en);
+                                ->where('text_en', $portfolioItem->bulletPoints->first()->text_en)
+                                ->where('position', $portfolioItem->bulletPoints->first()->position);
                         });
                 });
         });

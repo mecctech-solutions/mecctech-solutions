@@ -2,10 +2,12 @@ declare namespace App.Data {
 export type BulletPointData = {
 text_en: string;
 text_nl: string;
+position: number;
 };
 export type ImageData = {
 full_url: string;
 url: string;
+position: number;
 };
 export type PortfolioItemData = {
 main_image_full_url: string;

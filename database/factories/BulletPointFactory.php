@@ -14,6 +14,7 @@ class BulletPointFactory extends Factory
         return [
             'text_nl' => $this->faker->sentence,
             'text_en' => $this->faker->sentence,
+            'position' => 1,
         ];
     }
 }
