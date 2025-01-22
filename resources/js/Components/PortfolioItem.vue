@@ -66,7 +66,7 @@
                 >
                     {{ title }}
                 </a>
-                <ul class="ud-text-sm ud-font-normal ud-flex ud-space-x-3">
+                <ul class="ud-flex ud-space-x-3 ud-flex-wrap ud-gap-y-3">
                   <Tag v-for="tag in tags" :key="tag.name" :name="tag.name"></Tag>
                 </ul>
 
