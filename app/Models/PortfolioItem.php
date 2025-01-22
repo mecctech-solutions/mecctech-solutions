@@ -20,10 +20,6 @@ class PortfolioItem extends Model implements Sortable
         "title_nl", "title_en", "main_image_url", "description_nl", "description_en", "website_url", "position"
     ];
 
-    protected $appends = [
-        "main_image_full_url"
-    ];
-
     public $sortable = [
         'order_column_name' => 'position',
         'sort_when_creating' => true,

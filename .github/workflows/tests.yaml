@@ -1,4 +1,4 @@
-name: Laravel Tests
+name: Laravel Tests and Static Analysis
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-and-analyze:
-    name: Run Tests
+    name: Run Tests and Static Analysis
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -79,6 +79,9 @@ jobs:
 
       - name: Execute tests (Unit, Feature and Integration tests) via PHPUnit/Pest
         run: php artisan test --coverage --min=53
+
+      - name: Run PHP Stan
+        run: ./vendor/bin/phpstan analyse
 
       - name: Install Pint
         run: composer global require laravel/pint
