@@ -7,10 +7,13 @@ use Database\Factories\PortfolioItemFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class PortfolioItem extends Model
+class PortfolioItem extends Model implements Sortable
 {
     use HasFactory;
+    use SortableTrait;
 
     protected $table = "portfolio_items";
     protected $fillable = [
@@ -19,6 +22,11 @@ class PortfolioItem extends Model
 
     protected $appends = [
         "main_image_full_url"
+    ];
+
+    public $sortable = [
+        'order_column_name' => 'position',
+        'sort_when_creating' => true,
     ];
 
     public function mainImageFullUrl(): Attribute

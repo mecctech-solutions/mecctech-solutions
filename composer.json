@@ -20,6 +20,7 @@
         "mariuzzo/laravel-js-localization": "^1.11",
         "phpoffice/phpexcel": "^1.8",
         "phpoffice/phpspreadsheet": "^1.22",
+        "spatie/eloquent-sortable": "^4.4",
         "spatie/laravel-data": "^4.11",
         "spatie/laravel-ray": "^1.39",
         "spatie/laravel-typescript-transformer": "^2.5",
