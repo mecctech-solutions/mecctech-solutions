@@ -31,7 +31,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Run migrations
-        run: php artisan migrate --seed
+        run: php artisan migrate
 
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
