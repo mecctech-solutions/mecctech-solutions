@@ -55,8 +55,8 @@
     <div class="ud-p-8 ud-mb-5">
       <div class="ud-mb-4">
         <h1 class="ud-text-2xl ud-font-bold">{{ title }}</h1>
-        <div class="ud-flex ud-space-x-3 ud-text-sm">
-          <p v-for="tag in tags" :key="tag.name">{{ tag.name }}</p>
+        <div class="ud-flex ud-flex-wrap ud-gap-y-3 ud-gap-x-3">
+          <Tag v-for="tag in tags" :key="tag.name" :name="tag.name"/>
         </div>
       </div>
       <ul class="ud-space-y-3 ud-mt-4 ud-text-base ud-list-disc ud-list-inside">

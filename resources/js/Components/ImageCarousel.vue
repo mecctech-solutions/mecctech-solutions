@@ -18,7 +18,7 @@ const maxImageIndex = computed(() => props.images.length);
 const nextImage = () => {
     if (currentImageIndex.value < maxImageIndex.value - 1) {
         currentImageIndex.value++;
-        currentImageUrl.value = props.images[currentImageIndex.value].url;
+        currentImageUrl.value = props.images[currentImageIndex.value].full_url;
         emit('update-current-image', currentImageUrl.value);
     }
 };
@@ -26,7 +26,7 @@ const nextImage = () => {
 const previousImage = () => {
     if (currentImageIndex.value > 0) {
         currentImageIndex.value--;
-        currentImageUrl.value = props.images[currentImageIndex.value].url;
+        currentImageUrl.value = props.images[currentImageIndex.value].full_url;
         emit('update-current-image', currentImageUrl.value);
     }
 };
