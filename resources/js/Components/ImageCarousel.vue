@@ -34,7 +34,7 @@ const previousImage = () => {
 const {isMobile} = useScreenSize();
 
 onMounted(() => {
-    currentImageUrl.value = props.images[0].url;
+    currentImageUrl.value = props.images[0].full_url;
 });
 </script>
 
