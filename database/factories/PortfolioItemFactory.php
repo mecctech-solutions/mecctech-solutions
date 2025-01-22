@@ -21,7 +21,6 @@ class PortfolioItemFactory extends Factory
             "description_nl" => $this->faker->paragraph,
             "description_en" => $this->faker->paragraph,
             "website_url" => $this->faker->url,
-            "position" => $this->faker->numberBetween(1, 100),
         ];
     }
 

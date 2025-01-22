@@ -22,13 +22,16 @@ class AddPortfolioItemsTest extends TestCase
         $bulletPoints = BulletPoint::factory()->count(3)->make();
         $images = Image::factory()->count(3)->make();
         $tags = Tag::factory()->count(3)->make();
+
+        $n = 0;
         $portfolioItems = PortfolioItemFactory::new()
             ->count(20)
             ->make()
-            ->map(function ($portfolioItem) use ($bulletPoints, $images, $tags) {
+            ->map(function ($portfolioItem) use ($bulletPoints, $images, $tags, &$n) {
                 $portfolioItem['bullet_points'] = $bulletPoints->toArray();
                 $portfolioItem['images'] = $images->toArray();
                 $portfolioItem['tags'] = $tags->toArray();
+                $portfolioItem['position'] = $n + 1;
                 return $portfolioItem;
             });
 
@@ -58,6 +61,7 @@ class AddPortfolioItemsTest extends TestCase
             ->make([
                 "title_nl" => "Same title",
                 "title_en" => "Zelfde titel",
+                "position" => 1
             ]);
 
         $portfolioItems = PortfolioItemData::collect($portfolioItems);
