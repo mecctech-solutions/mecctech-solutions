@@ -64,6 +64,7 @@ jobs:
           echo "DB_DATABASE=huisprijsopvragen_test" >> .env
           echo "DB_USERNAME=root" >> .env
           echo "DB_PASSWORD=root" >> .env
+          cp .env.testing.example .env.testing
 
       - name: Clear Config Cache
         run: php artisan config:clear
