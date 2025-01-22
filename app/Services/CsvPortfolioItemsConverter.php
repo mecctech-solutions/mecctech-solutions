@@ -33,42 +33,49 @@ class CsvPortfolioItemsConverter
             if ($row[6] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[6],
+                    'position' => 1,
                 ];
             }
 
             if ($row[7] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[7],
+                    'position' => 2,
                 ];
             }
 
             if ($row[8] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[8],
+                    'position' => 3,
                 ];
             }
 
             if ($row[9] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[9],
+                    'position' => 4,
                 ];
             }
 
             if ($row[10] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[10],
+                    'position' => 5,
                 ];
             }
 
             if ($row[11] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[11],
+                    'position' => 6,
                 ];
             }
 
             if ($row[12] !== '') {
                 $images[] = [
                     'url' => 'images/'.$row[12],
+                    'position' => 7,
                 ];
             }
 
@@ -96,6 +103,7 @@ class CsvPortfolioItemsConverter
                 $bulletPoints[] = [
                     'text_nl' => $row[17],
                     'text_en' => $row[18],
+                    'position' => 1,
                 ];
             }
 
@@ -103,6 +111,7 @@ class CsvPortfolioItemsConverter
                 $bulletPoints[] = [
                     'text_nl' => $row[19],
                     'text_en' => $row[20],
+                    'position' => 2,
                 ];
             }
 
@@ -110,6 +119,7 @@ class CsvPortfolioItemsConverter
                 $bulletPoints[] = [
                     'text_nl' => $row[21],
                     'text_en' => $row[22],
+                    'position' => 3,
                 ];
             }
 

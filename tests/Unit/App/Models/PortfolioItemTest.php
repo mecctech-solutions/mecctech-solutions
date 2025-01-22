@@ -29,6 +29,7 @@ class PortfolioItemTest extends TestCase
 
         $this->tag = Tag::factory()->create([
             'name' => 'Test Tag',
+            'position' => 10,
         ]);
 
         $this->portfolioItem->tags()->attach($this->tag);

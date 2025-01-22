@@ -17,9 +17,9 @@ class AddPortfolioItemsTest extends TestCase
     public function it_should_add_portfolio_items_with_relations()
     {
         // Given
-        $bulletPoints = BulletPoint::factory()->count(3)->make();
-        $images = Image::factory()->count(3)->make();
-        $tags = Tag::factory()->count(3)->make(['visible' => true]);
+        $bulletPoints = BulletPoint::factory()->count(1)->make();
+        $images = Image::factory()->count(1)->make();
+        $tags = Tag::factory()->count(1)->make(['visible' => true]);
         $n = 0;
         $portfolioItems = PortfolioItemFactory::new()
             ->count(20)

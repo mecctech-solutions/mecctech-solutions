@@ -13,6 +13,7 @@ class ImageFactory extends Factory
     {
         return [
             'url' => $this->faker->imageUrl(),
+            'position' => 1,
         ];
     }
 }
