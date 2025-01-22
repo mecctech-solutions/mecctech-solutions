@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /public/.htaccess
+/public/build
 /storage/*.key
 /vendor
 .DS_Store
