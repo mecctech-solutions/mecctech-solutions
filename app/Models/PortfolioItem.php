@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Actions\DetermineFullFileUrl;
+use App\Builders\PortfolioItemBuilder;
 use Database\Factories\PortfolioItemFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -47,6 +48,11 @@ class PortfolioItem extends Model implements Sortable
     public function bulletPoints()
     {
         return $this->hasMany(BulletPoint::class, 'portfolio_item_id');
+    }
+
+    public function newEloquentBuilder($query): PortfolioItemBuilder
+    {
+        return new PortfolioItemBuilder($query);
     }
 
     protected static function newFactory(): PortfolioItemFactory

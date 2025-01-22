@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\TagBuilder;
 use Database\Factories\TagFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,5 +18,10 @@ class Tag extends Model
     protected static function newFactory(): TagFactory
     {
         return new TagFactory;
+    }
+
+    public function newEloquentBuilder($query): TagBuilder
+    {
+        return new TagBuilder($query);
     }
 }

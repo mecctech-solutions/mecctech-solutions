@@ -13,6 +13,9 @@ class GetAllPortfolioItems
 {
     use AsAction;
 
+    /**
+     * @return Collection<PortfolioItem>s
+     */
     public function handle(?string $tag = null): Collection
     {
         /** @phpstan-ignore-next-line  */
@@ -23,17 +26,7 @@ class GetAllPortfolioItems
             $query->whereRelation('tags', 'name', $tag);
         }
 
-        $portfolioItems = $query->get()
-            ->sortBy('position')
-            ->values()
-            ->map(function (PortfolioItem $portfolioItem) {
-                $portfolioItem->images = $portfolioItem->images->sortBy('position')->values();
-                $portfolioItem->bulletPoints = $portfolioItem->bulletPoints->sortBy('position')->values();
-
-                return $portfolioItem;
-            });
-
-        return PortfolioItemData::collect($portfolioItems);
+        return $query->sorted()->get();
     }
 
     public function asController(Request $request)

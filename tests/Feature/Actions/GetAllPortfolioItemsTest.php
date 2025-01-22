@@ -3,7 +3,8 @@
 namespace Tests\Feature\Actions;
 
 use App\Actions\GetAllPortfolioItems;
-use App\Data\PortfolioItemData;
+use App\Models\BulletPoint;
+use App\Models\Image;
 use App\Models\PortfolioItem;
 use Database\Factories\PortfolioItemFactory;
 use Tests\TestCase;
@@ -24,7 +25,7 @@ class GetAllPortfolioItemsTest extends TestCase
             ->sortBy('position')
             ->values();
 
-        self::assertEquals(PortfolioItemData::collect($portfolioItems), GetAllPortfolioItems::run());
+        self::assertEquals($portfolioItems->toArray(), GetAllPortfolioItems::run()->toArray());
     }
 
     /** @test */
@@ -58,7 +59,7 @@ class GetAllPortfolioItemsTest extends TestCase
 
         // When
         $result = GetAllPortfolioItems::run($firstTag);
-        self::assertEquals(PortfolioItemData::collect($portfolioItemsWithFirstTag), $result);
+        self::assertEquals($portfolioItemsWithFirstTag->toArray(), $result->toArray());
     }
 
     /** @test */
@@ -75,7 +76,7 @@ class GetAllPortfolioItemsTest extends TestCase
         $result = GetAllPortfolioItems::run()->first();
 
         // Then
-        self::assertEquals($sortedImages->pluck('position'), collect($result->images)->map(fn ($image) => $image['position']));
-        self::assertEquals($sortedBulletPoints->pluck('position'), collect($result->bullet_points)->map(fn ($image) => $image['position']));
+        self::assertEquals($sortedImages->pluck('position'), collect($result->images)->map(fn (Image $image) => $image->position));
+        self::assertEquals($sortedBulletPoints->pluck('position'), collect($result->bulletPoints)->map(fn (BulletPoint $bulletPoint) => $bulletPoint->position));
     }
 }
