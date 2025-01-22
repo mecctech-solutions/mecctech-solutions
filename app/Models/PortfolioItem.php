@@ -15,13 +15,10 @@ class PortfolioItem extends Model implements Sortable
     use HasFactory;
     use SortableTrait;
 
-    protected $table = "portfolio_items";
-    protected $fillable = [
-        "title_nl", "title_en", "main_image_url", "description_nl", "description_en", "website_url", "position"
-    ];
+    protected $table = 'portfolio_items';
 
-    protected $appends = [
-        "main_image_full_url"
+    protected $fillable = [
+        'title_nl', 'title_en', 'main_image_url', 'description_nl', 'description_en', 'website_url', 'position',
     ];
 
     public $sortable = [
@@ -39,7 +36,7 @@ class PortfolioItem extends Model implements Sortable
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, "portfolio_item_tag", "portfolio_item_id", "tag_id");
+        return $this->belongsToMany(Tag::class, 'portfolio_item_tag', 'portfolio_item_id', 'tag_id');
     }
 
     public function images()
@@ -54,6 +51,6 @@ class PortfolioItem extends Model implements Sortable
 
     protected static function newFactory(): PortfolioItemFactory
     {
-        return new PortfolioItemFactory();
+        return new PortfolioItemFactory;
     }
 }

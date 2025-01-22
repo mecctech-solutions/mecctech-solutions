@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 class CsvPortfolioItemsConverter
 {
     /**
-     * @param  string  $path
      * @return Collection<PortfolioItemData>
      */
     public static function import(string $path): Collection
@@ -18,130 +17,113 @@ class CsvPortfolioItemsConverter
         $portfolioItems = [];
         $rowNumber = 0;
 
-        while (($row = fgetcsv($file)) !== FALSE)
-        {
-            if (sizeof($row) !== 23)
-            {
-                throw new \InvalidArgumentException("Excel file should have 23 columns");
+        while (($row = fgetcsv($file)) !== false) {
+            if (count($row) !== 23) {
+                throw new \InvalidArgumentException('Excel file should have 23 columns');
             }
 
-            if ($rowNumber === 0)
-            {
+            if ($rowNumber === 0) {
                 $rowNumber++;
+
                 continue;
             }
 
             $images = [];
 
-            if ($row[6] !== "")
-            {
+            if ($row[6] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[6]
+                    'url' => 'images/'.$row[6],
                 ];
             }
 
-            if ($row[7] !== "")
-            {
+            if ($row[7] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[7]
+                    'url' => 'images/'.$row[7],
                 ];
             }
 
-            if ($row[8] !== "")
-            {
+            if ($row[8] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[8]
+                    'url' => 'images/'.$row[8],
                 ];
             }
 
-            if ($row[9] !== "")
-            {
+            if ($row[9] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[9]
+                    'url' => 'images/'.$row[9],
                 ];
             }
 
-            if ($row[10] !== "")
-            {
+            if ($row[10] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[10]
+                    'url' => 'images/'.$row[10],
                 ];
             }
 
-            if ($row[11] !== "")
-            {
+            if ($row[11] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[11]
+                    'url' => 'images/'.$row[11],
                 ];
             }
 
-            if ($row[12] !== "")
-            {
+            if ($row[12] !== '') {
                 $images[] = [
-                    "url" => 'images/'.$row[12]
+                    'url' => 'images/'.$row[12],
                 ];
             }
 
             $tags = [];
 
-            if ($row[13] !== "")
-            {
+            if ($row[13] !== '') {
                 $tags[]['name'] = $row[13];
             }
 
-            if ($row[14] !== "")
-            {
+            if ($row[14] !== '') {
                 $tags[]['name'] = $row[14];
             }
 
-            if ($row[15] !== "")
-            {
+            if ($row[15] !== '') {
                 $tags[]['name'] = $row[15];
             }
 
-            if ($row[16] !== "")
-            {
+            if ($row[16] !== '') {
                 $tags[]['name'] = $row[16];
             }
 
             // Bullet points
             $bulletPoints = [];
-            if ($row[17] !== "" && $row[18] !== "")
-            {
+            if ($row[17] !== '' && $row[18] !== '') {
                 $bulletPoints[] = [
-                    "text_nl" => $row[17],
-                    "text_en" => $row[18]
+                    'text_nl' => $row[17],
+                    'text_en' => $row[18],
                 ];
             }
 
-
-            if ($row[19] !== "" && $row[20] !== "")
-            {
+            if ($row[19] !== '' && $row[20] !== '') {
                 $bulletPoints[] = [
-                    "text_nl" => $row[19],
-                    "text_en" => $row[20]
+                    'text_nl' => $row[19],
+                    'text_en' => $row[20],
                 ];
             }
 
-            if ($row[21] !== "" && $row[22] !== "")
-            {
+            if ($row[21] !== '' && $row[22] !== '') {
                 $bulletPoints[] = [
-                    "text_nl" => $row[21],
-                    "text_en" => $row[22]
+                    'text_nl' => $row[21],
+                    'text_en' => $row[22],
                 ];
             }
 
             $portfolioItem = [
-                "title_en" => $row[0],
-                "title_nl" => $row[1],
-                "main_image_url" => 'images/'.$row[2],
-                "position" => $rowNumber,
-                "description_en" => $row[3],
-                "description_nl" => $row[4],
-                "website_url" => $row[5],
-                "images" => $images,
-                "tags" => $tags,
-                "bullet_points" => $bulletPoints,
+                'title_en' => $row[0],
+                'title_nl' => $row[1],
+                'main_image_url' => 'images/'.$row[2],
+                'position' => $rowNumber,
+                'description_en' => $row[3],
+                'description_nl' => $row[4],
+                'website_url' => $row[5],
+                'images' => $images,
+                'tags' => $tags,
+                'bullet_points' => $bulletPoints,
             ];
 
             $portfolioItems[] = PortfolioItemData::from($portfolioItem);

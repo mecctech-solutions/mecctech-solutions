@@ -1,5 +1,5 @@
 <?php
 
 return [
-    "all" => "Alles",
+    'all' => 'Alles',
 ];

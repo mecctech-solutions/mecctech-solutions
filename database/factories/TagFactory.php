@@ -12,9 +12,9 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            "name" => $this->faker->word,
-            "visible" => $this->faker->boolean,
-            "position" => $this->faker->numberBetween(1, 100),
+            'name' => $this->faker->word,
+            'visible' => $this->faker->boolean,
+            'position' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

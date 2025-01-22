@@ -1,0 +1,92 @@
+name: Laravel Dusk Tests
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  dusk-php:
+    name: Run Dusk Tests
+    runs-on: ubuntu-latest
+    env:
+      APP_URL: "http://127.0.0.1:8000"
+      DB_DATABASE: mecctech_test
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      MAIL_MAILER: log
+      TELESCOPE_ENABLED: false
+      QUEUE_CONNECTION: sync
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare The Environment
+        run: cp .env.example .env
+      - name: Create Database
+        run: |
+          sudo systemctl start mysql
+          mysql --user="root" --password="root" -e "CREATE DATABASE \`mecctech_test\` character set UTF8mb4 collate utf8mb4_bin;"
+      - name: Install Composer Dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Generate Application Key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate
+
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver --detect
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Node.js Dependencies
+        run: npm install
+
+      - name: Create routes directory
+        run: mkdir -p resources/scripts/routes
+
+      - name: Run typescript transform
+        run: php artisan typescript:transform
+
+      - name: Build Assets
+        run: npm run build
+
+      - name: Run Laravel Server
+        run: php artisan serve --no-reload &
+      - name: Wait for Laravel Server
+        run: |
+          sleep 5
+          curl --fail http://127.0.0.1:8000 || (echo "Server not reachable" && exit 1)
+      - name: Display Laravel Logs
+        if: failure()
+        run: |
+          echo "Laravel log:"
+          cat storage/logs/laravel.log || echo "No log file found"
+
+      - name: Run Dusk Tests
+        run: php artisan dusk
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: console
+          path: tests/Browser/console
+      - name: Display Laravel Logs
+        if: failure()
+        run: |
+          echo "Laravel log:"
+          cat storage/logs/laravel.log || echo "No log file found"
+      - name: Upload Reverb Logs
+        if: failure()
+        run:
+          cat reverb.log || echo "No reverb log file found"

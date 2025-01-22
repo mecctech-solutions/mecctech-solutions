@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 class ImagesRelationManager extends RelationManager
 {
     protected static string $relationship = 'images';
+
     protected static ?string $label = 'Images';
 
     public function form(Form $form): Form

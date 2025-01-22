@@ -11,6 +11,7 @@ class SubmitContactRequestMail extends Mailable
     use Queueable, SerializesModels;
 
     public string $message;
+
     public string $recipientEmailAddress;
 
     /**
@@ -19,7 +20,7 @@ class SubmitContactRequestMail extends Mailable
      * @return void
      */
     public function __construct(string $message,
-                                string $recipientEmailAddress)
+        string $recipientEmailAddress)
     {
         $this->message = $message;
         $this->recipientEmailAddress = $recipientEmailAddress;
@@ -46,7 +47,7 @@ class SubmitContactRequestMail extends Mailable
             ->from($this->recipientEmailAddress)
             ->view('emails.submit-contact-request')
             ->with([
-                'messages' => $this->message
+                'messages' => $this->message,
             ]);
     }
 }

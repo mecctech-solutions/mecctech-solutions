@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "lets_talk" => "Laten we praten!",
-    "info" => "Contact Informatie",
-    "netherlands" => "Nederland"
+    'lets_talk' => 'Laten we praten!',
+    'info' => 'Contact Informatie',
+    'netherlands' => 'Nederland',
 ];

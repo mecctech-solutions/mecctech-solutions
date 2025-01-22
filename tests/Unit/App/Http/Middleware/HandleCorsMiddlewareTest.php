@@ -17,10 +17,10 @@ class HandleCorsMiddlewareTest extends TestCase
     /** @test */
     public function it_should_set_correct_headers()
     {
-        $request = new Request();
-        $middleware = new HandleCorsMiddleware();
+        $request = new Request;
+        $middleware = new HandleCorsMiddleware;
         $response = $middleware->handle($request, function (Request $request) {
-            return new Response();
+            return new Response;
         });
 
         $this->assertNotNull($response->headers->get('Access-Control-Allow-Origin'));
