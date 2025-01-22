@@ -29,6 +29,7 @@ class ImagesRelationManager extends RelationManager
     {
         return $table
             ->recordTitleAttribute('url')
+            ->reorderable('position')
             ->columns([
                 Tables\Columns\ImageColumn::make('url')
                     ->label('Image'),
