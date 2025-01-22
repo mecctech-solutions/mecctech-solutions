@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Data\TagData;
 use App\Models\Tag;
 use Illuminate\Support\Collection;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -13,8 +12,6 @@ class GetAllVisibleTags
 
     public function handle(): Collection
     {
-        $tags = Tag::query()->where('visible', true)->orderBy('position')->get();
-
-        return TagData::collect($tags);
+        return Tag::query()->visible()->sorted()->get();
     }
 }

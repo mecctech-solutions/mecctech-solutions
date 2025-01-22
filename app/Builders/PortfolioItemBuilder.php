@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PortfolioItemBuilder extends Builder
 {
-    public function sorted()
+    public function sorted(): PortfolioItemBuilder
     {
         return $this
             ->with([

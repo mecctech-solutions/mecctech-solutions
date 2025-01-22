@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature\Actions;
+namespace Tests\Feature\Actions;
 
 use App\Actions\GetAllVisibleTags;
 use App\Models\Tag;
@@ -33,6 +33,6 @@ class GetAllVisibleTagsTest extends TestCase
         $visibleTags = GetAllVisibleTags::run();
 
         // Then
-        $this->assertEquals(collect([$tag2, $tag1])->map->name, $visibleTags->map->name);
+        $this->assertEquals(collect([$tag2, $tag1])->toArray(), $visibleTags->toArray());
     }
 }
