@@ -23,7 +23,7 @@ class GetAllPortfolioItems
             $query->whereRelation('tags', 'name', $tag);
         }
 
-        $portfolioItems = $query->get()
+        return $query->get()
             ->sortBy('position')
             ->values()
             ->map(function (PortfolioItem $portfolioItem) {
@@ -32,8 +32,6 @@ class GetAllPortfolioItems
 
                 return $portfolioItem;
             });
-
-        return PortfolioItemData::collect($portfolioItems);
     }
 
     public function asController(Request $request)

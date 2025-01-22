@@ -24,7 +24,6 @@ class AddPortfolioItems
     public function handle(Collection $portfolioItems): void
     {
         $portfolioItems->each(function (PortfolioItemData $portfolioItem) {
-
             $existingPortfolioItem = PortfolioItem::where('title_nl', $portfolioItem->title_nl)
                 ->orWhere('title_en', $portfolioItem->title_en)
                 ->first();
