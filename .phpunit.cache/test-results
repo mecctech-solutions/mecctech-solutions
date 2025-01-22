@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Browser\\HomePageTest::it_should_only_show_tags_that_are_visible":8,"Tests\\Browser\\HomePageTest::it_should_show_all_portfolio_items":8},"times":{"Tests\\Browser\\HomePageTest::it_should_only_show_tags_that_are_visible":1.411,"Tests\\Browser\\HomePageTest::it_should_show_all_portfolio_items":0.425}}

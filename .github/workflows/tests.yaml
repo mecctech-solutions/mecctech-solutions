@@ -48,9 +48,6 @@ jobs:
       - name: Create routes directory
         run: mkdir -p resources/scripts/routes
 
-      - name: Create routes.json file
-        run: php artisan trail:generate
-
       - name: Run typescript transform
         run: php artisan typescript:transform
 
