@@ -39,6 +39,13 @@ class PortfolioItemFactory extends Factory
         });
     }
 
+    public function withBulletPoints(int $count = 1)
+    {
+        return $this->afterCreating(function (PortfolioItem $portfolioItem) use ($count) {
+            BulletPoint::factory()->count($count)->create(['portfolio_item_id' => $portfolioItem->id]);
+        });
+    }
+
     public function configure(): static
     {
         return $this->afterCreating(function (PortfolioItem $portfolioItem) {

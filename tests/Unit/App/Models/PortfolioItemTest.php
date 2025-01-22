@@ -103,4 +103,24 @@ class PortfolioItemTest extends TestCase
         self::assertEquals(1, $firstImagePortfolioItem2->position);
     }
 
+    /** @test */
+    public function it_should_sort_bullet_points_of_one_portfolio_item_not_affecting_the_other()
+    {
+        // Given
+        $portfolioItem1 = PortfolioItem::factory()->withBulletPoints(2)->create();
+        $portfolioItem2 = PortfolioItem::factory()->withBulletPoints(2)->create();
+        $firstBulletPointPortfolioItem1 = $portfolioItem1->bulletPoints()->first();
+        $firstBulletPointPortfolioItem2 = $portfolioItem2->bulletPoints()->first();
+        self::assertTrue($portfolioItem1->bulletPoints()->first()->is($firstBulletPointPortfolioItem1));
+        self::assertTrue($portfolioItem2->bulletPoints()->first()->is($firstBulletPointPortfolioItem2));
+
+        // When
+        $portfolioItem1->bulletPoints()->first()->moveOrderDown();
+        $firstBulletPointPortfolioItem1 = $portfolioItem1->bulletPoints()->first();
+        $firstBulletPointPortfolioItem2 = $portfolioItem2->bulletPoints()->first();
+
+        // Then
+        self::assertEquals(2, $firstBulletPointPortfolioItem1->position);
+        self::assertEquals(1, $firstBulletPointPortfolioItem2->position);
+    }
 }
