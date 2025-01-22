@@ -14,7 +14,10 @@ class SubmitContactRequestTest extends TestCase
         $url = route('submit-contact-request');
 
         // When
-        $response = $this->post($url, [
+        $response = $this
+            // Otherwise CORS error will be thrown (419)
+            ->withoutMiddleware()
+            ->post($url, [
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'johndoe@example.com',

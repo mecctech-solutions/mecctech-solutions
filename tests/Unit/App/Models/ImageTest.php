@@ -51,6 +51,7 @@ class ImageTest extends TestCase
     public function it_should_return_main_image_url_without_storage_when_it_does_not_exist()
     {
         // Arrange
+        \Storage::fake('public');
         $this->image->url = "test.jpg";
         $this->image->save();
 

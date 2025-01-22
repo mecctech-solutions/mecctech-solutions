@@ -59,6 +59,7 @@ class PortfolioItemTest extends TestCase
     public function it_should_return_main_image_full_url_without_storage_when_it_does_not_exist()
     {
         // Arrange
+        Storage::fake('public');
         $this->portfolioItem->main_image_url = "test.jpg";
         $this->portfolioItem->save();
 

@@ -11,8 +11,8 @@ class DetermineFullFileUrl
 
     public function handle(string $filePath): string
     {
-        if (Storage::exists($filePath)) {
-            return Storage::url($filePath);
+        if (Storage::disk('public')->exists($filePath)) {
+            return Storage::disk('public')->url($filePath);
         }
 
         return url($filePath);
