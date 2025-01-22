@@ -5,6 +5,7 @@ namespace Tests\Unit\App\Models;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class PortfolioItemTest extends TestCase
@@ -44,14 +45,14 @@ class PortfolioItemTest extends TestCase
     {
         // Arrange
         $fileName = "test.jpg";
-        \Storage::put($fileName, "test");
+        Storage::put($fileName, "test");
         $this->portfolioItem->main_image_url = $fileName;
         $this->portfolioItem->save();
 
         // Act & Assert
         self::assertEquals(url("/storage/test.jpg"), $this->portfolioItem->main_image_full_url);
 
-        \Storage::delete($fileName);
+        Storage::delete($fileName);
     }
 
     /** @test */
