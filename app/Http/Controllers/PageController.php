@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\GetAllPortfolioItems;
 use App\Actions\GetAllVisibleTags;
+use App\Data\PortfolioItemData;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -18,7 +19,7 @@ class PageController extends Controller
         }
 
         return Inertia::render('Home')->with([
-            'portfolioItems' => GetAllPortfolioItems::run($tag),
+            'portfolioItems' => PortfolioItemData::collect(GetAllPortfolioItems::run($tag)),
             'tags' => GetAllVisibleTags::run(),
         ]);
     }
