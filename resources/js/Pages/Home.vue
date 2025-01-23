@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {Head} from '@inertiajs/vue3';
-import {useI18n} from 'vue-i18n';
 import HomeLayout from "../Layouts/HomeLayout.vue";
 import HeroSection from "../Components/HeroSection.vue";
 import AboutMe from "../Components/AboutMe.vue";
@@ -26,11 +25,10 @@ const props = defineProps({
     }
 });
 
-const { t } = useI18n();
 </script>
 
 <template>
-    <Head :title="t('home.meta.title')" />
+    <Head title="Home" />
 
     <HomeLayout>
         <HeroSection></HeroSection>

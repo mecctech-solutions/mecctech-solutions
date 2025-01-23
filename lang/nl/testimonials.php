@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'testimonials' => 'TESTIMONIALS',
+    'testimonials' => 'Testimonials',
     'what_clients_say' => 'Wat Mijn Klanten Zeggen',
-]; 
+];
