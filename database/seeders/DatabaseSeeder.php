@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             TagSeeder::class,
             PortfolioItemSeeder::class,
-            CaseStudySeeder::class,
         ]);
     }
 }
