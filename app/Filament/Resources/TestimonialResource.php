@@ -17,6 +17,7 @@ class TestimonialResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
     protected static ?string $navigationLabel = 'Testimonials';
+
     protected static ?string $navigationGroup = 'Clients';
 
     public static function form(Form $form): Form

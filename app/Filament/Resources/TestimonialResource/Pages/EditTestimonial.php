@@ -16,4 +16,4 @@ class EditTestimonial extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-} 
+}
