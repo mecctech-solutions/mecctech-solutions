@@ -57,11 +57,9 @@ class ClientResource extends Resource
                                             ->required()
                                             ->maxLength(255),
                                         Forms\Components\Textarea::make('text_nl')
-                                            ->required()
-                                            ->maxLength(1000),
+                                            ->required(),
                                         Forms\Components\Textarea::make('text_en')
-                                            ->required()
-                                            ->maxLength(1000),
+                                            ->required(),
                                         Forms\Components\FileUpload::make('image_url')
                                             ->image()
                                             ->directory('testimonials'),

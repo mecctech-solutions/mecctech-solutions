@@ -36,7 +36,7 @@ const props = defineProps({
         <Portfolio :portfolio-items="portfolioItems" />
         <Skills></Skills>
         <Approach></Approach>
-        <Testimonials />
+        <Testimonials/>
         <Clients :clients="clients" />
         <ContactForm></ContactForm>
     </HomeLayout>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->integer('position')->default(1);
 
-            $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('client_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamps();
         });
