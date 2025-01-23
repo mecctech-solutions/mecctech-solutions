@@ -6,6 +6,7 @@ use App\Filament\Resources\PortfolioItemResource\Pages;
 use App\Filament\Resources\PortfolioItemResource\RelationManagers;
 use App\Models\PortfolioItem;
 use Filament\Forms;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,6 +26,8 @@ class PortfolioItemResource extends Resource
     {
         return $form
             ->schema([
+                Toggle::make('visible')
+                    ->label('Visible'),
                 Forms\Components\TextInput::make('title_nl')->label('Title (NL)'),
                 Forms\Components\TextInput::make('title_en')->label('Title (EN)'),
                 Forms\Components\FileUpload::make('main_image_url')
@@ -59,6 +62,9 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ToggleColumn::make('visible')
+                    ->label('Visible')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('title_nl'),
                 Tables\Columns\TextColumn::make('title_en'),
                 Tables\Columns\ImageColumn::make('main_image_url'),
