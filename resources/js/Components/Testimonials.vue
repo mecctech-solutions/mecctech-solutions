@@ -28,7 +28,7 @@
                                     {{ testimonial.name }}
                                 </h3>
                                 <p class="ud-text-body-color ud-text-base">
-                                    {{ locale === 'nl' ? testimonial.job_title_nl : testimonial.job_title_en }} @ {{ testimonial.company }}
+                                    {{ locale === 'nl' ? testimonial.job_title_nl : testimonial.job_title_en }} @ {{ testimonial.client_name }}
                                 </p>
                             </div>
                         </div>

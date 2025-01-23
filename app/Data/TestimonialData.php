@@ -17,6 +17,7 @@ class TestimonialData extends Data
         public ?string $image_url,
         public string $image_full_url,
         public int $position,
+        public ?string $client_name,
     ) {
     }
 
@@ -32,6 +33,7 @@ class TestimonialData extends Data
             image_url: $testimonial->image_url,
             image_full_url: $testimonial->image_full_url,
             position: $testimonial->position,
+            client_name: $testimonial->client?->name,
         );
     }
 }
