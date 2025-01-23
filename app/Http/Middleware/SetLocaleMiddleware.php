@@ -12,6 +12,7 @@ class SetLocaleMiddleware
         if (session()->has('locale')) {
             app()->setLocale(session('locale'));
         }
+
         return $next($request);
     }
 }

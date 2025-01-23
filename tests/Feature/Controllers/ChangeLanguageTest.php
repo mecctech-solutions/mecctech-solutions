@@ -25,7 +25,6 @@ class ChangeLanguageTest extends TestCase
     public function it_should_change_language_in_inertia_data()
     {
         // Given
-        $this->startSession();
         $newLanguage = 'nl';
         self::assertEquals('en', app()->getLocale());
 

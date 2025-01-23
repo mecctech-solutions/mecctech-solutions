@@ -54,4 +54,26 @@ class HomePageTest extends DuskTestCase
                 ->assertSee($portfolioItems->last()->title_en);
         });
     }
+
+    /** @test */
+    public function it_should_change_language_of_portfolio_items()
+    {
+        // Given
+        $portfolioItem = PortfolioItem::factory()->create([
+            'title_en' => 'English Title',
+            'title_nl' => 'Dutch Title',
+        ]);
+
+        // When & Then
+        $this->browse(function (Browser $browser) use ($portfolioItem) {
+            $url = route('home');
+            $browser
+                ->visit($url)
+                ->waitFor('@language-switcher-nl')
+                ->waitFor('@portfolio')
+                ->click('@language-switcher-nl')
+                ->waitForText($portfolioItem->title_nl)
+                ->assertSee($portfolioItem->title_nl);
+        });
+    }
 }
