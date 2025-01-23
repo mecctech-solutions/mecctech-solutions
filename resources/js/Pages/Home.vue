@@ -34,10 +34,10 @@ const props = defineProps({
         <HeroSection></HeroSection>
         <AboutMe></AboutMe>
         <Portfolio :portfolio-items="portfolioItems" />
+        <Clients :clients="clients" />
+        <Testimonials/>
         <Skills></Skills>
         <Approach></Approach>
-        <Testimonials/>
-        <Clients :clients="clients" />
         <ContactForm></ContactForm>
     </HomeLayout>
 </template>
