@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\Actions\DetermineFullFileUrl;
 use Database\Factories\TestimonialFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 
 class Testimonial extends Model
 {
@@ -35,11 +35,7 @@ class Testimonial extends Model
 
     public function getImageFullUrlAttribute(): string
     {
-        if (Storage::exists($this->image_url)) {
-            return url('/storage/' . $this->image_url);
-        }
-
-        return url($this->image_url);
+        return DetermineFullFileUrl::run($this->image_url);
     }
 
     protected static function newFactory(): TestimonialFactory
