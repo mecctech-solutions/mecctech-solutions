@@ -69,7 +69,7 @@
             "
                     >
                         <PortfolioItem
-                            v-for="item in filteredPortfolioItems"
+                            v-for="item in portfolioItems"
                             :key="item.id"
                             :title="locale === 'nl' ? item.title_nl : item.title_en"
                             :tags="item.tags"
@@ -125,13 +125,6 @@ const selectTag = (tagName: string) => {
         }
     });
 };
-
-const filteredPortfolioItems = computed(() => {
-    if (selectedTag.value === "All") {
-        return portfolioItems.value;
-    }
-    return portfolioItems.value.filter(item => item.tags.includes(selectedTag.value));
-});
 
 </script>
 
