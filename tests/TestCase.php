@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'pivot'
+        'pivot',
     ];
 
     protected function normalizeDataForComparison(
@@ -23,6 +23,7 @@ abstract class TestCase extends BaseTestCase
         array $exclude = []
     ): array {
         $exclude = array_merge($this->excludedFields, $exclude);
+
         return $this->removeExcludedFields($data, $exclude);
     }
 

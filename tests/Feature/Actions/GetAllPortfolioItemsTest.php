@@ -87,7 +87,7 @@ class GetAllPortfolioItemsTest extends TestCase
         $textVisible = 'Visible Item';
         $textInvisible = 'Invisible Item';
         $visiblePortfolioItem = PortfolioItemFactory::new()->create(['title_en' => $textVisible, 'visible' => true]);
-        $invisiblePortfolioItem = PortfolioItemFactory::new()->create(['title_en' =>  $textInvisible, 'visible' => false]);
+        $invisiblePortfolioItem = PortfolioItemFactory::new()->create(['title_en' => $textInvisible, 'visible' => false]);
 
         // When
         $result = GetAllPortfolioItems::run();
@@ -95,5 +95,4 @@ class GetAllPortfolioItemsTest extends TestCase
         // Then
         self::assertEquals($visiblePortfolioItem->title_en, $result->first()->title_en);
     }
-
 }
