@@ -16,7 +16,7 @@ class Client extends Model
         'name',
         'website_url',
         'logo_url',
-        'position'
+        'position',
     ];
 
     public function testimonials(): HasMany
@@ -31,6 +31,6 @@ class Client extends Model
 
     protected static function newFactory(): ClientFactory
     {
-        return new ClientFactory();
+        return new ClientFactory;
     }
 }

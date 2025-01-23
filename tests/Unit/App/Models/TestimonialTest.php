@@ -19,11 +19,11 @@ class TestimonialTest extends TestCase
         Storage::put($fileName, 'test');
 
         $testimonial = Testimonial::factory()->create([
-            'image_url' => $fileName
+            'image_url' => $fileName,
         ]);
 
         // Act & Assert
-        $this->assertEquals(url('/storage/' . $fileName), $testimonial->image_full_url);
+        $this->assertEquals(url('/storage/'.$fileName), $testimonial->image_full_url);
 
         // Cleanup
         Storage::delete($fileName);
@@ -34,7 +34,7 @@ class TestimonialTest extends TestCase
         // Arrange
         Storage::fake('public');
         $testimonial = Testimonial::factory()->create([
-            'image_url' => 'test.jpg'
+            'image_url' => 'test.jpg',
         ]);
 
         // Act & Assert
@@ -46,7 +46,7 @@ class TestimonialTest extends TestCase
         // Arrange
         $client = Client::factory()->create();
         $testimonial = Testimonial::factory()->create([
-            'client_id' => $client->id
+            'client_id' => $client->id,
         ]);
 
         // Act & Assert

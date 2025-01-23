@@ -13,6 +13,5 @@ class ClientData extends Data
         public string $logo_url,
         public string $logo_full_url,
         public int $position,
-    ) {
-    }
+    ) {}
 }

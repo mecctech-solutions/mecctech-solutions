@@ -93,9 +93,9 @@ class ClientResource extends Resource
                                     )
                                     ->expandAllAction(
                                         fn (Forms\Components\Actions\Action $action) => $action->label('Expand all')
-                                    )
-                            ])
-                    ])
+                                    ),
+                            ]),
+                    ]),
             ]);
     }
 

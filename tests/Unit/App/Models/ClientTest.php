@@ -19,11 +19,11 @@ class ClientTest extends TestCase
         Storage::put($fileName, 'test');
 
         $client = Client::factory()->create([
-            'logo_url' => $fileName
+            'logo_url' => $fileName,
         ]);
 
         // Act & Assert
-        $this->assertEquals(url('/storage/' . $fileName), $client->logo_full_url);
+        $this->assertEquals(url('/storage/'.$fileName), $client->logo_full_url);
 
         // Cleanup
         Storage::delete($fileName);
@@ -34,7 +34,7 @@ class ClientTest extends TestCase
         // Arrange
         Storage::fake('public');
         $client = Client::factory()->create([
-            'logo_url' => 'test.jpg'
+            'logo_url' => 'test.jpg',
         ]);
 
         // Act & Assert

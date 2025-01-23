@@ -21,4 +21,4 @@ return new class extends Migration
             $table->renameColumn('job_title_en', 'job_title');
         });
     }
-}; 
+};

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Testimonial extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'job_title_en',
@@ -20,7 +21,7 @@ class Testimonial extends Model
         'text_nl',
         'text_en',
         'image_url',
-        'position'
+        'position',
     ];
 
     protected $casts = [
@@ -40,6 +41,6 @@ class Testimonial extends Model
 
     protected static function newFactory(): TestimonialFactory
     {
-        return new TestimonialFactory();
+        return new TestimonialFactory;
     }
 }

@@ -18,8 +18,7 @@ class TestimonialData extends Data
         public string $image_full_url,
         public int $position,
         public ?string $client_name,
-    ) {
-    }
+    ) {}
 
     public static function fromModel(Testimonial $testimonial): self
     {

@@ -13,4 +13,4 @@ class TagSeeder extends Seeder
             ->count(10)
             ->create();
     }
-} 
+}
