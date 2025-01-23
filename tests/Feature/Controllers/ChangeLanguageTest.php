@@ -33,7 +33,7 @@ class ChangeLanguageTest extends TestCase
 
         // Then
         $this->get(route('home'))
-            ->assertInertia(fn(AssertableInertia $assert) => $assert
+            ->assertInertia(fn (AssertableInertia $assert) => $assert
                 ->where('locale', $newLanguage)
             );
 
