@@ -63,4 +63,14 @@ class PortfolioItem extends Model implements Sortable
     {
         return new PortfolioItemFactory;
     }
+
+    public function caseStudy()
+    {
+        return $this->hasOne(CaseStudy::class);
+    }
+
+    public function hasCaseStudy(): bool
+    {
+        return $this->caseStudy()->exists();
+    }
 }

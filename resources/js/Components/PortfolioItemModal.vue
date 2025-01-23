@@ -22,7 +22,7 @@
         </li>
       </ul>
     </div>
-    <div class="ud-flex ud-flex-col ud-items-center">
+    <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4">
       <div
           class="
           ud-text-base
@@ -41,6 +41,30 @@
           <i class="fa-solid fa-desktop ud-pr-5 ud-text-sm md:ud-text-xl"></i>
           SITE / CODE
         </a>
+      </div>
+      <div
+        v-if="hasCaseStudy"
+        class="
+          ud-text-base
+          ud-font-semibold
+          ud-text-white
+          ud-bg-primary
+          ud-py-3
+          ud-px-8
+          ud-mr-4
+          hover:ud-shadow-signUp hover:ud-bg-opacity-90
+          ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+          ud-cursor-pointer
+        "
+      >
+        <Link
+            :href="route('case-studies.show', caseStudySlug)"
+            class="ud-text-sm md:ud-text-xl"
+            dusk="case-study-button"
+        >
+          <i class="fa-solid fa-book-open ud-pr-5 ud-text-sm md:ud-text-xl"></i>
+          {{ trans('portfolio.view_case_study') }}
+        </Link>
       </div>
     </div>
   </div>
@@ -68,7 +92,7 @@
         </li>
       </ul>
     </div>
-    <div class="ud-flex ud-flex-col ud-items-center">
+    <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4">
       <div
           class="
           ud-text-base
@@ -88,6 +112,30 @@
           SITE / CODE
         </a>
       </div>
+      <div
+        v-if="hasCaseStudy"
+        class="
+          ud-text-base
+          ud-font-semibold
+          ud-text-white
+          ud-bg-primary
+          ud-py-3
+          ud-px-8
+          ud-mr-4
+          hover:ud-shadow-signUp hover:ud-bg-opacity-90
+          ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+          ud-cursor-pointer
+        "
+      >
+        <Link
+            :href="route('case-studies.show', caseStudySlug)"
+            class="ud-text-sm md:ud-text-xl"
+            dusk="case-study-button"
+        >
+          <i class="fa-solid fa-book-open ud-pr-5 ud-text-sm md:ud-text-xl"></i>
+          {{ trans('portfolio.view_case_study') }}
+        </Link>
+      </div>
     </div>
     <i
         @click="emitTurnOffModalEvent"
@@ -98,7 +146,7 @@
 
 <script setup>
 import {computed, onMounted, ref} from "vue";
-import {usePage} from "@inertiajs/vue3";
+import {Link, usePage} from "@inertiajs/vue3";
 import ImageCarousel from "./ImageCarousel.vue";
 import useScreenSize from "@/Composables/screensize.ts";
 
@@ -109,6 +157,8 @@ const props = defineProps({
   description: String,
   websiteUrl: String,
   bulletPoints: Array,
+  hasCaseStudy: Boolean,
+  caseStudySlug: String,
 });
 
 const emit = defineEmits(["turn-off-modal"]);

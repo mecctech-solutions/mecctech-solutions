@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CustomerResource\Pages;
+use App\Filament\Resources\ContactRequestResource\Pages;
 use App\Models\ContactRequest;
 use Filament\Forms;
 use Filament\Forms\Form;
