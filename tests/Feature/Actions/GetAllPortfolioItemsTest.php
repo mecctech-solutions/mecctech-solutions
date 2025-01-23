@@ -79,4 +79,20 @@ class GetAllPortfolioItemsTest extends TestCase
         self::assertEquals($sortedImages->pluck('position'), collect($result->images)->map(fn (Image $image) => $image->position));
         self::assertEquals($sortedBulletPoints->pluck('position'), collect($result->bulletPoints)->map(fn (BulletPoint $bulletPoint) => $bulletPoint->position));
     }
+
+    /** @test */
+    public function it_should_filter_out_invisible_portfolio_items()
+    {
+        // Given
+        $textVisible = 'Visible Item';
+        $textInvisible = 'Invisible Item';
+        $visiblePortfolioItem = PortfolioItemFactory::new()->create(['title_en' => $textVisible, 'visible' => true]);
+        $invisiblePortfolioItem = PortfolioItemFactory::new()->create(['title_en' => $textInvisible, 'visible' => false]);
+
+        // When
+        $result = GetAllPortfolioItems::run();
+
+        // Then
+        self::assertEquals($visiblePortfolioItem->title_en, $result->first()->title_en);
+    }
 }

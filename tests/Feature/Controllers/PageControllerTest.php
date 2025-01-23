@@ -31,6 +31,7 @@ class PageControllerTest extends TestCase
                         ->where('main_image_url', $portfolioItem->main_image_url)
                         ->where('main_image_full_url', $portfolioItem->main_image_full_url)
                         ->where('position', $portfolioItem->position)
+                        ->where('visible', (bool) $portfolioItem->visible)
                         ->has('tags', $portfolioItem->tags->count())
                         ->has('tags.0', function (AssertableInertia $page) use ($portfolioItem) {
                             $page

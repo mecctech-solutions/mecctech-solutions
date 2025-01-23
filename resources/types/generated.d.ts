@@ -18,6 +18,7 @@ description_nl: string | null;
 main_image_url: string;
 website_url: string;
 position: number;
+visible: boolean;
 bullet_points: Array<App.Data.BulletPointData> | null;
 images: Array<App.Data.ImageData> | null;
 tags: Array<App.Data.TagData> | null;
