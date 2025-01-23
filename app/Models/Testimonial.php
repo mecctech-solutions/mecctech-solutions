@@ -23,6 +23,11 @@ class Testimonial extends Model
         'position'
     ];
 
+    protected $casts = [
+        'text_nl' => 'string',
+        'text_en' => 'string',
+    ];
+
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);

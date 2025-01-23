@@ -56,10 +56,28 @@ class ClientResource extends Resource
                                         Forms\Components\TextInput::make('job_title_nl')
                                             ->required()
                                             ->maxLength(255),
-                                        Forms\Components\Textarea::make('text_nl')
-                                            ->required(),
-                                        Forms\Components\Textarea::make('text_en')
-                                            ->required(),
+                                        Forms\Components\RichEditor::make('text_nl')
+                                            ->required()
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'link',
+                                                'bulletList',
+                                                'orderedList',
+                                                'redo',
+                                                'undo',
+                                            ]),
+                                        Forms\Components\RichEditor::make('text_en')
+                                            ->required()
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'link',
+                                                'bulletList',
+                                                'orderedList',
+                                                'redo',
+                                                'undo',
+                                            ]),
                                         Forms\Components\FileUpload::make('image_url')
                                             ->image()
                                             ->directory('testimonials'),
