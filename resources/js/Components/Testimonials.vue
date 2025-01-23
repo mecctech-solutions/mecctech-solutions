@@ -48,7 +48,13 @@ import {usePage} from '@inertiajs/vue3';
 import {computed} from 'vue';
 import {trans} from "laravel-vue-i18n";
 
-const testimonials = computed(() => usePage().props.testimonials);
-const locale = computed(() => usePage().props.locale);
+interface PageProps {
+    testimonials: Array<App.Data.TestimonialData>;
+    locale: string;
+}
 
+const page = usePage<PageProps>();
+
+const testimonials = computed(() => page.props.testimonials);
+const locale = computed(() => page.props.locale);
 </script>
