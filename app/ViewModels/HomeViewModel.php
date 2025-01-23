@@ -19,31 +19,41 @@ class HomeViewModel extends ViewModel
         private readonly ?string $tag = null
     ) {}
 
-    public function portfolioItems(): Collection
+    public function toArray(): array
+    {
+        return [
+            'portfolioItems' => $this->portfolioItems(),
+            'tags' => $this->tags(),
+            'testimonials' => $this->testimonials(),
+            'clients' => $this->clients(),
+        ];
+    }
+
+    protected function portfolioItems(): Collection
     {
         $portfolioItems = GetAllPortfolioItems::run($this->tag);
         $portfolioItems->load('caseStudy:id,portfolio_item_id,slug');
 
-        return PortfolioItemData::collection($portfolioItems)
+        return PortfolioItemData::collect($portfolioItems)
             ->through(fn ($item) => PortfolioItemData::fromModel($item));
     }
 
-    public function tags(): Collection
+    protected function tags(): Collection
     {
-        return TagData::collection(GetAllVisibleTags::run());
+        return TagData::collect(GetAllVisibleTags::run());
     }
 
-    public function testimonials(): Collection
+    protected function testimonials(): Collection
     {
-        return TestimonialData::collection(
+        return TestimonialData::collect(
             Testimonial::orderBy('position')->get()
         );
     }
 
-    public function clients(): Collection
+    protected function clients(): Collection
     {
-        return ClientData::collection(
+        return ClientData::collect(
             Client::orderBy('position')->get()
         );
     }
-} 
+}
