@@ -111,12 +111,14 @@ class PageControllerTest extends TestCase
                     $page
                         ->where('id', $testimonial->id)
                         ->where('name', $testimonial->name)
-                        ->where('job_title', $testimonial->job_title)
+                        ->where('job_title_en', $testimonial->job_title_en)
+                        ->where('job_title_nl', $testimonial->job_title_nl)
                         ->where('position', $testimonial->position)
                         ->where('text_nl', $testimonial->text_nl)
                         ->where('text_en', $testimonial->text_en)
                         ->where('image_url', $testimonial->image_url)
-                        ->where('image_full_url', $testimonial->image_full_url);
+                        ->where('image_full_url', $testimonial->image_full_url)
+                        ->where('client_name', $testimonial?->client->name);
                 });
         });
     }
