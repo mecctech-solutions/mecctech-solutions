@@ -8,11 +8,13 @@ import AboutMe from "../Components/AboutMe.vue";
 import Skills from "../Components/Skills.vue";
 import Approach from "../Components/Approach.vue";
 import Portfolio from "../Components/Portfolio.vue";
+import Testimonials from "../Components/Testimonials.vue";
 import Clients from "../Components/Clients.vue";
 import ContactForm from "../Components/ContactForm.vue";
 
 const props = defineProps({
     portfolioItems: Array,
+    testimonials: Array,
 });
 </script>
 
@@ -24,6 +26,7 @@ const props = defineProps({
         <Portfolio></Portfolio>
         <Skills></Skills>
         <Approach></Approach>
+        <Testimonials></Testimonials>
         <Clients></Clients>
         <ContactForm></ContactForm>
     </HomeLayout>

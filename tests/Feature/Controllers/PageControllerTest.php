@@ -1,18 +1,22 @@
 <?php
 
-namespace Feature\Controllers;
+namespace Tests\Feature\Controllers;
 
-use Database\Factories\PortfolioItemFactory;
+use App\Models\Client;
+use App\Models\PortfolioItem;
+use App\Models\Testimonial;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
 use Tests\TestCase;
 
 class PageControllerTest extends TestCase
 {
-    /** @test */
-    public function it_should_render_home_page_with_portfolio_items()
+    use RefreshDatabase;
+
+    public function test_it_should_render_home_page_with_portfolio_items(): void
     {
         // Given
-        $portfolioItem = PortfolioItemFactory::new()->create();
+        $portfolioItem = PortfolioItem::factory()->create();
 
         // When
         $response = $this->get(route('home'));
@@ -51,6 +55,42 @@ class PageControllerTest extends TestCase
                                 ->where('text_nl', $portfolioItem->bulletPoints->first()->text_nl)
                                 ->where('text_en', $portfolioItem->bulletPoints->first()->text_en)
                                 ->where('position', $portfolioItem->bulletPoints->first()->position);
+                        });
+                });
+        });
+    }
+
+    public function test_home_page_includes_clients_with_testimonials(): void
+    {
+        // Given
+        $client = Client::factory()
+            ->has(Testimonial::factory())
+            ->create();
+        $testimonial = $client->testimonials->first();
+
+        // When
+        $response = $this->get(route('home'));
+
+        // Then
+        $response->assertInertia(function (AssertableInertia $page) use ($client, $testimonial) {
+            $page->component('Home')
+                ->has('clients', 1)
+                ->has('clients.0', function (AssertableInertia $page) use ($client, $testimonial) {
+                    $page
+                        ->where('id', $client->id)
+                        ->where('name', $client->name)
+                        ->where('website_url', $client->website_url)
+                        ->where('logo_url', $client->logo_url)
+                        ->where('logo_full_url', $client->logo_full_url)
+                        ->has('testimonials', 1)
+                        ->has('testimonials.0', function ($page) use ($testimonial) {
+                            $page
+                                ->where('id', $testimonial->id)
+                                ->where('name', $testimonial->name)
+                                ->where('position', $testimonial->position)
+                                ->where('text_nl', $testimonial->text_nl)
+                                ->where('text_en', $testimonial->text_en)
+                                ->where('image_full_url', $testimonial->image_full_url);
                         });
                 });
         });
