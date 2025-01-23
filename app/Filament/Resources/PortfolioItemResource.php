@@ -62,6 +62,8 @@ class PortfolioItemResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('position')
+                    ->sortable(),
                 Tables\Columns\ToggleColumn::make('visible')
                     ->label('Visible')
                     ->sortable(),

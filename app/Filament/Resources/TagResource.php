@@ -34,6 +34,8 @@ class TagResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('position')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
