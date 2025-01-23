@@ -24,7 +24,7 @@ title_nl: string;
 description_en: string | null;
 description_nl: string | null;
 main_image_url: string;
-website_url: string;
+website_url: string | null;
 position: number;
 visible: boolean;
 has_case_study: boolean;

@@ -17,4 +17,5 @@ return [
     'requirement_6' => 'Leverancier kan 0, 1 of meerdere bestelmomenten per dag hebben',
     'requirement_7' => 'Iedere minuut wordt gekeken of een inkoop order gegenereerd moet worden',
     'requirement_8' => 'Gemiste bestelmomenten van voorgande dagen worden niet ingehaald',
+    'back_to_portfolio' => 'Terug naar portfolio',
 ];

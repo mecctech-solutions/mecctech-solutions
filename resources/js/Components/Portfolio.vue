@@ -79,7 +79,7 @@
                             :website-url="item.website_url"
                             :bullet-points="item.bullet_points"
                             :has-case-study="item.has_case_study"
-                            :case-study-slug="item.case_study?.slug"
+                            :case-study-slug="item.case_study_slug"
                         />
 
                     </div>

@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
         // Seed main content
         $this->call([
             ClientSeeder::class,
-            TagSeeder::class,
             PortfolioItemSeeder::class,
         ]);
     }

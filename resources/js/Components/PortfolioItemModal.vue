@@ -172,7 +172,6 @@ const props = defineProps({
   },
 });
 
-console.log(props.caseStudySlug);
 const emit = defineEmits(["turn-off-modal"]);
 
 const page = usePage();
