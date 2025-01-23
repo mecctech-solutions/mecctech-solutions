@@ -40,26 +40,29 @@
             "
                         data-wow-delay=".1s"
                     >
-                        <ClientLogo imageUrl="/images/clients/nina_care_logo.svg" imageAlt="Nina Care" websiteUrl="https://www.nina.care/" />
-                        <ClientLogo imageUrl="/images/clients/hds_logo.png" imageAlt="Home Design Shops" websiteUrl="https://www.homedesignshops.nl/" />
-                        <ClientLogo imageUrl="/images/clients/depotop_logo.svg" imageAlt="De Pot Op" websiteUrl="https://www.depotop.nu/" />
-                        <ClientLogo imageUrl="/images/clients/supra_solutions_logo.png" imageAlt="Supra Solutions" websiteUrl="https://www.supra-solutions.com/" />
-                        <ClientLogo imageUrl="/images/clients/ryberg_logo.png" imageAlt="Ryberg" websiteUrl="https://www.ryberg.nl/" />
+                        <ClientLogo
+                            v-for="client in clients"
+                            :key="client.id"
+                            :imageUrl="client.logo_full_url"
+                            :imageAlt="client.name"
+                            :websiteUrl="client.website_url"/>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ====== Clients Section End  -->
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {computed} from "vue";
 import {trans} from "laravel-vue-i18n";
 import {usePage} from "@inertiajs/vue3";
 import ClientLogo from "@/Components/ClientLogo.vue";
+import ClientData = App.Data.ClientData;
 
 const page = usePage();
+const clients: ClientData[] = page.props.clients;
+
 const locale = computed(() => page.props.appUrl);
 </script>
 

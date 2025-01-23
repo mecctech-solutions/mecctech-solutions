@@ -4,6 +4,14 @@ text_en: string;
 text_nl: string;
 position: number;
 };
+export type ClientData = {
+id: number;
+name: string;
+website_url: string;
+logo_url: string;
+logo_full_url: string;
+position: number;
+};
 export type ImageData = {
 full_url: string;
 url: string;
@@ -26,5 +34,17 @@ tags: Array<App.Data.TagData> | null;
 export type TagData = {
 name: string;
 visible: boolean;
+};
+export type TestimonialData = {
+id: number;
+name: string;
+job_title_en: string;
+job_title_nl: string;
+text_nl: string;
+text_en: string;
+image_url: string | null;
+image_full_url: string;
+position: number;
+client_name: string | null;
 };
 }

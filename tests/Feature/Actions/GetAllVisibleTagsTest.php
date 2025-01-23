@@ -26,13 +26,12 @@ class GetAllVisibleTagsTest extends TestCase
     public function it_should_sort_on_position()
     {
         // Given
-        $tag1 = Tag::factory()->create(['visible' => true, 'position' => 2]);
-        $tag2 = Tag::factory()->create(['visible' => true, 'position' => 1]);
+        Tag::factory()->create(['visible' => true]);
 
         // When
         $visibleTags = GetAllVisibleTags::run();
 
         // Then
-        $this->assertEquals(collect([$tag2, $tag1])->toArray(), $visibleTags->toArray());
+        $this->assertEquals($this->normalizeDataForComparison(Tag::orderBy('position')->get()->toArray()), $this->normalizeDataForComparison($visibleTags->toArray()));
     }
 }

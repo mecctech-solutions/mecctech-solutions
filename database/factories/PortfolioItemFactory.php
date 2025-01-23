@@ -17,7 +17,7 @@ class PortfolioItemFactory extends Factory
         return [
             'title_nl' => $this->faker->sentence,
             'title_en' => $this->faker->sentence,
-            'main_image_url' => $this->faker->imageUrl(),
+            'main_image_url' => 'images/placeholder.png',
             'description_nl' => $this->faker->paragraph,
             'description_en' => $this->faker->paragraph,
             'website_url' => $this->faker->url,
