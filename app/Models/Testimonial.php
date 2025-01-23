@@ -13,7 +13,8 @@ class Testimonial extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'job_title',
+        'job_title_en',
+        'job_title_nl',
         'company',
         'position',
         'text_nl',

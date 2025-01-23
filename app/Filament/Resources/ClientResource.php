@@ -50,10 +50,10 @@ class ClientResource extends Resource
                                         Forms\Components\TextInput::make('name')
                                             ->required()
                                             ->maxLength(255),
-                                        Forms\Components\TextInput::make('job_title')
+                                        Forms\Components\TextInput::make('job_title_en')
                                             ->required()
                                             ->maxLength(255),
-                                        Forms\Components\TextInput::make('job_title')
+                                        Forms\Components\TextInput::make('job_title_nl')
                                             ->required()
                                             ->maxLength(255),
                                         Forms\Components\Textarea::make('text_nl')
