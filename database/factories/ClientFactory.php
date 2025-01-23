@@ -14,8 +14,8 @@ class ClientFactory extends Factory
         return [
             'name' => $this->faker->company,
             'website_url' => $this->faker->url,
-            'logo_url' => 'images/clients/placeholder.jpg',
+            'logo_url' => 'images/placeholder.webp',
             'position' => $this->faker->numberBetween(1, 10),
         ];
     }
-} 
+}

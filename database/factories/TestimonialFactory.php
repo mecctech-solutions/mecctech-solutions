@@ -14,12 +14,12 @@ class TestimonialFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'job_title' => $this->faker->jobTitle,
             'client_id' => Client::factory(),
-            'position' => $this->faker->jobTitle,
+            'position' => $this->faker->numberBetween(1, 10),
             'text_nl' => $this->faker->paragraph,
             'text_en' => $this->faker->paragraph,
             'image_url' => 'images/testimonials/placeholder.jpg',
-            'position' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

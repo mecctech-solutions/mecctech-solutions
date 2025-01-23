@@ -11,7 +11,7 @@ class PortfolioItemSeeder extends Seeder
     {
         PortfolioItem::factory()
             ->count(10)
-            ->configure() // This will create related tags, images, and bullet points
+            ->configure()
             ->create();
     }
-} 
+}

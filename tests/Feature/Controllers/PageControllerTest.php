@@ -93,6 +93,7 @@ class PageControllerTest extends TestCase
                             $page
                                 ->where('id', $testimonial->id)
                                 ->where('name', $testimonial->name)
+                                ->where('job_title', $testimonial->job_title)
                                 ->where('position', $testimonial->position)
                                 ->where('text_nl', $testimonial->text_nl)
                                 ->where('text_en', $testimonial->text_en)

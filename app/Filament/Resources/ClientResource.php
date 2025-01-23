@@ -47,7 +47,10 @@ class ClientResource extends Resource
                                 Forms\Components\Repeater::make('testimonials')
                                     ->relationship()
                                     ->schema([
-                                        Forms\Components\TextInput::make('author')
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('job_title')
                                             ->required()
                                             ->maxLength(255),
                                         Forms\Components\TextInput::make('role')
