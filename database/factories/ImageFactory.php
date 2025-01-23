@@ -12,7 +12,7 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'url' => $this->faker->imageUrl(),
+            'url' => 'images/placeholder.png',
             'position' => 1,
         ];
     }
