@@ -128,6 +128,7 @@ class CsvPortfolioItemsConverter
                 'title_nl' => $row[1],
                 'main_image_url' => 'images/'.$row[2],
                 'position' => $rowNumber,
+                'visible' => true,
                 'description_en' => $row[3],
                 'description_nl' => $row[4],
                 'website_url' => $row[5],

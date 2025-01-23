@@ -93,7 +93,7 @@ class GetAllPortfolioItemsTest extends TestCase
         $result = GetAllPortfolioItems::run();
 
         // Then
-        self::assertEquals(PortfolioItemData::from($visiblePortfolioItem)->title_en, $result->first()->title_en);
+        self::assertEquals($visiblePortfolioItem->title_en, $result->first()->title_en);
     }
 
 }

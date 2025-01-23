@@ -19,6 +19,7 @@ class PortfolioItemDataTest extends TestCase
             main_image_url: 'main_image_url',
             website_url: 'website_url',
             position: 1,
+            visible: true,
             bullet_points: null,
             images: null,
             tags: null,
