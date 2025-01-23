@@ -3,6 +3,7 @@
 namespace App\Data;
 
 use App\Actions\DetermineFullFileUrl;
+use App\Models\PortfolioItem;
 use Spatie\LaravelData\Attributes\Computed;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Data;
@@ -12,6 +13,12 @@ class PortfolioItemData extends Data
 {
     #[Computed]
     public string $main_image_full_url;
+
+    #[Computed]
+    public bool $has_case_study;
+
+    #[Computed]
+    public ?array $case_study;
 
     public function __construct(
         public string $title_en,
@@ -33,5 +40,17 @@ class PortfolioItemData extends Data
         public ?DataCollection $tags,
     ) {
         $this->main_image_full_url = DetermineFullFileUrl::run($this->main_image_url);
+    }
+
+    public static function fromModel(PortfolioItem $portfolioItem): self
+    {
+        $data = parent::from($portfolioItem);
+        
+        $data->has_case_study = $portfolioItem->hasCaseStudy();
+        $data->case_study = $portfolioItem->caseStudy ? [
+            'slug' => $portfolioItem->caseStudy->slug
+        ] : null;
+
+        return $data;
     }
 }
