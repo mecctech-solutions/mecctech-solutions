@@ -19,7 +19,7 @@ class TestimonialFactory extends Factory
             'position' => $this->faker->numberBetween(1, 10),
             'text_nl' => $this->faker->paragraph,
             'text_en' => $this->faker->paragraph,
-            'image_url' => 'images/testimonials/placeholder.jpg',
+            'image_url' => 'images/placeholder.png',
         ];
     }
 }

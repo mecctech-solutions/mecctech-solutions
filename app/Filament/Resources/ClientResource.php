@@ -53,13 +53,16 @@ class ClientResource extends Resource
                                         Forms\Components\TextInput::make('job_title')
                                             ->required()
                                             ->maxLength(255),
-                                        Forms\Components\TextInput::make('role')
+                                        Forms\Components\TextInput::make('job_title')
                                             ->required()
                                             ->maxLength(255),
-                                        Forms\Components\Textarea::make('content')
+                                        Forms\Components\Textarea::make('text_nl')
                                             ->required()
                                             ->maxLength(1000),
-                                        Forms\Components\FileUpload::make('avatar_url')
+                                        Forms\Components\Textarea::make('text_en')
+                                            ->required()
+                                            ->maxLength(1000),
+                                        Forms\Components\FileUpload::make('image_url')
                                             ->image()
                                             ->directory('testimonials'),
                                         Forms\Components\TextInput::make('position')
