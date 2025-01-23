@@ -100,7 +100,7 @@ const page = usePage();
 const tags: Array<TagData> = page.props.tags;
 const allTag: TagData = { name: "All", visible: true };
 
-const locale: string = computed(() => page.props.appUrl);
+const locale: string = computed(() => page.props.locale).value;
 
 tags.unshift(allTag);
 

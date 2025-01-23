@@ -1,8 +1,13 @@
 <script setup>
 import {loadLanguageAsync} from 'laravel-vue-i18n';
+import {router} from "@inertiajs/vue3";
+import {route} from "ziggy-js";
 
 function changeLanguage(language) {
     loadLanguageAsync(language)
+    router.get(route('locale.change', {
+        locale: language
+    }));
 }
 </script>
 
