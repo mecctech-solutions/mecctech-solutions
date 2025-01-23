@@ -14,12 +14,6 @@ class PortfolioItemData extends Data
     #[Computed]
     public string $main_image_full_url;
 
-    #[Computed]
-    public bool $has_case_study;
-
-    #[Computed]
-    public ?array $case_study;
-
     public function __construct(
         public string $title_en,
         public string $title_nl,
@@ -29,6 +23,8 @@ class PortfolioItemData extends Data
         public string $website_url,
         public int $position,
         public bool $visible,
+        public bool $has_case_study,
+        public ?string $case_study_slug,
 
         #[DataCollectionOf(BulletPointData::class)]
         public ?DataCollection $bullet_points,
@@ -44,13 +40,20 @@ class PortfolioItemData extends Data
 
     public static function fromModel(PortfolioItem $portfolioItem): self
     {
-        $data = parent::from($portfolioItem);
-        
-        $data->has_case_study = $portfolioItem->hasCaseStudy();
-        $data->case_study = $portfolioItem->caseStudy ? [
-            'slug' => $portfolioItem->caseStudy->slug
-        ] : null;
-
-        return $data;
+        return new self(
+            title_en: $portfolioItem->title_en,
+            title_nl: $portfolioItem->title_nl,
+            description_en: $portfolioItem->description_en,
+            description_nl: $portfolioItem->description_nl,
+            main_image_url: $portfolioItem->main_image_url,
+            website_url: $portfolioItem->website_url,
+            position: $portfolioItem->position,
+            visible: $portfolioItem->visible,
+            has_case_study: $portfolioItem->hasCaseStudy(),
+            case_study_slug: $portfolioItem->caseStudy?->slug,
+            bullet_points: empty($portfolioItem->bulletPoints) ? null : BulletPointData::collect($portfolioItem->bulletPoints, DataCollection::class),
+            images: empty($portfolioItem->images) ? null : ImageData::collect($portfolioItem->images, DataCollection::class),
+            tags: empty($portfolioItem->tags) ? null : TagData::collect($portfolioItem->tags, DataCollection::class),
+        );
     }
 }

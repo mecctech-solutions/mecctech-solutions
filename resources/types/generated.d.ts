@@ -27,6 +27,8 @@ main_image_url: string;
 website_url: string;
 position: number;
 visible: boolean;
+has_case_study: boolean;
+case_study_slug: string | null;
 bullet_points: Array<App.Data.BulletPointData> | null;
 images: Array<App.Data.ImageData> | null;
 tags: Array<App.Data.TagData> | null;

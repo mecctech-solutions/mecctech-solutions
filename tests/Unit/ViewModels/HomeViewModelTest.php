@@ -37,7 +37,7 @@ class HomeViewModelTest extends TestCase
         // Then
         $this->assertCount(1, $items);
         $this->assertTrue($items->first()->has_case_study);
-        $this->assertEquals($caseStudy->slug, $items->first()->case_study['slug']);
+        $this->assertEquals($caseStudy->slug, $items->first()->case_study_slug);
     }
 
     public function test_it_returns_portfolio_items_filtered_by_tag(): void

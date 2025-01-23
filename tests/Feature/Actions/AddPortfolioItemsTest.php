@@ -41,7 +41,7 @@ class AddPortfolioItemsTest extends TestCase
         $expectedPortfolioItems = $portfolioItems;
 
         $actualPortfolioItems = PortfolioItem::query()
-            ->with('tags', 'images', 'bulletPoints')
+            ->with('tags', 'images', 'bulletPoints', 'caseStudy')
             ->get();
 
         // Then

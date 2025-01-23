@@ -29,28 +29,24 @@ class HomeViewModel extends ViewModel
         ];
     }
 
-    protected function portfolioItems(): Collection
+    public function portfolioItems(): Collection
     {
-        $portfolioItems = GetAllPortfolioItems::run($this->tag);
-        $portfolioItems->load('caseStudy:id,portfolio_item_id,slug');
-
-        return PortfolioItemData::collect($portfolioItems)
-            ->through(fn ($item) => PortfolioItemData::fromModel($item));
+        return PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
     }
 
-    protected function tags(): Collection
+    public function tags(): Collection
     {
         return TagData::collect(GetAllVisibleTags::run());
     }
 
-    protected function testimonials(): Collection
+    public function testimonials(): Collection
     {
         return TestimonialData::collect(
             Testimonial::orderBy('position')->get()
         );
     }
 
-    protected function clients(): Collection
+    public function clients(): Collection
     {
         return ClientData::collect(
             Client::orderBy('position')->get()

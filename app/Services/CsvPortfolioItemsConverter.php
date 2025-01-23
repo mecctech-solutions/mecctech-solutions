@@ -135,6 +135,8 @@ class CsvPortfolioItemsConverter
                 'images' => $images,
                 'tags' => $tags,
                 'bullet_points' => $bulletPoints,
+                'has_case_study' => false,
+                'case_study_slug' => null,
             ];
 
             $portfolioItems[] = PortfolioItemData::from($portfolioItem);

@@ -26,11 +26,6 @@ class PortfolioItem extends Model implements Sortable
         'visible' => 'boolean',
     ];
 
-    public $sortable = [
-        'order_column_name' => 'position',
-        'sort_when_creating' => true,
-    ];
-
     public function mainImageFullUrl(): Attribute
     {
         return new Attribute(
@@ -54,16 +49,6 @@ class PortfolioItem extends Model implements Sortable
         return $this->hasMany(BulletPoint::class, 'portfolio_item_id');
     }
 
-    public function newEloquentBuilder($query): PortfolioItemBuilder
-    {
-        return new PortfolioItemBuilder($query);
-    }
-
-    protected static function newFactory(): PortfolioItemFactory
-    {
-        return new PortfolioItemFactory;
-    }
-
     public function caseStudy()
     {
         return $this->hasOne(CaseStudy::class);
@@ -72,5 +57,15 @@ class PortfolioItem extends Model implements Sortable
     public function hasCaseStudy(): bool
     {
         return $this->caseStudy()->exists();
+    }
+
+    public function newEloquentBuilder($query): PortfolioItemBuilder
+    {
+        return new PortfolioItemBuilder($query);
+    }
+
+    protected static function newFactory(): PortfolioItemFactory
+    {
+        return new PortfolioItemFactory;
     }
 }
