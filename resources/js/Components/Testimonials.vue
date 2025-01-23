@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="ud-grid grid-cols-1 md:ud-grid-cols-2 lg:ud-grid-cols-3 ud-gap-x-3">
+            <div class="ud-grid grid-cols-1">
                 <div v-for="testimonial in testimonials" :key="testimonial.id">
                     <div class="ud-p-8 ud-bg-white ud-rounded-[10px] ud-shadow-testimonial ud-mb-10">
                         <div class="ud-flex ud-items-center ud-mb-5 ud-space-x-5">
@@ -28,11 +28,11 @@
                                     {{ testimonial.name }}
                                 </h3>
                                 <p class="ud-text-body-color ud-text-base">
-                                    {{ locale === 'nl' ? testimonial.job_title_nl : testimonial.job_title_en }}
+                                    {{ locale === 'nl' ? testimonial.job_title_nl : testimonial.job_title_en }} @ {{ testimonial.company }}
                                 </p>
                             </div>
                         </div>
-                        <div 
+                        <div
                             class="ud-text-body-color ud-text-base ud-leading-relaxed prose prose-sm max-w-none"
                             v-html="locale === 'nl' ? testimonial.text_nl : testimonial.text_en"
                         />
@@ -52,37 +52,3 @@ const testimonials = computed(() => usePage().props.testimonials);
 const locale = computed(() => usePage().props.locale);
 
 </script>
-
-<style>
-.prose {
-    @apply ud-text-gray-600;
-}
-
-.prose p {
-    @apply ud-mb-4;
-}
-
-.prose ul {
-    @apply ud-list-disc ud-pl-4 ud-mb-4;
-}
-
-.prose ol {
-    @apply ud-list-decimal ud-pl-4 ud-mb-4;
-}
-
-.prose li {
-    @apply ud-mb-2;
-}
-
-.prose a {
-    @apply ud-text-primary hover:ud-text-primary-dark ud-underline;
-}
-
-.prose strong {
-    @apply ud-font-semibold;
-}
-
-.prose em {
-    @apply ud-italic;
-}
-</style>
