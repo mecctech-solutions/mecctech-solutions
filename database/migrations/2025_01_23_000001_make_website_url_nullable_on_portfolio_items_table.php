@@ -19,4 +19,4 @@ return new class extends Migration
             $table->string('website_url')->nullable(false)->change();
         });
     }
-}; 
+};

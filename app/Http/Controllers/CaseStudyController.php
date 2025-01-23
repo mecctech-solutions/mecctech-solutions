@@ -10,7 +10,7 @@ class CaseStudyController extends Controller
     public function show(CaseStudy $caseStudy)
     {
         return Inertia::render('CaseStudy', [
-            'caseStudy' => $caseStudy
+            'caseStudy' => $caseStudy,
         ]);
     }
-} 
+}

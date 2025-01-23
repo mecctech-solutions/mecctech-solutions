@@ -20,7 +20,7 @@ class HomeViewModelTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->viewModel = new HomeViewModel();
+        $this->viewModel = new HomeViewModel;
     }
 
     public function test_it_returns_portfolio_items_with_case_studies(): void
@@ -28,7 +28,7 @@ class HomeViewModelTest extends TestCase
         // Given
         $portfolioItem = PortfolioItem::factory()->create();
         $caseStudy = CaseStudy::factory()->create([
-            'portfolio_item_id' => $portfolioItem->id
+            'portfolio_item_id' => $portfolioItem->id,
         ]);
 
         // When

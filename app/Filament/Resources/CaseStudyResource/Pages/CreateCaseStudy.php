@@ -13,4 +13,4 @@ class CreateCaseStudy extends CreateRecord
     {
         return $this->getResource()::getUrl('index');
     }
-} 
+}

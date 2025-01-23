@@ -23,6 +23,7 @@ class PortfolioItemResource extends Resource
     protected static ?string $label = 'Portfolio Item';
 
     protected static ?string $navigationGroup = 'Portfolio';
+
     public static function form(Form $form): Form
     {
         return $form

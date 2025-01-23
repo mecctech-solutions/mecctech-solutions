@@ -21,4 +21,4 @@ class EditCaseStudy extends EditRecord
     {
         return $this->getResource()::getUrl('index');
     }
-} 
+}

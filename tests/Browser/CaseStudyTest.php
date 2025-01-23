@@ -17,19 +17,19 @@ class CaseStudyTest extends DuskTestCase
         // Given
         $portfolioItem = PortfolioItem::factory()->create();
         $caseStudy = CaseStudy::factory()->create([
-            'portfolio_item_id' => $portfolioItem->id
+            'portfolio_item_id' => $portfolioItem->id,
         ]);
 
         // When & Then
         $this->browse(function (Browser $browser) use ($portfolioItem, $caseStudy) {
             $browser->visit('/')
                 ->waitFor('@portfolio')
-                ->click('@portfolio-item-' . $portfolioItem->id)
+                ->click('@portfolio-item-'.$portfolioItem->id)
                 ->waitFor('@case-study-button')
                 ->click('@case-study-button')
-                ->assertPathIs('/case-studies/' . $caseStudy->slug)
+                ->assertPathIs('/case-studies/'.$caseStudy->slug)
                 ->assertSee($caseStudy->title_en)
                 ->assertSee($caseStudy->content_en);
         });
     }
-} 
+}

@@ -14,7 +14,7 @@ class CaseStudyFactory extends Factory
     public function definition(): array
     {
         $titleNl = $this->faker->sentence();
-        
+
         return [
             'portfolio_item_id' => PortfolioItem::factory(),
             'title_nl' => $titleNl,
@@ -24,4 +24,4 @@ class CaseStudyFactory extends Factory
             'slug' => Str::slug($titleNl),
         ];
     }
-} 
+}

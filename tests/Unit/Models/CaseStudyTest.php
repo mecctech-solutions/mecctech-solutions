@@ -16,7 +16,7 @@ class CaseStudyTest extends TestCase
         // Given
         $portfolioItem = PortfolioItem::factory()->create();
         $caseStudy = CaseStudy::factory()->create([
-            'portfolio_item_id' => $portfolioItem->id
+            'portfolio_item_id' => $portfolioItem->id,
         ]);
 
         // When & Then
@@ -36,4 +36,4 @@ class CaseStudyTest extends TestCase
         $this->assertNotNull($caseStudy->slug);
         $this->assertInstanceOf(PortfolioItem::class, $caseStudy->portfolioItem);
     }
-} 
+}
