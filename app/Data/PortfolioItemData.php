@@ -20,7 +20,7 @@ class PortfolioItemData extends Data
         public ?string $description_en,
         public ?string $description_nl,
         public string $main_image_url,
-        public string $website_url,
+        public ?string $website_url,
         public int $position,
         public bool $visible,
         public bool $has_case_study,

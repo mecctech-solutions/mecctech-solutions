@@ -24,6 +24,7 @@
     </div>
     <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4">
       <div
+          v-if="websiteUrl"
           class="
           ud-text-base
           ud-font-semibold
@@ -39,7 +40,7 @@
       >
         <a :href="websiteUrl" class="ud-text-sm md:ud-text-xl">
           <i class="fa-solid fa-desktop ud-pr-5 ud-text-sm md:ud-text-xl"></i>
-          SITE / CODE
+          Site / Code
         </a>
       </div>
       <div
@@ -94,6 +95,7 @@
     </div>
     <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4">
       <div
+          v-if="websiteUrl"
           class="
           ud-text-base
           ud-font-semibold

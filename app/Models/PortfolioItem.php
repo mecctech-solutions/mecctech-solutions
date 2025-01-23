@@ -24,6 +24,7 @@ class PortfolioItem extends Model implements Sortable
 
     protected $casts = [
         'visible' => 'boolean',
+        'website_url' => 'string',
     ];
 
     public function mainImageFullUrl(): Attribute
