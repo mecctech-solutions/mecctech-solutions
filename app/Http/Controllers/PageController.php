@@ -7,7 +7,9 @@ use App\Actions\GetAllVisibleTags;
 use App\Data\ClientData;
 use App\Data\PortfolioItemData;
 use App\Data\TagData;
+use App\Data\TestimonialData;
 use App\Models\Client;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,10 +26,12 @@ class PageController extends Controller
         return Inertia::render('Home', [
             'portfolioItems' => PortfolioItemData::collect(GetAllPortfolioItems::run($tag)),
             'tags' => TagData::collect(GetAllVisibleTags::run()),
+            'testimonials' => TestimonialData::collect(
+                Testimonial::orderBy('position')
+                    ->get()
+            ),
             'clients' => ClientData::collect(
-                Client::with('testimonials')
-                    ->whereHas('testimonials')
-                    ->orderBy('position')
+                Client::orderBy('position')
                     ->get()
             ),
         ]);

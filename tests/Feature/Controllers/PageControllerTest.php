@@ -64,42 +64,59 @@ class PageControllerTest extends TestCase
         });
     }
 
-    public function test_home_page_includes_clients_with_testimonials(): void
+    public function test_home_page_includes_clients(): void
     {
         // Given
         $this->withoutExceptionHandling();
         $client = Client::factory()
             ->has(Testimonial::factory())
             ->create();
-        $testimonial = $client->testimonials->first();
 
         // When
         $response = $this->get(route('home'));
 
         // Then
-        $response->assertInertia(function (AssertableInertia $page) use ($client, $testimonial) {
+        $response->assertInertia(function (AssertableInertia $page) use ($client) {
             $page->component('Home')
                 ->has('clients', 1)
-                ->has('clients.0', function (AssertableInertia $page) use ($client, $testimonial) {
+                ->has('clients.0', function (AssertableInertia $page) use ($client) {
                     $page
                         ->where('id', $client->id)
                         ->where('position', $client->position)
                         ->where('name', $client->name)
                         ->where('website_url', $client->website_url)
                         ->where('logo_url', $client->logo_url)
-                        ->where('logo_full_url', $client->logo_full_url)
-                        ->has('testimonials', 1)
-                        ->has('testimonials.0', function ($page) use ($testimonial) {
-                            $page
-                                ->where('id', $testimonial->id)
-                                ->where('name', $testimonial->name)
-                                ->where('job_title', $testimonial->job_title)
-                                ->where('position', $testimonial->position)
-                                ->where('text_nl', $testimonial->text_nl)
-                                ->where('text_en', $testimonial->text_en)
-                                ->where('image_url', $testimonial->image_url)
-                                ->where('image_full_url', $testimonial->image_full_url);
-                        });
+                        ->where('logo_full_url', $client->logo_full_url);
+                });
+        });
+    }
+
+    public function test_home_page_includes_testimonials(): void
+    {
+        // Given
+        $this->withoutExceptionHandling();
+        $client = Client::factory()->create();
+        $testimonial = Testimonial::factory()
+            ->for($client)
+            ->create();
+
+        // When
+        $response = $this->get(route('home'));
+
+        // Then
+        $response->assertInertia(function (AssertableInertia $page) use ($testimonial) {
+            $page->component('Home')
+                ->has('testimonials', 1)
+                ->has('testimonials.0', function ($page) use ($testimonial) {
+                    $page
+                        ->where('id', $testimonial->id)
+                        ->where('name', $testimonial->name)
+                        ->where('job_title', $testimonial->job_title)
+                        ->where('position', $testimonial->position)
+                        ->where('text_nl', $testimonial->text_nl)
+                        ->where('text_en', $testimonial->text_en)
+                        ->where('image_url', $testimonial->image_url)
+                        ->where('image_full_url', $testimonial->image_full_url);
                 });
         });
     }

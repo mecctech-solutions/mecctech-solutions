@@ -11,7 +11,6 @@ website_url: string;
 logo_url: string;
 logo_full_url: string;
 position: number;
-testimonials: Array<App.Data.TestimonialData> | null;
 };
 export type ImageData = {
 full_url: string;
@@ -39,6 +38,7 @@ visible: boolean;
 export type TestimonialData = {
 id: number;
 name: string;
+job_title: string | null;
 text_nl: string;
 text_en: string;
 image_url: string | null;
