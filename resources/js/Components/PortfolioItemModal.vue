@@ -151,6 +151,7 @@ import ImageCarousel from "./ImageCarousel.vue";
 import useScreenSize from "@/Composables/screensize.ts";
 import {trans} from "laravel-vue-i18n";
 import Tag from "@/Components/Tag.vue";
+import {route} from "ziggy-js";
 
 const props = defineProps({
   title: String,
