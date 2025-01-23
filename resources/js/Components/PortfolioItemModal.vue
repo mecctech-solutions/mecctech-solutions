@@ -149,6 +149,8 @@ import {computed, onMounted, ref} from "vue";
 import {Link, usePage} from "@inertiajs/vue3";
 import ImageCarousel from "./ImageCarousel.vue";
 import useScreenSize from "@/Composables/screensize.ts";
+import {trans} from "laravel-vue-i18n";
+import Tag from "@/Components/Tag.vue";
 
 const props = defineProps({
   title: String,
@@ -157,8 +159,14 @@ const props = defineProps({
   description: String,
   websiteUrl: String,
   bulletPoints: Array,
-  hasCaseStudy: Boolean,
-  caseStudySlug: String,
+  hasCaseStudy: {
+    type: Boolean,
+    default: false
+  },
+  caseStudySlug: {
+    type: String,
+    default: ''
+  },
 });
 
 const emit = defineEmits(["turn-off-modal"]);

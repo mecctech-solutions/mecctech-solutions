@@ -23,12 +23,22 @@ class PageController extends Controller
             $tag = null;
         }
 
+        $portfolioItems = GetAllPortfolioItems::run($tag);
+
+        $portfolioItems->load('caseStudy:id,portfolio_item_id,slug');
+
         return Inertia::render('Home', [
-            'portfolioItems' => PortfolioItemData::collect(GetAllPortfolioItems::run($tag)),
-            'tags' => TagData::collect(GetAllVisibleTags::run()),
-            'testimonials' => TestimonialData::collect(
-                Testimonial::orderBy('position')
-                    ->get()
+            'portfolioItems' => PortfolioItemData::collection($portfolioItems)
+                ->map(fn ($item) => [
+                    ...$item->toArray(),
+                    'has_case_study' => $item->hasCaseStudy(),
+                    'case_study' => $item->caseStudy ? [
+                        'slug' => $item->caseStudy->slug
+                    ] : null,
+                ]),
+            'tags' => TagData::collection(GetAllVisibleTags::run()),
+            'testimonials' => TestimonialData::collection(
+                Testimonial::orderBy('position')->get()
             ),
             'clients' => ClientData::collect(
                 Client::orderBy('position')

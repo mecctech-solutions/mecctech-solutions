@@ -84,6 +84,8 @@
             :description="description"
             :website-url="websiteUrl"
             :bullet-points="bulletPoints"
+            :has-case-study="hasCaseStudy"
+            :case-study-slug="caseStudySlug"
             @turn-off-modal="turnOffModal"
         />
     </div>
@@ -102,6 +104,8 @@ const props = defineProps({
     description: String,
     websiteUrl: String,
     bulletPoints: Array,
+    hasCaseStudy: Boolean,
+    caseStudySlug: String,
 });
 
 const viewModal = ref(false);
