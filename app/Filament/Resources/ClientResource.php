@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ClientResource\Pages;
 use App\Models\Client;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -20,21 +22,58 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('website_url')
-                    ->required()
-                    ->url()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('logo_url')
-                    ->required()
-                    ->image()
-                    ->directory('clients'),
-                Forms\Components\TextInput::make('position')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
+                Tabs::make('Client')
+                    ->tabs([
+                        Tab::make('Client Details')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('website_url')
+                                    ->required()
+                                    ->url()
+                                    ->maxLength(255),
+                                Forms\Components\FileUpload::make('logo_url')
+                                    ->required()
+                                    ->image()
+                                    ->directory('clients'),
+                                Forms\Components\TextInput::make('position')
+                                    ->required()
+                                    ->numeric()
+                                    ->default(1),
+                            ]),
+                        Tab::make('Testimonials')
+                            ->schema([
+                                Forms\Components\Repeater::make('testimonials')
+                                    ->relationship()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('author')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('role')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\Textarea::make('content')
+                                            ->required()
+                                            ->maxLength(1000),
+                                        Forms\Components\FileUpload::make('avatar_url')
+                                            ->image()
+                                            ->directory('testimonials'),
+                                        Forms\Components\TextInput::make('position')
+                                            ->numeric()
+                                            ->default(1),
+                                    ])
+                                    ->defaultItems(0)
+                                    ->reorderableWithButtons()
+                                    ->collapsible()
+                                    ->collapseAllAction(
+                                        fn (Forms\Components\Actions\Action $action) => $action->label('Collapse all')
+                                    )
+                                    ->expandAllAction(
+                                        fn (Forms\Components\Actions\Action $action) => $action->label('Expand all')
+                                    )
+                            ])
+                    ])
             ]);
     }
 
@@ -71,4 +110,4 @@ class ClientResource extends Resource
             'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
     }
-} 
+}

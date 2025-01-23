@@ -24,7 +24,7 @@ class PageController extends Controller
         return Inertia::render('Home', [
             'portfolioItems' => PortfolioItemData::collect(GetAllPortfolioItems::run($tag)),
             'tags' => TagData::collect(GetAllVisibleTags::run()),
-            'clients' => ClientData::collection(
+            'clients' => ClientData::collect(
                 Client::with('testimonials')
                     ->whereHas('testimonials')
                     ->orderBy('position')

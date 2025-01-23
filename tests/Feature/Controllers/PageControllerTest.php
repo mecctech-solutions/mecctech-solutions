@@ -16,7 +16,11 @@ class PageControllerTest extends TestCase
     public function test_it_should_render_home_page_with_portfolio_items(): void
     {
         // Given
-        $portfolioItem = PortfolioItem::factory()->create();
+        $portfolioItem = PortfolioItem::factory()
+            ->withTags([])
+            ->withImages()
+            ->withBulletPoints()
+            ->create();
 
         // When
         $response = $this->get(route('home'));
@@ -63,6 +67,7 @@ class PageControllerTest extends TestCase
     public function test_home_page_includes_clients_with_testimonials(): void
     {
         // Given
+        $this->withoutExceptionHandling();
         $client = Client::factory()
             ->has(Testimonial::factory())
             ->create();
@@ -78,6 +83,7 @@ class PageControllerTest extends TestCase
                 ->has('clients.0', function (AssertableInertia $page) use ($client, $testimonial) {
                     $page
                         ->where('id', $client->id)
+                        ->where('position', $client->position)
                         ->where('name', $client->name)
                         ->where('website_url', $client->website_url)
                         ->where('logo_url', $client->logo_url)
@@ -90,6 +96,7 @@ class PageControllerTest extends TestCase
                                 ->where('position', $testimonial->position)
                                 ->where('text_nl', $testimonial->text_nl)
                                 ->where('text_en', $testimonial->text_en)
+                                ->where('image_url', $testimonial->image_url)
                                 ->where('image_full_url', $testimonial->image_full_url);
                         });
                 });

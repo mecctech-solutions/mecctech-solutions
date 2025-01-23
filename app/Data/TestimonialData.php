@@ -10,7 +10,6 @@ class TestimonialData extends Data
     public function __construct(
         public int $id,
         public string $name,
-        public string $position,
         public string $text_nl,
         public string $text_en,
         public ?string $image_url,
@@ -24,7 +23,6 @@ class TestimonialData extends Data
         return new self(
             id: $testimonial->id,
             name: $testimonial->name,
-            position: $testimonial->position,
             text_nl: $testimonial->text_nl,
             text_en: $testimonial->text_en,
             image_url: $testimonial->image_url,
@@ -32,4 +30,4 @@ class TestimonialData extends Data
             position: $testimonial->position,
         );
     }
-} 
+}

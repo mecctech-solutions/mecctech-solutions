@@ -11,12 +11,11 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('position');
             $table->text('text_nl');
             $table->text('text_en');
             $table->string('image_url')->nullable();
             $table->integer('position')->default(1);
-            
+
             $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();
 
             $table->timestamps();
@@ -27,4 +26,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('testimonials');
     }
-}; 
+};

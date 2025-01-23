@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Unit\App\Models;
 
 use App\Models\Client;
 use App\Models\Testimonial;
@@ -17,7 +17,7 @@ class ClientTest extends TestCase
         // Arrange
         $fileName = 'test.jpg';
         Storage::put($fileName, 'test');
-        
+
         $client = Client::factory()->create([
             'logo_url' => $fileName
         ]);
@@ -52,4 +52,4 @@ class ClientTest extends TestCase
         $this->assertCount(3, $client->testimonials);
         $this->assertInstanceOf(Testimonial::class, $client->testimonials->first());
     }
-} 
+}
