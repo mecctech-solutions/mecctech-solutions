@@ -144,10 +144,10 @@ const logoUrl = computed(() => `${page.props.appUrl}/images/MeccTechlogo-01.png`
 
 const menuItems = computed(() => [
     { label: trans("header.home"), href: `${page.props.appUrl}#home` },
-    { label: trans("header.about_me"), href: `${page.props.appUrl}#about` },
+    { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
+    { label: trans("header.clients"), href: `${page.props.appUrl}#clients` },
     { label: trans("header.skills"), href: `${page.props.appUrl}#skills` },
     { label: trans("header.approach"), href: `${page.props.appUrl}#approach` },
-    { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
     { label: trans("header.contact"), href: `${page.props.appUrl}#contact` },
 ]);
 </script>
