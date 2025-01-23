@@ -72,6 +72,7 @@ class PortfolioItemResource extends Resource
                 Tables\Columns\TextColumn::make('description_nl'),
                 Tables\Columns\TextColumn::make('description_en'),
             ])
+            ->defaultSort('position')
             ->reorderable('position')
             ->filters([
                 //

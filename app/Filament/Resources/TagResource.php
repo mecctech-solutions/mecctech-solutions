@@ -41,6 +41,7 @@ class TagResource extends Resource
                     ->label('Visible')
                     ->sortable(),
             ])
+            ->defaultSort('position')
             ->reorderable('position')
             ->filters([
                 //
