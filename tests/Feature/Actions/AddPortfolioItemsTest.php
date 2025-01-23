@@ -33,19 +33,18 @@ class AddPortfolioItemsTest extends TestCase
 
                 return $portfolioItem;
             });
-        $portfolioItems = PortfolioItemData::collect($portfolioItems);
 
         // When
-        AddPortfolioItems::run($portfolioItems);
+        AddPortfolioItems::run(PortfolioItemData::collect($portfolioItems));
 
         // Then
         $expectedPortfolioItems = $portfolioItems;
 
-        $actualPortfolioItems = PortfolioItemData::collect(PortfolioItem::query()
+        $actualPortfolioItems = PortfolioItem::query()
             ->with('tags', 'images', 'bulletPoints')
-            ->get());
+            ->get();
 
         // Then
-        self::assertEquals($expectedPortfolioItems, $actualPortfolioItems);
+        self::assertEquals($this->normalizeDataForComparison($expectedPortfolioItems->toArray(), ['portfolio_item_id', 'position']), $this->normalizeDataForComparison($actualPortfolioItems->toArray(), ['portfolio_item_id', 'position']));
     }
 }

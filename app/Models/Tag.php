@@ -15,6 +15,10 @@ class Tag extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'visible' => 'boolean',
+    ];
+
     protected static function newFactory(): TagFactory
     {
         return new TagFactory;
