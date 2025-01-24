@@ -14,7 +14,7 @@ class GetAllPortfolioItems
     use AsAction;
 
     /**
-     * @return Collection<PortfolioItem>s
+     * @return Collection<PortfolioItem>
      */
     public function handle(?string $tag = null): Collection
     {

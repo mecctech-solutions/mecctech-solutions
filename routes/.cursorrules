@@ -1,0 +1,6 @@
+When writing commit messages, use the imperative mood.
+Write short commit messages.
+Use Laravel Actions as much as possible.
+My admin dashboard is built using Filament. 
+My Vue components are built using TailwindCSS and Composition API.
+Use Typescript for all new components.

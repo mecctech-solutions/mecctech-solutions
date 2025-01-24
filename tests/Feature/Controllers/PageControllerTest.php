@@ -28,8 +28,9 @@ class PageControllerTest extends TestCase
         // Then
         $response->assertInertia(function (AssertableInertia $page) use ($portfolioItem) {
             $page->component('Home');
-            $page->has('portfolioItems', 1)
-                ->has('portfolioItems.0', function (AssertableInertia $page) use ($portfolioItem) {
+            $page->has('portfolioItems', fn (AssertableInertia $page) => $page
+                ->has('data', 1)
+                ->has('data.0', function (AssertableInertia $page) use ($portfolioItem) {
                     $page
                         ->where('id', $portfolioItem->id)
                         ->where('title_nl', $portfolioItem->title_nl)
@@ -63,7 +64,19 @@ class PageControllerTest extends TestCase
                                 ->where('text_en', $portfolioItem->bulletPoints->first()->text_en)
                                 ->where('position', $portfolioItem->bulletPoints->first()->position);
                         });
-                });
+                })
+                ->has('current_page')
+                ->has('first_page_url')
+                ->has('from')
+                ->has('last_page')
+                ->has('last_page_url')
+                ->has('links')
+                ->has('next_page_url')
+                ->has('path')
+                ->has('per_page')
+                ->has('prev_page_url')
+                ->has('to')
+                ->has('total'));
         });
     }
 

@@ -8,8 +8,11 @@ use App\Data\ClientData;
 use App\Data\PortfolioItemData;
 use App\Data\TagData;
 use App\Data\TestimonialData;
+use App\Enums\SettingKey;
 use App\Models\Client;
+use App\Models\Setting;
 use App\Models\Testimonial;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Spatie\ViewModels\ViewModel;
 
@@ -29,9 +32,24 @@ class HomeViewModel extends ViewModel
         ];
     }
 
-    public function portfolioItems(): Collection
+    public function portfolioItems(): LengthAwarePaginator
     {
-        return PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
+        $items = PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
+        $itemsPerPage = (int) Setting::getValue(SettingKey::PORTFOLIO_ITEMS_PER_PAGE);
+        $currentPage = request()->get('page', 1);
+
+        $paginator = new LengthAwarePaginator(
+            $items->forPage($currentPage, $itemsPerPage),
+            $items->count(),
+            $itemsPerPage,
+            $currentPage,
+            [
+                'path' => request()->url(),
+                'query' => request()->query(),
+            ]
+        );
+
+        return $paginator;
     }
 
     public function tags(): Collection

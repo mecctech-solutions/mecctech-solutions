@@ -62,14 +62,10 @@
 
             <div class="portfolio-container ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full xl:ud-w-10/12 ud-px-4">
-                    <div
-                        class="
-              items-wrapper
-              ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]
-            "
-                    >
+                    <Pagination :links="portfolioItems.links" class="ud-mb-12"/>
+                    <div class="items-wrapper ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]">
                         <PortfolioItem
-                            v-for="item in portfolioItems"
+                            v-for="item in portfolioItems.data"
                             :key="item.id"
                             :id="item.id"
                             :title="locale === 'nl' ? item.title_nl : item.title_en"
@@ -82,7 +78,6 @@
                             :has-case-study="item.has_case_study"
                             :case-study-slug="item.case_study_slug"
                         />
-
                     </div>
                 </div>
             </div>
@@ -94,13 +89,29 @@
 <script setup lang="ts">
 import {computed, Ref, ref} from "vue";
 import {router, usePage} from "@inertiajs/vue3";
+import type { PageProps } from '@inertiajs/core';
 import PortfolioItem from "./PortfolioItem.vue";
+import Pagination from "./Pagination.vue";
 import {trans} from "laravel-vue-i18n";
 import {route} from "ziggy-js";
 import TagData = App.Data.TagData;
 
-const page = usePage();
-const tags: Array<TagData> = page.props.tags;
+interface CustomPageProps extends PageProps {
+    tags: TagData[];
+    locale: string;
+    portfolioItems: {
+        data: any[];
+        links: {
+            url: string | null;
+            label: string;
+            active: boolean;
+        }[];
+    };
+    [key: string]: unknown;
+}
+
+const page = usePage<CustomPageProps>();
+const tags = computed(() => page.props.tags as TagData[]).value;
 const allTag: TagData = { name: "All", visible: true };
 
 const locale: string = computed(() => page.props.locale).value;
@@ -109,10 +120,6 @@ tags.unshift(allTag);
 
 const portfolioItems: Ref = ref(page.props.portfolioItems);
 const selectedTag: Ref = ref(allTag.name);
-
-const currentPage: Ref = ref(1);
-const itemsPerPage = 10;
-const totalItems: Ref = ref(page.props.totalItems);
 
 const isSelected = (tagName: string) => selectedTag.value === tagName;
 
