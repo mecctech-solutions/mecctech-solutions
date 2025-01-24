@@ -1,5 +1,5 @@
 <template>
-    <div class="ud-flex ud-justify-center ud-mt-12 ud-space-x-2">
+    <div class="ud-flex ud-justify-center ud-space-x-2">
         <template v-for="(link, index) in links" :key="index">
             <Link
                 v-if="link.url"

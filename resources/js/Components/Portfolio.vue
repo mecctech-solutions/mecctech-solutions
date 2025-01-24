@@ -62,6 +62,7 @@
 
             <div class="portfolio-container ud-flex ud-justify-center ud--mx-4">
                 <div class="ud-w-full xl:ud-w-10/12 ud-px-4">
+                    <Pagination :links="portfolioItems.links" class="ud-mb-12"/>
                     <div class="items-wrapper ud-flex ud-flex-wrap ud-justify-center ud-mx-[-16px]">
                         <PortfolioItem
                             v-for="item in portfolioItems.data"
@@ -78,8 +79,6 @@
                             :case-study-slug="item.case_study_slug"
                         />
                     </div>
-
-                    <Pagination :links="portfolioItems.links" />
                 </div>
             </div>
         </div>
