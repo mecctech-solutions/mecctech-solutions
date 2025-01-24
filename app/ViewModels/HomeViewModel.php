@@ -8,7 +8,9 @@ use App\Data\ClientData;
 use App\Data\PortfolioItemData;
 use App\Data\TagData;
 use App\Data\TestimonialData;
+use App\Enums\SettingKey;
 use App\Models\Client;
+use App\Models\Setting;
 use App\Models\Testimonial;
 use Illuminate\Support\Collection;
 use Spatie\ViewModels\ViewModel;
@@ -33,11 +35,12 @@ class HomeViewModel extends ViewModel
     public function portfolioItems(): LengthAwarePaginator
     {
         $items = PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
+        $itemsPerPage = (int) Setting::getValue(SettingKey::PORTFOLIO_ITEMS_PER_PAGE);
         
         return new LengthAwarePaginator(
-            $items->forPage(request()->get('page', 1), 6),
+            $items->forPage(request()->get('page', 1), $itemsPerPage),
             $items->count(),
-            6,
+            $itemsPerPage,
             request()->get('page', 1),
             [
                 'path' => request()->url(),

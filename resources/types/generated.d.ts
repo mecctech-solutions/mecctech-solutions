@@ -51,3 +51,6 @@ position: number;
 client_name: string | null;
 };
 }
+declare namespace App.Enums {
+export type SettingKey = 'portfolio_items.items_per_page';
+}
