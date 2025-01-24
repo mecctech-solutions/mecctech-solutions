@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="!isMobile"
-        class="ud-bg-white ud-z-10 centered ud-pb-20 ud-mt-10"
+        class="ud-bg-white ud-z-10 centered ud-pb-20 ud-mt-10 ud-max-h-[90vh] ud-overflow-y-auto"
         v-click-outside="emitTurnOffModalEvent"
     >
         <ImageCarousel
@@ -71,7 +71,7 @@
     </div>
     <div
         v-else
-        class="ud-fixed ud-z-50 ud-top-0 ud-h-full ud-m-0 ud-bg-white ud-left-0"
+        class="ud-fixed ud-z-50 ud-top-0 ud-h-full ud-m-0 ud-bg-white ud-left-0 ud-w-full ud-overflow-y-auto"
     >
         <ImageCarousel
             :images="images"
@@ -93,7 +93,7 @@
                 </li>
             </ul>
         </div>
-        <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4">
+        <div class="ud-flex ud-flex-col ud-items-center ud-space-y-4 ud-mb-8">
             <div
                 v-if="websiteUrl"
                 class="
@@ -199,5 +199,7 @@ const emitTurnOffModalEvent = () => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 90vw;
+    width: 100%;
 }
 </style>
