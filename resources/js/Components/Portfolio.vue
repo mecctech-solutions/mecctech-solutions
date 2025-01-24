@@ -71,6 +71,7 @@
                         <PortfolioItem
                             v-for="item in portfolioItems"
                             :key="item.id"
+                            :id="item.id"
                             :title="locale === 'nl' ? item.title_nl : item.title_en"
                             :tags="item.tags"
                             :main-image-url="item.main_image_full_url"

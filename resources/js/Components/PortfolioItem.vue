@@ -2,6 +2,7 @@
     <div class="ud-w-full md:ud-w-1/2 ud-px-4 item web app">
         <div class="ud-mb-12">
             <div
+                :dusk="'portfolio-item-' + id"
                 class="
           ud-relative
           ud-group
@@ -106,6 +107,7 @@ const props = defineProps({
     bulletPoints: Array,
     hasCaseStudy: Boolean,
     caseStudySlug: String,
+    id: Number,
 });
 
 const viewModal = ref(false);

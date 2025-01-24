@@ -19,6 +19,7 @@ position: number;
 };
 export type PortfolioItemData = {
 main_image_full_url: string;
+id: number;
 title_en: string;
 title_nl: string;
 description_en: string | null;
