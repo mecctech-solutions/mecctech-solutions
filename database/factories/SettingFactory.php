@@ -17,4 +17,4 @@ class SettingFactory extends Factory
             'value' => fake()->numberBetween(1, 20),
         ];
     }
-} 
+}

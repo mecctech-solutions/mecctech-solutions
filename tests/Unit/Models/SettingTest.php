@@ -90,4 +90,4 @@ class SettingTest extends TestCase
 
         Setting::setValue(SettingKey::PORTFOLIO_ITEMS_PER_PAGE, 51);
     }
-} 
+}

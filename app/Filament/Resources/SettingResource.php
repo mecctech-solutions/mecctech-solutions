@@ -66,4 +66,4 @@ class SettingResource extends Resource
             'edit' => Pages\EditSetting::route('/{record}/edit'),
         ];
     }
-} 
+}

@@ -16,4 +16,4 @@ class ListSettings extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-} 
+}

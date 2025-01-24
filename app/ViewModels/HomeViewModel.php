@@ -12,9 +12,9 @@ use App\Enums\SettingKey;
 use App\Models\Client;
 use App\Models\Setting;
 use App\Models\Testimonial;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Spatie\ViewModels\ViewModel;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class HomeViewModel extends ViewModel
 {
@@ -37,7 +37,7 @@ class HomeViewModel extends ViewModel
         $items = PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
         $itemsPerPage = (int) Setting::getValue(SettingKey::PORTFOLIO_ITEMS_PER_PAGE);
         $currentPage = request()->get('page', 1);
-        
+
         $paginator = new LengthAwarePaginator(
             $items->forPage($currentPage, $itemsPerPage),
             $items->count(),
@@ -45,7 +45,7 @@ class HomeViewModel extends ViewModel
             $currentPage,
             [
                 'path' => request()->url(),
-                'query' => request()->query()
+                'query' => request()->query(),
             ]
         );
 

@@ -10,21 +10,21 @@ enum SettingKey: string
 
     public function defaultValue(): mixed
     {
-        return match($this) {
+        return match ($this) {
             self::PORTFOLIO_ITEMS_PER_PAGE => 6,
         };
     }
 
     public function validate(mixed $value): void
     {
-        match($this) {
+        match ($this) {
             self::PORTFOLIO_ITEMS_PER_PAGE => $this->validatePortfolioItemsPerPage($value),
         };
     }
 
     private function validatePortfolioItemsPerPage(mixed $value): void
     {
-        if (!is_numeric($value)) {
+        if (! is_numeric($value)) {
             throw InvalidSettingValueException::invalidType($this, 'numeric', $value);
         }
 
@@ -33,4 +33,4 @@ enum SettingKey: string
             throw InvalidSettingValueException::invalidRange($this, $value, 1, 50);
         }
     }
-} 
+}

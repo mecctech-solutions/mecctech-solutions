@@ -109,7 +109,7 @@ class HomeViewModelTest extends TestCase
             ->load('tags', 'images', 'bulletPoints', 'caseStudy');
 
         // When
-        $viewModel = new HomeViewModel();
+        $viewModel = new HomeViewModel;
         $result = $viewModel->portfolioItems();
 
         // Then
@@ -131,7 +131,7 @@ class HomeViewModelTest extends TestCase
         $this->get('/?page=2');
 
         // When
-        $viewModel = new HomeViewModel();
+        $viewModel = new HomeViewModel;
         $result = $viewModel->portfolioItems();
 
         // Then
