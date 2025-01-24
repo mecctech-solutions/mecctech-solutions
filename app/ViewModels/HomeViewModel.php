@@ -38,7 +38,7 @@ class HomeViewModel extends ViewModel
         $itemsPerPage = (int) Setting::getValue(SettingKey::PORTFOLIO_ITEMS_PER_PAGE);
         $currentPage = request()->get('page', 1);
 
-        $paginator = new LengthAwarePaginator(
+        return new LengthAwarePaginator(
             $items->forPage($currentPage, $itemsPerPage),
             $items->count(),
             $itemsPerPage,
@@ -48,8 +48,6 @@ class HomeViewModel extends ViewModel
                 'query' => request()->query(),
             ]
         );
-
-        return $paginator;
     }
 
     public function tags(): Collection
