@@ -12,6 +12,7 @@ use App\Models\Client;
 use App\Models\Testimonial;
 use Illuminate\Support\Collection;
 use Spatie\ViewModels\ViewModel;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class HomeViewModel extends ViewModel
 {
@@ -29,9 +30,20 @@ class HomeViewModel extends ViewModel
         ];
     }
 
-    public function portfolioItems(): Collection
+    public function portfolioItems(): LengthAwarePaginator
     {
-        return PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
+        $items = PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
+        
+        return new LengthAwarePaginator(
+            $items->forPage(request()->get('page', 1), 6),
+            $items->count(),
+            6,
+            request()->get('page', 1),
+            [
+                'path' => request()->url(),
+                'query' => request()->query()
+            ]
+        );
     }
 
     public function tags(): Collection
