@@ -79,22 +79,7 @@
                         />
                     </div>
 
-                    <!-- Add pagination links -->
-                    <div class="ud-flex ud-justify-center ud-mt-12 ud-space-x-2">
-                        <template v-for="(link, index) in portfolioItems.links" :key="index">
-                            <Link
-                                v-if="link.url"
-                                :href="link.url"
-                                class="ud-px-4 ud-py-2 ud-rounded-md"
-                                :class="{
-                                    'ud-bg-primary ud-text-white': link.active,
-                                    'ud-bg-gray-100 ud-text-gray-700 hover:ud-bg-gray-200': !link.active
-                                }"
-                                preserve-scroll
-                                v-html="link.label"
-                            />
-                        </template>
-                    </div>
+                    <Pagination :links="portfolioItems.links" />
                 </div>
             </div>
         </div>
@@ -104,14 +89,30 @@
 
 <script setup lang="ts">
 import {computed, Ref, ref} from "vue";
-import {router, usePage, Link} from "@inertiajs/vue3";
+import {router, usePage} from "@inertiajs/vue3";
+import type { PageProps } from '@inertiajs/core';
 import PortfolioItem from "./PortfolioItem.vue";
+import Pagination from "./Pagination.vue";
 import {trans} from "laravel-vue-i18n";
 import {route} from "ziggy-js";
 import TagData = App.Data.TagData;
 
-const page = usePage();
-const tags: Array<TagData> = page.props.tags;
+interface CustomPageProps extends PageProps {
+    tags: TagData[];
+    locale: string;
+    portfolioItems: {
+        data: any[];
+        links: {
+            url: string | null;
+            label: string;
+            active: boolean;
+        }[];
+    };
+    [key: string]: unknown;
+}
+
+const page = usePage<CustomPageProps>();
+const tags = computed(() => page.props.tags as TagData[]).value;
 const allTag: TagData = { name: "All", visible: true };
 
 const locale: string = computed(() => page.props.locale).value;
