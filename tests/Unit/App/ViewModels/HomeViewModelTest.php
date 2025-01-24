@@ -8,6 +8,7 @@ use App\Models\PortfolioItem;
 use App\Models\Tag;
 use App\Models\Testimonial;
 use App\ViewModels\HomeViewModel;
+use Database\Factories\PortfolioItemFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -96,5 +97,45 @@ class HomeViewModelTest extends TestCase
         // Then
         $this->assertCount(2, $clients);
         $this->assertEquals($firstClient->id, $clients->first()->id);
+    }
+
+    /** @test */
+    public function it_should_paginate_portfolio_items()
+    {
+        // Given
+        PortfolioItemFactory::new()
+            ->count(10)
+            ->create()
+            ->load('tags', 'images', 'bulletPoints', 'caseStudy');
+
+        // When
+        $viewModel = new HomeViewModel();
+        $result = $viewModel->portfolioItems();
+
+        // Then
+        $this->assertEquals(6, $result->perPage());
+        $this->assertEquals(10, $result->total());
+        $this->assertEquals(2, $result->lastPage());
+        $this->assertCount(6, $result->items());
+    }
+
+    /** @test */
+    public function it_should_respect_current_page()
+    {
+        // Given
+        PortfolioItemFactory::new()
+            ->count(10)
+            ->create()
+            ->load('tags', 'images', 'bulletPoints', 'caseStudy');
+
+        $this->get('/?page=2');
+
+        // When
+        $viewModel = new HomeViewModel();
+        $result = $viewModel->portfolioItems();
+
+        // Then
+        $this->assertEquals(2, $result->currentPage());
+        $this->assertCount(4, $result->items()); // Second page should have 4 items (10 total - 6 on first page)
     }
 }

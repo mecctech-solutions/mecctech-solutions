@@ -95,23 +95,4 @@ class GetAllPortfolioItemsTest extends TestCase
         // Then
         self::assertEquals($visiblePortfolioItem->title_en, $result->first()->title_en);
     }
-
-    /** @test */
-    public function it_should_paginate_portfolio_items()
-    {
-        // Given
-        PortfolioItemFactory::new()
-            ->count(10)
-            ->create()
-            ->load('tags', 'images', 'bulletPoints', 'caseStudy');
-
-        // When
-        $result = GetAllPortfolioItems::run();
-
-        // Then
-        $this->assertEquals(6, $result->perPage());
-        $this->assertEquals(10, $result->total());
-        $this->assertEquals(2, $result->lastPage());
-        $this->assertCount(6, $result->items());
-    }
 }
