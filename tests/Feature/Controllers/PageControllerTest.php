@@ -65,12 +65,18 @@ class PageControllerTest extends TestCase
                                 ->where('position', $portfolioItem->bulletPoints->first()->position);
                         });
                 })
-            )
-                ->has('links')
                 ->has('current_page')
+                ->has('first_page_url')
+                ->has('from')
                 ->has('last_page')
+                ->has('last_page_url')
+                ->has('links')
+                ->has('next_page_url')
+                ->has('path')
                 ->has('per_page')
-                ->has('total');
+                ->has('prev_page_url')
+                ->has('to')
+                ->has('total'));
         });
     }
 
