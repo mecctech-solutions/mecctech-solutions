@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\ViewModels;
+namespace Tests\Unit\App\ViewModels;
 
 use App\Models\CaseStudy;
 use App\Models\Client;
