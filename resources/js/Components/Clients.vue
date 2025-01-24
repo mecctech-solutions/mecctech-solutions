@@ -19,9 +19,10 @@
             </span>
                         <h2
                             class="
-                ud-font-bold ud-text-3xl
-                md:ud-text-4xl
-                ud-text-black ud-mb-4
+                ud-font-bold ud-text-black ud-text-3xl
+                sm:ud-text-4xl
+                md:ud-text-[45px]
+                ud-mb-5
               "
                         >
                             {{ trans('clients.happy_clients') }}

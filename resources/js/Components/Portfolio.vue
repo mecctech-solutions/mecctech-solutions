@@ -69,15 +69,18 @@
             "
                     >
                         <PortfolioItem
-                            v-for="(portfolioItem, index) in portfolioItems"
-                            :key="index"
-                            :title="locale === 'nl' ? portfolioItem.title_nl : portfolioItem.title_en"
-                            :description="locale === 'nl' ? portfolioItem.description_nl : portfolioItem.description_en"
-                            :tags="portfolioItem.tags"
-                            :main-image-url="portfolioItem.main_image_full_url"
-                            :website-url="portfolioItem.website_url"
-                            :images="portfolioItem.images"
-                            :bullet-points="portfolioItem.bullet_points"
+                            v-for="item in portfolioItems"
+                            :key="item.id"
+                            :id="item.id"
+                            :title="locale === 'nl' ? item.title_nl : item.title_en"
+                            :tags="item.tags"
+                            :main-image-url="item.main_image_full_url"
+                            :images="item.images"
+                            :description="locale === 'nl' ? item.description_nl : item.description_en"
+                            :website-url="item.website_url"
+                            :bullet-points="item.bullet_points"
+                            :has-case-study="item.has_case_study"
+                            :case-study-slug="item.case_study_slug"
                         />
 
                     </div>

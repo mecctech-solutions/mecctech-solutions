@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\BulletPoint;
+use App\Models\CaseStudy;
 use App\Models\Image;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
@@ -53,6 +54,8 @@ class PortfolioItemFactory extends Factory
             BulletPoint::factory()->count(3)->create(['portfolio_item_id' => $portfolioItem->id]);
 
             Image::factory()->count(3)->create(['portfolio_item_id' => $portfolioItem->id]);
+
+            CaseStudy::factory()->create(['portfolio_item_id' => $portfolioItem->id]);
 
             $tags = Tag::factory()->count(3)->create();
             $portfolioItem->tags()->sync($tags->pluck('id')->toArray());

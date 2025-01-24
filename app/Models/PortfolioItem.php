@@ -24,11 +24,7 @@ class PortfolioItem extends Model implements Sortable
 
     protected $casts = [
         'visible' => 'boolean',
-    ];
-
-    public $sortable = [
-        'order_column_name' => 'position',
-        'sort_when_creating' => true,
+        'website_url' => 'string',
     ];
 
     public function mainImageFullUrl(): Attribute
@@ -52,6 +48,16 @@ class PortfolioItem extends Model implements Sortable
     public function bulletPoints()
     {
         return $this->hasMany(BulletPoint::class, 'portfolio_item_id');
+    }
+
+    public function caseStudy()
+    {
+        return $this->hasOne(CaseStudy::class);
+    }
+
+    public function hasCaseStudy(): bool
+    {
+        return $this->caseStudy()->exists();
     }
 
     public function newEloquentBuilder($query): PortfolioItemBuilder

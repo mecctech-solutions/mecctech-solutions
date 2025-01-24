@@ -21,7 +21,7 @@ class GetAllPortfolioItems
         /** @phpstan-ignore-next-line  */
         $query = PortfolioItem::query()
             ->where('visible', true)
-            ->with('images', 'tags', 'bulletPoints');
+            ->with('images', 'tags', 'bulletPoints', 'caseStudy');
 
         if ($tag) {
             /** @phpstan-ignore-next-line  */

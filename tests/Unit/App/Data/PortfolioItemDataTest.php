@@ -12,6 +12,7 @@ class PortfolioItemDataTest extends TestCase
     {
         // Given
         $portfolioItem = new PortfolioItemData(
+            id: 1,
             title_en: 'Title EN',
             title_nl: 'Title NL',
             description_en: null,
@@ -20,6 +21,8 @@ class PortfolioItemDataTest extends TestCase
             website_url: 'website_url',
             position: 1,
             visible: true,
+            has_case_study: false,
+            case_study_slug: null,
             bullet_points: null,
             images: null,
             tags: null,

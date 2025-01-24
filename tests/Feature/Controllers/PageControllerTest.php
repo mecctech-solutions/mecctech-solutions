@@ -31,6 +31,7 @@ class PageControllerTest extends TestCase
             $page->has('portfolioItems', 1)
                 ->has('portfolioItems.0', function (AssertableInertia $page) use ($portfolioItem) {
                     $page
+                        ->where('id', $portfolioItem->id)
                         ->where('title_nl', $portfolioItem->title_nl)
                         ->where('title_en', $portfolioItem->title_en)
                         ->where('description_nl', $portfolioItem->description_nl)
@@ -40,6 +41,8 @@ class PageControllerTest extends TestCase
                         ->where('main_image_full_url', $portfolioItem->main_image_full_url)
                         ->where('position', $portfolioItem->position)
                         ->where('visible', (bool) $portfolioItem->visible)
+                        ->where('has_case_study', $portfolioItem->hasCaseStudy())
+                        ->where('case_study_slug', $portfolioItem->caseStudy?->slug)
                         ->has('tags', $portfolioItem->tags->count())
                         ->has('tags.0', function (AssertableInertia $page) use ($portfolioItem) {
                             $page

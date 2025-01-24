@@ -2,6 +2,7 @@
     <div class="ud-w-full md:ud-w-1/2 ud-px-4 item web app">
         <div class="ud-mb-12">
             <div
+                :dusk="'portfolio-item-' + id"
                 class="
           ud-relative
           ud-group
@@ -56,6 +57,7 @@
 
             <h3 class="mt-6">
                 <a
+                    :dusk="'portfolio-item-toggle-modal-' + id"
                     @click="toggleModal"
                     href="javascript:void(0)"
                     class="
@@ -71,7 +73,8 @@
                 </ul>
 
             </h3>
-            <div @click="toggleModal">
+            <div
+                @click="toggleModal">
                 <ul class="ud-font-medium ud-text-base ud-text-body-color ud-cursor-pointer"></ul>
             </div>
         </div>
@@ -84,6 +87,8 @@
             :description="description"
             :website-url="websiteUrl"
             :bullet-points="bulletPoints"
+            :has-case-study="hasCaseStudy"
+            :case-study-slug="caseStudySlug"
             @turn-off-modal="turnOffModal"
         />
     </div>
@@ -102,6 +107,9 @@ const props = defineProps({
     description: String,
     websiteUrl: String,
     bulletPoints: Array,
+    hasCaseStudy: Boolean,
+    caseStudySlug: String,
+    id: Number,
 });
 
 const viewModal = ref(false);

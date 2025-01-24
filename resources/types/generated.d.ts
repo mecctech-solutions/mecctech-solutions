@@ -19,14 +19,17 @@ position: number;
 };
 export type PortfolioItemData = {
 main_image_full_url: string;
+id: number | null;
 title_en: string;
 title_nl: string;
 description_en: string | null;
 description_nl: string | null;
 main_image_url: string;
-website_url: string;
+website_url: string | null;
 position: number;
 visible: boolean;
+has_case_study: boolean;
+case_study_slug: string | null;
 bullet_points: Array<App.Data.BulletPointData> | null;
 images: Array<App.Data.ImageData> | null;
 tags: Array<App.Data.TagData> | null;

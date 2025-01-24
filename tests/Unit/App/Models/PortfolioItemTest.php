@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\App\Models;
 
+use App\Models\CaseStudy;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -123,5 +124,27 @@ class PortfolioItemTest extends TestCase
         // Then
         self::assertEquals(2, $firstBulletPointPortfolioItem1->position);
         self::assertEquals(1, $firstBulletPointPortfolioItem2->position);
+    }
+
+    public function test_it_can_have_case_study(): void
+    {
+        // Given
+        $portfolioItem = PortfolioItem::factory()->create();
+        $caseStudy = CaseStudy::factory()->create([
+            'portfolio_item_id' => $portfolioItem->id,
+        ]);
+
+        // When & Then
+        $this->assertTrue($portfolioItem->caseStudy->is($caseStudy));
+        $this->assertTrue($portfolioItem->hasCaseStudy());
+    }
+
+    public function test_has_case_study_returns_false_when_no_case_study(): void
+    {
+        // Given
+        $portfolioItem = PortfolioItem::factory()->create();
+
+        // When & Then
+        $this->assertFalse($portfolioItem->hasCaseStudy());
     }
 }

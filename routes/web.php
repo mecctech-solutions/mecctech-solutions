@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\SubmitContactRequest;
+use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,5 @@ Route::get('locale/', function (Request $request) {
 
     return redirect()->back();
 })->name('locale.change');
+
+Route::get('/case-studies/{caseStudy:slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');

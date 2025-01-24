@@ -21,7 +21,7 @@ class GetAllPortfolioItemsTest extends TestCase
                 'description_en' => null,
                 'description_nl' => null,
             ])
-            ->load('tags', 'images', 'bulletPoints')
+            ->load('tags', 'images', 'bulletPoints', 'caseStudy')
             ->sortBy('position')
             ->values();
 
@@ -48,7 +48,7 @@ class GetAllPortfolioItemsTest extends TestCase
             ->count(5)
             ->withTags(['name' => $firstTag])
             ->create()
-            ->load('tags', 'images', 'bulletPoints')
+            ->load('tags', 'images', 'bulletPoints', 'caseStudy')
             ->sortBy('position')
             ->values();
 

@@ -6,5 +6,5 @@ return [
     'date' => 'Date',
     'location' => 'Location',
     'date_value' => 'August',
-
+    'back_to_portfolio' => 'Back to portfolio',
 ];
