@@ -4,7 +4,7 @@
   <HomeLayout>
     <section class="ud-pt-[200px] ud-pb-[70px]">
       <div class="ud-container ud-max-w-4xl ud-mx-auto">
-        <h1 class="ud-text-4xl ud-font-bold ud-mb-8">{{ title }}</h1>
+        <h1 class="ud-text-4xl ud-font-bold ud-mb-8" dusk="case-study-title">{{ title }}</h1>
 
         <div
           class="ud-prose ud-max-w-none"

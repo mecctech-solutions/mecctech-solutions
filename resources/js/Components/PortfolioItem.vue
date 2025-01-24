@@ -57,6 +57,7 @@
 
             <h3 class="mt-6">
                 <a
+                    :dusk="'portfolio-item-toggle-modal-' + id"
                     @click="toggleModal"
                     href="javascript:void(0)"
                     class="
@@ -72,7 +73,8 @@
                 </ul>
 
             </h3>
-            <div @click="toggleModal">
+            <div
+                @click="toggleModal">
                 <ul class="ud-font-medium ud-text-base ud-text-body-color ud-cursor-pointer"></ul>
             </div>
         </div>
