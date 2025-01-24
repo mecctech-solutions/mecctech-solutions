@@ -15,7 +15,7 @@ class PortfolioItemData extends Data
     public string $main_image_full_url;
 
     public function __construct(
-        public int $id,
+        public ?int $id,
         public string $title_en,
         public string $title_nl,
         public ?string $description_en,
