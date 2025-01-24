@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CaseStudy extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'portfolio_item_id',
         'title_nl',
@@ -26,6 +27,6 @@ class CaseStudy extends Model
 
     protected static function newFactory(): CaseStudyFactory
     {
-        return new CaseStudyFactory();
+        return new CaseStudyFactory;
     }
 }

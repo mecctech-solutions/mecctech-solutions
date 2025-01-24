@@ -16,4 +16,4 @@ class ListCaseStudies extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
-} 
+}

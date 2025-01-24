@@ -131,7 +131,7 @@ class PortfolioItemTest extends TestCase
         // Given
         $portfolioItem = PortfolioItem::factory()->create();
         $caseStudy = CaseStudy::factory()->create([
-            'portfolio_item_id' => $portfolioItem->id
+            'portfolio_item_id' => $portfolioItem->id,
         ]);
 
         // When & Then

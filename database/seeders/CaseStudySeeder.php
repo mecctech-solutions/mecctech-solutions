@@ -13,8 +13,8 @@ class CaseStudySeeder extends Seeder
         // Create case studies for 30% of portfolio items
         PortfolioItem::all()->random(PortfolioItem::count() * 0.3)->each(function ($portfolioItem) {
             CaseStudy::factory()->create([
-                'portfolio_item_id' => $portfolioItem->id
+                'portfolio_item_id' => $portfolioItem->id,
             ]);
         });
     }
-} 
+}
