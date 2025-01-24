@@ -5,6 +5,7 @@ import './bootstrap';
 import {route} from 'ziggy-js';
 import {i18nVue} from 'laravel-vue-i18n'
 import vClickOutside from "click-outside-vue3"
+import { createPinia } from 'pinia'
 
 createInertiaApp({
     resolve: name => {
@@ -22,6 +23,7 @@ createInertiaApp({
             }
         })
         vueApp.use(vClickOutside)
+        vueApp.use(createPinia())
         vueApp.config.globalProperties.$route = route;
         vueApp.mount(el);
     },

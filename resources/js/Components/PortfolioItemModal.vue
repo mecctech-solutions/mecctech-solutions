@@ -156,6 +156,7 @@ import useScreenSize from "@/Composables/screensize.ts";
 import {trans} from "laravel-vue-i18n";
 import Tag from "@/Components/Tag.vue";
 import {route} from "ziggy-js";
+import { useModalStore } from "@/Stores/modalStore";
 
 const props = defineProps({
     title: String,
@@ -182,15 +183,17 @@ const locale = computed(() => page.props.locale);
 const {isMobile} = useScreenSize();
 const currentImageUrl = ref("");
 
+const modalStore = useModalStore();
+
 onMounted(() => {
     currentImageUrl.value = props.images[0].full_url;
+    modalStore.open();
 });
 
 const emitTurnOffModalEvent = () => {
+    modalStore.close();
     emit("turn-off-modal");
 };
-
-
 </script>
 
 <style scoped>

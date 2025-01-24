@@ -1,6 +1,7 @@
 <template>
     <!-- ====== Back To Top Start -->
     <a
+        v-if="!modalStore.isOpen"
         href="#"
         class="
         ud-bg-primary
@@ -33,10 +34,10 @@
     <!-- ====== Back To Top End -->
 </template>
 
-<script>
-export default {
-    name: "BackToTop"
-}
+<script setup>
+import { useModalStore } from "@/Stores/modalStore";
+
+const modalStore = useModalStore();
 </script>
 
 <style scoped>

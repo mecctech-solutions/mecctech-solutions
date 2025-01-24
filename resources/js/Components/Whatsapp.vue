@@ -1,6 +1,7 @@
 <template>
     <!-- ====== Back To Top Start -->
     <a
+        v-if="!modalStore.isOpen"
         href="https://wa.me/31681639449"
         class="
         ud-w-10
@@ -37,10 +38,10 @@
     <!-- ====== Back To Top End -->
 </template>
 
-<script>
-export default {
-    name: "Whatsapp"
-}
+<script setup>
+import { useModalStore } from "@/Stores/modalStore";
+
+const modalStore = useModalStore();
 </script>
 
 <style scoped>
