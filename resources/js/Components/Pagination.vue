@@ -51,11 +51,11 @@ const visibleLinks = computed(() => {
     visibleLinks.push(firstLink);
     
     // Logic for showing pages around current page
-    if (currentPageIndex <= 3) {
+    if (currentPageIndex <= 2) {
         // Near the start
         visibleLinks.push(...props.links.slice(1, 4));
         visibleLinks.push({ label: '...', url: null, active: false });
-    } else if (currentPageIndex >= props.links.length - 4) {
+    } else if (currentPageIndex >= props.links.length - 3) {
         // Near the end
         visibleLinks.push({ label: '...', url: null, active: false });
         visibleLinks.push(...props.links.slice(-5, -1));
@@ -70,8 +70,6 @@ const visibleLinks = computed(() => {
     
     // Replace Previous and Next labels with icons
     visibleLinks = visibleLinks.map(link => {
-        console.log(link.label);
-        
         if (link.label === '&laquo; Previous') {
             return { ...link, label: '<i class="fas fa-chevron-left"></i>' };
         } else if (link.label === 'Next &raquo;') {
