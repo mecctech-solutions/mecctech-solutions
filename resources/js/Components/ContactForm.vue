@@ -54,6 +54,7 @@
                                         v-model="form.company"
                                         name="company"
                                         :placeholder="trans('contact.company')"
+                                        :required="false"
                                     />
                                 </div>
                             </div>

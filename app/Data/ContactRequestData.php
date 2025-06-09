@@ -12,6 +12,7 @@ class ContactRequestData extends Data
         public string $email,
         public string $phone_number,
         public string $message,
+        public ?string $company = null,
     ) {}
 
     /**
@@ -34,6 +35,7 @@ class ContactRequestData extends Data
             last_name: $lastName,
             email: $data['email'],
             phone_number: $data['phone'],
+            company: \Arr::get($data, 'company'),
             message: $data['message'],
         );
     }

@@ -2,7 +2,7 @@
 
 return [
     'contact_me' => 'Idee in gedachte?',
-    'project' => 'Stuur me een berichtje voor je project',
+    'project' => 'Stuur me een berichtje over je project',
     'project_text' => 'Als je me wilt inhuren voor je project, kun je me bereiken via dit formulier. Je kan me ook bereiken via email of telefoon nummer',
     'name' => 'Naam',
     'company' => 'Bedrijf (optioneel)',
