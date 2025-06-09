@@ -55,9 +55,9 @@ it('should change language of portfolio items', function () {
         $url = route('home');
         $browser
             ->visit($url)
-            ->waitFor('@language-switcher-nl')
+            ->waitFor('@language-switcher-en')
             ->waitFor('@portfolio')
-            ->click('@language-switcher-nl')
+            ->click('@language-switcher-en')
             ->waitForText($portfolioItem->title_en)
             ->assertSee($portfolioItem->title_en);
     });

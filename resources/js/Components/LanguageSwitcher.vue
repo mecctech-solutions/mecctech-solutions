@@ -30,6 +30,7 @@ function changeLanguage(language) {
                    class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img
                     style="width: 30px" src="/icons/netherlands.png" alt=""></a>
                 <a @click="changeLanguage('en')"
+                     dusk="language-switcher-en"
                    class="ud-cursor-pointer hover:ud-scale-110 ud-transform ud-transition ud-ease-in-out"><img
                     style="width: 30px" src="/icons/uk.png" alt=""></a>
             </div>
