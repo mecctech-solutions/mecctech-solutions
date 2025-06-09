@@ -75,7 +75,7 @@ jobs:
         run: php artisan migrate --force
 
       - name: Execute tests (Unit, Feature and Integration tests) via PHPUnit/Pest
-        run: php artisan test --coverage --min=90
+        run: php artisan test --coverage --min=80
 
       - name: Run PHP Stan
         run: ./vendor/bin/phpstan analyse

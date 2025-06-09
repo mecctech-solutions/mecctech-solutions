@@ -12,8 +12,8 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(2, true),
-            'visible' => $this->faker->boolean,
+            'name' => fake()->words(2, true),
+            'visible' => fake()->boolean,
         ];
     }
 }

@@ -13,14 +13,14 @@ class CaseStudyFactory extends Factory
 
     public function definition(): array
     {
-        $titleNl = $this->faker->sentence();
+        $titleNl = fake()->sentence();
 
         return [
             'portfolio_item_id' => PortfolioItem::factory(),
             'title_nl' => $titleNl,
-            'title_en' => $this->faker->sentence(),
-            'content_nl' => $this->faker->paragraphs(3, true),
-            'content_en' => $this->faker->paragraphs(3, true),
+            'title_en' => fake()->sentence(),
+            'content_nl' => fake()->paragraphs(3, true),
+            'content_en' => fake()->paragraphs(3, true),
             'slug' => Str::slug($titleNl),
         ];
     }

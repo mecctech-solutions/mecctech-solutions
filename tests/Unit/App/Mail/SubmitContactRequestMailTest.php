@@ -1,22 +1,35 @@
 <?php
 
 use App\Mail\SubmitContactRequestMail;
-use Tests\TestCase;
 
-class SubmitContactRequestMailTest extends TestCase
-{
-    /** @test */
-    public function it_should_have_a_view_with_a_message()
-    {
+it('should have a view with a message', function () {
+    // Given
+    $message = 'Test Message';
+    $recipientEmailAddress = 'johndoe@example.com';
 
-        // Given
-        $message = 'Test Message';
-        $recipientEmailAddress = 'johndoe@example.com';
+    // When
+    $mailable = new SubmitContactRequestMail($message, $recipientEmailAddress);
 
-        // When
-        $mailable = new SubmitContactRequestMail($message, $recipientEmailAddress);
+    // Then
+    $mailable->assertSeeInHtml($message);
+});
 
-        // Then
-        $mailable->assertSeeInHtml($message);
-    }
-}
+test('it builds mail with correct content', function () {
+    $message = 'Test message';
+    $recipientEmail = 'test@example.com';
+
+    $mail = new SubmitContactRequestMail($message, $recipientEmail);
+
+    expect($mail->message)->toBe($message)
+        ->and($mail->recipientEmailAddress)->toBe($recipientEmail);
+});
+
+test('it renders mail content', function () {
+    $message = 'Test message';
+    $recipientEmail = 'test@example.com';
+
+    $mail = new SubmitContactRequestMail($message, $recipientEmail);
+    $rendered = $mail->render();
+
+    expect($rendered)->toContain($message);
+});

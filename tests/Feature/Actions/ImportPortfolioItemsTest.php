@@ -1,23 +1,15 @@
 <?php
 
-namespace Tests\Feature\Actions;
-
 use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
 
-class ImportPortfolioItemsTest extends TestCase
-{
-    /** @test */
-    public function it_should_be_able_to_call_the_route()
-    {
-        // Given
-        $url = route('import-portfolio-items');
+it('should be able to call the route', function () {
+    // Given
+    $url = route('import-portfolio-items');
 
-        // When
-        $response = $this->post($url, [
-            'portfolio_items' => UploadedFile::fake()->create(1),
-        ]);
+    // When
+    $response = $this->post($url, [
+        'portfolio_items' => UploadedFile::fake()->create(1),
+    ]);
 
-        $response->assertStatus(200);
-    }
-}
+    $response->assertStatus(200);
+});
