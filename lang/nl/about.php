@@ -2,8 +2,8 @@
 
 return [
     'about_me' => 'Over mij',
-    'about_me_text' => 'Ik heb een passie voor het maken van hoge kwaliteit Laravel applicaties die schaalbaar / onderhoudbaar zijn, die complexe business problemen oplossen en fijn zijn voor de gebruiker, dus hun leven te verbeteren.',
-    'connect' => 'Get in touch',
-    'connect_text' => 'Als je een interessant idee of project hebt wat je wil laten ontwikkelen met Laravel en Vue.js, voel je vrij om mij te benaderen via het contact formulier of mijn persoonlijke contact informatie.',
-    'solving_problems' => 'Problemen oplossen met hoge kwaliteit software',
+    'about_me_text' => 'Ik transformeer jouw ideeën tot robuuste web applicaties. Met mijn expertise in Laravel en Vue.js creëer ik schaalbare, onderhoudbare applicaties om jouw ideeën te realiseren.',
+    'connect' => 'Laten we samenwerken',
+    'connect_text' => 'Heb je een innovatief idee of droom die je wilt verwezenlijken? Ik help je graag om jouw visie om te zetten in een hoogwaardige digitale oplossing. Neem contact op via het formulier of mijn persoonlijke contactgegevens.',
+    'solving_problems' => 'Van idee naar werkelijkheid: jouw dromen, mijn expertise',
 ];
