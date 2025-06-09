@@ -13,7 +13,7 @@ class CsvPortfolioItemsConverter
     public static function import(string $path): Collection
     {
         $file = fopen($path, 'r');
-        
+
         if ($file === false) {
             throw new \RuntimeException('Could not open file for reading');
         }
@@ -151,6 +151,7 @@ class CsvPortfolioItemsConverter
         }
 
         fclose($file);
+
         return PortfolioItemData::collect($portfolioItems, Collection::class);
     }
 }

@@ -13,6 +13,7 @@ class BulletPoint extends Model implements Sortable
 {
     /** @use HasFactory<BulletPointFactory> */
     use HasFactory;
+
     use SortableTrait;
 
     protected $table = 'bullet_points';

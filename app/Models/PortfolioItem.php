@@ -18,6 +18,7 @@ class PortfolioItem extends Model implements Sortable
 {
     /** @use HasFactory<PortfolioItemFactory> */
     use HasFactory;
+
     use SortableTrait;
 
     protected $table = 'portfolio_items';
@@ -80,16 +81,13 @@ class PortfolioItem extends Model implements Sortable
     }
 
     /**
-     * @param \Illuminate\Database\Query\Builder $query
+     * @param  \Illuminate\Database\Query\Builder  $query
      */
     public function newEloquentBuilder($query): PortfolioItemBuilder
     {
         return new PortfolioItemBuilder($query);
     }
 
-    /**
-     * @return PortfolioItemFactory
-     */
     protected static function newFactory(): PortfolioItemFactory
     {
         return new PortfolioItemFactory;

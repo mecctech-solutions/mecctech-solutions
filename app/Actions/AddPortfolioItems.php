@@ -20,7 +20,7 @@ class AddPortfolioItems
     use AsAction;
 
     /**
-     * @param Collection<int, PortfolioItemData> $portfolioItems
+     * @param  Collection<int, PortfolioItemData>  $portfolioItems
      */
     public function handle(Collection $portfolioItems): void
     {
