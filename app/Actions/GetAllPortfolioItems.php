@@ -15,10 +15,10 @@ class GetAllPortfolioItems
     use AsAction;
 
     /**
-     * @param string|array<string>|null $tag
+     * @param string|null $tag
      * @return Collection<int, PortfolioItem>
      */
-    public function handle(string|array|null $tag = null): Collection
+    public function handle(string|null $tag = null): Collection
     {
         $query = PortfolioItem::query()
             ->where('visible', true)
@@ -34,7 +34,9 @@ class GetAllPortfolioItems
     public function asController(Request $request): JsonResponse
     {
         try {
-            $portfolioItems = $this->handle($request->query('tag'));
+            /** @var string $tag */
+            $tag = $request->query('tag');
+            $portfolioItems = $this->handle($tag);
             $portfolioItemsData = PortfolioItemData::collect($portfolioItems);
 
             return response()->json([
