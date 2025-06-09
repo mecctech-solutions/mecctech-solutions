@@ -15,15 +15,16 @@ class GetAllPortfolioItems
     use AsAction;
 
     /**
+     * @param string|array<string>|null $tag
      * @return Collection<int, PortfolioItem>
      */
-    public function handle(?string $tag = null): Collection
+    public function handle(string|array|null $tag = null): Collection
     {
         $query = PortfolioItem::query()
             ->where('visible', true)
             ->with('images', 'tags', 'bulletPoints', 'caseStudy');
 
-        if ($tag) {
+        if (is_string($tag)) {
             $query->whereRelation('tags', 'name', $tag);
         }
 

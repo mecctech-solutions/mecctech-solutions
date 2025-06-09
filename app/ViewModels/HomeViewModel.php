@@ -42,7 +42,10 @@ class HomeViewModel extends ViewModel
         $currentPage = request()->get('page', 1);
 
         return new LengthAwarePaginator(
+            /** @phpstan-ignore-next-line */
             $items->forPage($currentPage, $itemsPerPage),
+
+            /** @phpstan-ignore-next-line */
             $items->count(),
             $itemsPerPage,
             $currentPage,

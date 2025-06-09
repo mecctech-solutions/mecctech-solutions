@@ -37,7 +37,14 @@ class SubmitContactRequest
 
     public function asController(SubmitContactRequestRequest $request): RedirectResponse
     {
-        $data = ContactRequestData::fromRequest($request->validated());
+        $validated = $request->validated();
+        
+        $data = ContactRequestData::from([
+            'name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone_number'],
+            'message' => $validated['message'],
+        ]);
 
         $this->handle($data);
 

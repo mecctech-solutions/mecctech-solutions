@@ -22,8 +22,8 @@ class ImportPortfolioItems
         try {
             $uploadedFile = $request->file('portfolio_items');
             
-            if ($uploadedFile === null) {
-                throw new \InvalidArgumentException('No file uploaded');
+            if (!$uploadedFile instanceof \Illuminate\Http\UploadedFile) {
+                throw new \InvalidArgumentException('No file uploaded or invalid file type');
             }
 
             $path = $uploadedFile->getRealPath();

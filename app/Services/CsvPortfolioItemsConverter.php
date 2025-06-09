@@ -13,12 +13,17 @@ class CsvPortfolioItemsConverter
     public static function import(string $path): Collection
     {
         $file = fopen($path, 'r');
+        
+        if ($file === false) {
+            throw new \RuntimeException('Could not open file for reading');
+        }
 
         $portfolioItems = [];
         $rowNumber = 0;
 
         while (($row = fgetcsv($file)) !== false) {
             if (count($row) !== 23) {
+                fclose($file);
                 throw new \InvalidArgumentException('Excel file should have 23 columns');
             }
 
@@ -145,6 +150,7 @@ class CsvPortfolioItemsConverter
 
         }
 
+        fclose($file);
         return PortfolioItemData::collect($portfolioItems, Collection::class);
     }
 }
