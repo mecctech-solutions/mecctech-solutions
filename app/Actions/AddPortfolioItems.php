@@ -79,8 +79,9 @@ class AddPortfolioItems
     public function asController(Request $request): JsonResponse
     {
         try {
+            $portfolioItems = $request->input('portfolio_items');
+
             /** @phpstan-ignore-next-line */
-            $portfolioItems = collect($request->input('portfolio_items'));
             $this->handle($portfolioItems);
 
             return response()->json([], 200);

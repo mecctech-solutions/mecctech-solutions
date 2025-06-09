@@ -26,7 +26,7 @@ test('user can view case study from portfolio item', function () {
             ->waitForLocation('/case-studies/'.$caseStudy->slug)
             ->assertUrlIs(route('case-studies.show', $caseStudy->slug))
             ->waitFor('@case-study-title')
-            ->assertSee($caseStudy->title_en)
-            ->assertSee($caseStudy->content_en);
+            ->assertSee($caseStudy->title_nl)
+            ->assertSee($caseStudy->content_nl);
     });
 });

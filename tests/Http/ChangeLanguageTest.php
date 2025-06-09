@@ -4,8 +4,8 @@ use Inertia\Testing\AssertableInertia;
 
 it('should change language', function () {
     // Given
-    $newLanguage = 'nl';
-    self::assertEquals('en', app()->getLocale());
+    $newLanguage = 'en';
+    self::assertEquals('nl', app()->getLocale());
 
     // When
     $this->get(route('locale.change', ['locale' => $newLanguage]));
@@ -16,8 +16,8 @@ it('should change language', function () {
 
 it('should change language in inertia data', function () {
     // Given
-    $newLanguage = 'nl';
-    self::assertEquals('en', app()->getLocale());
+    $newLanguage = 'en';
+    self::assertEquals('nl', app()->getLocale());
 
     // When
     $this->get(route('locale.change', ['locale' => $newLanguage]));
