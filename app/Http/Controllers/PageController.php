@@ -13,7 +13,7 @@ class PageController extends Controller
     {
         $tag = $request->query('tag');
 
-        if ($tag === 'All' || !is_string($tag)) {
+        if ($tag === 'All' || ! is_string($tag)) {
             $tag = null;
         }
 

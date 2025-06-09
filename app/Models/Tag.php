@@ -13,6 +13,7 @@ class Tag extends Model implements Sortable
 {
     /** @use HasFactory<TagFactory> */
     use HasFactory;
+
     use SortableTrait;
 
     protected $table = 'tags';

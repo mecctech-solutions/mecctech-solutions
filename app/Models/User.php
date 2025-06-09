@@ -16,6 +16,7 @@ class User extends Authenticatable implements FilamentUser
 
     /** @use HasFactory<UserFactory> */
     use HasFactory;
+
     protected $fillable = [
         'name',
         'email',

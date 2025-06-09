@@ -21,13 +21,13 @@ class ImportPortfolioItems
     {
         try {
             $uploadedFile = $request->file('portfolio_items');
-            
-            if (!$uploadedFile instanceof \Illuminate\Http\UploadedFile) {
+
+            if (! $uploadedFile instanceof \Illuminate\Http\UploadedFile) {
                 throw new \InvalidArgumentException('No file uploaded or invalid file type');
             }
 
             $path = $uploadedFile->getRealPath();
-            
+
             if ($path === false) {
                 throw new \RuntimeException('Could not get file path');
             }

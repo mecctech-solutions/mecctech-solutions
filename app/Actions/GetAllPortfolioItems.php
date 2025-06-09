@@ -15,7 +15,7 @@ class GetAllPortfolioItems
     use AsAction;
 
     /**
-     * @param string|array<string>|null $tag
+     * @param  string|array<string>|null  $tag
      * @return Collection<int, PortfolioItem>
      */
     public function handle(string|array|null $tag = null): Collection

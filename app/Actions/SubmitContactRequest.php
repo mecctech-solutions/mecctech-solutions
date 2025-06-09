@@ -38,9 +38,9 @@ class SubmitContactRequest
     public function asController(SubmitContactRequestRequest $request): RedirectResponse
     {
         $validated = $request->validated();
-        
+
         $data = ContactRequestData::from([
-            'name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'name' => $validated['first_name'].' '.$validated['last_name'],
             'email' => $validated['email'],
             'phone' => $validated['phone_number'],
             'message' => $validated['message'],

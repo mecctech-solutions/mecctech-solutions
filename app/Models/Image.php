@@ -15,6 +15,7 @@ class Image extends Model implements Sortable
 {
     /** @use HasFactory<ImageFactory> */
     use HasFactory;
+
     use SortableTrait;
 
     protected $table = 'images';
