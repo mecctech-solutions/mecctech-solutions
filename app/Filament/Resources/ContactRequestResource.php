@@ -33,6 +33,10 @@ class ContactRequestResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->label('Email')
                     ->required(),
+                Forms\Components\TextInput::make('phone_number')
+                    ->label('Phone Number')
+                    ->tel()
+                    ->required(),
                 Forms\Components\TextInput::make('message')
                     ->label('Message')
                     ->required(),
@@ -50,6 +54,10 @@ class ContactRequestResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('phone_number')
+                    ->label('Phone Number')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('message')
