@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CaseStudy extends Model
 {
+    /** @use HasFactory<CaseStudyFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -20,6 +21,9 @@ class CaseStudy extends Model
         'slug',
     ];
 
+    /**
+     * @return BelongsTo<PortfolioItem, $this>
+     */
     public function portfolioItem(): BelongsTo
     {
         return $this->belongsTo(PortfolioItem::class);

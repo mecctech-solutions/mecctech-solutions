@@ -48,7 +48,7 @@ visible: boolean;
 export type TestimonialData = {
 id: number;
 name: string;
-job_title_en: string;
+job_title_en: string | null;
 job_title_nl: string;
 text_nl: string;
 text_en: string;

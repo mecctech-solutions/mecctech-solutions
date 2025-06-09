@@ -8,12 +8,17 @@ use Database\Factories\PortfolioItemFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 class PortfolioItem extends Model implements Sortable
 {
+    /** @use HasFactory<PortfolioItemFactory> */
     use HasFactory;
+
     use SortableTrait;
 
     protected $table = 'portfolio_items';
@@ -27,6 +32,9 @@ class PortfolioItem extends Model implements Sortable
         'website_url' => 'string',
     ];
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function mainImageFullUrl(): Attribute
     {
         return new Attribute(
@@ -35,22 +43,34 @@ class PortfolioItem extends Model implements Sortable
             });
     }
 
-    public function tags()
+    /**
+     * @return BelongsToMany<Tag, $this>
+     */
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'portfolio_item_tag', 'portfolio_item_id', 'tag_id');
     }
 
-    public function images()
+    /**
+     * @return HasMany<Image, $this>
+     */
+    public function images(): HasMany
     {
         return $this->hasMany(Image::class, 'portfolio_item_id');
     }
 
-    public function bulletPoints()
+    /**
+     * @return HasMany<BulletPoint, $this>
+     */
+    public function bulletPoints(): HasMany
     {
         return $this->hasMany(BulletPoint::class, 'portfolio_item_id');
     }
 
-    public function caseStudy()
+    /**
+     * @return HasOne<CaseStudy, $this>
+     */
+    public function caseStudy(): HasOne
     {
         return $this->hasOne(CaseStudy::class);
     }
@@ -60,6 +80,9 @@ class PortfolioItem extends Model implements Sortable
         return $this->caseStudy()->exists();
     }
 
+    /**
+     * @param  \Illuminate\Database\Query\Builder  $query
+     */
     public function newEloquentBuilder($query): PortfolioItemBuilder
     {
         return new PortfolioItemBuilder($query);

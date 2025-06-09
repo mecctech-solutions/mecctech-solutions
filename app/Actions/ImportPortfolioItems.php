@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Services\CsvPortfolioItemsConverter;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
 
@@ -16,20 +17,38 @@ class ImportPortfolioItems
         AddPortfolioItems::run($portfolioItems);
     }
 
-    public function asController(Request $request)
+    public function asController(Request $request): JsonResponse
     {
         try {
             $uploadedFile = $request->file('portfolio_items');
+
+            if (! $uploadedFile instanceof \Illuminate\Http\UploadedFile) {
+                throw new \InvalidArgumentException('No file uploaded or invalid file type');
+            }
+
             $path = $uploadedFile->getRealPath();
+
+            if ($path === false) {
+                throw new \RuntimeException('Could not get file path');
+            }
+
             $this->handle($path);
-            $response['meta']['created_at'] = time();
 
+            return response()->json([
+                'meta' => [
+                    'created_at' => time(),
+                ],
+            ]);
         } catch (\Exception $e) {
-            $response['meta']['created_at'] = time();
-            $response['error']['code'] = $e->getCode();
-            $response['error']['message'] = $e->getMessage();
+            return response()->json([
+                'meta' => [
+                    'created_at' => time(),
+                ],
+                'error' => [
+                    'code' => $e->getCode(),
+                    'message' => $e->getMessage(),
+                ],
+            ], 500);
         }
-
-        return $response;
     }
 }

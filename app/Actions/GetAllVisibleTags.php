@@ -10,6 +10,9 @@ class GetAllVisibleTags
 {
     use AsAction;
 
+    /**
+     * @return Collection<int, Tag>
+     */
     public function handle(): Collection
     {
         return Tag::query()->visible()->sorted()->get();

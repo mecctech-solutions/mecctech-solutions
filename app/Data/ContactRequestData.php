@@ -14,6 +14,14 @@ class ContactRequestData extends Data
         public string $message,
     ) {}
 
+    /**
+     * @param array{
+     *     name: string,
+     *     email: string,
+     *     phone: string,
+     *     message: string
+     * } $data
+     */
     public static function fromRequest(array $data): self
     {
         $name = $data['name'];

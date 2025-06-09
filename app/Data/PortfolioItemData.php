@@ -9,6 +9,12 @@ use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 
+/**
+ * @property string $main_image_full_url
+ * @property-read ?DataCollection<int, BulletPointData> $bullet_points
+ * @property-read ?DataCollection<int, ImageData> $images
+ * @property-read ?DataCollection<int, TagData> $tags
+ */
 class PortfolioItemData extends Data
 {
     #[Computed]
@@ -27,12 +33,21 @@ class PortfolioItemData extends Data
         public bool $has_case_study,
         public ?string $case_study_slug,
 
+        /**
+         * @var DataCollection<int, BulletPointData>|null
+         */
         #[DataCollectionOf(BulletPointData::class)]
         public ?DataCollection $bullet_points,
 
+        /**
+         * @var DataCollection<int, ImageData>|null
+         */
         #[DataCollectionOf(ImageData::class)]
         public ?DataCollection $images,
 
+        /**
+         * @var DataCollection<int, TagData>|null
+         */
         #[DataCollectionOf(TagData::class)]
         public ?DataCollection $tags,
     ) {

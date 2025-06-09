@@ -10,7 +10,7 @@ class TestimonialData extends Data
     public function __construct(
         public int $id,
         public string $name,
-        public string $job_title_en,
+        public ?string $job_title_en,
         public string $job_title_nl,
         public string $text_nl,
         public string $text_en,

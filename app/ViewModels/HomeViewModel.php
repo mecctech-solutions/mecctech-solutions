@@ -32,6 +32,9 @@ class HomeViewModel extends ViewModel
         ];
     }
 
+    /**
+     * @return LengthAwarePaginator<PortfolioItemData>
+     */
     public function portfolioItems(): LengthAwarePaginator
     {
         $items = PortfolioItemData::collect(GetAllPortfolioItems::run($this->tag));
@@ -39,7 +42,10 @@ class HomeViewModel extends ViewModel
         $currentPage = request()->get('page', 1);
 
         return new LengthAwarePaginator(
+            /** @phpstan-ignore-next-line */
             $items->forPage($currentPage, $itemsPerPage),
+
+            /** @phpstan-ignore-next-line */
             $items->count(),
             $itemsPerPage,
             $currentPage,
@@ -50,11 +56,17 @@ class HomeViewModel extends ViewModel
         );
     }
 
+    /**
+     * @return Collection<int, TagData>
+     */
     public function tags(): Collection
     {
-        return TagData::collect(GetAllVisibleTags::run());
+        return TagData::collect(GetAllVisibleTags::make()->handle());
     }
 
+    /**
+     * @return Collection<int, TestimonialData>
+     */
     public function testimonials(): Collection
     {
         return TestimonialData::collect(
@@ -62,6 +74,9 @@ class HomeViewModel extends ViewModel
         );
     }
 
+    /**
+     * @return Collection<int, ClientData>
+     */
     public function clients(): Collection
     {
         return ClientData::collect(
