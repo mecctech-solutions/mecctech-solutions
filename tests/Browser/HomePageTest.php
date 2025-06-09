@@ -1,12 +1,8 @@
 <?php
 
-uses(\Tests\DuskTestCase::class);
-
 use App\Models\PortfolioItem;
 use App\Models\Tag;
 use Laravel\Dusk\Browser;
-
-uses(\Illuminate\Foundation\Testing\DatabaseMigrations::class);
 
 it('should only show tags that are visible', function () {
     // Given

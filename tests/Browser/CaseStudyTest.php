@@ -1,12 +1,8 @@
 <?php
 
-uses(\Tests\DuskTestCase::class);
-
 use App\Models\CaseStudy;
 use App\Models\PortfolioItem;
 use Laravel\Dusk\Browser;
-
-uses(\Illuminate\Foundation\Testing\DatabaseMigrations::class);
 
 test('user can view case study from portfolio item', function () {
     // Given
