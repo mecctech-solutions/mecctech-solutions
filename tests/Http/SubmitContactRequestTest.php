@@ -8,12 +8,12 @@ it('should return status redirect', function () {
 
     // When
     $response = $this->post($url, [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'johndoe@example.com',
-            'message' => 'Test Message',
-            'phone' => '0612345678',
-        ]);
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'johndoe@example.com',
+        'message' => 'Test Message',
+        'phone' => '0612345678',
+    ]);
 
     // Then
     expect($response->status())->toEqual(302);
@@ -41,7 +41,7 @@ it('should store contact request', function () {
     ]);
 });
 
-it('should dispatch email on queue', function() {
+it('should dispatch email on queue', function () {
     // Arrange
     $url = route('submit-contact-request');
     Queue::fake();

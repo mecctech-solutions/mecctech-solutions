@@ -12,8 +12,7 @@ class ContactRequestData extends Data
         public string $email,
         public string $phone_number,
         public string $message,
-    ) {
-    }
+    ) {}
 
     public static function fromRequest(array $data): self
     {
@@ -30,4 +29,4 @@ class ContactRequestData extends Data
             message: $data['message'],
         );
     }
-} 
+}

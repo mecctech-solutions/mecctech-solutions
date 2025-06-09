@@ -20,4 +20,4 @@ class SubmitContactRequestRequest extends FormRequest
             'message' => ['required', 'string', 'min:10'],
         ];
     }
-} 
+}

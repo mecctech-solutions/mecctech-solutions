@@ -3,7 +3,7 @@
 use App\Http\Requests\SubmitContactRequestRequest;
 
 test('validation rules are correct', function () {
-    $request = new SubmitContactRequestRequest();
+    $request = new SubmitContactRequestRequest;
 
     $rules = $request->rules();
 
@@ -15,7 +15,7 @@ test('validation rules are correct', function () {
 });
 
 test('request is authorized', function () {
-    $request = new SubmitContactRequestRequest();
+    $request = new SubmitContactRequestRequest;
 
     expect($request->authorize())->toBeTrue();
-}); 
+});

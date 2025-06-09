@@ -3,7 +3,7 @@
 use App\Http\Middleware\HandleCorsMiddleware;
 
 test('it handles cors preflight request', function () {
-    $middleware = new HandleCorsMiddleware();
+    $middleware = new HandleCorsMiddleware;
     $request = Request::create('/api/test', 'OPTIONS');
     $request->headers->set('Origin', 'http://localhost:3000');
     $request->headers->set('Access-Control-Request-Method', 'POST');
@@ -18,7 +18,7 @@ test('it handles cors preflight request', function () {
 });
 
 test('it handles regular request', function () {
-    $middleware = new HandleCorsMiddleware();
+    $middleware = new HandleCorsMiddleware;
     $request = Request::create('/api/test', 'POST');
     $request->headers->set('Origin', 'http://localhost:3000');
 

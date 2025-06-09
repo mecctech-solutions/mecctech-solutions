@@ -7,7 +7,7 @@ test('it can create from request data', function () {
         'name' => 'John Doe',
         'email' => 'john@example.com',
         'phone' => '1234567890',
-        'message' => 'Test message'
+        'message' => 'Test message',
     ];
 
     $contactData = ContactRequestData::fromRequest($data);
@@ -26,7 +26,7 @@ test('it handles multiple word first names', function () {
         'name' => 'John James Doe',
         'email' => 'john@example.com',
         'phone' => '1234567890',
-        'message' => 'Test message'
+        'message' => 'Test message',
     ];
 
     $contactData = ContactRequestData::fromRequest($data);
@@ -35,4 +35,4 @@ test('it handles multiple word first names', function () {
         ->toBeInstanceOf(ContactRequestData::class)
         ->and($contactData->first_name)->toBe('John James')
         ->and($contactData->last_name)->toBe('Doe');
-}); 
+});
