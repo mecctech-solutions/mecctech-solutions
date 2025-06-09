@@ -2,38 +2,40 @@
 
 namespace App\Actions;
 
+use App\Data\ContactRequestData;
+use App\Http\Requests\SubmitContactRequestRequest;
 use App\Jobs\SendMailJob;
 use App\Mail\SubmitContactRequestMail;
 use App\Models\ContactRequest;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class SubmitContactRequest
 {
     use AsAction;
 
-    public function handle(array $customer, string $message)
+    public function handle(ContactRequestData $data): void
     {
         $foundCustomer = ContactRequest::where([
-            'email' => $customer['email'],
+            'email' => $data->email,
         ])->first();
 
         if ($foundCustomer === null) {
             $customerNumber = uniqid();
             $customer = ContactRequest::create([
                 'customer_number' => $customerNumber,
-                'first_name' => $customer['first_name'],
-                'last_name' => $customer['last_name'],
-                'email' => $customer['email'],
-                'phone_number' => $customer['phone_number'],
-                'message' => $message,
+                'first_name' => $data->first_name,
+                'last_name' => $data->last_name,
+                'email' => $data->email,
+                'phone_number' => $data->phone_number,
+                'message' => $data->message,
             ]);
         } else {
             $customer = $foundCustomer;
         }
 
         $myEmail = 'florismeccanici@tutanota.com';
-        $message = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$message;
+        $message = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$data->message;
         $mailable = new SubmitContactRequestMail($message, $myEmail);
 
         SendMailJob::dispatch(
@@ -41,23 +43,11 @@ class SubmitContactRequest
         )->onQueue('emails');
     }
 
-    public function asController(Request $request)
+    public function asController(SubmitContactRequestRequest $request): RedirectResponse
     {
-        $name = $request->input('name');
-        $parts = explode(' ', $name);
-        $lastName = array_pop($parts);
-        $firstName = implode(' ', $parts);
+        $data = ContactRequestData::fromRequest($request->validated());
 
-        $email = $request->input('email');
-        $message = $request->input('message');
-        $phone = $request->input('phone');
-
-        $this->handle([
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'email' => $email,
-            'phone_number' => $phone,
-        ], $message);
+        $this->handle($data);
 
         return redirect()->back();
     }

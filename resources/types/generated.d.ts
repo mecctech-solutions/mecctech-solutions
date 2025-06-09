@@ -12,6 +12,13 @@ logo_url: string;
 logo_full_url: string;
 position: number;
 };
+export type ContactRequestData = {
+first_name: string;
+last_name: string;
+email: string;
+phone_number: string;
+message: string;
+};
 export type ImageData = {
 full_url: string;
 url: string;
