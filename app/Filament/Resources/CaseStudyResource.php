@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Str;
 
 class CaseStudyResource extends Resource
@@ -36,10 +37,10 @@ class CaseStudyResource extends Resource
                 Forms\Components\TextInput::make('title_en')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('content_nl')
+                TiptapEditor::make('content_nl')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('content_en')
+                TiptapEditor::make('content_en')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('slug')
