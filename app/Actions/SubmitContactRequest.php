@@ -16,23 +16,15 @@ class SubmitContactRequest
 
     public function handle(ContactRequestData $data): void
     {
-        $foundCustomer = ContactRequest::where([
+        $customerNumber = uniqid();
+        $customer = ContactRequest::create([
+            'customer_number' => $customerNumber,
+            'first_name' => $data->first_name,
+            'last_name' => $data->last_name,
             'email' => $data->email,
-        ])->first();
-
-        if ($foundCustomer === null) {
-            $customerNumber = uniqid();
-            $customer = ContactRequest::create([
-                'customer_number' => $customerNumber,
-                'first_name' => $data->first_name,
-                'last_name' => $data->last_name,
-                'email' => $data->email,
-                'phone_number' => $data->phone_number,
-                'message' => $data->message,
-            ]);
-        } else {
-            $customer = $foundCustomer;
-        }
+            'phone_number' => $data->phone_number,
+            'message' => $data->message,
+        ]);
 
         $myEmail = 'florismeccanici@tutanota.com';
         $message = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$data->message;
