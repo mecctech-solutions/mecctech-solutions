@@ -13,6 +13,7 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class Image extends Model implements Sortable
 {
+    /** @use HasFactory<ImageFactory> */
     use HasFactory;
     use SortableTrait;
 
@@ -20,6 +21,9 @@ class Image extends Model implements Sortable
 
     protected $guarded = [];
 
+    /**
+     * @return Attribute<string, never>
+     */
     public function fullUrl(): Attribute
     {
         return new Attribute(
@@ -28,6 +32,9 @@ class Image extends Model implements Sortable
             });
     }
 
+    /**
+     * @return Builder<static>
+     */
     public function buildSortQuery(): Builder
     {
         return static::query()->where('portfolio_item_id', $this->portfolio_item_id);

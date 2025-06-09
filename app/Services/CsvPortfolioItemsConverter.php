@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 class CsvPortfolioItemsConverter
 {
     /**
-     * @return Collection<PortfolioItemData>
+     * @return Collection<int, PortfolioItemData>
      */
     public static function import(string $path): Collection
     {

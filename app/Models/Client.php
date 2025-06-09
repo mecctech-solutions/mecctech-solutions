@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
+    /** @use HasFactory<ClientFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -19,6 +20,9 @@ class Client extends Model
         'position',
     ];
 
+    /**
+     * @return HasMany<Testimonial, $this>
+     */
     public function testimonials(): HasMany
     {
         return $this->hasMany(Testimonial::class);

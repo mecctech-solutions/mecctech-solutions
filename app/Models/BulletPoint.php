@@ -11,6 +11,7 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class BulletPoint extends Model implements Sortable
 {
+    /** @use HasFactory<BulletPointFactory> */
     use HasFactory;
     use SortableTrait;
 
@@ -18,6 +19,9 @@ class BulletPoint extends Model implements Sortable
 
     protected $guarded = [];
 
+    /**
+     * @return Builder<static>
+     */
     public function buildSortQuery(): Builder
     {
         return static::query()->where('portfolio_item_id', $this->portfolio_item_id);

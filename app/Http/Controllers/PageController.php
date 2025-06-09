@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\ViewModels\HomeViewModel;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class PageController extends Controller
 {
-    public function home(Request $request)
+    public function home(Request $request): Response
     {
         $tag = $request->query('tag');
 

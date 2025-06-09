@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ContactRequest extends Model
 {
+    /** @use HasFactory<ContactRequestFactory> */
     use HasFactory;
 
     protected $table = 'contact_requests';

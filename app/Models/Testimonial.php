@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Testimonial extends Model
 {
+    /** @use HasFactory<TestimonialFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -29,6 +30,9 @@ class Testimonial extends Model
         'text_en' => 'string',
     ];
 
+    /**
+     * @return BelongsTo<Client, $this>
+     */
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);

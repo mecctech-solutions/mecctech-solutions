@@ -14,17 +14,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-/**
- * @property string $main_image_url
- * @property CaseStudy|null $caseStudy
- * @property-read string $mainImageFullUrl
- * @property-read bool $hasCaseStudy
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Tag> $tags
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Image> $images
- * @property-read \Illuminate\Database\Eloquent\Collection<int, BulletPoint> $bulletPoints
- */
 class PortfolioItem extends Model implements Sortable
 {
+    /** @use HasFactory<PortfolioItemFactory> */
     use HasFactory;
     use SortableTrait;
 

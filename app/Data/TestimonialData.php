@@ -32,7 +32,6 @@ class TestimonialData extends Data
             image_url: $testimonial->image_url,
             image_full_url: $testimonial->image_full_url,
             position: $testimonial->position,
-            /** @phpstan-ignore-next-line */
             client_name: $testimonial->client?->name,
         );
     }

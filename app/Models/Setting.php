@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use App\Enums\SettingKey;
+use Database\Factories\SettingFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
+    /**
+     * @use HasFactory<SettingFactory>
+     */
     use HasFactory;
 
     protected $fillable = ['key', 'value'];

@@ -33,12 +33,21 @@ class PortfolioItemData extends Data
         public bool $has_case_study,
         public ?string $case_study_slug,
 
+        /**
+         * @var DataCollection<int, BulletPointData>|null
+         */
         #[DataCollectionOf(BulletPointData::class)]
         public ?DataCollection $bullet_points,
 
+        /**
+         * @var DataCollection<int, ImageData>|null
+         */
         #[DataCollectionOf(ImageData::class)]
         public ?DataCollection $images,
 
+        /**
+         * @var DataCollection<int, TagData>|null
+         */
         #[DataCollectionOf(TagData::class)]
         public ?DataCollection $tags,
     ) {
