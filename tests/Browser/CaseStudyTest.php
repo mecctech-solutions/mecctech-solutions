@@ -11,6 +11,8 @@ test('user can view case study from portfolio item', function () {
         'portfolio_item_id' => $portfolioItem->id,
         'title_en' => 'Test Case Study Title',
         'content_en' => 'Test Case Study Content',
+        'title_nl' => 'Test Case Study Titel',
+        'content_nl' => 'Test Case Study Inhoud',
     ]);
 
     // When & Then
