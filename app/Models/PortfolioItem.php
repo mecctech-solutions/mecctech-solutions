@@ -51,7 +51,7 @@ class PortfolioItem extends Model implements Sortable
     }
 
     /**
-     * @return BelongsToMany<Tag>
+     * @return BelongsToMany<Tag, $this>
      */
     public function tags(): BelongsToMany
     {
@@ -59,7 +59,7 @@ class PortfolioItem extends Model implements Sortable
     }
 
     /**
-     * @return HasMany<Image>
+     * @return HasMany<Image, $this>
      */
     public function images(): HasMany
     {
@@ -67,7 +67,7 @@ class PortfolioItem extends Model implements Sortable
     }
 
     /**
-     * @return HasMany<BulletPoint>
+     * @return HasMany<BulletPoint, $this>
      */
     public function bulletPoints(): HasMany
     {
@@ -75,7 +75,7 @@ class PortfolioItem extends Model implements Sortable
     }
 
     /**
-     * @return HasOne<CaseStudy>
+     * @return HasOne<CaseStudy, $this>
      */
     public function caseStudy(): HasOne
     {
