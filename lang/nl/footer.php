@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'lets_talk' => 'Laten we praten!',
+    'lets_talk' => 'Idee in gedachte?',
     'info' => 'Contact Informatie',
     'netherlands' => 'Nederland',
 ];

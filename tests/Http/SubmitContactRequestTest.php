@@ -21,6 +21,7 @@ it('should return status redirect', function () {
 
 it('should store contact request', function () {
     // Given
+    $this->withoutExceptionHandling();
     $url = route('submit-contact-request');
 
     // When
@@ -29,6 +30,7 @@ it('should store contact request', function () {
         'email' => 'john@example.com',
         'message' => 'Test Message',
         'phone' => '0612345678',
+        'company' => 'Test Company',
     ]);
 
     // Then
@@ -38,6 +40,7 @@ it('should store contact request', function () {
         'email' => 'john@example.com',
         'message' => 'Test Message',
         'phone_number' => '0612345678',
+        'company' => 'Test Company',
     ]);
 });
 

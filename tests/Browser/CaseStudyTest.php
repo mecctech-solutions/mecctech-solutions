@@ -11,6 +11,8 @@ test('user can view case study from portfolio item', function () {
         'portfolio_item_id' => $portfolioItem->id,
         'title_en' => 'Test Case Study Title',
         'content_en' => 'Test Case Study Content',
+        'title_nl' => 'Test Case Study Titel',
+        'content_nl' => 'Test Case Study Inhoud',
     ]);
 
     // When & Then
@@ -26,7 +28,7 @@ test('user can view case study from portfolio item', function () {
             ->waitForLocation('/case-studies/'.$caseStudy->slug)
             ->assertUrlIs(route('case-studies.show', $caseStudy->slug))
             ->waitFor('@case-study-title')
-            ->assertSee($caseStudy->title_en)
-            ->assertSee($caseStudy->content_en);
+            ->assertSee($caseStudy->title_nl)
+            ->assertSee($caseStudy->content_nl);
     });
 });

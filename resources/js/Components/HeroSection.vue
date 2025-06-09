@@ -59,7 +59,7 @@
                                 :text="trans('home.contact')"
                             ></PrimaryButton>
                             <a
-                                href="#skills"
+                                href="#portfolio"
                                 class="
                   ud-text-base
                   ud-font-semibold

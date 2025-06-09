@@ -12,15 +12,11 @@ class ContactRequestData extends Data
         public string $email,
         public string $phone_number,
         public string $message,
+        public ?string $company = null,
     ) {}
 
     /**
-     * @param array{
-     *     name: string,
-     *     email: string,
-     *     phone: string,
-     *     message: string
-     * } $data
+     * @param  array<string, mixed>  $data
      */
     public static function fromRequest(array $data): self
     {
@@ -34,6 +30,7 @@ class ContactRequestData extends Data
             last_name: $lastName,
             email: $data['email'],
             phone_number: $data['phone'],
+            company: \Arr::get($data, 'company'),
             message: $data['message'],
         );
     }

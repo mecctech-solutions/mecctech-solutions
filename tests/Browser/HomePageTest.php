@@ -38,8 +38,8 @@ it('should show all portfolio items', function () {
         $browser
             ->visit($url)
             ->waitFor('@portfolio')
-            ->assertSee($portfolioItems->first()->title_en)
-            ->assertSee($portfolioItems->last()->title_en);
+            ->assertSee($portfolioItems->first()->title_nl)
+            ->assertSee($portfolioItems->last()->title_nl);
     });
 });
 
@@ -55,10 +55,10 @@ it('should change language of portfolio items', function () {
         $url = route('home');
         $browser
             ->visit($url)
-            ->waitFor('@language-switcher-nl')
+            ->waitFor('@language-switcher-en')
             ->waitFor('@portfolio')
-            ->click('@language-switcher-nl')
-            ->waitForText($portfolioItem->title_nl)
-            ->assertSee($portfolioItem->title_nl);
+            ->click('@language-switcher-en')
+            ->waitForText($portfolioItem->title_en)
+            ->assertSee($portfolioItem->title_en);
     });
 });

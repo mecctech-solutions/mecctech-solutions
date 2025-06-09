@@ -33,7 +33,7 @@ class HomeViewModel extends ViewModel
     }
 
     /**
-     * @return LengthAwarePaginator<PortfolioItemData>
+     * @return LengthAwarePaginator<int, PortfolioItemData>
      */
     public function portfolioItems(): LengthAwarePaginator
     {

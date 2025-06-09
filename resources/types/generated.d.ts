@@ -18,6 +18,7 @@ last_name: string;
 email: string;
 phone_number: string;
 message: string;
+company: string | null;
 };
 export type ImageData = {
 full_url: string;

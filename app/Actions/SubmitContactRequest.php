@@ -23,6 +23,7 @@ class SubmitContactRequest
             'last_name' => $data->last_name,
             'email' => $data->email,
             'phone_number' => $data->phone_number,
+            'company' => $data->company,
             'message' => $data->message,
         ]);
 
@@ -39,12 +40,7 @@ class SubmitContactRequest
     {
         $validated = $request->validated();
 
-        $data = ContactRequestData::from([
-            'name' => $validated['first_name'].' '.$validated['last_name'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone_number'],
-            'message' => $validated['message'],
-        ]);
+        $data = ContactRequestData::fromRequest($validated);
 
         $this->handle($data);
 

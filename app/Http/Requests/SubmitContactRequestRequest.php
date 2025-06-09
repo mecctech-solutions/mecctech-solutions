@@ -20,6 +20,7 @@ class SubmitContactRequestRequest extends FormRequest
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'string'],
+            'company' => ['nullable', 'string'],
             'message' => ['required', 'string', 'min:10'],
         ];
     }

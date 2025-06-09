@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'contact_me' => 'Contacteer mij',
-    'project' => 'Heb je een project in gedachte?',
-    'project_text' => 'Als je me wilt inhuren voor je project, voel je vrij mij te contacteren via dit contact formulier. Je kan me ook bereiken via email, telefoon nummer of social media',
-    'name' => 'Voer je naam in',
-    'company' => 'Bedrijf (Optioneel)',
-    'email' => 'Voer je email adres in',
+    'contact_me' => 'Idee in gedachte?',
+    'project' => 'Stuur me een berichtje over je project',
+    'project_text' => 'Als je me wilt inhuren voor je project, kun je me bereiken via dit formulier. Je kan me ook bereiken via email of telefoon nummer',
+    'name' => 'Naam',
+    'company' => 'Bedrijf (optioneel)',
+    'email' => 'Email',
     'phone' => 'Telefoonnummer',
-    'enter_project' => 'Vertel me over je project',
-    'contact_me_2' => 'Contacteer Mij',
+    'enter_project' => 'Vertel me over je idee',
+    'contact_me_2' => 'Verstuur',
     'notification' => 'Bedankt voor je interesse! Ik neem zsm contact met je op.',
 ];
