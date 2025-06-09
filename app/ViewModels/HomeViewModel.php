@@ -52,7 +52,7 @@ class HomeViewModel extends ViewModel
 
     public function tags(): Collection
     {
-        return TagData::collect(GetAllVisibleTags::run());
+        return TagData::collect(GetAllVisibleTags::make()->handle());
     }
 
     public function testimonials(): Collection
