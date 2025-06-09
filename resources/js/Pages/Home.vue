@@ -4,7 +4,6 @@ import HomeLayout from "../Layouts/HomeLayout.vue";
 import HeroSection from "../Components/HeroSection.vue";
 import AboutMe from "../Components/AboutMe.vue";
 import Skills from "../Components/Skills.vue";
-import Approach from "../Components/Approach.vue";
 import Portfolio from "../Components/Portfolio.vue";
 import Testimonials from "../Components/Testimonials.vue";
 import Clients from "../Components/Clients.vue";
@@ -37,7 +36,7 @@ const props = defineProps({
         <Clients :clients="clients" />
         <Testimonials/>
         <Skills></Skills>
-        <Approach></Approach>
+<!--        <Approach></Approach>-->
         <ContactForm></ContactForm>
     </HomeLayout>
 </template>
