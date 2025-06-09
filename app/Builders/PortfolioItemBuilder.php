@@ -2,11 +2,15 @@
 
 namespace App\Builders;
 
+use App\Models\PortfolioItem;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @extends Builder<PortfolioItem>
+ */
 class PortfolioItemBuilder extends Builder
 {
-    public function sorted(): PortfolioItemBuilder
+    public function sorted(): self
     {
         return $this
             ->with([

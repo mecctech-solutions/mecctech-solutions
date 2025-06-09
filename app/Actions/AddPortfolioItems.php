@@ -10,6 +10,7 @@ use App\Models\BulletPoint;
 use App\Models\Image;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -19,7 +20,7 @@ class AddPortfolioItems
     use AsAction;
 
     /**
-     * @param  Collection<PortfolioItemData>  $portfolioItems
+     * @param Collection<int, PortfolioItemData> $portfolioItems
      */
     public function handle(Collection $portfolioItems): void
     {
@@ -42,46 +43,56 @@ class AddPortfolioItems
                 'main_image_url' => $portfolioItem->main_image_url,
             ]);
 
-            $portfolioItem->bullet_points->each(function (BulletPointData $bulletPoint) use ($newPortfolioItem) {
-                BulletPoint::create([
-                    'text_nl' => $bulletPoint->text_nl,
-                    'text_en' => $bulletPoint->text_en,
-                    'portfolio_item_id' => $newPortfolioItem->id,
-                ]);
-            });
+            if ($portfolioItem->bullet_points !== null) {
+                $portfolioItem->bullet_points->each(function (BulletPointData $bulletPoint) use ($newPortfolioItem) {
+                    BulletPoint::create([
+                        'text_nl' => $bulletPoint->text_nl,
+                        'text_en' => $bulletPoint->text_en,
+                        'portfolio_item_id' => $newPortfolioItem->id,
+                    ]);
+                });
+            }
 
-            $portfolioItem->images->each(function (ImageData $image) use ($newPortfolioItem) {
-                Image::create([
-                    'url' => $image->url,
-                    'portfolio_item_id' => $newPortfolioItem->id,
-                ]);
-            });
+            if ($portfolioItem->images !== null) {
+                $portfolioItem->images->each(function (ImageData $image) use ($newPortfolioItem) {
+                    Image::create([
+                        'url' => $image->url,
+                        'portfolio_item_id' => $newPortfolioItem->id,
+                    ]);
+                });
+            }
 
-            $portfolioItem->tags->each(function (TagData $tag) use ($newPortfolioItem) {
-                $tag = Tag::firstOrCreate([
-                    'name' => $tag->name,
-                ], [
-                    'name' => $tag->name,
-                    'visible' => $tag->visible,
-                ]);
-                $newPortfolioItem->tags()->attach($tag->id);
-            });
+            if ($portfolioItem->tags !== null) {
+                $portfolioItem->tags->each(function (TagData $tag) use ($newPortfolioItem) {
+                    $tagModel = Tag::firstOrCreate([
+                        'name' => $tag->name,
+                    ], [
+                        'name' => $tag->name,
+                        'visible' => $tag->visible,
+                    ]);
+                    $newPortfolioItem->tags()->attach($tagModel->id);
+                });
+            }
         });
     }
 
-    public function asController(Request $request)
+    public function asController(Request $request): JsonResponse
     {
         try {
-            $portfolioItems = $request->input('portfolio_items');
+            $portfolioItems = collect($request->input('portfolio_items'));
             $this->handle($portfolioItems);
 
             return response()->json([], 200);
         } catch (\Exception $e) {
-            $response['meta']['created_at'] = time();
-            $response['error']['code'] = $e->getCode();
-            $response['error']['message'] = $e->getMessage();
+            return response()->json([
+                'meta' => [
+                    'created_at' => time(),
+                ],
+                'error' => [
+                    'code' => $e->getCode(),
+                    'message' => $e->getMessage(),
+                ],
+            ], 500);
         }
-
-        return $response;
     }
 }

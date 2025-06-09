@@ -2,16 +2,20 @@
 
 namespace App\Builders;
 
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @extends Builder<Tag>
+ */
 class TagBuilder extends Builder
 {
-    public function visible(): TagBuilder
+    public function visible(): self
     {
         return $this->where('visible', true);
     }
 
-    public function sorted(): TagBuilder
+    public function sorted(): self
     {
         return $this->orderBy('position');
     }
