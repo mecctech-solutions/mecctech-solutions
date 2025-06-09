@@ -80,8 +80,6 @@ class AddPortfolioItems
     {
         try {
             $portfolioItems = $request->input('portfolio_items');
-
-            /** @phpstan-ignore-next-line */
             $this->handle($portfolioItems);
 
             return response()->json([], 200);

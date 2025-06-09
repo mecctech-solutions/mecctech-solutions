@@ -16,12 +16,7 @@ class ContactRequestData extends Data
     ) {}
 
     /**
-     * @param array{
-     *     name: string,
-     *     email: string,
-     *     phone: string,
-     *     message: string
-     * } $data
+     * @param array<string, mixed> $data
      */
     public static function fromRequest(array $data): self
     {
