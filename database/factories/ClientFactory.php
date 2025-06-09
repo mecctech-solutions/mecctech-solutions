@@ -12,10 +12,10 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company,
-            'website_url' => $this->faker->url,
+            'name' => fake()->company,
+            'website_url' => fake()->url,
             'logo_url' => 'images/placeholder.png',
-            'position' => $this->faker->numberBetween(1, 10),
+            'position' => fake()->numberBetween(1, 10),
         ];
     }
 }

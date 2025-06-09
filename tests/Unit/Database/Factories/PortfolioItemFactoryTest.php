@@ -1,50 +1,35 @@
 <?php
 
 use Database\Factories\PortfolioItemFactory;
-use Tests\TestCase;
 
-class PortfolioItemFactoryTest extends TestCase
-{
-    /** @test */
-    public function it_should_create_a_portfolio_item()
-    {
-        // Given
-        $portfolioItem = PortfolioItemFactory::new()->create();
+it('should create a portfolio item', function () {
+    // Given
+    $portfolioItem = PortfolioItemFactory::new()->create();
 
-        // Then
-        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
-    }
+    // Then
+    self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
+});
+it('should create a portfolio item with tags', function () {
+    // Given
+    $portfolioItem = PortfolioItemFactory::new()->create();
 
-    /** @test */
-    public function it_should_create_a_portfolio_item_with_tags()
-    {
-        // Given
-        $portfolioItem = PortfolioItemFactory::new()->create();
+    // Then
+    self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
+    self::assertCount(3, $portfolioItem->tags);
+});
+it('should create a portfolio item with images', function () {
+    // Given
+    $portfolioItem = PortfolioItemFactory::new()->create();
 
-        // Then
-        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
-        self::assertCount(3, $portfolioItem->tags);
-    }
+    // Then
+    self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
+    self::assertCount(3, $portfolioItem->images);
+});
+it('should create a portfolio item with bullet points', function () {
+    // Given
+    $portfolioItem = PortfolioItemFactory::new()->create();
 
-    /** @test */
-    public function it_should_create_a_portfolio_item_with_images()
-    {
-        // Given
-        $portfolioItem = PortfolioItemFactory::new()->create();
-
-        // Then
-        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
-        self::assertCount(3, $portfolioItem->images);
-    }
-
-    /** @test */
-    public function it_should_create_a_portfolio_item_with_bullet_points()
-    {
-        // Given
-        $portfolioItem = PortfolioItemFactory::new()->create();
-
-        // Then
-        self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
-        self::assertCount(3, $portfolioItem->bulletPoints);
-    }
-}
+    // Then
+    self::assertDatabaseHas('portfolio_items', $portfolioItem->getAttributes());
+    self::assertCount(3, $portfolioItem->bulletPoints);
+});

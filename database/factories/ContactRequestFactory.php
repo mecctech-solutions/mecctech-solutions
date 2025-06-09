@@ -13,13 +13,13 @@ class ContactRequestFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_number' => $this->faker->word(),
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'customer_number' => fake()->word(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'phone_number' => $this->faker->phoneNumber(),
+            'phone_number' => fake()->phoneNumber(),
         ];
     }
 }

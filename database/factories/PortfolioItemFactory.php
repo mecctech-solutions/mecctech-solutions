@@ -16,12 +16,12 @@ class PortfolioItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'title_nl' => $this->faker->sentence,
-            'title_en' => $this->faker->sentence,
+            'title_nl' => fake()->sentence,
+            'title_en' => fake()->sentence,
             'main_image_url' => 'images/placeholder.png',
-            'description_nl' => $this->faker->paragraph,
-            'description_en' => $this->faker->paragraph,
-            'website_url' => $this->faker->url,
+            'description_nl' => fake()->paragraph,
+            'description_en' => fake()->paragraph,
+            'website_url' => fake()->url,
             'visible' => true,
         ];
     }

@@ -13,13 +13,13 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'job_title_en' => $this->faker->jobTitle,
-            'job_title_nl' => $this->faker->jobTitle,
+            'name' => fake()->name,
+            'job_title_en' => fake()->jobTitle,
+            'job_title_nl' => fake()->jobTitle,
             'client_id' => Client::factory(),
-            'position' => $this->faker->numberBetween(1, 10),
-            'text_nl' => $this->faker->paragraph,
-            'text_en' => $this->faker->paragraph,
+            'position' => fake()->numberBetween(1, 10),
+            'text_nl' => fake()->paragraph,
+            'text_en' => fake()->paragraph,
             'image_url' => 'images/placeholder.png',
         ];
     }
