@@ -63,4 +63,12 @@ return [
         'name' => 'Git',
         'description' => 'Versiebeheersysteem',
     ],
+    'Cursor' => [
+        'name' => 'Cursor',
+        'description' => 'AI code-editor',
+    ],
+    'n8n' => [
+        'name' => 'n8n',
+        'description' => 'Platform voor workflow-automatisering',
+    ],
 ];
