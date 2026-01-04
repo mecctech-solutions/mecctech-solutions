@@ -146,6 +146,7 @@ const menuItems = computed(() => [
     { label: trans("header.home"), href: `${page.props.appUrl}#home` },
     { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
     { label: trans("header.clients"), href: `${page.props.appUrl}#clients` },
+    { label: trans("header.testimonials"), href: `${page.props.appUrl}#testimonials` },
     { label: trans("header.skills"), href: `${page.props.appUrl}#skills` },
     // { label: trans("header.approach"), href: `${page.props.appUrl}#approach` },
     { label: trans("header.contact"), href: `${page.props.appUrl}#contact` },
