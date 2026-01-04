@@ -86,7 +86,7 @@
             "
                     >
                         <img
-                            src="images/floris-removebg.png"
+                            src="images/foto_new.JPG"
                             alt="image"
                             class="ud-max-w-full ud-mx-auto"
                         />
