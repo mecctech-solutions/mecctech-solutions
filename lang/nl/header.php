@@ -7,5 +7,6 @@ return [
     'skills' => 'Skills',
     'portfolio' => 'Portfolio',
     'approach' => 'Mijn Aanpak',
+    'testimonials' => 'Testimonials',
     'contact' => 'Contact',
 ];
