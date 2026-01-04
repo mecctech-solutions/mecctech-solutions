@@ -86,7 +86,7 @@
             "
                     >
                         <img
-                            src="images/floris_new.JPG"
+                            src="images/floris_new.png"
                             alt="image"
                             class="ud-max-w-full ud-mx-auto"
                         />
