@@ -41,6 +41,7 @@
                     <p
                         class="
               ud-max-w-[570px] ud-font-medium ud-text-base ud-text-body-color
+              ud-whitespace-pre-line
             "
                     >
                         {{ trans('about.about_me_text') }}
