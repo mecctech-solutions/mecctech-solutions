@@ -2,6 +2,7 @@
 
 return [
     'hi' => "Hi there! I'm",
+    'name' => 'Floris Meccanici',
     'freelance' => 'Freelance',
     'i_am' => 'Laravel and Vue.js developer',
     'headline' => 'Custom and robust web applications that enhance your business efficiency',

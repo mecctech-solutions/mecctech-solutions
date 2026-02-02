@@ -28,7 +28,7 @@
                   ud-block ud-mt-1
                 "
                             >
-                Floris Meccanici
+                {{ trans('home.name') }}
               </span>
                         </h1>
                         <h2
