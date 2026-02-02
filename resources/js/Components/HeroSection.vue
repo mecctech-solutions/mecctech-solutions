@@ -28,7 +28,7 @@
                   ud-block ud-mt-1
                 "
                             >
-                Floris Meccanici
+                {{ trans('home.name') }}
               </span>
                         </h1>
                         <h2
@@ -53,7 +53,7 @@
                         >
                             {{ trans('home.headline') }}
                         </p>
-                        <div class="ud-flex ud-items-center">
+                        <div class="ud-flex ud-items-center ud-gap-3 ud-flex-wrap sm:ud-flex-nowrap">
                             <PrimaryButton
                                 :url="page.props.appUrl + '#contact'"
                                 :text="trans('home.contact')"
@@ -66,9 +66,10 @@
                   ud-text-white
                   ud-bg-black
                   ud-py-3
-                  ud-px-8
+                  ud-px-6
                   hover:ud-shadow-signUp hover:ud-bg-opacity-90
                   ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+                  ud-whitespace-nowrap
                 "
                             >
                                 {{ trans('home.learn_more') }}

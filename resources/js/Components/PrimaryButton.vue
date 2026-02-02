@@ -16,10 +16,10 @@ const props = defineProps({
                   ud-text-white
                   ud-bg-primary
                   ud-py-3
-                  ud-px-8
-                  ud-mr-4
+                  ud-px-6
                   hover:ud-shadow-signUp hover:ud-bg-opacity-90
                   ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out
+                  ud-whitespace-nowrap
                 "
     >
         {{ text }}
