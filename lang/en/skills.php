@@ -67,8 +67,4 @@ return [
         'name' => 'Cursor',
         'description' => 'AI code editor',
     ],
-    'n8n' => [
-        'name' => 'n8n',
-        'description' => 'Workflow automation platform',
-    ],
 ];

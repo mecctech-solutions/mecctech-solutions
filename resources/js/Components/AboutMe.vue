@@ -41,6 +41,7 @@
                     <p
                         class="
               ud-max-w-[570px] ud-font-medium ud-text-base ud-text-body-color
+              ud-whitespace-pre-line
             "
                     >
                         {{ trans('about.about_me_text') }}
@@ -56,7 +57,7 @@
                     >
                         {{ trans('about.connect') }}
                     </h3>
-                    <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-10">
+                    <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-10 ud-whitespace-pre-line">
                         {{ trans('about.connect_text') }}
                     </p>
                     <div

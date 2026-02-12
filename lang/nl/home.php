@@ -2,10 +2,11 @@
 
 return [
     'e_commerce' => 'E-commerce web applicaties.',
-    'hi' => 'Hoi! Ik ben',
-    'freelance' => 'ZZP',
-    'i_am' => 'Laravel en Vue.js ontwikkelaar',
-    'headline' => 'Op maat gemaakte web applicaties om jouw ideeën te realiseren.',
-    'contact' => 'Contact',
+    'hi' => '',
+    'name' => 'Een idee? Ik vertaal het naar een werkende webapplicatie.',
+    'freelance' => '',
+    'i_am' => '',
+    'headline' => 'Ik help bedrijven met hun idee uitwerken, bouwen en live brengen. Van eerste concept tot productieklare applicatie.',
+    'contact' => 'Bespreek je idee',
     'learn_more' => 'Bekijk mijn werk',
 ];

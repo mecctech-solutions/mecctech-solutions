@@ -64,6 +64,8 @@ jobs:
           echo "DB_DATABASE=huisprijsopvragen_test" >> .env
           echo "DB_USERNAME=root" >> .env
           echo "DB_PASSWORD=root" >> .env
+          echo "MAIL_MAILER=log" >> .env
+          echo "MAIL_FROM_ADDRESS=test@example.com" >> .env
 
       - name: Clear Config Cache
         run: php artisan config:clear

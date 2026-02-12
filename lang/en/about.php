@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'about_me' => 'ABOUT ME',
-    'about_me_text' => 'I am passionate about building high quality Laravel applications that are extensible / maintainable, solve complex business problems and delight users, thus improving their life.',
-    'connect' => 'Connect With Me',
-    'connect_text' => 'If you have an interesting idea or project that you want to develop with Laravel and Vue.js, feel free to contact me via the contact form, via social media or my personal contact information.',
-    'solving_problems' => 'Solving problems with high quality software',
+    'about_me' => 'About me',
+    'about_me_text' => "I translate ideas into robust web applications. \n With Laravel and Vue.js, I build scalable and maintainable software that's ready for growth. No quick fixes, but a solid technical foundation.",
+    'connect' => 'Collaborate?',
+    'connect_text' => "Do you have an idea for a web application and looking for someone to develop and build it? \n I'd love to think along with you and help you from initial concept to a production-ready application.",
+    'solving_problems' => 'From idea to reality: your product, my expertise',
 ];

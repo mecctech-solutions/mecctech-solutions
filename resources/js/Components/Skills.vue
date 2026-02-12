@@ -66,7 +66,6 @@ const skills = computed(() => [
     { name: trans("skills.Webpack & Vite.name"), description: trans("skills.Webpack & Vite.description") },
     { name: trans("skills.Git.name"), description: trans("skills.Git.description") },
     { name: trans("skills.Cursor.name"), description: trans("skills.Cursor.description") },
-    { name: trans("skills.n8n.name"), description: trans("skills.n8n.description") },
 ]);
 </script>
 
