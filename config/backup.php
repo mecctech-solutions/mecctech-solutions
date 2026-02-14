@@ -16,6 +16,8 @@ return [
                  */
                 'include' => [
                     base_path(),
+                    storage_path('app/public'),
+                    storage_path('app/private'),
                 ],
 
                 /*
@@ -151,7 +153,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+                's3'
             ],
         ],
 
