@@ -15,6 +15,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.0",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "lezhnev74/pasvl": "^1.0",
         "lorisleiva/laravel-actions": "^2.8",
         "maatwebsite/excel": "^3.1",
