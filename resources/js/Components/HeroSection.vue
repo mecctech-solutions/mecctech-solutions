@@ -9,14 +9,13 @@
       ud-items-center
       2xl:ud-h-[700px]
     "
-        :key="locale"
     >
         <div class="ud-container">
             <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
                 <div class="ud-w-full lg:ud-w-1/2 ud-self-center ud-px-4">
                     <div>
                         <h1 class="ud-text-base ud-font-semibold ud-text-primary ud-mb-3">
-                            {{ trans('home.hi') }}
+                            <template v-if="label">{{ label }}</template>
                             <span
                                 class="
                   ud-font-bold ud-text-black ud-text-3xl
@@ -28,18 +27,20 @@
                   ud-block ud-mt-1
                 "
                             >
-                {{ trans('home.name') }}
-              </span>
+                                {{ title }}
+                            </span>
                         </h1>
                         <h2
+                            v-if="$slots.subtitle || subtitle"
                             class="
                 ud-font-medium ud-text-body-color ud-text-lg
                 md:ud-text-xl
                 ud-mb-5
               "
                         >
-                            {{ trans('home.freelance') }}
-                            <span class="ud-text-black">{{ trans('home.i_am') }} </span>
+                            <slot name="subtitle">
+                                {{ subtitle }}
+                            </slot>
                         </h2>
                         <p
                             class="
@@ -51,15 +52,16 @@
                 ud-mb-11
               "
                         >
-                            {{ trans('home.headline') }}
+                            {{ body }}
                         </p>
                         <div class="ud-flex ud-items-center ud-gap-3 ud-flex-wrap sm:ud-flex-nowrap">
                             <PrimaryButton
-                                :url="page.props.appUrl + '#contact'"
-                                :text="trans('home.contact')"
+                                :url="primaryButtonUrl"
+                                :text="primaryButtonText"
                             ></PrimaryButton>
                             <a
-                                href="#portfolio"
+                                v-if="secondaryButtonText"
+                                :href="secondaryButtonHref"
                                 class="
                   ud-text-base
                   ud-font-semibold
@@ -72,7 +74,7 @@
                   ud-whitespace-nowrap
                 "
                             >
-                                {{ trans('home.learn_more') }}
+                                {{ secondaryButtonText }}
                             </a>
                         </div>
                     </div>
@@ -161,12 +163,17 @@
     <!-- ====== Hero Section End -->
 </template>
 
-<script setup>
-import {computed} from "vue";
-import {usePage} from "@inertiajs/vue3";
-import {trans} from "laravel-vue-i18n";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+<script setup lang="ts">
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-const page = usePage();
-const locale = computed(() => page.props.locale);
+defineProps<{
+    label?: string;
+    title: string;
+    subtitle?: string;
+    body: string;
+    primaryButtonText: string;
+    primaryButtonUrl: string;
+    secondaryButtonText?: string;
+    secondaryButtonHref?: string;
+}>();
 </script>

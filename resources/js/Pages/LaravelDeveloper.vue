@@ -34,7 +34,15 @@ const locale = computed(() => page.props.locale);
     <Head :title="trans('laravel_developer.title')" />
 
     <HomeLayout>
-        <HeroSection />
+        <HeroSection
+            :label="trans('laravel_developer.hero_label')"
+            :title="trans('laravel_developer.hero_title')"
+            :body="trans('laravel_developer.hero_text')"
+            :primary-button-text="trans('laravel_developer.cta_contact')"
+            :primary-button-url="page.props.appUrl + '#contact'"
+            :secondary-button-text="trans('laravel_developer.cta_tech_stack')"
+            secondary-button-href="#skills"
+        />
         <AboutMe />
         <Portfolio :portfolio-items="portfolioItems" />
         <Clients :clients="clients" />
