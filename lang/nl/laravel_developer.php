@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Laravel Developer',
+    'hero_label' => 'Laravel & Vue.js',
+    'hero_title' => 'Developer voor teams die schaalbaar en onderhoudbaar willen bouwen.',
+    'hero_text' => 'Ik werk met Laravel, Vue.js en Inertia. Geen prototypes: production-ready code, tests, CI/CD en duidelijke architectuur. Ideaal als je een senior developer nodig hebt of je bestaande Laravel-app wilt uitbreiden.',
+    'cta_contact' => 'Neem contact op',
+    'cta_tech_stack' => 'Tech stack',
+    'section_what_title' => 'Wat je van mij kunt verwachten',
+    'section_what_intro' => 'Focus op kwaliteit en onderhoudbaarheid, niet op snelle hacks.',
+    'what_architecture' => 'Laravel Actions, services en duidelijke scheiding van verantwoordelijkheden.',
+    'what_testing' => 'Pest, PHPUnit en Laravel Dusk. Test coverage waar het uitmaakt.',
+    'what_ci' => 'CI/CD met GitHub Actions: PHPStan, Rector, Pint en automatische tests.',
+    'what_code' => 'Type hints, strikte types en code die over een jaar nog leesbaar is.',
+    'section_stack_title' => 'Stack',
+    'section_stack_intro' => 'Mijn standaard stack; andere tools in overleg.',
+    'section_how_title' => 'Hoe ik werk',
+    'section_how_intro' => 'Van eerste gesprek tot onderhoud: heldere afspraken en een aanpak die bij jouw team past.',
+    'how_new_title' => 'Nieuw project',
+    'how_new_text' => 'Samen de scope bepalen, technische keuzes maken en iteratief bouwen. Van MVP tot productie, met tests en documentatie.',
+    'how_existing_title' => 'Bestaande Laravel-app',
+    'how_existing_text' => 'Uitbreiden, refactoren of performance verbeteren. Ik sluit aan op jullie workflow, Git en deployment.',
+    'how_team_title' => 'In het team',
+    'how_team_text' => 'Parttime of per sprint. Code reviews, pair programming en kennis overdragen aan jullie developers.',
+];

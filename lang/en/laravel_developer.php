@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'title' => 'Laravel Developer',
+    'hero_label' => 'Laravel & Vue.js',
+    'hero_title' => 'Developer for teams that want to build scalable and maintainable.',
+    'hero_text' => 'I work with Laravel, Vue.js and Inertia. No prototypes: production-ready code, tests, CI/CD and clear architecture. Ideal if you need a senior developer or want to extend your existing Laravel app.',
+    'cta_contact' => 'Get in touch',
+    'cta_tech_stack' => 'Tech stack',
+    'section_what_title' => 'What you can expect from me',
+    'section_what_intro' => 'Focus on quality and maintainability, not quick hacks.',
+    'what_architecture' => 'Laravel Actions, services and clear separation of concerns.',
+    'what_testing' => 'Pest, PHPUnit and Laravel Dusk. Test coverage where it matters.',
+    'what_ci' => 'CI/CD with GitHub Actions: PHPStan, Rector, Pint and automated tests.',
+    'what_code' => 'Type hints, strict types and code that is still readable in a year.',
+    'section_stack_title' => 'Stack',
+    'section_stack_intro' => 'My default stack; other tools by agreement.',
+    'section_how_title' => 'How I work',
+    'section_how_intro' => 'From first conversation to maintenance: clear agreements and an approach that fits your team.',
+    'how_new_title' => 'New project',
+    'how_new_text' => 'Define scope together, make technical choices, and build iteratively. From MVP to production, with tests and documentation.',
+    'how_existing_title' => 'Existing Laravel app',
+    'how_existing_text' => 'Extend, refactor, or improve performance. I integrate with your workflow, Git, and deployment.',
+    'how_team_title' => 'In your team',
+    'how_team_text' => 'Part-time or per sprint. Code reviews, pair programming, and knowledge transfer to your developers.',
+];

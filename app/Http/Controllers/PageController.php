@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\ViewModels\HomeViewModel;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -21,8 +20,8 @@ class PageController extends Controller
         return Inertia::render('Home', new HomeViewModel($tag));
     }
 
-    public function laravelDeveloper(): RedirectResponse
+    public function laravelDeveloper(): Response
     {
-        return redirect()->back();
+        return Inertia::render('LaravelDeveloper', []);
     }
 }
