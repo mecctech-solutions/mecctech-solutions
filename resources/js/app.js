@@ -18,9 +18,18 @@ createInertiaApp({
         vueApp.use(plugin);
         vueApp.use(i18nVue, {
             resolve: async lang => {
-                const langs = import.meta.glob('../../lang/*.json');
-                return await langs[`../../lang/${lang}.json`]();
-            }
+                const langs = import.meta.glob('../../lang/*.json')
+                const key =
+                    langs[`../../lang/${lang}.json`] !== undefined
+                        ? `../../lang/${lang}.json`
+                        : `../../lang/php_${lang}.json`
+                const loader = langs[key]
+                if (!loader) {
+                    return { default: {} }
+                }
+                const mod = typeof loader === 'function' ? await loader() : loader
+                return { default: mod?.default ?? mod ?? {} }
+            },
         })
         vueApp.use(vClickOutside)
         vueApp.use(createPinia())
