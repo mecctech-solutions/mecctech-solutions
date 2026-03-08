@@ -7,6 +7,14 @@ import {i18nVue} from 'laravel-vue-i18n'
 import vClickOutside from 'click-outside-vue3'
 import {createPinia} from 'pinia'
 
+const port =
+    parseInt(process.env.INERTIA_SSR_PORT, 10) ||
+    parseInt(process.env.VITE_INERTIA_SSR_PORT, 10) ||
+    13714
+console.log('[SSR] INERTIA_SSR_PORT:', process.env.INERTIA_SSR_PORT ?? '(not set)')
+console.log('[SSR] VITE_INERTIA_SSR_PORT:', process.env.VITE_INERTIA_SSR_PORT ?? '(not set)')
+console.log('[SSR] Using port:', port)
+
 createServer(page =>
     createInertiaApp({
         page,
@@ -42,5 +50,7 @@ createServer(page =>
             return vueApp
         },
     }),
-    parseInt(process.env.VITE_INERTIA_SSR_PORT) || 13714,
+    port,
 )
+
+console.log('[SSR] Server started successfully on port', port)
