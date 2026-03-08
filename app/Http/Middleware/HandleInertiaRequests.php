@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,6 +40,7 @@ class HandleInertiaRequests extends Middleware
             'locale' => app()->getLocale(),
             'appUrl' => config('app.url'),
             'csrfToken' => csrf_token(),
+            'ziggy' => (new Ziggy(null, $request->url()))->toArray(),
         ]);
     }
 }

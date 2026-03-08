@@ -16,6 +16,14 @@ createServer(page =>
             return pages[`./Pages/${name}.vue`]
         },
         setup({ App, props, plugin }) {
+            const ziggy = page?.props?.ziggy
+            if (ziggy) {
+                globalThis.Ziggy = {
+                    ...ziggy,
+                    location: new URL(ziggy.url),
+                }
+            }
+
             const vueApp = createSSRApp({ render: () => h(App, props) })
 
             vueApp.use(plugin)
