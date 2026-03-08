@@ -142,15 +142,21 @@ const toggleNavbar = () => {
 const page = usePage();
 const logoUrl = computed(() => `${page.props.appUrl}/images/MeccTechlogo-01.png`);
 
-const menuItems = computed(() => [
-    { label: trans("header.home"), href: `${page.props.appUrl}#home` },
-    { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
-    { label: trans("header.clients"), href: `${page.props.appUrl}#clients` },
-    { label: trans("header.testimonials"), href: `${page.props.appUrl}#testimonials` },
-    { label: trans("header.skills"), href: `${page.props.appUrl}#skills` },
-    // { label: trans("header.approach"), href: `${page.props.appUrl}#approach` },
-    { label: trans("header.contact"), href: `${page.props.appUrl}#contact` },
-]);
+const isLaravelDeveloperPage = computed(() => page.url.includes('/laravel-developer'));
+
+const menuItems = computed(() => {
+    const items = [
+        { label: trans("header.home"), href: `${page.props.appUrl}#home` },
+        { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
+        { label: trans("header.clients"), href: `${page.props.appUrl}#clients` },
+        { label: trans("header.testimonials"), href: `${page.props.appUrl}#testimonials` },
+        { label: trans("header.contact"), href: `${page.props.appUrl}#contact` },
+    ];
+    if (isLaravelDeveloperPage.value) {
+        items.splice(4, 0, { label: trans("header.skills"), href: `${page.props.appUrl}/laravel-developer#skills` });
+    }
+    return items;
+});
 </script>
 
 <style scoped>
