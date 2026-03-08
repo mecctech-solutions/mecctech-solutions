@@ -4,6 +4,7 @@ import {computed} from 'vue';
 import {trans} from 'laravel-vue-i18n';
 import HomeLayout from '../Layouts/HomeLayout.vue';
 import HeroSection from '../Components/HeroSection.vue';
+import AboutMeLaravel from '../Components/AboutMeLaravel.vue';
 import Portfolio from '../Components/Portfolio.vue';
 import Testimonials from '../Components/Testimonials.vue';
 import Clients from '../Components/Clients.vue';
@@ -42,6 +43,7 @@ const locale = computed(() => page.props.locale);
             :secondary-button-text="trans('laravel_developer.cta_tech_stack')"
             secondary-button-href="#skills"
         />
+        <AboutMeLaravel />
         <Portfolio :portfolio-items="portfolioItems" />
         <Clients :clients="clients" />
         <Testimonials />
