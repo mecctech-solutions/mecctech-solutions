@@ -8,11 +8,11 @@ import vClickOutside from 'click-outside-vue3'
 import {createPinia} from 'pinia'
 
 const port =
-    parseInt(process.env.INERTIA_SSR_PORT, 10) ||
-    parseInt(process.env.VITE_INERTIA_SSR_PORT, 10) ||
+    parseInt(process.env.INERTIA_SSR_URL, 10) ||
+    parseInt(process.env.VITE_INERTIA_SSR_URL, 10) ||
     13714
-console.log('[SSR] INERTIA_SSR_PORT:', process.env.INERTIA_SSR_PORT ?? '(not set)')
-console.log('[SSR] VITE_INERTIA_SSR_PORT:', process.env.VITE_INERTIA_SSR_PORT ?? '(not set)')
+console.log('[SSR] INERTIA_SSR_PORT:', process.env.INERTIA_SSR_URL ?? '(not set)')
+console.log('[SSR] VITE_INERTIA_SSR_PORT:', process.env.VITE_INERTIA_SSR_URL ?? '(not set)')
 console.log('[SSR] Using port:', port)
 
 createServer(page =>
