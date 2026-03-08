@@ -5,6 +5,7 @@
 /public/storage
 /public/.htaccess
 /public/build/*
+/bootstrap/ssr
 /storage/*.key
 /vendor
 .DS_Store
