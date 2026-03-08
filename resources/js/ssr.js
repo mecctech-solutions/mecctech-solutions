@@ -42,4 +42,5 @@ createServer(page =>
             return vueApp
         },
     }),
+    parseInt(process.env.VITE_INERTIA_SSR_PORT) || 13714,
 )
