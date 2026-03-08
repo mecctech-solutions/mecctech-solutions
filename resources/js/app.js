@@ -1,11 +1,11 @@
-import {createApp, h} from 'vue'
+import {createSSRApp, h} from 'vue'
 import {createInertiaApp} from '@inertiajs/vue3'
 import '../css/app.css';
 import './bootstrap';
 import {route} from 'ziggy-js';
 import {i18nVue} from 'laravel-vue-i18n'
 import vClickOutside from "click-outside-vue3"
-import { createPinia } from 'pinia'
+import {createPinia} from 'pinia'
 
 createInertiaApp({
     resolve: name => {
@@ -13,7 +13,7 @@ createInertiaApp({
         return pages[`./Pages/${name}.vue`]
     },
     setup({ el, App, props, plugin }) {
-        const vueApp = createApp({ render: () => h(App, props) });
+        const vueApp = createSSRApp({ render: () => h(App, props) })
 
         vueApp.use(plugin);
         vueApp.use(i18nVue, {

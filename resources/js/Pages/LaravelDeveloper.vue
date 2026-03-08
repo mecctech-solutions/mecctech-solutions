@@ -13,7 +13,7 @@ import ContactForm from '../Components/ContactForm.vue';
 
 defineProps({
     portfolioItems: {
-        type: Array,
+        type: Object,
         required: true,
     },
     testimonials: {

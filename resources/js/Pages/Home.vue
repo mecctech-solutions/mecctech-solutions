@@ -14,7 +14,7 @@ const page = usePage();
 
 const props = defineProps({
     portfolioItems: {
-        type: Array,
+        type: Object,
         required: true
     },
     testimonials: {
