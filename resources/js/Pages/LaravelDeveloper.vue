@@ -3,9 +3,28 @@ import {Head, usePage} from '@inertiajs/vue3';
 import {computed} from 'vue';
 import {trans} from 'laravel-vue-i18n';
 import HomeLayout from '../Layouts/HomeLayout.vue';
+import HeroSection from '../Components/HeroSection.vue';
+import AboutMe from '../Components/AboutMe.vue';
+import Portfolio from '../Components/Portfolio.vue';
+import Testimonials from '../Components/Testimonials.vue';
+import Clients from '../Components/Clients.vue';
 import Skills from '../Components/Skills.vue';
 import ContactForm from '../Components/ContactForm.vue';
-import PrimaryButton from '../Components/PrimaryButton.vue';
+
+defineProps({
+    portfolioItems: {
+        type: Array,
+        required: true,
+    },
+    testimonials: {
+        type: Array,
+        required: true,
+    },
+    clients: {
+        type: Array,
+        required: true,
+    },
+});
 
 const page = usePage();
 const locale = computed(() => page.props.locale);
@@ -15,46 +34,11 @@ const locale = computed(() => page.props.locale);
     <Head :title="trans('laravel_developer.title')" />
 
     <HomeLayout>
-        <!-- Hero -->
-        <section
-            id="home"
-            class="ud-relative ud-z-10 ud-pt-[160px] lg:ud-pt-[120px] ud-pb-[80px] ud-overflow-visible"
-            :key="locale"
-        >
-            <div class="ud-container ud-overflow-visible">
-                <div class="ud-flex ud-flex-wrap ud-mx-[-16px]">
-                    <div class="ud-w-full lg:ud-w-3/4 ud-px-4 ud-overflow-visible">
-                        <span
-                            class="ud-text-base ud-font-semibold ud-text-primary ud-mb-3 ud-block"
-                        >
-                            {{ trans('laravel_developer.hero_label') }}
-                        </span>
-                        <h1
-                            class="ud-font-bold ud-text-black ud-text-3xl sm:ud-text-4xl md:ud-text-[45px] ud-leading-snug ud-pt-1 ud-pb-1 ud-mb-5 ud-max-w-[800px]"
-                        >
-                            {{ trans('laravel_developer.hero_title') }}
-                        </h1>
-                        <p
-                            class="ud-max-w-[640px] ud-font-medium ud-text-body-color ud-text-base ud-leading-relaxed ud-mb-8"
-                        >
-                            {{ trans('laravel_developer.hero_text') }}
-                        </p>
-                        <div class="ud-flex ud-items-center ud-gap-3 ud-flex-wrap">
-                            <PrimaryButton
-                                url="#contact"
-                                :text="trans('laravel_developer.cta_contact')"
-                            />
-                            <a
-                                href="#skills"
-                                class="ud-text-base ud-font-semibold ud-text-white ud-bg-black ud-py-3 ud-px-6 hover:ud-shadow-signUp hover:ud-bg-opacity-90 ud-rounded-full ud-transition ud-duration-300 ud-ease-in-out ud-whitespace-nowrap"
-                            >
-                                {{ trans('laravel_developer.cta_tech_stack') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <HeroSection />
+        <AboutMe />
+        <Portfolio :portfolio-items="portfolioItems" />
+        <Clients :clients="clients" />
+        <Testimonials />
 
         <!-- What to expect -->
         <section

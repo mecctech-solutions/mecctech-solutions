@@ -22,6 +22,6 @@ class PageController extends Controller
 
     public function laravelDeveloper(): Response
     {
-        return Inertia::render('LaravelDeveloper', []);
+        return Inertia::render('LaravelDeveloper', new HomeViewModel(null));
     }
 }
