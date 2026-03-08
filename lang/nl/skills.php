@@ -15,6 +15,10 @@ return [
         'name' => 'Inertia.js',
         'description' => 'Brug tussen Laravel en Vue.js voor SPAs',
     ],
+    'Next.js' => [
+        'name' => 'Next.js',
+        'description' => 'React-framework voor full-stack en frontend-apps',
+    ],
     'PHP' => [
         'name' => 'PHP',
         'description' => 'Kernprogrammeertaal voor Laravel-ontwikkeling',

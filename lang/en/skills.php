@@ -15,6 +15,10 @@ return [
         'name' => 'Inertia.js',
         'description' => 'Bridges Laravel and Vue.js for SPAs',
     ],
+    'Next.js' => [
+        'name' => 'Next.js',
+        'description' => 'React framework for full-stack and frontend apps',
+    ],
     'PHP' => [
         'name' => 'PHP',
         'description' => 'Core language for Laravel development',
