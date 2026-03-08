@@ -34,6 +34,7 @@
     },
     "require-dev": {
         "larastan/larastan": "^3.0",
+        "laravel/boost": "^1.1",
         "laravel/dusk": "^8.2",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
