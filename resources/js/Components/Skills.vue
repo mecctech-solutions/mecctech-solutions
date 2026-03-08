@@ -53,6 +53,7 @@ const skills = computed(() => [
     { name: trans("skills.Laravel.name"), description: trans("skills.Laravel.description") },
     { name: trans("skills.Vue.js.name"), description: trans("skills.Vue.js.description") },
     { name: trans("skills.Inertia.js.name"), description: trans("skills.Inertia.js.description") },
+    { name: trans("skills.Next.js.name"), description: trans("skills.Next.js.description") },
     { name: trans("skills.PHP.name"), description: trans("skills.PHP.description") },
     { name: trans("skills.Javascript.name"), description: trans("skills.Javascript.description") },
     { name: trans("skills.MySQL.name"), description: trans("skills.MySQL.description") },
