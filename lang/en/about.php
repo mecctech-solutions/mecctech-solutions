@@ -6,4 +6,5 @@ return [
     'connect' => 'Collaborate?',
     'connect_text' => "Do you have an idea for a web application? \n I help you from concept to a working application. \n \n Do you already work with Laravel? \n I help teams with building and extending Laravel and Vue.js applications.",
     'solving_problems' => 'From idea to reality: your product, my expertise',
+    'laravel_developer_link' => 'Looking for a Laravel developer?',
 ];

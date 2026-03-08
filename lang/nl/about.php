@@ -6,4 +6,5 @@ return [
     'connect' => 'Samenwerken?',
     'connect_text' => "Heb je een idee voor een webapplicatie? \n Ik help je van concept tot een werkende applicatie. \n \n Werk je al met Laravel? \n Ik help teams met het bouwen en uitbreiden van Laravel en Vue.js applicaties.",
     'solving_problems' => 'Van idee naar werkelijkheid: jouw product, mijn expertise',
+    'laravel_developer_link' => 'Op zoek naar een Laravel developer?',
 ];

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/laravel-developer', [PageController::class, 'laravelDeveloper'])->name('laravel-developer');
 
 Route::post('/submit-contact-request', SubmitContactRequest::class)
     ->name('submit-contact-request');

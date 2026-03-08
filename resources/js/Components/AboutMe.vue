@@ -60,6 +60,12 @@
                     <p class="ud-font-medium ud-text-base ud-text-body-color ud-mb-10 ud-whitespace-pre-line">
                         {{ trans('about.connect_text') }}
                     </p>
+                    <a
+                        :href="route('laravel-developer')"
+                        class="ud-font-medium ud-text-base ud-text-primary hover:ud-text-black ud-underline ud-inline-block ud-mb-10"
+                    >
+                        {{ trans('about.laravel_developer_link') }}
+                    </a>
                     <div
                         class="ud-flex md:ud-flex-row ud-flex-col ud-items-center md:ud-items-start ud-space-y-10 md:ud-space-y-0 ud-space-x-12"
                     >
@@ -134,6 +140,7 @@
 <script setup>
 import {computed} from "vue";
 import {usePage} from "@inertiajs/vue3";
+import {route} from "ziggy-js";
 import {trans} from "laravel-vue-i18n";
 import SocialLink from "@/Components/SocialLink.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
