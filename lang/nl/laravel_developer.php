@@ -2,9 +2,9 @@
 
 return [
     'title' => 'Laravel Developer',
-    'hero_label' => 'Laravel & Vue.js',
-    'hero_title' => 'Developer voor teams die schaalbaar en onderhoudbaar willen bouwen.',
-    'hero_text' => 'Ik werk met Laravel, Vue.js en Inertia. Geen prototypes: production-ready code, tests, CI/CD en duidelijke architectuur. Ideaal als je een senior developer nodig hebt of je bestaande Laravel-app wilt uitbreiden.',
+    'hero_label' => 'Freelance',
+    'hero_title' => 'Laravel & Vue.js developer voor jullie team',
+    'hero_text' => 'Ik help bedrijven hun Laravel applicatie uitbreiden, verbeteren en stabiliseren. Van bugfixes tot nieuwe features en integraties.',
     'cta_contact' => 'Neem contact op',
     'cta_tech_stack' => 'Tech stack',
     'section_what_title' => 'Wat ik toevoeg aan jullie team',
