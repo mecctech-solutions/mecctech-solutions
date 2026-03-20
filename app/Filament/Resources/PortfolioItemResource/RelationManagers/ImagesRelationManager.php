@@ -19,6 +19,7 @@ class ImagesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('url')
+                    ->image()
                     ->directory('/images/projects')
                     ->preserveFilenames()
                     ->label('Image URL'),

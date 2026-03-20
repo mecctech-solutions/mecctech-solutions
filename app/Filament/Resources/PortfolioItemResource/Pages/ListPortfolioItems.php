@@ -27,6 +27,12 @@ class ListPortfolioItems extends ListRecords
                 ->form([
                     FileUpload::make('file')
                         ->label('Upload Excel File')
+                        ->acceptedFileTypes([
+                            'text/csv',
+                            'text/plain',
+                            'application/csv',
+                        ])
+                        ->rules(['file', 'mimes:csv,txt'])
                         ->required(),
                 ]),
         ];

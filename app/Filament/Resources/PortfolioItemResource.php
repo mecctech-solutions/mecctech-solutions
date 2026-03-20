@@ -33,6 +33,7 @@ class PortfolioItemResource extends Resource
                 Forms\Components\TextInput::make('title_nl')->label('Title (NL)'),
                 Forms\Components\TextInput::make('title_en')->label('Title (EN)'),
                 Forms\Components\FileUpload::make('main_image_url')
+                    ->image()
                     ->directory('/images/projects')
                     ->preserveFilenames()
                     ->label('Main Image URL'),
