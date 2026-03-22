@@ -2,9 +2,10 @@
 
 use App\Actions\GetPublishedBlogPosts;
 use App\Models\BlogPost;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 test('blog index lists published posts with image url', function () {
     $published = BlogPost::factory()->create([

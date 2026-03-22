@@ -2,9 +2,10 @@
 
 use App\Models\Client;
 use App\Models\Testimonial;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 test('it returns image full url with storage when it exists', function () {
     // Arrange

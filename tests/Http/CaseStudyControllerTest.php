@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\CaseStudy;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 test('it shows case study page', function () {
     // Given

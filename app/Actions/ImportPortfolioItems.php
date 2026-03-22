@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Services\CsvPortfolioItemsConverter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class ImportPortfolioItems
@@ -22,7 +23,7 @@ class ImportPortfolioItems
         try {
             $uploadedFile = $request->file('portfolio_items');
 
-            if (! $uploadedFile instanceof \Illuminate\Http\UploadedFile) {
+            if (! $uploadedFile instanceof UploadedFile) {
                 throw new \InvalidArgumentException('No file uploaded or invalid file type');
             }
 

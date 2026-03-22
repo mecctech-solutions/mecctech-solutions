@@ -77,7 +77,7 @@ it('should return response with portfolio items', function () {
 });
 
 it('should return response with error message when failed to get all portfolio items', function () {
-    GetAllPortfolioItems::partialMock()->shouldReceive('handle')->andThrow(new \Exception('Failed to get all portfolio items'));
+    GetAllPortfolioItems::partialMock()->shouldReceive('handle')->andThrow(new Exception('Failed to get all portfolio items'));
     $url = route('all-portfolio-items');
     $response = $this->get($url);
     self::assertNotNull($response['meta']['created_at']);

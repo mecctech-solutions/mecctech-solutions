@@ -2,8 +2,9 @@
 
 use App\Models\Image;
 use App\Models\PortfolioItem;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->portfolioItem = new PortfolioItem([
@@ -26,19 +27,19 @@ beforeEach(function () {
 it('should return url with storage when it exists', function () {
     // Arrange
     $fileName = 'test.jpg';
-    \Storage::put($fileName, 'test');
+    Storage::put($fileName, 'test');
     $this->image->url = $fileName;
     $this->image->save();
 
     // Act & Assert
     self::assertEquals(url('/storage/test.jpg'), $this->image->full_url);
 
-    \Storage::delete($fileName);
+    Storage::delete($fileName);
 });
 
 it('should return main image url without storage when it does not exist', function () {
     // Arrange
-    \Storage::fake('public');
+    Storage::fake('public');
     $this->image->url = 'test.jpg';
     $this->image->save();
 

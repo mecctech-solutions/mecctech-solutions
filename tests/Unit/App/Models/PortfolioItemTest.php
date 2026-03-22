@@ -3,9 +3,10 @@
 use App\Models\CaseStudy;
 use App\Models\PortfolioItem;
 use App\Models\Tag;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->portfolioItem = new PortfolioItem([

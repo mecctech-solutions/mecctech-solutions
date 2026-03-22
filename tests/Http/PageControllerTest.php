@@ -3,9 +3,10 @@
 use App\Models\Client;
 use App\Models\PortfolioItem;
 use App\Models\Testimonial;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 test('it should render home page with portfolio items', function () {
     // Given
