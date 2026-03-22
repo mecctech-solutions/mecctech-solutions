@@ -9,4 +9,5 @@ return [
     'approach' => 'My Approach',
     'testimonials' => 'Testimonials',
     'contact' => 'Contact',
+    'blog' => 'Blog',
 ];

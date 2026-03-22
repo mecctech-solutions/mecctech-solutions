@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\ListBlogPosts;
+use App\Actions\ShowPublishedBlogPost;
 use App\Actions\SubmitContactRequest;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\PageController;
@@ -36,3 +38,6 @@ Route::get('locale/', function (Request $request) {
 })->name('locale.change');
 
 Route::get('/case-studies/{caseStudy:slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
+
+Route::get('/blog', ListBlogPosts::class)->name('blog.index');
+Route::get('/blog/{blogPost:slug}', ShowPublishedBlogPost::class)->name('blog.show');
