@@ -16,22 +16,33 @@
                 </header>
 
                 <div
-                    v-if="posts.length === 0"
+                    v-if="posts.total === 0"
                     class="ud-rounded-2xl ud-bg-neutral-50 ud-py-16 ud-text-center ud-text-neutral-600"
                 >
                     {{ trans('blog.empty') }}
                 </div>
 
-                <div
-                    v-else
-                    class="ud-grid ud-gap-8 sm:ud-grid-cols-2 lg:ud-grid-cols-3"
-                >
-                    <BlogPostCard
-                        v-for="post in posts"
-                        :key="post.id"
-                        :post="post"
+                <template v-else>
+                    <Pagination
+                        v-if="posts.last_page > 1"
+                        :links="posts.links"
+                        class="ud-mb-12"
                     />
-                </div>
+                    <div
+                        class="ud-grid ud-gap-8 sm:ud-grid-cols-2 lg:ud-grid-cols-3"
+                    >
+                        <BlogPostCard
+                            v-for="post in posts.data"
+                            :key="post.id"
+                            :post="post"
+                        />
+                    </div>
+                    <Pagination
+                        v-if="posts.last_page > 1"
+                        :links="posts.links"
+                        class="ud-mt-12"
+                    />
+                </template>
             </div>
         </section>
     </HomeLayout>
@@ -41,10 +52,23 @@
 import { Head } from '@inertiajs/vue3';
 import HomeLayout from '@/Layouts/HomeLayout.vue';
 import BlogPostCard from '@/Components/Blog/BlogPostCard.vue';
+import Pagination from '@/Components/Pagination.vue';
 import { trans } from 'laravel-vue-i18n';
 import type { BlogPostPayload } from '@/types/blog';
 
+interface PaginationLink {
+    url: string | null;
+    label: string;
+    active: boolean;
+}
+
 defineProps<{
-    posts: BlogPostPayload[];
+    posts: {
+        data: BlogPostPayload[];
+        links: PaginationLink[];
+        current_page: number;
+        last_page: number;
+        total: number;
+    };
 }>();
 </script>

@@ -13,10 +13,7 @@ class ListBlogPosts
     public function asController(): Response
     {
         return Inertia::render('Blog/Index', [
-            'posts' => GetPublishedBlogPosts::run()
-                ->map(fn ($data) => $data->toArray())
-                ->values()
-                ->all(),
+            'posts' => GetPublishedBlogPosts::run(),
         ]);
     }
 }

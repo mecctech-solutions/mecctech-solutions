@@ -4,22 +4,40 @@ namespace App\Actions;
 
 use App\Data\BlogPostData;
 use App\Models\BlogPost;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class GetPublishedBlogPosts
 {
     use AsAction;
 
+    public const PER_PAGE = 9;
+
     /**
-     * @return Collection<int, BlogPostData>
+     * @return LengthAwarePaginator<int, array<mixed>>
      */
-    public function handle(): Collection
+    public function handle(?int $perPage = null): LengthAwarePaginator
     {
-        return BlogPost::query()
+        $perPage ??= self::PER_PAGE;
+
+        $queryPaginator = BlogPost::query()
             ->published()
             ->orderByDesc('published_at')
-            ->get()
-            ->map(fn (BlogPost $blogPost) => BlogPostData::fromModel($blogPost));
+            ->paginate($perPage);
+
+        $items = $queryPaginator->getCollection()->map(
+            fn (BlogPost $blogPost) => BlogPostData::fromModel($blogPost)->toArray()
+        );
+
+        return (new LengthAwarePaginator(
+            $items,
+            $queryPaginator->total(),
+            $queryPaginator->perPage(),
+            $queryPaginator->currentPage(),
+            [
+                'path' => $queryPaginator->path(),
+                'pageName' => $queryPaginator->getPageName(),
+            ],
+        ))->withQueryString();
     }
 }

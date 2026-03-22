@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\GetPublishedBlogPosts;
 use App\Models\BlogPost;
 use Inertia\Testing\AssertableInertia;
 
@@ -20,14 +21,16 @@ test('blog index lists published posts with image url', function () {
     $response->assertOk();
     $response->assertInertia(function (AssertableInertia $page) use ($published) {
         $page->component('Blog/Index')
-            ->has('posts', 1)
-            ->has('posts.0', fn (AssertableInertia $post) => $post
+            ->has('posts.data', 1)
+            ->has('posts.data.0', fn (AssertableInertia $post) => $post
                 ->where('id', $published->id)
                 ->where('slug', 'visible-post')
                 ->where('title_en', 'Visible Post')
                 ->has('featured_image_full_url')
                 ->etc()
-            );
+            )
+            ->where('posts.total', 1)
+            ->where('posts.last_page', 1);
     });
 });
 
@@ -38,7 +41,8 @@ test('blog index shows empty list when no published posts', function () {
         ->assertOk()
         ->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Blog/Index')
-            ->has('posts', 0));
+            ->has('posts.data', 0)
+            ->where('posts.total', 0));
 });
 
 test('blog index excludes posts scheduled for the future', function () {
@@ -48,7 +52,33 @@ test('blog index excludes posts scheduled for the future', function () {
         ->assertOk()
         ->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Blog/Index')
-            ->has('posts', 0));
+            ->has('posts.data', 0)
+            ->where('posts.total', 0));
+});
+
+test('blog index paginates published posts', function () {
+    $perPage = GetPublishedBlogPosts::PER_PAGE;
+    BlogPost::factory()->count($perPage + 3)->create([
+        'published_at' => now()->subDays(2),
+    ]);
+
+    $this->get(route('blog.index'))
+        ->assertOk()
+        ->assertInertia(function (AssertableInertia $page) use ($perPage) {
+            $page->component('Blog/Index')
+                ->has('posts.data', $perPage)
+                ->where('posts.total', $perPage + 3)
+                ->where('posts.last_page', 2)
+                ->where('posts.current_page', 1);
+        });
+
+    $this->get(route('blog.index', ['page' => 2]))
+        ->assertOk()
+        ->assertInertia(function (AssertableInertia $page) {
+            $page->component('Blog/Index')
+                ->has('posts.data', 3)
+                ->where('posts.current_page', 2);
+        });
 });
 
 test('blog show displays published post', function () {
