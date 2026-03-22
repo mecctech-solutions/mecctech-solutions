@@ -31,7 +31,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: '8.4'
           extensions: mbstring, xml, bcmath, zip, intl, curl, pdo_mysql
 
       - name: Install Dependencies
@@ -45,6 +45,14 @@ jobs:
       - name: Install Node.js Dependencies
         run: npm install
 
+      - name: Configure .env
+        run: |
+          cp .env.example .env
+          sed -i 's/^MAIL_FROM_ADDRESS=.*/MAIL_FROM_ADDRESS=test@example.com/' .env
+          sed -i 's/^MAIL_MAILER=.*/MAIL_MAILER=log/' .env
+          sed -i 's/^DB_PASSWORD=.*/DB_PASSWORD=root/' .env
+          php artisan key:generate --no-interaction
+
       - name: Create routes directory
         run: mkdir -p resources/scripts/routes
 
@@ -53,19 +61,6 @@ jobs:
 
       - name: Build Assets
         run: npm run build
-
-      - name: Configure .env
-        run: |
-          cp .env.example .env
-          php artisan key:generate
-          echo "DB_CONNECTION=mysql" >> .env
-          echo "DB_HOST=127.0.0.1" >> .env
-          echo "DB_PORT=3306" >> .env
-          echo "DB_DATABASE=huisprijsopvragen_test" >> .env
-          echo "DB_USERNAME=root" >> .env
-          echo "DB_PASSWORD=root" >> .env
-          echo "MAIL_MAILER=log" >> .env
-          echo "MAIL_FROM_ADDRESS=test@example.com" >> .env
 
       - name: Clear Config Cache
         run: php artisan config:clear

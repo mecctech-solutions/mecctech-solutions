@@ -7,8 +7,9 @@ use App\Models\Tag;
 use App\Models\Testimonial;
 use App\ViewModels\HomeViewModel;
 use Database\Factories\PortfolioItemFactory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->viewModel = new HomeViewModel;

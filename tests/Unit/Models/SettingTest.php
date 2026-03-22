@@ -3,8 +3,9 @@
 use App\Enums\SettingKey;
 use App\Exceptions\InvalidSettingValueException;
 use App\Models\Setting;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class);
 
 test('it can get setting value', function () {
     // Given

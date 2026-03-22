@@ -102,7 +102,24 @@
                                     :key="item.label"
                                     @click="navbarActive = false"
                                 >
+                                    <Link
+                                        v-if="item.useInertiaLink"
+                                        :href="item.href"
+                                        class="
+                      menu-scroll
+                      ud-text-base ud-text-black
+                      group-hover:ud-text-primary
+                      ud-py-2
+                      lg:ud-py-6 lg:ud-inline-flex lg:ud-px-0
+                      ud-flex ud-mx-8
+                      lg:ud-mr-0 lg:ud-ml-8
+                      xl:ud-ml-12
+                    "
+                                    >
+                                        {{ item.label }}
+                                    </Link>
                                     <a
+                                        v-else
                                         :href="item.href"
                                         class="
                       menu-scroll
@@ -131,8 +148,9 @@
 <script setup>
 import {computed, ref} from "vue";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
-import {usePage} from "@inertiajs/vue3";
+import {Link, usePage} from "@inertiajs/vue3";
 import {trans} from "laravel-vue-i18n";
+import {route} from "ziggy-js";
 
 const navbarActive = ref(false);
 const toggleNavbar = () => {
@@ -146,14 +164,15 @@ const isLaravelDeveloperPage = computed(() => page.url.includes('/laravel-develo
 
 const menuItems = computed(() => {
     const items = [
-        { label: trans("header.home"), href: `${page.props.appUrl}#home` },
-        { label: "Portfolio", href: `${page.props.appUrl}#portfolio` },
-        { label: trans("header.clients"), href: `${page.props.appUrl}#clients` },
-        { label: trans("header.testimonials"), href: `${page.props.appUrl}#testimonials` },
-        { label: trans("header.contact"), href: `${page.props.appUrl}#contact` },
+        { label: trans("header.home"), href: `${page.props.appUrl}#home`, useInertiaLink: false },
+        { label: "Portfolio", href: `${page.props.appUrl}#portfolio`, useInertiaLink: false },
+        { label: trans("header.blog"), href: route("blog.index"), useInertiaLink: true },
+        { label: trans("header.clients"), href: `${page.props.appUrl}#clients`, useInertiaLink: false },
+        { label: trans("header.testimonials"), href: `${page.props.appUrl}#testimonials`, useInertiaLink: false },
+        { label: trans("header.contact"), href: `${page.props.appUrl}#contact`, useInertiaLink: false },
     ];
     if (isLaravelDeveloperPage.value) {
-        items.splice(4, 0, { label: trans("header.skills"), href: `${page.props.appUrl}/laravel-developer#skills` });
+        items.splice(5, 0, { label: trans("header.skills"), href: `${page.props.appUrl}/laravel-developer#skills`, useInertiaLink: false });
     }
     return items;
 });

@@ -30,7 +30,7 @@ it('should add customer if it does not exist', function () {
 
 it('should send email with new message', function () {
     // Given
-    \Mail::fake();
+    Mail::fake();
     $message = 'Test Message';
     $customer = ContactRequest::factory()->create(['message' => $message]);
 
@@ -48,7 +48,7 @@ it('should send email with new message', function () {
     // Then
     $expectedMessage = $customer->full_name.' with email address '.$customer->email.' has sent the following message: '.$message;
 
-    \Mail::assertSent(SubmitContactRequestMail::class, function (SubmitContactRequestMail $mail) use ($expectedMessage) {
+    Mail::assertSent(SubmitContactRequestMail::class, function (SubmitContactRequestMail $mail) use ($expectedMessage) {
         return $mail->message === $expectedMessage && $mail->recipientEmailAddress === 'florismeccanici@tutanota.com';
     });
 });

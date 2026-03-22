@@ -9,4 +9,5 @@ return [
     'approach' => 'Mijn Aanpak',
     'testimonials' => 'Testimonials',
     'contact' => 'Contact',
+    'blog' => 'Blog',
 ];
