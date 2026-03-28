@@ -60,3 +60,27 @@ body {
 .portfolio-buttons button.active {
     @apply ud-bg-primary ud-text-white;
 }
+
+/* Blog prose code styling */
+.ud-prose code {
+    @apply ud-text-sm ud-font-mono;
+}
+
+.ud-prose :not(pre) > code {
+    @apply ud-bg-neutral-100 ud-text-[#e30613] ud-rounded ud-px-1.5 ud-py-0.5 ud-text-sm ud-font-medium;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.ud-prose :not(pre) > code::before,
+.ud-prose :not(pre) > code::after {
+    content: '' !important;
+}
+
+.ud-prose pre {
+    @apply ud-rounded-xl ud-shadow-md ud-my-8 ud-p-0 ud-bg-[#0d1117] ud-overflow-hidden;
+}
+
+.ud-prose pre code {
+    @apply ud-block ud-overflow-x-auto ud-p-6 ud-text-sm ud-leading-relaxed;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
