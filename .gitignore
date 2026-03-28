@@ -3,13 +3,12 @@
 /public/js
 /public/hot
 /public/storage
-/public/.htaccess
 /public/build/*
 /bootstrap/ssr
 /storage/*.key
 /vendor
 .DS_Store
-.htaccess
+/.htaccess
 .env
 .env.backup
 .env.dusk.testing
