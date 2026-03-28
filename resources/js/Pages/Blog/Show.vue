@@ -31,7 +31,6 @@
                 </div>
 
                 <div
-                    ref="contentRef"
                     class="ud-prose ud-prose-lg ud-max-w-none"
                     v-html="content"
                 />
@@ -52,28 +51,12 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import HomeLayout from '@/Layouts/HomeLayout.vue';
-import { computed, onMounted, watch, nextTick, ref } from 'vue';
+import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
 import { route } from 'ziggy-js';
 import type { BlogPostPayload } from '@/types/blog';
-import hljs from 'highlight.js/lib/core';
-import php from 'highlight.js/lib/languages/php';
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
-import xml from 'highlight.js/lib/languages/xml';
-import css from 'highlight.js/lib/languages/css';
-import json from 'highlight.js/lib/languages/json';
-import bash from 'highlight.js/lib/languages/bash';
 import 'highlight.js/styles/github-dark.css';
-
-hljs.registerLanguage('php', php);
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('xml', xml);
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('json', json);
-hljs.registerLanguage('bash', bash);
 
 const props = defineProps<{
     post: BlogPostPayload;
@@ -89,21 +72,6 @@ const title = computed(() =>
 const content = computed(() =>
     locale.value === 'nl' ? props.post.content_nl : props.post.content_en,
 );
-
-const contentRef = ref<HTMLElement | null>(null);
-
-const highlightCode = () => {
-    nextTick(() => {
-        if (contentRef.value) {
-            contentRef.value.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightElement(block as HTMLElement);
-            });
-        }
-    });
-};
-
-onMounted(highlightCode);
-watch(content, highlightCode);
 
 const formattedDate = computed(() => {
     if (!props.post.published_at) {
