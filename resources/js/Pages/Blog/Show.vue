@@ -30,7 +30,15 @@
                     />
                 </div>
 
+                <p
+                    v-if="excerpt"
+                    class="ud-mb-10 ud-text-xl ud-leading-relaxed ud-text-neutral-600"
+                >
+                    {{ excerpt }}
+                </p>
+
                 <div
+                    ref="contentRef"
                     class="ud-prose ud-prose-lg ud-max-w-none"
                     v-html="content"
                 />
@@ -51,11 +59,12 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import HomeLayout from '@/Layouts/HomeLayout.vue';
-import { computed } from 'vue';
+import { computed, ref, watch, nextTick } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
 import { route } from 'ziggy-js';
 import type { BlogPostPayload } from '@/types/blog';
+import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
 
 const props = defineProps<{
@@ -64,6 +73,7 @@ const props = defineProps<{
 
 const page = usePage();
 const locale = computed(() => page.props.locale as string);
+const contentRef = ref<HTMLElement | null>(null);
 
 const title = computed(() =>
     locale.value === 'nl' ? props.post.title_nl : props.post.title_en,
@@ -71,6 +81,10 @@ const title = computed(() =>
 
 const content = computed(() =>
     locale.value === 'nl' ? props.post.content_nl : props.post.content_en,
+);
+
+const excerpt = computed(() =>
+    locale.value === 'nl' ? props.post.excerpt_nl : props.post.excerpt_en,
 );
 
 const formattedDate = computed(() => {
@@ -83,4 +97,50 @@ const formattedDate = computed(() => {
         day: 'numeric',
     }).format(new Date(props.post.published_at));
 });
+
+function applyCodeHighlighting(): void {
+    nextTick(() => {
+        if (!contentRef.value) return;
+
+        contentRef.value.querySelectorAll<HTMLElement>('pre code').forEach((block) => {
+            const pre = block.parentElement as HTMLElement;
+            if (!pre || pre.dataset.highlighted) return;
+
+            hljs.highlightElement(block);
+
+            const langClass = Array.from(block.classList).find((c) => c.startsWith('language-'));
+            const language = langClass ? langClass.replace('language-', '') : 'code';
+
+            const header = document.createElement('div');
+            header.className = 'code-block-header';
+            header.innerHTML = `
+                <span class="code-block-lang">${language}</span>
+                <button class="code-block-copy" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                    </svg>
+                    <span>Copy</span>
+                </button>
+            `;
+
+            pre.insertBefore(header, block);
+            pre.dataset.highlighted = 'true';
+
+            const copyBtn = header.querySelector<HTMLButtonElement>('.code-block-copy')!;
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(block.textContent ?? '').then(() => {
+                    const label = copyBtn.querySelector('span')!;
+                    label.textContent = 'Copied!';
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        label.textContent = 'Copy';
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                });
+            });
+        });
+    });
+}
+
+watch(content, applyCodeHighlighting, { immediate: true });
 </script>

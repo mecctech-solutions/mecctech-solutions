@@ -77,10 +77,29 @@ body {
 }
 
 .ud-prose pre {
-    @apply ud-rounded-xl ud-shadow-md ud-my-8 ud-p-0 ud-bg-[#0d1117] ud-overflow-hidden;
+    @apply ud-rounded-xl ud-shadow-lg ud-my-8 ud-p-0 ud-bg-[#0d1117] ud-overflow-hidden;
 }
 
 .ud-prose pre code {
-    @apply ud-block ud-overflow-x-auto ud-p-6 ud-text-sm ud-leading-relaxed;
+    @apply ud-block ud-overflow-x-auto ud-px-6 ud-pb-6 ud-pt-0 ud-text-sm ud-leading-relaxed;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Code block header bar */
+.code-block-header {
+    @apply ud-flex ud-items-center ud-justify-between ud-px-4 ud-py-2.5 ud-bg-[#161b22] ud-border-b ud-border-white/10;
+}
+
+.code-block-lang {
+    @apply ud-text-xs ud-font-medium ud-tracking-wide ud-uppercase ud-text-neutral-400;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.code-block-copy {
+    @apply ud-flex ud-items-center ud-gap-1.5 ud-text-xs ud-text-neutral-400 ud-transition-colors hover:ud-text-white;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.code-block-copy.copied {
+    @apply ud-text-green-400;
 }
