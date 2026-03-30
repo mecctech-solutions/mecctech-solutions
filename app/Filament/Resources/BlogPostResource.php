@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Support\Str;
 
 class BlogPostResource extends Resource
@@ -41,10 +42,10 @@ class BlogPostResource extends Resource
                 Forms\Components\Textarea::make('excerpt_en')
                     ->rows(3)
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('content_nl')
+                TiptapEditor::make('content_nl')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('content_en')
+                TiptapEditor::make('content_en')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('featured_image')
