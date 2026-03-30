@@ -30,13 +30,6 @@
                     />
                 </div>
 
-                <p
-                    v-if="excerpt"
-                    class="ud-mb-10 ud-text-xl ud-leading-relaxed ud-text-neutral-600"
-                >
-                    {{ excerpt }}
-                </p>
-
                 <div
                     ref="contentRef"
                     class="ud-prose ud-prose-lg ud-max-w-none"
