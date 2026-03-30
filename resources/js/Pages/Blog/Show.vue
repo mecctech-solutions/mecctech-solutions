@@ -57,8 +57,30 @@ import { usePage } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
 import { route } from 'ziggy-js';
 import type { BlogPostPayload } from '@/types/blog';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/github-dark.css';
+import xml from 'highlight.js/lib/languages/xml';
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
+import php from 'highlight.js/lib/languages/php';
+import css from 'highlight.js/lib/languages/css';
+import bash from 'highlight.js/lib/languages/bash';
+import json from 'highlight.js/lib/languages/json';
+import sql from 'highlight.js/lib/languages/sql';
+
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('js', javascript);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('shell', bash);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('sql', sql);
+hljs.registerLanguage('vue', xml);
 
 const props = defineProps<{
     post: BlogPostPayload;

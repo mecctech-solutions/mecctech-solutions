@@ -63,12 +63,13 @@ body {
 
 /* Blog prose code styling */
 .ud-prose code {
-    @apply ud-text-sm ud-font-mono;
+    @apply ud-text-sm;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .ud-prose :not(pre) > code {
     @apply ud-bg-neutral-100 ud-text-[#e30613] ud-rounded ud-px-1.5 ud-py-0.5 ud-text-sm ud-font-medium;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .ud-prose :not(pre) > code::before,
@@ -77,29 +78,57 @@ body {
 }
 
 .ud-prose pre {
-    @apply ud-rounded-xl ud-shadow-lg ud-my-8 ud-p-0 ud-bg-[#0d1117] ud-overflow-hidden;
+    @apply ud-rounded-xl ud-shadow-lg ud-my-8 ud-p-0 ud-bg-[#0d1117] ud-overflow-hidden ud-border ud-border-white/10;
 }
 
 .ud-prose pre code {
-    @apply ud-block ud-overflow-x-auto ud-px-6 ud-pb-6 ud-pt-0 ud-text-sm ud-leading-relaxed;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    @apply ud-block ud-overflow-x-auto ud-px-5 ud-pb-5 ud-pt-4 ud-text-[13px] ud-leading-relaxed;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    tab-size: 2;
+    -moz-tab-size: 2;
+}
+
+.ud-prose pre code .hljs-keyword,
+.ud-prose pre code .hljs-tag {
+    @apply ud-font-medium;
 }
 
 /* Code block header bar */
 .code-block-header {
-    @apply ud-flex ud-items-center ud-justify-between ud-px-4 ud-py-2.5 ud-bg-[#161b22] ud-border-b ud-border-white/10;
+    @apply ud-flex ud-items-center ud-justify-between ud-px-5 ud-py-2.5 ud-bg-[#161b22] ud-border-b ud-border-white/10;
 }
 
 .code-block-lang {
     @apply ud-text-xs ud-font-medium ud-tracking-wide ud-uppercase ud-text-neutral-400;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .code-block-copy {
-    @apply ud-flex ud-items-center ud-gap-1.5 ud-text-xs ud-text-neutral-400 ud-transition-colors hover:ud-text-white;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    @apply ud-flex ud-items-center ud-gap-1.5 ud-text-xs ud-text-neutral-400 ud-cursor-pointer ud-transition-colors hover:ud-text-white ud-bg-transparent ud-border-0 ud-p-0;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.code-block-copy:hover {
+    @apply ud-text-white;
 }
 
 .code-block-copy.copied {
     @apply ud-text-green-400;
+}
+
+/* Scrollbar styling for code blocks */
+.ud-prose pre code::-webkit-scrollbar {
+    height: 6px;
+}
+
+.ud-prose pre code::-webkit-scrollbar-track {
+    @apply ud-bg-transparent;
+}
+
+.ud-prose pre code::-webkit-scrollbar-thumb {
+    @apply ud-rounded-full ud-bg-white/10;
+}
+
+.ud-prose pre code::-webkit-scrollbar-thumb:hover {
+    @apply ud-bg-white/20;
 }
