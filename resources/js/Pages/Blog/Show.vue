@@ -76,10 +76,6 @@ const content = computed(() =>
     locale.value === 'nl' ? props.post.content_nl : props.post.content_en,
 );
 
-const excerpt = computed(() =>
-    locale.value === 'nl' ? props.post.excerpt_nl : props.post.excerpt_en,
-);
-
 const formattedDate = computed(() => {
     if (!props.post.published_at) {
         return '';
