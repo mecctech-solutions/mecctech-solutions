@@ -117,10 +117,24 @@ function applyCodeHighlighting(): void {
             const pre = block.parentElement as HTMLElement;
             if (!pre || pre.dataset.highlighted) return;
 
+            const langClass = Array.from(block.classList).find((c) =>
+                c.startsWith('language-'),
+            );
+            let language = langClass ? langClass.replace('language-', '') : '';
+
+            if (!language) {
+                const result = hljs.highlightAuto(block.textContent ?? '');
+                if (result.language) {
+                    language = result.language;
+                    block.classList.add(`language-${language}`);
+                }
+            }
+
             hljs.highlightElement(block);
 
-            const langClass = Array.from(block.classList).find((c) => c.startsWith('language-'));
-            const language = langClass ? langClass.replace('language-', '') : 'code';
+            if (!language) {
+                language = 'code';
+            }
 
             const header = document.createElement('div');
             header.className = 'code-block-header';
