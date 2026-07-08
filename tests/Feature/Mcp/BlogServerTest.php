@@ -37,6 +37,25 @@ it('rejects unauthenticated requests', function () {
     $response->assertUnauthorized();
 });
 
+it('negotiates the latest MCP protocol version requested by recent clients', function () {
+    Sanctum::actingAs(User::factory()->create(), ['blog:read']);
+
+    $response = $this->postJson('mcp/blog', [
+        'jsonrpc' => '2.0',
+        'id' => 1,
+        'method' => 'initialize',
+        'params' => [
+            'protocolVersion' => '2025-11-25',
+            'capabilities' => [],
+            'clientInfo' => ['name' => 'claude-code', 'version' => '1'],
+        ],
+    ]);
+
+    $response->assertOk();
+    expect($response->json('result.protocolVersion'))->toBe('2025-11-25')
+        ->and($response->json('error'))->toBeNull();
+});
+
 it('creates a blog post through the create tool', function () {
     Sanctum::actingAs(User::factory()->create(), ['blog:write', 'blog:read']);
 
