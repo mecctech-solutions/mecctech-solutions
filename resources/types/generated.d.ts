@@ -33,6 +33,16 @@ phone_number: string;
 message: string;
 company: string | null;
 };
+export type CreateBlogPostData = {
+title_nl: string;
+title_en: string;
+content_nl: string;
+content_en: string;
+excerpt_nl: string | null;
+excerpt_en: string | null;
+slug: string | null;
+featured_image: string | null;
+};
 export type ImageData = {
 full_url: string;
 url: string;
@@ -71,7 +81,18 @@ image_full_url: string;
 position: number;
 client_name: string | null;
 };
+export type UpdateBlogPostData = {
+title_nl?: string;
+title_en?: string;
+content_nl?: string;
+content_en?: string;
+excerpt_nl?: string | null;
+excerpt_en?: string | null;
+slug?: string;
+featured_image?: string;
+};
 }
 declare namespace App.Enums {
+export type BlogAbility = 'blog:read' | 'blog:write';
 export type SettingKey = 'portfolio_items.items_per_page';
 }
