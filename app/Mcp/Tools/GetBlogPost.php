@@ -3,6 +3,8 @@
 namespace App\Mcp\Tools;
 
 use App\Data\BlogPostData;
+use App\Enums\BlogAbility;
+use App\Http\Requests\Mcp\GetBlogPostRequest;
 use App\Mcp\Concerns\HandlesBlogToolRequests;
 use App\Models\BlogPost;
 use Generator;
@@ -34,13 +36,11 @@ class GetBlogPost extends Tool
      */
     public function handle(array $arguments): ToolResult|Generator
     {
-        if ($missing = $this->missingAbility('blog:read')) {
+        if ($missing = $this->missingAbility(BlogAbility::Read)) {
             return $missing;
         }
 
-        $validated = $this->validateArguments($arguments, [
-            'id' => ['required', 'integer', 'exists:blog_posts,id'],
-        ]);
+        $validated = $this->validateArguments($arguments, new GetBlogPostRequest);
 
         if ($validated instanceof ToolResult) {
             return $validated;

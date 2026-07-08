@@ -4,6 +4,8 @@ namespace App\Mcp\Tools;
 
 use App\Actions\UnpublishBlogPost as UnpublishBlogPostAction;
 use App\Data\BlogPostData;
+use App\Enums\BlogAbility;
+use App\Http\Requests\Mcp\UnpublishBlogPostRequest;
 use App\Mcp\Concerns\HandlesBlogToolRequests;
 use App\Models\BlogPost;
 use Generator;
@@ -35,13 +37,11 @@ class UnpublishBlogPost extends Tool
      */
     public function handle(array $arguments): ToolResult|Generator
     {
-        if ($missing = $this->missingAbility('blog:write')) {
+        if ($missing = $this->missingAbility(BlogAbility::Write)) {
             return $missing;
         }
 
-        $validated = $this->validateArguments($arguments, [
-            'id' => ['required', 'integer', 'exists:blog_posts,id'],
-        ]);
+        $validated = $this->validateArguments($arguments, new UnpublishBlogPostRequest);
 
         if ($validated instanceof ToolResult) {
             return $validated;

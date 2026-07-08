@@ -4,6 +4,9 @@ namespace App\Mcp\Tools;
 
 use App\Actions\UpdateBlogPost as UpdateBlogPostAction;
 use App\Data\BlogPostData;
+use App\Data\UpdateBlogPostData;
+use App\Enums\BlogAbility;
+use App\Http\Requests\Mcp\UpdateBlogPostRequest;
 use App\Mcp\Concerns\HandlesBlogToolRequests;
 use App\Models\BlogPost;
 use Generator;
@@ -45,30 +48,22 @@ class UpdateBlogPost extends Tool
      */
     public function handle(array $arguments): ToolResult|Generator
     {
-        if ($missing = $this->missingAbility('blog:write')) {
+        if ($missing = $this->missingAbility(BlogAbility::Write)) {
             return $missing;
         }
 
-        $validated = $this->validateArguments($arguments, [
-            'id' => ['required', 'integer', 'exists:blog_posts,id'],
-            'title_nl' => ['sometimes', 'string', 'max:255'],
-            'title_en' => ['sometimes', 'string', 'max:255'],
-            'content_nl' => ['sometimes', 'string'],
-            'content_en' => ['sometimes', 'string'],
-            'excerpt_nl' => ['sometimes', 'nullable', 'string'],
-            'excerpt_en' => ['sometimes', 'nullable', 'string'],
-            'slug' => ['sometimes', 'string', 'max:255'],
-            'featured_image' => ['sometimes', 'string', 'max:255'],
-        ]);
+        $validated = $this->validateArguments($arguments, new UpdateBlogPostRequest);
 
         if ($validated instanceof ToolResult) {
             return $validated;
         }
 
         $blogPost = BlogPost::query()->findOrFail((int) $validated['id']);
-        $attributes = Arr::except($validated, ['id']);
 
-        $blogPost = UpdateBlogPostAction::run($blogPost, $attributes);
+        $blogPost = UpdateBlogPostAction::run(
+            $blogPost,
+            UpdateBlogPostData::from(Arr::except($validated, ['id'])),
+        );
 
         return ToolResult::json(BlogPostData::fromModel($blogPost)->toArray());
     }

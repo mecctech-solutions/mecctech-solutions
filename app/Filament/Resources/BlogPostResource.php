@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Builders\BlogPostBuilder;
 use App\Filament\Resources\BlogPostResource\Pages;
 use App\Models\BlogPost;
 use Filament\Forms;
@@ -84,13 +85,10 @@ class BlogPostResource extends Resource
             ->filters([
                 Tables\Filters\Filter::make('published')
                     ->label('Published')
-                    ->query(fn ($query) => $query->published()),
+                    ->query(fn (BlogPostBuilder $query) => $query->published()),
                 Tables\Filters\Filter::make('draft')
                     ->label('Draft')
-                    ->query(fn ($query) => $query->where(function ($q) {
-                        $q->whereNull('published_at')
-                            ->orWhere('published_at', '>', now());
-                    })),
+                    ->query(fn (BlogPostBuilder $query) => $query->draft()),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

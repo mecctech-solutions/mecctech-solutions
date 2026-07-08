@@ -4,6 +4,9 @@ namespace App\Mcp\Tools;
 
 use App\Actions\CreateBlogPost as CreateBlogPostAction;
 use App\Data\BlogPostData;
+use App\Data\CreateBlogPostData;
+use App\Enums\BlogAbility;
+use App\Http\Requests\Mcp\CreateBlogPostRequest;
 use App\Mcp\Concerns\HandlesBlogToolRequests;
 use Generator;
 use Laravel\Mcp\Server\Tool;
@@ -43,26 +46,17 @@ class CreateBlogPost extends Tool
      */
     public function handle(array $arguments): ToolResult|Generator
     {
-        if ($missing = $this->missingAbility('blog:write')) {
+        if ($missing = $this->missingAbility(BlogAbility::Write)) {
             return $missing;
         }
 
-        $validated = $this->validateArguments($arguments, [
-            'title_nl' => ['required', 'string', 'max:255'],
-            'title_en' => ['required', 'string', 'max:255'],
-            'content_nl' => ['required', 'string'],
-            'content_en' => ['required', 'string'],
-            'excerpt_nl' => ['nullable', 'string'],
-            'excerpt_en' => ['nullable', 'string'],
-            'slug' => ['nullable', 'string', 'max:255'],
-            'featured_image' => ['nullable', 'string', 'max:255'],
-        ]);
+        $validated = $this->validateArguments($arguments, new CreateBlogPostRequest);
 
         if ($validated instanceof ToolResult) {
             return $validated;
         }
 
-        $blogPost = CreateBlogPostAction::run($validated);
+        $blogPost = CreateBlogPostAction::run(CreateBlogPostData::from($validated));
 
         return ToolResult::json(BlogPostData::fromModel($blogPost)->toArray());
     }

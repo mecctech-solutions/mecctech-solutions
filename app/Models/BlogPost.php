@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Builders\BlogPostBuilder;
 use Carbon\CarbonInterface;
 use Database\Factories\BlogPostFactory;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 /**
  * @property CarbonInterface|null $published_at
@@ -44,14 +45,11 @@ class BlogPost extends Model
     }
 
     /**
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder  $query
      */
-    public function scopePublished(Builder $query): Builder
+    public function newEloquentBuilder($query): BlogPostBuilder
     {
-        return $query
-            ->whereNotNull('published_at')
-            ->where('published_at', '<=', now());
+        return new BlogPostBuilder($query);
     }
 
     protected static function newFactory(): BlogPostFactory

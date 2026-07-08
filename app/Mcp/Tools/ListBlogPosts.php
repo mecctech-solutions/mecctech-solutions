@@ -3,6 +3,8 @@
 namespace App\Mcp\Tools;
 
 use App\Actions\GetAllBlogPosts;
+use App\Enums\BlogAbility;
+use App\Http\Requests\Mcp\ListBlogPostsRequest;
 use App\Mcp\Concerns\HandlesBlogToolRequests;
 use Generator;
 use Laravel\Mcp\Server\Tool;
@@ -37,16 +39,11 @@ class ListBlogPosts extends Tool
      */
     public function handle(array $arguments): ToolResult|Generator
     {
-        if ($missing = $this->missingAbility('blog:read')) {
+        if ($missing = $this->missingAbility(BlogAbility::Read)) {
             return $missing;
         }
 
-        $validated = $this->validateArguments($arguments, [
-            'search' => ['nullable', 'string'],
-            'status' => ['nullable', 'in:all,draft,published'],
-            'page' => ['nullable', 'integer', 'min:1'],
-            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
-        ]);
+        $validated = $this->validateArguments($arguments, new ListBlogPostsRequest);
 
         if ($validated instanceof ToolResult) {
             return $validated;
@@ -56,7 +53,7 @@ class ListBlogPosts extends Tool
             $validated['search'] ?? null,
             $validated['status'] ?? 'all',
             $validated['per_page'] ?? null,
-            $validated['page'] ?? 1,
+            $validated['page'] ?? null,
         );
 
         return ToolResult::json($paginator->toArray());

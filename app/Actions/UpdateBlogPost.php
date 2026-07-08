@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Data\UpdateBlogPostData;
 use App\Models\BlogPost;
 use Lorisleiva\Actions\Concerns\AsAction;
 
@@ -10,23 +11,21 @@ class UpdateBlogPost
     use AsAction;
 
     /**
-     * Applies a partial (patch) update: only the provided keys are changed.
-     *
-     * @param  array{
-     *     title_nl?: string,
-     *     title_en?: string,
-     *     content_nl?: string,
-     *     content_en?: string,
-     *     excerpt_nl?: string|null,
-     *     excerpt_en?: string|null,
-     *     slug?: string,
-     *     featured_image?: string,
-     * }  $attributes
+     * Applies a partial (patch) update: only the fields present on the data
+     * object are changed, the rest are left untouched.
      */
-    public function handle(BlogPost $blogPost, array $attributes): BlogPost
+    public function handle(BlogPost $blogPost, UpdateBlogPostData $data): BlogPost
     {
+        $attributes = $data->toArray();
+
         if (array_key_exists('slug', $attributes)) {
             $attributes['slug'] = GenerateUniqueBlogPostSlug::run($attributes['slug'], $blogPost->id);
+        }
+
+        foreach (['content_nl', 'content_en'] as $field) {
+            if (isset($attributes[$field]) && is_string($attributes[$field])) {
+                $attributes[$field] = SanitizeBlogContent::run($attributes[$field]);
+            }
         }
 
         $blogPost->fill($attributes)->save();
