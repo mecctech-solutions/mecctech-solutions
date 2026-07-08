@@ -1,0 +1,77 @@
+<?php
+
+use App\Actions\CreateBlogPost;
+use App\Models\BlogPost;
+
+it('creates a blog post as a draft', function () {
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Nederlandse titel',
+        'title_en' => 'English title',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+    ]);
+
+    expect($blogPost)->toBeInstanceOf(BlogPost::class)
+        ->and($blogPost->published_at)->toBeNull()
+        ->and($blogPost->title_nl)->toBe('Nederlandse titel')
+        ->and($blogPost->title_en)->toBe('English title');
+});
+
+it('generates a slug from the dutch title when none is provided', function () {
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Mijn Eerste Post',
+        'title_en' => 'My First Post',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+    ]);
+
+    expect($blogPost->slug)->toBe('mijn-eerste-post');
+});
+
+it('appends a suffix when the generated slug already exists', function () {
+    BlogPost::factory()->create(['slug' => 'mijn-eerste-post']);
+
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Mijn Eerste Post',
+        'title_en' => 'My First Post',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+    ]);
+
+    expect($blogPost->slug)->toBe('mijn-eerste-post-2');
+});
+
+it('uses the provided slug when given', function () {
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Nederlandse titel',
+        'title_en' => 'English title',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+        'slug' => 'custom-slug',
+    ]);
+
+    expect($blogPost->slug)->toBe('custom-slug');
+});
+
+it('falls back to the placeholder featured image when none is provided', function () {
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Nederlandse titel',
+        'title_en' => 'English title',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+    ]);
+
+    expect($blogPost->featured_image)->toBe(CreateBlogPost::PLACEHOLDER_FEATURED_IMAGE);
+});
+
+it('stores the provided featured image', function () {
+    $blogPost = CreateBlogPost::run([
+        'title_nl' => 'Nederlandse titel',
+        'title_en' => 'English title',
+        'content_nl' => '<p>Inhoud</p>',
+        'content_en' => '<p>Content</p>',
+        'featured_image' => 'blog/hero.jpg',
+    ]);
+
+    expect($blogPost->featured_image)->toBe('blog/hero.jpg');
+});
