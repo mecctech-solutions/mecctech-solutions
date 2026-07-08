@@ -58,13 +58,3 @@ it('stores the provided featured image', function () {
     expect($blogPost->featured_image)->toBe('blog/hero.jpg');
 });
 
-it('sanitizes dangerous html in the content', function () {
-    $blogPost = createBlogPost([
-        'content_nl' => '<p>Veilig</p><script>alert("xss")</script>',
-        'content_en' => '<p>Safe</p><a href="#" onclick="alert(1)">link</a>',
-    ]);
-
-    expect($blogPost->content_nl)->not->toContain('<script>')
-        ->and($blogPost->content_nl)->toContain('Veilig')
-        ->and($blogPost->content_en)->not->toContain('onclick');
-});

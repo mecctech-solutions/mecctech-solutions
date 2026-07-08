@@ -22,12 +22,6 @@ class UpdateBlogPost
             $attributes['slug'] = GenerateUniqueBlogPostSlug::run($attributes['slug'], $blogPost->id);
         }
 
-        foreach (['content_nl', 'content_en'] as $field) {
-            if (isset($attributes[$field]) && is_string($attributes[$field])) {
-                $attributes[$field] = SanitizeBlogContent::run($attributes[$field]);
-            }
-        }
-
         $blogPost->fill($attributes)->save();
 
         return $blogPost->refresh();

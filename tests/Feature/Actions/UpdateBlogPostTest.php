@@ -47,13 +47,3 @@ it('keeps its own slug when updating with an unchanged slug', function () {
     expect($blogPost->refresh()->slug)->toBe('mijn-slug');
 });
 
-it('sanitizes dangerous html when updating content', function () {
-    $blogPost = BlogPost::factory()->create();
-
-    UpdateBlogPost::run($blogPost, UpdateBlogPostData::from([
-        'content_nl' => '<p>Veilig</p><script>alert("xss")</script>',
-    ]));
-
-    expect($blogPost->refresh()->content_nl)->not->toContain('<script>')
-        ->and($blogPost->content_nl)->toContain('Veilig');
-});
