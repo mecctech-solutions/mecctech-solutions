@@ -1,0 +1,17 @@
+workspace-mode = "copy-on-write"
+workspace-dir = "~/.ralph/mecctech-solutions"
+project-name = "mecctech-solutions"
+yolobox = true
+model = "claude-opus-4-8"
+
+tracker = "linear"
+linear-team = "WEB"
+linear-project = "MeccTech Solutions"
+linear-label = "agent:ralph"
+linear-auto = true
+linear-poll-interval = 30
+
+auto-create-pr = true
+
+[hooks]
+hitl = "./hooks/hitl.sh"
