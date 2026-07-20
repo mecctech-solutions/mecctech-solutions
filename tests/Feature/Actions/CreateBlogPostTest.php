@@ -57,4 +57,3 @@ it('stores the provided featured image', function () {
 
     expect($blogPost->featured_image)->toBe('blog/hero.jpg');
 });
-
