@@ -12,7 +12,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^11.0",
-        "laravel/mcp": "^0.1.1",
+        "laravel/mcp": "^0.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.0",
@@ -36,7 +36,7 @@
     },
     "require-dev": {
         "larastan/larastan": "^3.0",
-        "laravel/boost": "^1.1",
+        "laravel/boost": "^2.4",
         "laravel/dusk": "^8.2",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",

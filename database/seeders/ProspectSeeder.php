@@ -123,8 +123,8 @@ class ProspectSeeder extends Seeder
 
         return $factory->state([
             'outreach_template_id' => $template->id,
-            'subject' => $rendered['subject'],
-            'body' => $rendered['body'],
+            'subject' => $rendered->subject,
+            'body' => $rendered->body,
         ]);
     }
 }

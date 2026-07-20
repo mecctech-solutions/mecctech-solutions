@@ -563,3 +563,11 @@ it('has emails', function (string $email) {
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test` with a specific filename or filter.
 </laravel-boost-guidelines>
+## Project Conventions
+
+### Return DTOs, Not Associative Arrays
+
+- Actions, services, and any method returning more than one value must return a typed DTO, never an associative array.
+- DTOs live in `app/Data` and extend `Spatie\LaravelData\Data`, named `<Thing>Data` (e.g. `RenderedOutreachTemplateData`).
+- Use constructor property promotion with explicit types; call sites read properties (`$rendered->subject`), not string keys.
+- This gives static analysis and the IDE a real shape to check, so a renamed or missing field fails at analysis time instead of silently becoming `null`.

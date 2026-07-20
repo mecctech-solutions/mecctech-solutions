@@ -29,8 +29,8 @@ class CreateOutreachAttempt
         return $prospect->outreachAttempts()->create([
             'outreach_template_id' => $template->id,
             'follow_up_to_id' => $followUpTo?->id,
-            'subject' => $subject ?? $rendered['subject'],
-            'body' => $body ?? $rendered['body'],
+            'subject' => $subject ?? $rendered->subject,
+            'body' => $body ?? $rendered->body,
             'sent_at' => null,
         ]);
     }

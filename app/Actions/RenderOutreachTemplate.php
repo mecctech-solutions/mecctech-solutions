@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Data\RenderedOutreachTemplateData;
 use App\Models\OutreachTemplate;
 use App\Models\Prospect;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -17,10 +18,8 @@ class RenderOutreachTemplate
      * so admin-panel XSS or a stolen session would become remote code execution.
      * An unknown placeholder is left untouched so it stays visible in the
      * preview rather than silently vanishing.
-     *
-     * @return array{subject: string, body: string}
      */
-    public function handle(OutreachTemplate $template, Prospect $prospect): array
+    public function handle(OutreachTemplate $template, Prospect $prospect): RenderedOutreachTemplateData
     {
         $replacements = [
             'company_name' => $prospect->name,
@@ -30,10 +29,10 @@ class RenderOutreachTemplate
             'domain' => $prospect->domain,
         ];
 
-        return [
-            'subject' => $this->substitute($template->subject, $replacements),
-            'body' => $this->substitute($template->body, $replacements),
-        ];
+        return new RenderedOutreachTemplateData(
+            subject: $this->substitute($template->subject, $replacements),
+            body: $this->substitute($template->body, $replacements),
+        );
     }
 
     /**

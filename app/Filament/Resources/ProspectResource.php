@@ -247,8 +247,8 @@ class ProspectResource extends Resource
                         }
 
                         $rendered = RenderOutreachTemplate::run($template, $prospectFrom($record));
-                        $set('subject', $rendered['subject']);
-                        $set('body', $rendered['body']);
+                        $set('subject', $rendered->subject);
+                        $set('body', $rendered->body);
                     }),
                 Forms\Components\TextInput::make('subject')
                     ->required()

@@ -19,8 +19,8 @@ it('substitutes all five placeholders in subject and body', function () {
 
     $rendered = RenderOutreachTemplate::run($template, $prospect);
 
-    expect($rendered['subject'])->toBe('Idea for Acme BV (acme.nl)')
-        ->and($rendered['body'])->toBe('Hi Jan Jansen, I saw https://www.acme.nl/vacatures.');
+    expect($rendered->subject)->toBe('Idea for Acme BV (acme.nl)')
+        ->and($rendered->body)->toBe('Hi Jan Jansen, I saw https://www.acme.nl/vacatures.');
 });
 
 it('tolerates whitespace inside the placeholder braces', function () {
@@ -33,8 +33,8 @@ it('tolerates whitespace inside the placeholder braces', function () {
 
     $rendered = RenderOutreachTemplate::run($template, $prospect);
 
-    expect($rendered['subject'])->toBe('Hi Acme BV')
-        ->and($rendered['body'])->toBe('Hi Acme BV');
+    expect($rendered->subject)->toBe('Hi Acme BV')
+        ->and($rendered->body)->toBe('Hi Acme BV');
 });
 
 it('leaves unknown placeholders untouched', function () {
@@ -47,7 +47,7 @@ it('leaves unknown placeholders untouched', function () {
 
     $rendered = RenderOutreachTemplate::run($template, $prospect);
 
-    expect($rendered['body'])->toBe('Ask about {{ceo_dog_name}}');
+    expect($rendered->body)->toBe('Ask about {{ceo_dog_name}}');
 });
 
 it('substitutes a null contact field to an empty string', function () {
@@ -63,8 +63,8 @@ it('substitutes a null contact field to an empty string', function () {
 
     $rendered = RenderOutreachTemplate::run($template, $prospect);
 
-    expect($rendered['body'])->toBe('Hi , hello.')
-        ->and($rendered['body'])->not->toContain('{{contact_first_name}}');
+    expect($rendered->body)->toBe('Hi , hello.')
+        ->and($rendered->body)->not->toContain('{{contact_first_name}}');
 });
 
 it('never interprets Blade syntax in the template body', function () {
@@ -77,6 +77,6 @@ it('never interprets Blade syntax in the template body', function () {
 
     $rendered = RenderOutreachTemplate::run($template, $prospect);
 
-    expect($rendered['body'])->toBe("Value: {{ 7*7 }} @php echo 'pwned'; @endphp")
-        ->and($rendered['body'])->not->toContain('49');
+    expect($rendered->body)->toBe("Value: {{ 7*7 }} @php echo 'pwned'; @endphp")
+        ->and($rendered->body)->not->toContain('49');
 });
