@@ -10,8 +10,11 @@ use App\Builders\ProspectBuilder;
 use App\Enums\CompanyType;
 use App\Enums\QualificationStatus;
 use App\Filament\Resources\ProspectResource\Pages;
+use App\Filament\Resources\ProspectResource\RelationManagers;
+use App\Models\OutreachAttempt;
 use App\Models\OutreachTemplate;
 use App\Models\Prospect;
+use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -19,6 +22,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Js;
 use Livewire\Component;
 
@@ -163,22 +167,49 @@ class ProspectResource extends Resource
     }
 
     /**
-     * Compose an outreach email from a template and record that it was sent.
-     *
-     * The app never sends the mail: the operator copies the composed message
-     * and sends it from Outlook by hand. "Copy & mark as sent" copies the body
-     * and records an attempt in one click so the tracking never depends on
-     * memory; "Copy" is the escape hatch for only looking and records nothing.
+     * The compose row action on the prospect table: a fresh first outreach.
      */
     protected static function composeAction(): Tables\Actions\Action
     {
-        return Tables\Actions\Action::make('compose')
-            ->label('Compose')
+        return static::buildComposeAction(
+            Tables\Actions\Action::make('compose'),
+            prospectFrom: function (Model $record): Prospect {
+                assert($record instanceof Prospect);
+
+                return $record;
+            },
+            followUpFrom: fn (Model $record): ?OutreachAttempt => null,
+        )->label('Compose');
+    }
+
+    /**
+     * Configure a compose modal that renders a template, lets the operator edit
+     * the copy and then records a sent attempt in one click.
+     *
+     * The app never sends the mail: the operator copies the composed message
+     * and sends it from Outlook by hand. "Copy & mark as sent" copies the body
+     * and records an attempt so the tracking never depends on memory; "Copy" is
+     * the escape hatch for only looking and records nothing.
+     *
+     * Shared between the prospect table (a first attempt) and the outreach
+     * history relation manager (a follow-up), which differ only in how the
+     * prospect and the attempt being followed up are resolved from the row
+     * record. `$prospectFrom` and `$followUpFrom` both receive that record.
+     *
+     * @param  Closure(Model): Prospect  $prospectFrom
+     * @param  Closure(Model): ?OutreachAttempt  $followUpFrom
+     */
+    public static function buildComposeAction(
+        Tables\Actions\Action $action,
+        Closure $prospectFrom,
+        Closure $followUpFrom,
+    ): Tables\Actions\Action {
+        return $action
             ->icon('heroicon-o-envelope')
             ->modalHeading('Compose outreach')
             ->modalWidth('3xl')
-            ->fillForm(fn (Prospect $record): array => [
-                'contact_email' => $record->contact_email,
+            ->fillForm(fn (Model $record): array => [
+                'contact_email' => $prospectFrom($record)->contact_email,
             ])
             ->form([
                 Forms\Components\TextInput::make('contact_email')
@@ -197,9 +228,9 @@ class ProspectResource extends Resource
                     ),
                 Forms\Components\Select::make('outreach_template_id')
                     ->label('Template')
-                    ->options(fn (Prospect $record): array => OutreachTemplate::query()
-                        ->where(function (Builder $query) use ($record): void {
-                            $query->where('company_type', $record->type)
+                    ->options(fn (Model $record): array => OutreachTemplate::query()
+                        ->where(function (Builder $query) use ($prospectFrom, $record): void {
+                            $query->where('company_type', $prospectFrom($record)->type)
                                 ->orWhereNull('company_type');
                         })
                         ->orderBy('name')
@@ -208,14 +239,14 @@ class ProspectResource extends Resource
                     ->helperText("Templates matching this prospect's type, plus generic ones.")
                     ->required()
                     ->live()
-                    ->afterStateUpdated(function (?string $state, Forms\Set $set, Prospect $record): void {
+                    ->afterStateUpdated(function (?string $state, Forms\Set $set, Model $record) use ($prospectFrom): void {
                         $template = OutreachTemplate::find($state);
 
                         if ($template === null) {
                             return;
                         }
 
-                        $rendered = RenderOutreachTemplate::run($template, $record);
+                        $rendered = RenderOutreachTemplate::run($template, $prospectFrom($record));
                         $set('subject', $rendered['subject']);
                         $set('body', $rendered['body']);
                     }),
@@ -233,7 +264,7 @@ class ProspectResource extends Resource
                     ->label('Copy')
                     ->color('gray'),
             ])
-            ->action(function (Prospect $record, array $data, array $arguments, Component $livewire): void {
+            ->action(function (Model $record, array $data, array $arguments, Component $livewire) use ($prospectFrom, $followUpFrom): void {
                 $livewire->js('window.navigator.clipboard.writeText('.Js::from($data['body']).')');
 
                 if (! ($arguments['markSent'] ?? true)) {
@@ -249,8 +280,9 @@ class ProspectResource extends Resource
                 $template = OutreachTemplate::findOrFail($data['outreach_template_id']);
 
                 $attempt = CreateOutreachAttempt::run(
-                    prospect: $record,
+                    prospect: $prospectFrom($record),
                     template: $template,
+                    followUpTo: $followUpFrom($record),
                     subject: $data['subject'],
                     body: $data['body'],
                 );
@@ -266,7 +298,9 @@ class ProspectResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            RelationManagers\OutreachAttemptsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
