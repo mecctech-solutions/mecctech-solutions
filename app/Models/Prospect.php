@@ -11,6 +11,7 @@ use Database\Factories\ProspectFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Query\Builder;
 
 /**
@@ -72,6 +73,14 @@ class Prospect extends Model
     public function outreachAttempts(): HasMany
     {
         return $this->hasMany(OutreachAttempt::class);
+    }
+
+    /**
+     * @return HasOne<OutreachAttempt, $this>
+     */
+    public function latestOutreachAttempt(): HasOne
+    {
+        return $this->hasOne(OutreachAttempt::class)->latestOfMany('sent_at');
     }
 
     public function isQualified(): bool
