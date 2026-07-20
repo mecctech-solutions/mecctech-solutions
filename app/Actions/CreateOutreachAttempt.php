@@ -12,10 +12,8 @@ class CreateOutreachAttempt
     use AsAction;
 
     /**
-     * The subject and body are snapshotted on the attempt so that editing or
-     * deleting the template afterwards never rewrites what was actually sent.
-     * The operator tweaks the copy per prospect, so `$subject` and `$body` may
-     * be passed to snapshot the edited text instead of the rendered template.
+     * Subject and body are snapshotted so editing or deleting the template
+     * afterwards never rewrites what was actually sent.
      */
     public function handle(
         Prospect $prospect,

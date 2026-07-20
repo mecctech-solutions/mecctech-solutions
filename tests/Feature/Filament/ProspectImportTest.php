@@ -7,6 +7,7 @@ use App\Models\Prospect;
 use App\Models\User;
 use Filament\Actions\Imports\Jobs\ImportCsv;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
 
 /**
@@ -15,12 +16,14 @@ use League\Csv\Reader;
  * importer's columns and dispatch the ImportCsv job inline (the app runs on the
  * sync queue).
  */
-function runProspectImport(): Import
+function runProspectImport(?array $rows = null): Import
 {
-    $reader = Reader::createFromPath(base_path('tests/Fixtures/prospects.csv'));
-    $reader->setHeaderOffset(0);
+    if ($rows === null) {
+        $reader = Reader::createFromPath(base_path('tests/Fixtures/prospects.csv'));
+        $reader->setHeaderOffset(0);
 
-    $rows = iterator_to_array($reader->getRecords(), false);
+        $rows = iterator_to_array($reader->getRecords(), false);
+    }
 
     $columnMap = [
         'name' => 'Company',
@@ -111,3 +114,47 @@ it('fails a row with an unmappable type and lands it in failed_import_rows while
         ->and($failedRow->validation_error)->toContain('not a recognised company type')
         ->and($failedRow->data['Company'])->toBe('Weird Co');
 });
+
+it('fails every row without a resolvable domain instead of colliding them on the unique constraint', function () {
+    Log::spy();
+
+    $import = runProspectImport([
+        prospectRow(company: 'No Website One', website: ''),
+        prospectRow(company: 'No Website Two', website: '   '),
+        prospectRow(company: 'Good Co', website: 'https://good.example'),
+    ]);
+
+    expect($import->successful_rows)->toBe(1)
+        ->and($import->getFailedRowsCount())->toBe(2)
+        ->and(Prospect::query()->where('domain', '')->exists())->toBeFalse()
+        ->and(Prospect::query()->where('domain', 'good.example')->exists())->toBeTrue();
+
+    expect($import->failedRows()->pluck('validation_error')->all())
+        ->each->toContain('No website or domain could be resolved');
+
+    expect($import->failedRows()->get()->pluck('data.Company')->all())
+        ->toEqualCanonicalizing(['No Website One', 'No Website Two']);
+
+    Log::shouldHaveReceived('warning')
+        ->withArgs(fn (string $message, array $context): bool => str_contains($message, 'no domain could be resolved')
+            && $context['company'] === 'No Website One')
+        ->once();
+});
+
+/**
+ * @return array<string, string>
+ */
+function prospectRow(string $company, string $website): array
+{
+    return [
+        'First Name' => '',
+        'Last Name' => '',
+        'Company' => $company,
+        'Email' => '',
+        'Website' => $website,
+        'Type' => 'Agency',
+        'Sent' => '',
+        'Opmerkingen' => '',
+        'Geschikt' => '',
+    ];
+}

@@ -563,6 +563,7 @@ it('has emails', function (string $email) {
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test` with a specific filename or filter.
 </laravel-boost-guidelines>
+
 ## Project Conventions
 
 ### Return DTOs, Not Associative Arrays
@@ -571,3 +572,15 @@ it('has emails', function (string $email) {
 - DTOs live in `app/Data` and extend `Spatie\LaravelData\Data`, named `<Thing>Data` (e.g. `RenderedOutreachTemplateData`).
 - Use constructor property promotion with explicit types; call sites read properties (`$rendered->subject`), not string keys.
 - This gives static analysis and the IDE a real shape to check, so a renamed or missing field fails at analysis time instead of silently becoming `null`.
+
+### Minimal Comments
+
+- Write as few comments as possible. Prefer descriptive class, method and variable names so the code documents itself.
+- Only write a comment when it explains **why** something is done, never **how** it is done. If a comment restates what the code already says, delete it or rename the code instead.
+- This applies to PHPDoc prose too. Type annotations and generics that static analysis needs are not comments in this sense — keep those.
+
+### No Magic Strings
+
+- Never inline a repeated string literal — column names, relation names, keys, statuses. Declare a `public const` on the class that owns the concept and reference it.
+- Numbers with business meaning (thresholds, defaults) get a named constant too, e.g. `OutreachAttemptBuilder::DEFAULT_FOLLOW_UP_DAYS`.
+- A typo in a literal fails silently at runtime; a typo in a constant fails immediately, and renaming becomes a single edit.

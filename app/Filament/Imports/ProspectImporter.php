@@ -9,6 +9,7 @@ use Filament\Actions\Imports\Exceptions\RowImportFailedException;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ProspectImporter extends Importer
@@ -73,9 +74,19 @@ class ProspectImporter extends Importer
 
     public function resolveRecord(): ?Prospect
     {
-        return Prospect::firstOrNew([
-            'domain' => NormalizeDomain::run($this->data['website'] ?? $this->data['domain'] ?? ''),
-        ]);
+        $domain = NormalizeDomain::run($this->data['website'] ?? $this->data['domain'] ?? '');
+
+        if ($domain === '') {
+            Log::warning('Prospect import row skipped: no domain could be resolved.', [
+                'import_id' => $this->import->getKey(),
+                'company' => $this->data['name'] ?? null,
+                'website' => $this->data['website'] ?? null,
+            ]);
+
+            throw new RowImportFailedException('No website or domain could be resolved, so this row cannot be deduplicated.');
+        }
+
+        return Prospect::firstOrNew(['domain' => $domain]);
     }
 
     public static function getCompletedNotificationBody(Import $import): string

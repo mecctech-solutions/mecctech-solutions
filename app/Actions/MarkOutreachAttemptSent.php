@@ -11,9 +11,8 @@ class MarkOutreachAttemptSent
     use AsAction;
 
     /**
-     * The operator copies the composed message and sends it from Outlook by
-     * hand; this records that it happened so the tracking does not depend on
-     * their memory.
+     * The message itself is sent by hand from Outlook, so tracking would
+     * otherwise depend on the operator's memory.
      */
     public function handle(OutreachAttempt $attempt, ?Carbon $sentAt = null): OutreachAttempt
     {
