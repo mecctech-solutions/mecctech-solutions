@@ -168,6 +168,15 @@ it('imports through the ImportAction, which dispatches a job batch', function ()
     expect(Prospect::query()->where('domain', 'acme.nl')->exists())->toBeTrue();
 });
 
+it('streams the failed rows CSV through the web middleware stack', function () {
+    $import = runProspectImport();
+
+    $this->actingAs($import->user)
+        ->get(route('filament.imports.failed-rows.download', ['import' => $import]))
+        ->assertSuccessful()
+        ->assertDownload("import-{$import->getKey()}-prospects-mislukte-rijen.csv");
+});
+
 /**
  * @return array<string, string>
  */
