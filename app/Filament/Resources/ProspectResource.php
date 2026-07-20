@@ -2,17 +2,25 @@
 
 namespace App\Filament\Resources;
 
+use App\Actions\CreateOutreachAttempt;
+use App\Actions\MarkOutreachAttemptSent;
 use App\Actions\QualifyProspect;
+use App\Actions\RenderOutreachTemplate;
 use App\Builders\ProspectBuilder;
 use App\Enums\CompanyType;
 use App\Enums\QualificationStatus;
 use App\Filament\Resources\ProspectResource\Pages;
+use App\Models\OutreachTemplate;
 use App\Models\Prospect;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Js;
+use Livewire\Component;
 
 class ProspectResource extends Resource
 {
@@ -142,6 +150,7 @@ class ProspectResource extends Resource
                             filled($data['qualification_reason']) ? $data['qualification_reason'] : null,
                         );
                     }),
+                static::composeAction(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -151,6 +160,108 @@ class ProspectResource extends Resource
                 ]),
             ])
             ->defaultSort('created_at', 'desc');
+    }
+
+    /**
+     * Compose an outreach email from a template and record that it was sent.
+     *
+     * The app never sends the mail: the operator copies the composed message
+     * and sends it from Outlook by hand. "Copy & mark as sent" copies the body
+     * and records an attempt in one click so the tracking never depends on
+     * memory; "Copy" is the escape hatch for only looking and records nothing.
+     */
+    protected static function composeAction(): Tables\Actions\Action
+    {
+        return Tables\Actions\Action::make('compose')
+            ->label('Compose')
+            ->icon('heroicon-o-envelope')
+            ->modalHeading('Compose outreach')
+            ->modalWidth('3xl')
+            ->fillForm(fn (Prospect $record): array => [
+                'contact_email' => $record->contact_email,
+            ])
+            ->form([
+                Forms\Components\TextInput::make('contact_email')
+                    ->label('To')
+                    ->helperText('Outlook needs a recipient — copy this into the To field.')
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->suffixAction(
+                        Forms\Components\Actions\Action::make('copyEmail')
+                            ->icon('heroicon-m-clipboard')
+                            ->label('Copy email')
+                            ->visible(fn (?string $state): bool => filled($state))
+                            ->action(function (?string $state, Component $livewire): void {
+                                $livewire->js('window.navigator.clipboard.writeText('.Js::from($state).')');
+                            }),
+                    ),
+                Forms\Components\Select::make('outreach_template_id')
+                    ->label('Template')
+                    ->options(fn (Prospect $record): array => OutreachTemplate::query()
+                        ->where(function (Builder $query) use ($record): void {
+                            $query->where('company_type', $record->type)
+                                ->orWhereNull('company_type');
+                        })
+                        ->orderBy('name')
+                        ->pluck('name', 'id')
+                        ->all())
+                    ->helperText("Templates matching this prospect's type, plus generic ones.")
+                    ->required()
+                    ->live()
+                    ->afterStateUpdated(function (?string $state, Forms\Set $set, Prospect $record): void {
+                        $template = OutreachTemplate::find($state);
+
+                        if ($template === null) {
+                            return;
+                        }
+
+                        $rendered = RenderOutreachTemplate::run($template, $record);
+                        $set('subject', $rendered['subject']);
+                        $set('body', $rendered['body']);
+                    }),
+                Forms\Components\TextInput::make('subject')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('body')
+                    ->required()
+                    ->rows(14)
+                    ->helperText('Edit as needed — the sent text is snapshotted, not the template.'),
+            ])
+            ->modalSubmitActionLabel('Copy & mark as sent')
+            ->extraModalFooterActions(fn (Tables\Actions\Action $action): array => [
+                $action->makeModalSubmitAction('copyOnly', arguments: ['markSent' => false])
+                    ->label('Copy')
+                    ->color('gray'),
+            ])
+            ->action(function (Prospect $record, array $data, array $arguments, Component $livewire): void {
+                $livewire->js('window.navigator.clipboard.writeText('.Js::from($data['body']).')');
+
+                if (! ($arguments['markSent'] ?? true)) {
+                    Notification::make()
+                        ->title('Copied to clipboard')
+                        ->body('No attempt was recorded.')
+                        ->success()
+                        ->send();
+
+                    return;
+                }
+
+                $template = OutreachTemplate::findOrFail($data['outreach_template_id']);
+
+                $attempt = CreateOutreachAttempt::run(
+                    prospect: $record,
+                    template: $template,
+                    subject: $data['subject'],
+                    body: $data['body'],
+                );
+
+                MarkOutreachAttemptSent::run($attempt);
+
+                Notification::make()
+                    ->title('Copied and marked as sent')
+                    ->success()
+                    ->send();
+            });
     }
 
     public static function getRelations(): array
