@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProspectResource\Pages;
 
+use App\Filament\Imports\ProspectImporter;
 use App\Filament\Resources\ProspectResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -13,6 +14,8 @@ class ListProspects extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
+            Actions\ImportAction::make()
+                ->importer(ProspectImporter::class),
             Actions\CreateAction::make(),
         ];
     }

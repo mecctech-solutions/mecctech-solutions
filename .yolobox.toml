@@ -1,7 +1,8 @@
 ssh_agent = true
 git_config = true
-env = ["LINEAR_API_KEY", "GH_TOKEN"]
+env = ["LINEAR_API_KEY", "GH_TOKEN", "CONTEXT7_API_KEY"]
 clipboard = true
 
 [customize]
-packages = ["php8.3", "gh", "php8.4", "composer", "nodejs", "npm", "yarn", "sqlite3", "redis", "mysql-client", "postgresql-client"]
+packages = ["sqlite3", "redis", "mysql-client", "postgresql-client"]
+dockerfile = ".yolobox/Dockerfile"
