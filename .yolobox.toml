@@ -4,4 +4,5 @@ env = ["LINEAR_API_KEY", "GH_TOKEN", "CONTEXT7_API_KEY"]
 clipboard = true
 
 [customize]
-packages = ["php8.3", "gh", "composer", "nodejs", "yarn", "sqlite3", "redis", "mysql-client", "postgresql-client"]
+packages = ["sqlite3", "redis", "mysql-client", "postgresql-client"]
+dockerfile = ".yolobox/Dockerfile"
