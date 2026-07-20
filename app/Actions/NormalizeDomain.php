@@ -36,7 +36,7 @@ class NormalizeDomain
         $host = Str::of($host)
             ->lower()
             ->trim()
-            ->ltrim('.');
+            ->trim('.');
 
         if ($host->startsWith('www.')) {
             $host = $host->after('www.');
