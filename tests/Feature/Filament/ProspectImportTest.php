@@ -3,12 +3,15 @@
 use App\Enums\CompanyType;
 use App\Enums\QualificationStatus;
 use App\Filament\Imports\ProspectImporter;
+use App\Filament\Resources\ProspectResource\Pages\ListProspects;
 use App\Models\Prospect;
 use App\Models\User;
 use Filament\Actions\Imports\Jobs\ImportCsv;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use League\Csv\Reader;
+use Livewire\Livewire;
 
 /**
  * Run the operator's fixture CSV through the exact pipeline Filament's
@@ -139,6 +142,30 @@ it('fails every row without a resolvable domain instead of colliding them on the
         ->withArgs(fn (string $message, array $context): bool => str_contains($message, 'no domain could be resolved')
             && $context['company'] === 'No Website One')
         ->once();
+});
+
+it('imports through the ImportAction, which dispatches a job batch', function () {
+    $this->actingAs(User::factory()->create());
+
+    Livewire::test(ListProspects::class)
+        ->callAction('import', data: [
+            'file' => UploadedFile::fake()->createWithContent(
+                'prospects.csv',
+                file_get_contents(base_path('tests/Fixtures/prospects.csv')),
+            ),
+            'columnMap' => [
+                'name' => 'Company',
+                'website' => 'Website',
+                'type' => 'Type',
+                'contact_first_name' => 'First Name',
+                'contact_last_name' => 'Last Name',
+                'contact_email' => 'Email',
+                'notes' => 'Opmerkingen',
+            ],
+        ])
+        ->assertHasNoActionErrors();
+
+    expect(Prospect::query()->where('domain', 'acme.nl')->exists())->toBeTrue();
 });
 
 /**

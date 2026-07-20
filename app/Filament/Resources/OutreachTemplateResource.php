@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Actions\RenderOutreachTemplate;
 use App\Enums\CompanyType;
 use App\Filament\Resources\OutreachTemplateResource\Pages;
 use App\Models\OutreachTemplate;
@@ -39,9 +40,11 @@ class OutreachTemplateResource extends Resource
                     ->rows(15)
                     ->columnSpanFull()
                     ->helperText(
-                        'Available placeholders: {{company_name}}, {{contact_first_name}}, '
-                        .'{{contact_last_name}}, {{website}}, {{domain}}. Whitespace inside the braces is '
-                        .'tolerated; unknown placeholders are left untouched. '
+                        'Available placeholders: '
+                        .collect(RenderOutreachTemplate::recognisedPlaceholderNames())
+                            ->map(fn (string $name): string => '{{'.$name.'}}')
+                            ->join(', ')
+                        .'. Whitespace inside the braces is tolerated; unknown placeholders are left untouched. '
                         .'Remember to include a clear opt-out sentence — every commercial message must offer one '
                         .'(art. 11.7 Telecommunicatiewet).'
                     ),
