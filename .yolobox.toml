@@ -1,6 +1,6 @@
 ssh_agent = true
 git_config = true
-env = ["LINEAR_API_KEY", "GH_TOKEN"]
+env = ["LINEAR_API_KEY", "GH_TOKEN", "CONTEXT7_API_KEY"]
 clipboard = true
 
 [customize]
