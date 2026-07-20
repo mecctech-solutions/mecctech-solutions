@@ -12,12 +12,9 @@ class QualifyProspect
     use AsAction;
 
     /**
-     * Set a prospect's qualification status and reason.
-     *
-     * `qualified_at` is stamped when the prospect is marked Suitable or
-     * Unsuitable and cleared when it is put back to Pending, so the timestamp
-     * always reflects a real qualification decision rather than the absence of
-     * one.
+     * `qualified_at` is cleared when the prospect goes back to Pending so the
+     * timestamp always reflects a real qualification decision rather than the
+     * absence of one.
      */
     public function handle(Prospect $prospect, QualificationStatus $status, ?string $reason = null): Prospect
     {

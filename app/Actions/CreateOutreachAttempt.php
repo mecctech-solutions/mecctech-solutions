@@ -12,13 +12,10 @@ class CreateOutreachAttempt
     use AsAction;
 
     /**
-     * Persist an unsent outreach attempt for a prospect from a template.
-     *
-     * The rendered `subject` and `body` are stored as a snapshot on the attempt
-     * so that editing or deleting the template afterwards never rewrites what
-     * was actually sent. The operator tweaks the copy per prospect before
-     * sending, so `$subject` and `$body` may be passed to snapshot the edited
-     * text instead of the freshly rendered template.
+     * The subject and body are snapshotted on the attempt so that editing or
+     * deleting the template afterwards never rewrites what was actually sent.
+     * The operator tweaks the copy per prospect, so `$subject` and `$body` may
+     * be passed to snapshot the edited text instead of the rendered template.
      */
     public function handle(
         Prospect $prospect,

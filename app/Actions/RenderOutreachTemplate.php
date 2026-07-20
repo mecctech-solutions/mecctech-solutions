@@ -11,9 +11,6 @@ class RenderOutreachTemplate
     use AsAction;
 
     /**
-     * Substitute the whitelisted placeholders in a template's subject and body
-     * with a prospect's details.
-     *
      * Placeholders are replaced via a whitelist regex, never Blade. Template
      * content is stored in the database and edited through the admin panel;
      * compiling it as Blade would turn any stored markup into executable PHP,

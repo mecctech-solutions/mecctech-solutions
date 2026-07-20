@@ -11,11 +11,9 @@ class MarkOutreachAttemptSent
     use AsAction;
 
     /**
-     * Stamp an outreach attempt as sent.
-     *
      * The operator copies the composed message and sends it from Outlook by
      * hand; this records that it happened so the tracking does not depend on
-     * their memory. Defaults to the current time.
+     * their memory.
      */
     public function handle(OutreachAttempt $attempt, ?Carbon $sentAt = null): OutreachAttempt
     {
