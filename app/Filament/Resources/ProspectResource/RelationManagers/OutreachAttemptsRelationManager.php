@@ -9,10 +9,12 @@ use App\Filament\Resources\ProspectResource;
 use App\Models\OutreachAttempt;
 use App\Models\Prospect;
 use Filament\Forms;
+use Filament\Infolists;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\HtmlString;
 
 /**
  * The outreach history for a single prospect: every attempt, newest first,
@@ -35,9 +37,14 @@ class OutreachAttemptsRelationManager extends RelationManager
                     ->dateTime()
                     ->placeholder('Draft')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('subject')
+                    ->label('Subject')
+                    ->limit(40)
+                    ->tooltip(fn (OutreachAttempt $record): string => $record->subject),
                 Tables\Columns\TextColumn::make('outreachTemplate.name')
                     ->label('Template')
-                    ->placeholder('—'),
+                    ->placeholder('—')
+                    ->toggleable(),
                 Tables\Columns\IconColumn::make('follow_up_to_id')
                     ->label('Follow-up')
                     ->boolean()
@@ -68,11 +75,29 @@ class OutreachAttemptsRelationManager extends RelationManager
                     ->query(fn (OutreachAttemptBuilder $query): OutreachAttemptBuilder => $query->dueForFollowUp()),
             ])
             ->actions([
+                static::viewMessageAction(),
                 static::recordOutcomeAction(),
                 static::followUpAction(),
             ])
             ->emptyStateHeading('No outreach yet')
             ->emptyStateDescription('Compose a first attempt from the prospect list.');
+    }
+
+    protected static function viewMessageAction(): Tables\Actions\Action
+    {
+        return Tables\Actions\ViewAction::make('viewMessage')
+            ->label('View message')
+            ->icon('heroicon-o-envelope-open')
+            ->modalHeading('Message sent')
+            ->infolist([
+                Infolists\Components\TextEntry::make('subject')
+                    ->label('Subject'),
+                Infolists\Components\TextEntry::make('body')
+                    ->label('Message')
+                    ->html()
+                    ->formatStateUsing(fn (string $state): HtmlString => new HtmlString(nl2br(e($state))))
+                    ->columnSpanFull(),
+            ]);
     }
 
     /**
