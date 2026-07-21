@@ -92,3 +92,17 @@ it('creates a follow-up attempt pointing at the original with the same prospect'
         ->sent_at->not->toBeNull()
         ->subject->toBe('Following up on my earlier note');
 });
+
+it('shows the sent subject in the table and the full message in the view modal', function () {
+    $prospect = Prospect::factory()->create();
+    $attempt = OutreachAttempt::factory()->for($prospect)->sentDaysAgo(2)->create([
+        'subject' => 'Laravel developer voor jullie team',
+        'body' => "Hoi Jan,\n\nIk zag jullie vacature.",
+    ]);
+
+    relationManager($prospect)
+        ->assertTableColumnStateSet('subject', 'Laravel developer voor jullie team', $attempt)
+        ->mountTableAction('viewMessage', $attempt)
+        ->assertSee('Laravel developer voor jullie team')
+        ->assertSee('Ik zag jullie vacature.');
+});
