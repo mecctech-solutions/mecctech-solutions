@@ -8,6 +8,7 @@ use App\Models\OutreachAttempt;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Lorisleiva\Actions\Concerns\AsAction;
+use RuntimeException;
 
 class CountOutreachPerDay
 {
@@ -36,10 +37,11 @@ class CountOutreachPerDay
                 $windowEnd->copy()->utc(),
             ])
             ->get()
-            ->groupBy(fn (OutreachAttempt $attempt): string => $attempt->sent_at
-                ->copy()
-                ->setTimezone(self::TIMEZONE)
-                ->toDateString())
+            ->groupBy(function (OutreachAttempt $attempt): string {
+                $sentAt = $attempt->sent_at ?? throw new RuntimeException('A sent outreach attempt must have a sent_at timestamp.');
+
+                return $sentAt->copy()->setTimezone(self::TIMEZONE)->toDateString();
+            })
             ->map
             ->count();
 
