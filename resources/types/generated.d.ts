@@ -65,6 +65,10 @@ bullet_points: Array<App.Data.BulletPointData> | null;
 images: Array<App.Data.ImageData> | null;
 tags: Array<App.Data.TagData> | null;
 };
+export type RenderedOutreachTemplateData = {
+subject: string;
+body: string;
+};
 export type TagData = {
 name: string;
 visible: boolean;
