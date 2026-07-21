@@ -43,6 +43,10 @@ excerpt_en: string | null;
 slug: string | null;
 featured_image: string | null;
 };
+export type DailyOutreachCountData = {
+date: any;
+count: number;
+};
 export type ImageData = {
 full_url: string;
 url: string;
