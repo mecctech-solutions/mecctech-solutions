@@ -1,0 +1,5 @@
+First Name,Last Name,Company,Email,Website,Type,Sent,Opmerkingen,Geschikt
+Anna,Jansen,Acme Agency,anna@acme.example,https://www.Acme.NL/vacatures,Agency,yes,Vacancy for a Laravel developer,ja
+,,Acme Agency,,http://acme.nl,Agency,,Updated note after a follow-up,ja
+Bob,de Vries,Staffing BV,bob@staffing.example,https://staffing.example,Uitzendbureau,,,
+Carol,Smit,Weird Co,carol@weird.example,https://weird.example,Nonprofit,,,

@@ -65,6 +65,10 @@ bullet_points: Array<App.Data.BulletPointData> | null;
 images: Array<App.Data.ImageData> | null;
 tags: Array<App.Data.TagData> | null;
 };
+export type RenderedOutreachTemplateData = {
+subject: string;
+body: string;
+};
 export type TagData = {
 name: string;
 visible: boolean;
@@ -94,5 +98,8 @@ featured_image?: string;
 }
 declare namespace App.Enums {
 export type BlogAbility = 'blog:read' | 'blog:write';
+export type CompanyType = 'agency' | 'direct_client' | 'staffing_agency';
+export type OutreachOutcome = 'positive_reply' | 'meeting' | 'client' | 'negative';
+export type QualificationStatus = 'pending' | 'suitable' | 'unsuitable';
 export type SettingKey = 'portfolio_items.items_per_page';
 }

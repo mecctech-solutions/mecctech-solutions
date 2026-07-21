@@ -46,4 +46,3 @@ it('keeps its own slug when updating with an unchanged slug', function () {
 
     expect($blogPost->refresh()->slug)->toBe('mijn-slug');
 });
-

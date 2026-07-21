@@ -17,5 +17,11 @@ class DatabaseSeeder extends Seeder
             PortfolioItemSeeder::class,
             BlogPostSeeder::class,
         ]);
+
+        // Seed the outreach module (templates before prospects: attempts snapshot templates)
+        $this->call([
+            OutreachTemplateSeeder::class,
+            ProspectSeeder::class,
+        ]);
     }
 }

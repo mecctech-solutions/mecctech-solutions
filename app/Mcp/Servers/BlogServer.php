@@ -20,6 +20,8 @@ class BlogServer extends Server
      * Advertise newer spec revisions so recent MCP clients negotiate successfully.
      * The installed laravel/mcp version does not gracefully downgrade an unknown
      * requested version, so clients requesting a newer revision fail to connect.
+     *
+     * @var list<string>
      */
     public array $supportedProtocolVersion = [
         '2025-11-25',
